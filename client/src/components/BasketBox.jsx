@@ -4,19 +4,24 @@ var BasketItemBox = require("./BasketItemBox.jsx");
 var BasketBox = React.createClass({
     getInitialState: function() {
       return({
-          basket: []
+          basket: [],
+          totalCost: 0
       });
     },
     getPrice: function(item) {
+        console.log(item);
        return item.price * item.count;
     },
     mapPropsToItems: function(basket) {
         if (basket && basket.length) {
+            var cost = 0;
             var basketItems = basket.map(function createBasketItems(item, index) {
-                   return <BasketItemBox item={item} price={this.getPrice(item)} key={index} />
+                   var itemCost = this.getPrice(item);
+                   cost += itemCost;
+                   console.log(cost);
+                   return <BasketItemBox item={item} price={itemCost} key={index} />
             }.bind(this));
-            console.log("basketItems", basketItems);
-            this.setState({basket: basketItems});
+            this.setState({basket: basketItems, totalCost: cost});
          } else {
              console.log("else");
          }
@@ -32,6 +37,10 @@ var BasketBox = React.createClass({
         return(
             <section className="basket">
                 {this.state.basket}
+                <nav className="icon-menu">
+                  <p>£{this.state.totalCost}</p>
+                  <span onClick={() => this.props.goToCheckout("checkout")}><i className="fa fa-credit-card-alt" aria-hidden="true"></i></span>
+               </nav>
             </section>
         );
     }

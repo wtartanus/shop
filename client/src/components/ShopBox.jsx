@@ -106,15 +106,15 @@ var ShopBox = React.createClass({
            return (
              <section>
                <NavBox title={this.state.title} classStyle="basket-menu"/>
-               <BasketBox basket={this.state.basket} />
-               <nav className="icon-menu">
-                  <span><i className="fa fa-venus" aria-hidden="true"></i></span>
-                  <span><i className="fa fa-mars" aria-hidden="true"></i></span>
-                  <span><i className="fa fa-search" aria-hidden="true"></i></span>
-                  <span onClick={() => this.changeSection("Basket")}><i className="fa fa-shopping-cart" aria-hidden="true"></i></span>
-               </nav>
+               <BasketBox basket={this.state.basket} goToCheckout={this.changeSection}/>
              </section>
            );
+        } else if (this.state.section === "checkout") {
+           return (
+             <section>
+               checkout
+             </section>
+           )
         }
     } else {
       return (

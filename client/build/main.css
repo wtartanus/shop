@@ -150,6 +150,9 @@ body {
     padding-top: 3%;
     cursor: pointer;
 }
+.icon-menu p {
+    margin: 0;
+}
 .basket {
    padding-top: 5px'
 }
