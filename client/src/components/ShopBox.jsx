@@ -2,6 +2,7 @@ var React = require('react');
 var SplashBox = require('./SplashBox.jsx');
 var NavBox = require("./NavBox.jsx");
 var BasketBox = require("./BasketBox.jsx");
+var CheckoutBox = require("./CheckoutBox.jsx");
 
 var ShopBox = React.createClass({
   getInitialState: function() {
@@ -57,6 +58,7 @@ var ShopBox = React.createClass({
    this.setState({title: title});
   },
   changeSection: function(section) {
+    console.log("section: ", section);
    this.setState({section: section});
    this.setTitle(section);
   },
@@ -112,7 +114,8 @@ var ShopBox = React.createClass({
         } else if (this.state.section === "checkout") {
            return (
              <section>
-               checkout
+               <NavBox title="this.state.title" classStyle="checkout" />
+               <CheckoutBox /> 
              </section>
            )
         }
