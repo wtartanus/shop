@@ -58,7 +58,6 @@ var ShopBox = React.createClass({
    this.setState({title: title});
   },
   changeSection: function(section) {
-    console.log("section: ", section);
    this.setState({section: section});
    this.setTitle(section);
   },
@@ -111,10 +110,10 @@ var ShopBox = React.createClass({
                <BasketBox basket={this.state.basket} goToCheckout={this.changeSection}/>
              </section>
            );
-        } else if (this.state.section === "checkout") {
+        } else if (this.state.section === "Checkout") {
            return (
              <section>
-               <NavBox title="this.state.title" classStyle="checkout" />
+               <NavBox title={this.state.title} classStyle="checkout" />
                <CheckoutBox /> 
              </section>
            )

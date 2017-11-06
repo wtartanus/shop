@@ -2,19 +2,29 @@ var React = require("react");
 
 var CheckoutBox = React.createClass({
     render: function() {
+      return(
         <section>
             <form>
-                <label for="name">Name:</label>
+                <label htmlFor="name">Name:</label>
+                <br/>
                 <input id="name" />
-                <label for="surename">Surname:</label>
+                <br/>
+                <label htmlFor="surename">Surname:</label>
+                <br/>
                 <input id="surname" />
-                <label for="adress">Adress:</label>
+                <br/>
+                <label htmlFor="adress">Adress:</label>
+                <br/>
                 <input id="adress" className="adressInput" />
+                <br/>
                 <input className="adressInput" />
+                <br/>
                 <input className="adressInput" />
+                <br/>
                 <button>Pay</button>
             </form>
         </section>
+      );
     }
 });
 

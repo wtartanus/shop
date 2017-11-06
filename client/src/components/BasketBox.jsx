@@ -39,7 +39,7 @@ var BasketBox = React.createClass({
                 {this.state.basket}
                 <nav className="icon-menu">
                   <p>£{this.state.totalCost}</p>
-                  <span onClick={() => this.props.goToCheckout("checkout")}><i className="fa fa-credit-card-alt" aria-hidden="true"></i></span>
+                  <span onClick={() => this.props.goToCheckout("Checkout")}><i className="fa fa-credit-card-alt" aria-hidden="true"></i></span>
                </nav>
             </section>
         );
