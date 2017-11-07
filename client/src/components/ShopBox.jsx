@@ -11,6 +11,7 @@ var ShopBox = React.createClass({
        windowWidth: 0,
        title: "Better-Love",
        section: "SplashBox",
+       totalCost: 0,
        basket: [
          {
            name: "cuffs",
@@ -114,7 +115,7 @@ var ShopBox = React.createClass({
            return (
              <section>
                <NavBox title={this.state.title} classStyle="checkout" />
-               <CheckoutBox /> 
+               <CheckoutBox totalCost={this.state.totalCost} /> 
              </section>
            )
         }

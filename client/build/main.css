@@ -184,3 +184,36 @@ body {
 .price-container p {
     margin: 0;
 }
+
+.checkout-container {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    padding-top: 20px;
+    font-size: 1.2em;
+}
+
+.checkout-input {
+    height: 4vh;
+    width: 90%;
+    border-radius: 10px;
+    border: 1px solid deepskyblue;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.checkout-container button {
+    background-color: deepskyblue;
+    width: 47vw;
+    height: 7vh;
+    border: 1px solid darkblue;
+    border-radius: 20px;
+    font-size: 1.1em;
+}
+
+.checkout-photo {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}

@@ -4,25 +4,26 @@ var CheckoutBox = React.createClass({
     render: function() {
       return(
         <section>
-            <form>
+            <section className="checkout-container">
                 <label htmlFor="name">Name:</label>
                 <br/>
-                <input id="name" />
+                <input id="cehckout-name" className="checkout-input" />
                 <br/>
                 <label htmlFor="surename">Surname:</label>
                 <br/>
-                <input id="surname" />
+                <input id="checkout-surname" className="checkout-input"/>
                 <br/>
                 <label htmlFor="adress">Adress:</label>
                 <br/>
-                <input id="adress" className="adressInput" />
+                <input className="adressInput checkout-input" />
                 <br/>
-                <input className="adressInput" />
+                <input className="adressInput checkout-input" />
                 <br/>
-                <input className="adressInput" />
+                <input className="adressInput checkout-input" />
                 <br/>
-                <button>Pay</button>
-            </form>
+                <button>Pay {this.props.totalCost ? "£" + this.props.totalCost : ""}</button>
+                <img className="checkout-photo" src="/checkout.jpg"></img>
+            </section>
         </section>
       );
     }
