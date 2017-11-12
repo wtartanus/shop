@@ -32,6 +32,11 @@ body {
     justify-content: space-between;
 }
 
+.epmty-basket {
+    text-align: center;
+    margin-top: 10vh;
+}
+
 .basket-menu {
     background-color: rgba(255,0,0,1) !important;
 }
@@ -156,6 +161,11 @@ body {
 .basket {
    padding-top: 5px'
 }
+
+.quantity-item {
+   width: 8vw;
+}
+
 .basket-item-container {
     width: 95%;
     margin: 0 auto;
@@ -216,4 +226,14 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.add-to-basket {
+    margin-top: 1vh;
+    background-color: deepskyblue;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    height: 5vh;
 }

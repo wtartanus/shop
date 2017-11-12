@@ -3,6 +3,7 @@ var SplashBox = require('./SplashBox.jsx');
 var NavBox = require("./NavBox.jsx");
 var BasketBox = require("./BasketBox.jsx");
 var CheckoutBox = require("./CheckoutBox.jsx");
+var ItemBox = require("./ItemsBox.jsx");
 
 var ShopBox = React.createClass({
   getInitialState: function() {
@@ -12,34 +13,34 @@ var ShopBox = React.createClass({
        title: "Better-Love",
        section: "SplashBox",
        totalCost: 0,
-       basket: [
-         {
-           name: "cuffs",
-           url: "/cuffs.jpg",
-           price: 10,
-           count: 1,
-           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-         },
-         {
-           name: "rope",
-           url: "/rope.jpg",
-           price: 5,
-           count: 2,
-           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-         },
-         {
-           name: "Red dress",
-           url: "/boots.jpg",
-           price: 25,
-           count: 1,
-           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-         }
+       basket: [],
+       bondage: [
+        {
+          name: "cuffs",
+          url: "/cuffs.jpg",
+          price: 10,
+          count: 0,
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          name: "rope",
+          url: "/rope.jpg",
+          price: 5,
+          count: 0,
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          name: "Red dress",
+          url: "/boots.jpg",
+          price: 25,
+          count: 0,
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        }
        ]
       }
   },
   componentDidMount: function() {
     this.setState({windowWidth: window.innerWidth});
-    console.log("windowWidth: ", this.state.windowWidth);
   },
   sendData: function(url,info) {
    var request = new XMLHttpRequest();
@@ -62,6 +63,12 @@ var ShopBox = React.createClass({
    this.setState({section: section});
    this.setTitle(section);
   },
+  addToBasket: function(item) {
+    this.state.basket.push(item);
+    var cost = item.price * item.count;
+    cost += this.state.totalCost;
+    this.setState({totalCost: cost});
+  },
   render: function() {
     if (this.state.windowWidth <= 400) {
         if (this.state.section === "SplashBox") {
@@ -69,7 +76,7 @@ var ShopBox = React.createClass({
             <div>
                <SplashBox title={this.state.title} />
                <section className="button-navigation-section">
-                <div className="button-section bondage-button">
+                <div className="button-section bondage-button" onClick={() => this.changeSection("Bondage")}>
                         <span className="button-heading">Bondage</span>
                 </div>
                 <div className="button-section lingerie-button">
@@ -118,6 +125,13 @@ var ShopBox = React.createClass({
                <CheckoutBox totalCost={this.state.totalCost} /> 
              </section>
            )
+        } else if (this.state.section === "Bondage") {
+          return(
+            <section>
+             <NavBox title={this.state.title} classStyle="checkout" />
+             <ItemBox items={this.state.bondage} addToBasket={this.addToBasket} totalCost={this.state.totalCost} goToCheckout={this.changeSection}/> 
+            </section>
+          );
         }
     } else {
       return (
