@@ -4,4 +4,4 @@ var ShopBox = require('./components/ShopBox.jsx');
 
 window.onload = function() {
   ReactDom.render(<ShopBox />,document.getElementById('app'));
-}
+};

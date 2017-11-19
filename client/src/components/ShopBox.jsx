@@ -4,6 +4,9 @@ var NavBox = require("./NavBox.jsx");
 var BasketBox = require("./BasketBox.jsx");
 var CheckoutBox = require("./CheckoutBox.jsx");
 var ItemBox = require("./ItemsBox.jsx");
+var ArticleBox = require("./ArticleBox.jsx");
+var ButtonNavigationSectionBox = require("./ButtonNavigationSectionBox.jsx");
+var IconMenuBox = require("./IconMenuBox.jsx");
 
 var ShopBox = React.createClass({
   getInitialState: function() {
@@ -75,40 +78,9 @@ var ShopBox = React.createClass({
           return (
             <div>
                <SplashBox title={this.state.title} />
-               <section className="button-navigation-section">
-                <div className="button-section bondage-button" onClick={() => this.changeSection("Bondage")}>
-                        <span className="button-heading">Bondage</span>
-                </div>
-                <div className="button-section lingerie-button">
-                        <span className="button-heading">Lingerie</span>
-                </div>
-                <div className="button-section toys-button">
-                        <span className="button-heading">Sex Toys</span>
-                </div>
-                <div className="button-section essentials-button">
-                        <span className="button-heading">Essentials</span>
-                </div>
-               </section>
-               <article className="splash-page-text">
-                   <h2>Why use sex toys?</h2>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                     Luctus accumsan tortor posuere ac ut consequat. At risus viverra adipiscing at in tellus integer. Ante in nibh mauris cursus mattis molestie a. 
-                     Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Sodales ut etiam sit amet nisl purus in mollis. Non pulvinar neque laoreet suspendisse interdum consectetur libero. 
-                     Ipsum faucibus vitae aliquet nec. Sodales ut eu sem integer vitae justo eget magna. Quis viverra nibh cras pulvinar. Dictum varius duis at consectetur lorem. 
-                     Quam pellentesque nec nam aliquam sem et tortor consequat id. Mi quis hendrerit dolor magna. Euismod in pellentesque massa placerat duis. 
-                     Cursus vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Vitae elementum curabitur vitae nunc sed. Volutpat commodo sed egestas egestas. 
-                     Scelerisque eu ultrices vitae auctor eu. Ut tristique et egestas quis ipsum suspendisse. Massa ultricies mi quis hendrerit dolor magna eget. 
-                     Malesuada proin libero nunc consequat. At erat pellentesque adipiscing commodo elit. Ornare quam viverra orci sagittis. 
-                     Lacus vestibulum sed arcu non odio euismod lacinia at quis. Volutpat est velit egestas dui id ornare. Urna porttitor rhoncus dolor purus non. 
-                     Quis commodo odio aenean sed adipiscing diam donec adipiscing. Malesuada proin libero nunc consequat interdum varius sit amet. Viverra nam libero justo laoreet sit. 
-                     Id interdum velit laoreet id donec ultrices tincidunt arcu non.</p>
-               </article>
-               <nav className="icon-menu">
-                  <span><i className="fa fa-venus" aria-hidden="true"></i></span>
-                  <span><i className="fa fa-mars" aria-hidden="true"></i></span>
-                  <span><i className="fa fa-search" aria-hidden="true"></i></span>
-                  <span onClick={() => this.changeSection("Basket")}><i className="fa fa-shopping-cart" aria-hidden="true"></i></span>
-               </nav>
+               <ButtonNavigationSectionBox changeSection={this.changeSection} />
+               <ArticleBox />
+               <IconMenuBox changeSection={this.changeSection} />
             </div>
           )
         } else if (this.state.section === "Basket") {
