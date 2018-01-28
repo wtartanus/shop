@@ -1,5 +1,5 @@
-/node_modules
-/client/build/bundle.js
-/client/build/bundle.js.map
-/Photos
-/Prototypes
+frontend/node_modules
+frontend/client/build/bundle.js
+frontend/client/build/bundle.js.map
+frontend/Photos
+frontend/Prototypes

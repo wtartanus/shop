@@ -1,0 +1,239 @@
+body {
+    margin: 0;
+    padding: 0 0 10vh 0;
+}
+.page-loading {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 10vw;
+    text-align: center;
+}
+
+.loading-spinner {
+    position: relative;
+    top: 40vh;
+}
+
+.splash-box {
+    background-image: url("./splash-page-mobile.jpg");
+    width: 100%;
+    height: 31vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.nav-box {
+    width: 100%;
+    height: 12vw;
+    background-color: rgba(255,0,0,.6);
+    display: flex;
+    justify-content: space-between;
+}
+
+.epmty-basket {
+    text-align: center;
+    margin-top: 10vh;
+}
+
+.basket-menu {
+    background-color: rgba(255,0,0,1) !important;
+}
+
+.menu-logo {
+    margin-left: 5px;
+}
+
+.menu-name {
+    font-family: 'Dancing Script', cursive;
+    color: white;
+    padding-top: 1vh;
+}
+
+.menu-icon {
+    /* float: right; */
+    color: white;
+    font-size: 9vw;
+    margin-right: 6vw;
+    cursor: pointer;
+}
+
+.menu-list {
+    display: none;
+}
+
+.menu-list ul {
+    margin: 0;
+    list-style: none;
+    list-style-position: outside;
+    padding: 0;
+}
+
+.menu-list li {
+    font-size: 1.4em;
+    padding: 1vh 0;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+
+.menu-list-show {
+    display: block;
+    background-color: rgba(255,0,0,.6);
+    color: white;
+    margin-top: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.button-navigation-section {
+    padding: 0 1vh;
+}
+
+.button-section {
+    margin-top: 2vh;
+    border-radius: 15px;
+    height: 12vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.button-heading {
+    display: block;
+    position: relative;
+    top: 100%;
+    transform: translateY(-100%);
+    background-color: rgba(255,0,0,.6);
+    height: 4vh;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    border-radius: 0 0 15px 15px;
+}
+
+
+.bondage-button {
+    background-image: url("bondage-button.jpg");
+}
+
+.lingerie-button {
+    background-image: url("lingerie-button.jpg");
+}
+
+.toys-button {
+    background-image: url("toys-button.jpg");
+}
+
+.essentials-button {
+    background-image: url("essentials-button.jpg");
+}
+
+.splash-page-text {
+    padding: 0 1vh;
+}
+
+.splash-page-text h2 {
+   text-align: center;
+   font-family: 'Dancing Script', cursive;
+}
+
+.icon-menu {
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    background-color: rgba(255,0,0,1);
+    width: 100%;
+    height: 7vh;
+    font-size: 3em;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 3%;
+    cursor: pointer;
+}
+.icon-menu p {
+    margin: 0;
+}
+.basket {
+   padding-top: 5px'
+}
+
+.quantity-item {
+   width: 8vw;
+}
+
+.basket-item-container {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 4vh;
+}
+.items-container {
+    display: flex;
+}
+.items-container h2 {
+    text-transform: capitalize;
+}
+.img-container {
+    width: 65%;
+}
+.img-container img {
+    width: 100%;
+    height: 200px;
+}
+.price-container {
+    padding-left: 5px;
+    width: 35%;
+    text-align: center;
+}
+
+.price-container h2,
+.price-container p {
+    margin: 0;
+}
+
+.checkout-container {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    padding-top: 20px;
+    font-size: 1.2em;
+}
+
+.checkout-input {
+    height: 4vh;
+    width: 90%;
+    border-radius: 10px;
+    border: 1px solid deepskyblue;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.checkout-container button {
+    background-color: deepskyblue;
+    width: 47vw;
+    height: 7vh;
+    border: 1px solid darkblue;
+    border-radius: 20px;
+    font-size: 1.1em;
+}
+
+.checkout-photo {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.add-to-basket {
+    margin-top: 1vh;
+    background-color: deepskyblue;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    height: 5vh;
+}
