@@ -1,7 +1,9 @@
+DROP TABLE stocks;
+DROP TABLE products;
 
 CREATE TABLE products (
   id serial4 PRIMARY KEY,
-  itemId INT,
+  item VARCHAR,
   model VARCHAR,
   name VARCHAR, 
   weightInKg FLOAT,
@@ -48,7 +50,7 @@ CREATE TABLE products (
   materialName VARCHAR,
   brandName VARCHAR,
   styleName VARCHAR,
-  productsEAN int,
+  productEAN VARCHAR,
   inCatName VARCHAR,
   productLength VARCHAR,
   motion VARCHAR,

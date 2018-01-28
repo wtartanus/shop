@@ -1,16 +1,16 @@
 require 'xmlsimple'
 
 class MapProductsFromXML
-    attr_reader   :itemId
+    attr_reader   :item
     attr_accessor :model, :name, :weightInKg, :image, :description, :price, :rrp, :productThumbail, :smallMultiImage1,
                   :smallMultiImage2, :smallMultiImage3, :smallMultiImage4, :bigMultiImage1, :bigMultiImage2, :bigMultiImage3, :xlImage, :xlImage2,
                   :xlImage3, :xlImage4, :xlImage5, :productSize, :productPower, :lubeType, :categoryId, :categoryName,
                   :condomSafe, :liquidVolume, :noOfPills, :fastening, :washing, :insertable, :diameter, :harnessCompatible, :originalCircumference,
                   :originalDiameter, :productWidth, :coulur, :flexability, :controller, :waterproof, :designedForWho, :whatIsIt, :whatIsFor, :inCatName,
-                  :features, :misc, :materialName, :brandName, :styleName, :productsEAN, :attributeEAN, :productLength, :motion, :opening
+                  :features, :misc, :materialName, :brandName, :styleName, :productEAN, :attributeEAN, :productLength, :motion, :opening
                  
     def initialize( options, categoryId, categoryName )
-      @itemId = options['ITEM'].to_i
+      @item = options['ITEM']
       @model = options['Model'] && options['Model'].first ? options['Model'].first : nil
       @name = options['NAME'] && options['NAME'].first ? options['NAME'].first : nil
       @weightInKg = options['WEIGHT'] && options['WEIGHT'].first ? options['WEIGHT'].first.to_f : nil
@@ -57,7 +57,7 @@ class MapProductsFromXML
       @materialName = options['MATERIAL'] && options['MATERIAL'].first ? options['MATERIAL'].first : nil
       @brandName = options['BRAND'] && options['BRAND'].first ? options['BRAND'].first : nil
       @styleName = options['STYLE'] && options['STYLE'].first ? options['STYLE'].first : nil
-      @productsEAN = options['EAN'] 
+      @productEAN = options['EAN'] && !options['EAN'][0].empty? ? options['EAN'][0] : nil
       @inCatName = options['INCATNAME'] 
       @productLength = options['LENGTH'] 
       @motion = options['MOTION'] 
@@ -115,20 +115,20 @@ class MapProductsFromXML
     end
 
     def save()
-      sql = "INSERT INTO products ( itemId, model, name, weightInKg, image, description, price, rrp, productThumbail, smallMultiImage1, smallMultiImage2, smallMultiImage3, 
+      sql = "INSERT INTO products ( item, model, name, weightInKg, image, description, price, rrp, productThumbail, smallMultiImage1, smallMultiImage2, smallMultiImage3, 
                                     smallMultiImage4, bigMultiImage1, bigMultiImage2, bigMultiImage3, xlImage, xlImage2, xlImage3, xlImage4, xlImage5, productSize, 
                                     productPower, lubeType, categoryId, categoryName, condomSafe, liquidVolume, noOfPills, fastening, washing, insertable, diameter, 
                                     harnessCompatible, originalCircumference, originalDiameter, productWidth, coulur, flexability, controller, waterproof, designedForWho, 
-                                    whatIsIt, whatIsFor, features, misc, materialName, brandName, styleName, productsEAN, productLength, motion, 
+                                    whatIsIt, whatIsFor, features, misc, materialName, brandName, styleName, productEAN, productLength, motion, 
                                     opening)
-           VALUES ( #{@itemId}, '#{@model}', '#{@name}', #{@weightInKg}, '#{@image}', '#{@description}', #{@price}, #{@rrp}, '#{@productThumbail}', 
+           VALUES ( '#{@item}', '#{@model}', '#{@name}', #{@weightInKg}, '#{@image}', '#{@description}', #{@price}, #{@rrp}, '#{@productThumbail}', 
                    '#{@smallMultiImage1}', '#{@smallMultiImage2}', '#{@smallMultiImage3}', '#{@smallMultiImage4}', '#{@bigMultiImage1}', 
                    '#{@bigMultiImage2}', '#{@bigMultiImage3}', '#{@xlImage}', '#{@xlImage2}', '#{@xlImage3}', '#{@xlImage4}', '#{@xlImage5}', 
                    '#{@productSize}', '#{@productPower}', '#{@lubeType}', #{categoryId}, '#{categoryName}', #{@condomSafe}, 
                    '#{@liquidVolume}', '#{@noOfPills}', '#{@fastening}', '#{@washing}', '#{@insertable}', '#{@diameter}', #{@harnessCompatible}, '#{@originalCircumference}',
                    '#{@originalDiameter}', '#{@productWidth}', '#{@coulur}', '#{@flexability}', '#{@controller}', #{@waterproof}, '#{@designedForWho}', '#{@whatIsIt}', 
                    '#{@whatIsFor}', '#{@features}', '#{@misc}', '#{@materialName}', '#{@brandName}', '#{@styleName}', 
-                   '#{@productsEAN}', '#{@productLength}', '#{@motion}', '#{@opening}')"
+                   '#{@productEAN}', '#{@productLength}', '#{@motion}', '#{@opening}')"
       SqlRunner.run( sql )
     end
 end
