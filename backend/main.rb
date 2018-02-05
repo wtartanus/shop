@@ -7,9 +7,22 @@ require_relative( './models/mapProductsFromXML.rb' )
 require_relative( './models/mapStocksFromXML.rb' )
 require_relative( './models/mapCategoriesFromXML.rb' )
 require_relative( './models/mapDiscontinuedFromXML.rb' )
+require_relative( './models/mapData.rb' )
 
 
+options '/*' do
+    response["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type"
+end
 
+before do
+    content_type :json    
+    headers 'Access-Control-Allow-Origin' => '*', 
+             'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST']  
+ end
+
+get '/' do
+  return "OK"
+end
 
 get '/mapProductsFromXML' do
     MapProductsFromXML.mapFromXML("./xml/xml_all.xml")
@@ -31,23 +44,9 @@ get '/mapDiscFromXML' do
     return "OK"
 end
 
-# get '/stock' do
+get '/data' do 
+    # data = MapData.new()
+    result = MapData.getData()
+    return result
+end
 
-# end
-
-# get '/stock/search' do
-
-
-# end
-
-# get '/stock/new' do
-  
-# end
-
-# post '/csv' do
-    
-# end
-
-# get '/statistics' do
-
-# end

@@ -44,6 +44,11 @@ var ShopBox = React.createClass({
   },
   componentDidMount: function() {
     this.setState({windowWidth: window.innerWidth});
+    console.log("!!!!!!!!!!!!");
+    this.getData();
+  },
+  componentWillMount: function() {
+    console.log("@@@@@@@@@@@@");
   },
   sendData: function(url,info) {
    var request = new XMLHttpRequest();
@@ -58,6 +63,18 @@ var ShopBox = React.createClass({
    }
 
    request.send( JSON.stringify( info ) );
+  },
+  getData: function() {
+      var request = new XMLHttpRequest();
+      console.log("working");
+      request.open("GET","/http://localhost:4567/data")
+      request.setRequestHeader("Content-Type", "application/json");
+      request.onload = function() {
+      if(request.status === 200 ) {
+        var playlists = JSON.parse(request.responseText);
+        console.log("data:", playlists);
+      } 
+    }
   },
   setTitle: function(title) {
    this.setState({title: title});
@@ -107,7 +124,7 @@ var ShopBox = React.createClass({
         }
     } else {
       return (
-        <div className="page-loading">
+        <div className="page-loading" onClick={this.getData()}>
           <span className="loading-spinner">
              <i className="fa fa-spinner fa-spin" aria-hidden="true"></i>
           </span>

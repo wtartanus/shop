@@ -63,8 +63,24 @@ class MapProductsFromXML
       @motion = options['MOTION'] 
       @opening = options['OPENING'] && options['OPENING'].first ? options['OPENING']: nil
       @categoryId = categoryId.to_i
-      @categoryName = categoryName ? categoryName.split('>') : nil
+      @categoryName = categoryName ? MapProductsFromXML.stripSpaces(categoryName) : nil
     end
+
+    def self.stripSpaces(categoryNames)
+      categoryNames = categoryNames.split('>')
+
+      if !categoryNames
+        return nil
+      end
+
+      result = []
+
+      categoryNames.each { |name|
+        name = name.strip
+        result.push(name)
+      }
+      return result
+  end
 
     def mapProductSize(size)
       #["6, 5, and 4 Inches"]

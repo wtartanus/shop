@@ -1,5 +1,6 @@
 require 'xmlsimple'
 require_relative('./../db/sqlRunner.rb')
+require('json')
 
 
 class Product
@@ -9,64 +10,64 @@ class Product
                   :xlImage3, :xlImage4, :xlImage5, :productSize, :productPower, :lubeType, :categoryId, :categoryName,
                   :condomSafe, :liquidVolume, :noOfPills, :fastening, :washing, :insertable, :diameter, :harnessCompatible, :originalCircumference,
                   :originalDiameter, :productWidth, :coulur, :flexability, :controller, :waterproof, :designedForWho, :whatIsIt, :whatIsFor, :inCatName,
-                  :features, :misc, :materialName, :brandName, :styleName, :productsEAN, :productLength, :motion, :opening
+                  :features, :misc, :materialName, :brandName, :styleName, :productEAN, :productLength, :motion, :opening
                  
     def initialize(options)
       @id = options['id'].to_i
-      @itemId = options['itemId'].to_i
+      @itemId = options['itemid']
       @model = options['model']
       @name = options['name']
-      @weightInKg = options['weightInKg'].to_f
+      @weightInKg = options['weightinkg'].to_f
       @image = options['image']
       @description = options['description']
       @price = options['price'].to_f
       @rpr = options['rrp'].to_f
-      @productThumbail = options['productThumbail']
-      @smallMultiImage1 = options['smallMultiImage1']
-      @smallMultiImage2 = options['smallMultiImage2']
-      @smallMultiImage3 = options['smallMultiImage3']
-      @smallMultiImage4 = options['smallMultiImage4']
-      @bigMultiImage1 = options['bigMultiImage1']
-      @bigMultiImage2 = options['bigMultiImage2']
-      @bigMultiImage3 = options['bigMultiImage3']
-      @xlImage = options['xlImage']
-      @xlImage2 = options['xlImage2']
-      @xlImage3 = options['xlImage3']
-      @xlImage4 = options['xlImage4']
-      @xlImage5 = options['xlImage5']
-      @productSize = options['productSize']
-      @productPower = options['productPower']
-      @lubeType = options['lubeType']
-      @condomSafe = options['condomSafe']
-      @liquidVolume = options['liquidVolume']
-      @noOfPills = options['noOfPills']
+      @productThumbail = options['productthumbail']
+      @smallMultiImage1 = options['smallmultiimage1']
+      @smallMultiImage2 = options['smallmultiimage2']
+      @smallMultiImage3 = options['smallmultiimage3']
+      @smallMultiImage4 = options['smallmultiimage4']
+      @bigMultiImage1 = options['bigmultiimage1']
+      @bigMultiImage2 = options['bigmultiimage2']
+      @bigMultiImage3 = options['bigmultiimage3']
+      @xlImage = options['xlimage']
+      @xlImage2 = options['xlimage2']
+      @xlImage3 = options['xlimage3']
+      @xlImage4 = options['xlimage4']
+      @xlImage5 = options['xlimage5']
+      @productSize = options['productsize']
+      @productPower = options['productpower']
+      @lubeType = options['lubetype']
+      @condomSafe = options['condomsafe']
+      @liquidVolume = options['liquidvolume']
+      @noOfPills = options['noofpills']
       @fastening = options['fastening']
       @washing = options['washing']
       @insertable = options['insertable']
       @diameter = options['diameter']
-      @harnessCompatible = options['harnessCompatible']
-      @originalCircumference = options['originalCircumference']
-      @originalDiameter = options['originalDiameter']
-      @productWidth = options['productWidth']
+      @harnessCompatible = options['harnesscompatible']
+      @originalCircumference = options['originalcircumference']
+      @originalDiameter = options['originaldiameter']
+      @productWidth = options['productwidth']
       @coulur = options['coulur']
       @flexability = options['flexability']
       @controller = options['controller']
       @waterproof = options['waterproof']
-      @designedForWho = options['designedForWho']
-      @whatIsIt = options['whatIsIt']
-      @whatIsFor = options['whatIsFor']
+      @designedForWho = options['designedforwho']
+      @whatIsIt = options['whatisit']
+      @whatIsFor = options['whatisfor']
       @features = options['features']
       @misc = options['misc']
-      @materialName = options['materialName']
-      @brandName = options['brandName']
-      @styleName = options['styleName']
-      @productsEAN = options['productsEAN.to_i']
-      @inCatName = options['inCatName']
-      @productLength = options['productLength']
+      @materialName = options['materialname']
+      @brandName = options['brandname']
+      @styleName = options['stylename']
+      @productEAN = options['productean']
+      @inCatName = options['incatname']
+      @productLength = options['productlength']
       @motion = options['motion']
       @opening = options['opening']
-      @categoryId = options['categoryId'].to_i
-      @categoryName = options['categoryName']
+      @categoryId = options['categoryid'].to_i
+      @categoryName = options['categoryname'] ?  JSON.parse(options['categoryname']) : nil
       @opening = options['opening']
     end
   
@@ -88,6 +89,12 @@ class Product
       SqlRunner.run( sql )
       # # return Product.new( product )
       # return product
+    end
+
+    def self.getProductsByCategoryName(categoryName)
+      sql = "SELECT * FROM products WHERE category LIKE '%#{categoryName}%'"
+      result = Product.map_items(sql)
+      return result
     end
   
     def self.find( id )

@@ -25,7 +25,7 @@ class Discountinued
   
   
     def self.all()
-      sql = "SELECT * FROM discountinued"
+      sql = "SELECT * FROM discontinued"
       result = Discountinued.map_items( sql )
       return result
     end

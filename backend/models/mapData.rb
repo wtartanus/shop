@@ -1,0 +1,85 @@
+require_relative( './stock.rb' )
+require_relative( './product.rb' )
+require_relative( './category' )
+require_relative( './discountinued.rb' )
+
+require('json')
+
+class MapData
+
+    attr_accessor :products, :stocks, :categories, :discountinued
+
+    def initilize()
+        @products = Product.all()
+        @stocks = Stock.all()
+        @categories = Category.all()
+        @discountinued = Discountinued.all()
+    end
+
+    def mapCategoryTree(categories, productsByCategory)
+        categoriesByCategoryId = {}
+        categories.each { |category|
+           if !categoriesByCategoryId[category.categoryId]
+               categoriesByCategoryId[category.categoryId] = category
+           end
+        }
+        result = {}
+        # top categories by category id = { data: category, parentId: parentId, children: {}, products: []}
+        categories.each { |category|
+           if !category.parentId && !result[category.categoryId]
+              result[category.categoryId] = {
+                  :data => category,
+                  :parentId => nil,
+                  :children => {},
+                  :products => productsByCategory[category.name] ? productsByCategory[category.name] : []
+              }
+           elsif category.parentId && result[category.parentId]
+              result[category.parentId][:children]
+           end
+        }
+    end
+
+    def self.getData()
+        products = Product.all()
+        stocks = Stock.all()
+        categories = Category.all()
+        discountinued = Discountinued.all()
+
+        data = {
+            :productsById => {},
+            :productsByCategory => {},
+            :stockByProductsId => {},
+            :discountedProductsByItem => {},
+            :categoryTree => {}
+        }
+        
+        products.each { |product|
+           data[:productsById][product.id] = product
+        }
+        
+        #products by category
+        categories.each { |category|
+           if !data[:productsByCategory][category.name]
+              data[:productsByCategory][category.name] = []
+           end
+           products.each { |product|
+             if product.categoryName.include?(category.name)
+                data[:productsByCategory][category.name].push(product)
+             end
+           }
+        }
+        #stockByProductId
+        stocks.each{ |stock|
+           data[:stockByProductsId][stock.productId] = stock
+        }
+        #discounted products by item
+        discountinued.each { |disc|
+           data[:discountedProductsByItem][disc.item] = disc
+        }
+
+        #category tree
+        # data[:categoryTree] = self.mapCategoryTree(categories, products)
+
+         return data.to_json
+    end
+end

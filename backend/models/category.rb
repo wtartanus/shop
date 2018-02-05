@@ -6,8 +6,8 @@ class Category
                  
     def initialize(options)
       @id = options['id'].to_i
-      @categoryId = options['categoryId'].to_i
-      @parentId = options['parentId'] ? options['parentId'].to_i : nil
+      @categoryId = options['categoryid'].to_i
+      @parentId = options['parentid'] ? options['parentid'].to_i : nil
       @name = options['name']
       @image = options['image']
     end

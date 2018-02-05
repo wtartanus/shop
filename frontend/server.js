@@ -2,29 +2,27 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var fs = require('fs');
+var cors = require('cors')
 var bodyParser = require('body-parser');
 var connect = require('connect');
 connect = connect();
-var zlib = require('zlib');
+// var zlib = require('zlib');
 
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
+app.use(cors());
 
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
-});
-
-connect.use('/song', function fooMiddleware(req, res, next) {
-  console.log(req.files)
-  var body = fs.createReadStream('bigfile').pipe(zlib.createGzip());
-  var s3obj = new AWS.S3({params: {Bucket: 'lemusic', Key: req.files }});
-  s3obj.upload({Body: body}).
-    on('httpUploadProgress', function(evt) { console.log(evt); }).
-    send(function(err, data) { console.log(err, data) });
-  next();
+  res.sendFile(path.join(__dirname + '/client/build/index2.html'));
 });
 
 
