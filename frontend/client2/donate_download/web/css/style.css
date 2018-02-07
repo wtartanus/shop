@@ -75,7 +75,19 @@ a:focus, a:hover {
 /*-- Index-Page-Styling --*/ 
 
 /*-- Header --*/
+	
+    #header-logo {
+		width: 11%;
+		display: inline-block;
+	}
 
+	.logo-1 {
+		padding: 0;
+	}
+	
+	.submenu {
+		float: right;
+	}
 	/*-- Navbar --*/
 
 	nav.navbar {
