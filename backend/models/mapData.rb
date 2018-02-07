@@ -40,10 +40,10 @@ class MapData
     end
 
     def self.getData()
-        products = Product.all()
-        stocks = Stock.all()
-        categories = Category.all()
-        discountinued = Discountinued.all()
+        products = Product.getAllAsHash()
+        stocks = Stock.getAllAsHash()
+        categories = Category.getAllAsHash()
+        discountinued = Discountinued.getAllAsHash()
 
         data = {
             :productsById => {},
@@ -54,32 +54,31 @@ class MapData
         }
         
         products.each { |product|
-           data[:productsById][product.id] = product
+           data[:productsById][product['id']] = product
         }
         
         #products by category
         categories.each { |category|
-           if !data[:productsByCategory][category.name]
-              data[:productsByCategory][category.name] = []
+           if !data[:productsByCategory][category['name']]
+              data[:productsByCategory][category['name']] = []
            end
-           products.each { |product|
-             if product.categoryName.include?(category.name)
-                data[:productsByCategory][category.name].push(product)
+           for  product in products
+             if product['categoryName'].include?(category['name'])
+                data[:productsByCategory][category['name']].push(product)
              end
-           }
+           end
         }
         #stockByProductId
         stocks.each{ |stock|
-           data[:stockByProductsId][stock.productId] = stock
+           data[:stockByProductsId][stock['productId']] = stock
         }
         #discounted products by item
         discountinued.each { |disc|
-           data[:discountedProductsByItem][disc.item] = disc
+           data[:discountedProductsByItem][disc['item']] = disc
         }
 
         #category tree
         # data[:categoryTree] = self.mapCategoryTree(categories, products)
-
          return data.to_json
     end
 end

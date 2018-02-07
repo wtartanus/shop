@@ -6,8 +6,8 @@ class Stock
                  
     def initialize(options)
       @id = options['id'].to_i
-      @productId = options['productId'].to_i
-      @inStock = options['inStock'] == "true" ? true : false
+      @productId = options['productid'].to_i
+      @inStock = options['instock'] == "t" ? true : false
       @size = options['size']
     end
   
@@ -29,6 +29,20 @@ class Stock
       result = Stock.map_items( sql )
       return result
     end
+
+    def self.getAllAsHash()
+      stocks = Stock.all()
+      result = []
+      stocks.each { |stock|
+        item = {}
+        stock.instance_variables.each {|var| 
+          item[var.to_s.delete("@")] = stock.instance_variable_get(var) 
+        }
+        result.push(item)
+      }
+      return result
+    end
+
     
     def self.update( options )
         sql = "UPDATE stocks SET

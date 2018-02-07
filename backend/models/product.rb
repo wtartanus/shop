@@ -14,7 +14,7 @@ class Product
                  
     def initialize(options)
       @id = options['id'].to_i
-      @itemId = options['itemid']
+      @itemId = options['item']
       @model = options['model']
       @name = options['name']
       @weightInKg = options['weightinkg'].to_f
@@ -107,6 +107,19 @@ class Product
     def self.all()
       sql = "SELECT * FROM products"
       result = Product.map_items( sql )
+      return result
+    end
+
+    def self.getAllAsHash()
+      products = Product.all()
+      result = []
+      products.each { |product|
+        item = {}
+        product.instance_variables.each {|var| 
+          item[var.to_s.delete("@")] = product.instance_variable_get(var) 
+        }
+        result.push(item)
+      }
       return result
     end
 

@@ -7,8 +7,7 @@ window.onload = function() {
       request.onload = function() {
         if(request.status === 200 ) {
             var data = JSON.parse(request.responseText);
-            var keys = Object.keys(data.productsByCategory);
-            console.log("data:", data.productsByCategory);
+            console.log("data:", data);
         } 
       }
       request.send();

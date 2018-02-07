@@ -6,7 +6,7 @@ class MapStocksFromXML
     attr_accessor :inStock, :size
 
     def initialize(productId, inStock, size)
-        @productId = productId.to_i
+        @productId = productId
         @inStock = inStock
         @size = size
     end

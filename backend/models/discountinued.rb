@@ -29,6 +29,20 @@ class Discountinued
       result = Discountinued.map_items( sql )
       return result
     end
+
+    def self.getAllAsHash()
+      items = Discountinued.all()
+      result = []
+      items.each { |dis|
+        item = {}
+        dis.instance_variables.each {|var| 
+          item[var.to_s.delete("@")] = dis.instance_variable_get(var) 
+        }
+        result.push(item)
+      }
+      return result
+    end
+
     
     def self.update( options )
         sql = "UPDATE discountinued SET

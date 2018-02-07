@@ -30,6 +30,20 @@ class Category
       result = Category.map_items( sql )
       return result
     end
+
+    def self.getAllAsHash()
+      categories = Category.all()
+      result = []
+      categories.each { |category|
+        item = {}
+        category.instance_variables.each {|var| 
+          item[var.to_s.delete("@")] = category.instance_variable_get(var) 
+        }
+        result.push(item)
+      }
+      return result
+    end
+
     
     def self.update( options )
         sql = "UPDATE categories SET
