@@ -19,11 +19,11 @@ app.use(function(req, res, next) {
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/client2/donate_download/web/index.html'));
+  res.sendFile(path.join(__dirname + '/client2/index.html'));
 });
 
 
-app.use(express.static('client2/donate_download/web'));
+app.use(express.static('client2'));
 
 
 
@@ -32,5 +32,4 @@ var server = app.listen(3000, function () {
   var port = server.address().port;
 
   console.log('Example app listening at http://%s:%s', host, port);
-  console.log("@@@@", __dirname);
 });
