@@ -4,5 +4,11 @@
 }
 
 .categories-top-bar p {
-    font-size: .9em;
+    font-size: .7em;
+}
+
+@media screen and (max-width: 1450px) {
+    .block-menu {
+        display: none;
+    }
 }

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="zxx"> 
+<html ng-app="shop"> 
 <!-- Head -->
 <head>
 
@@ -10,16 +10,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="Sex shop">
-<script type="application/x-javascript"> 
-       addEventListener("load", function() { 
-		   setTimeout(hideURLbar, 0); 
-		}, false); 
-		function hideURLbar(){ 
-			window.scrollTo(0,1); 
-		} 
-		var myloc = window.location;
-		console.log("@@@@@",myloc);
-</script>
 <!-- //Meta-Tags -->
 
 <!-- Custom-StyleSheet-Links -->
@@ -40,6 +30,8 @@
 <!-- CSS --> <link rel="stylesheet" href="css/font-awesome.css" type="text/css" media="all">
 <!-- TTF --> <link rel="stylesheet" href="fonts/fontawesome-webfont.ttf" type="text/css" media="all">
 <!-- //Font-Awesome-File-Links -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+<script src="/controlers/shop.js"></script>
 
 <!-- Supportive-Modernizr-JavaScript --><script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
@@ -68,7 +60,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand agileinfo logo-1" href="index.html">
+					<a ng-if="demo" class="navbar-brand agileinfo logo-1" href="index.html">
 						<img id="header-logo" src="images/new-logo.gif" alt="logo">
 						<span>Better Love</span>
 					</a> 
@@ -85,7 +77,7 @@
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-1 categories-top-bar">
 										<ul class="multi-column-dropdown">
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Sex Toys For Ladies</a></li>
-											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Sex Toys For Man</a></li>
+											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Sex Toys For Men</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Realistic Dildos And Vibes</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Other Dildos</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Glass</a></li>
@@ -96,49 +88,49 @@
 										</ul>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Sex Toys For Ladies</p>
-										<a href="mens.html"><img src="images/categories/masturbators.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/sex-toys-for-ladies.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
-										<p>Sex Toys For Man</p>
-										<a href="mens.html"><img src="images/categories/love-rings.jpg" alt="Groovy Apparel"></a>
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
+										<p>Sex Toys For Men</p>
+										<a href="mens.html"><img src="images/categories/sex-toys-for-men.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Realistic Dildos And Vibes</p>
-										<a href="mens.html"><img src="images/categories/penis-extenders.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/realistic-dildos-and-vibes.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Other Dildos</p>
-										<a href="mens.html"><img src="images/categories/penis-enlargers.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/other-dildos.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Glass</p>
-										<a href="mens_accessories.html"><img src="images/categories/penis-sleeves.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/glass.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Anal Range</p>
-										<a href="mens.html"><img src="images/categories/love-rings.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/anal-range.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Sex Kits</p>
-										<a href="mens.html"><img src="images/categories/penis-extenders.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/sex-kits.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Sex Dolls</p>
-										<a href="mens.html"><img src="images/categories/penis-enlargers.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/sex-dolls.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Branded Toys</p>
-										<a href="mens_accessories.html"><img src="images/categories/penis-sleeves.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/branded-toys.jpg" alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
@@ -171,67 +163,67 @@
 										</ul>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Babydolls</p>
-										<a href="mens_accessories.html"><img src="images/categories/bodies-and-playsuits.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/babydolls.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Basques And Corsets</p>
-										<a href="mens.html"><img src="images/categories/fantasy.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/basques-and-corsets.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Bodies And Playsuits</p>
-										<a href="mens.html"><img src="images/categories/leather.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/bodies-and-playsuits.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Bra Sets</p>
-										<a href="mens_accessories.html"><img src="images/categories/latex.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/bra-sets.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Dresses And Chemises</p>
-										<a href="mens_accessories.html"><img src="images/categories/accessories.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/dresses-and-chemises.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Sexy Briefs</p>
-										<a href="mens.html"><img src="images/categories/body-jewellery.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/sexy-briefs.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Fantasy</p>
-										<a href="mens_accessories.html"><img src="images/categories/bodies-and-playsuits.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/fantasy.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Stockings</p>
-										<a href="mens.html"><img src="images/categories/fantasy.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/stockings.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Plus Size Lingerie</p>
-										<a href="mens.html"><img src="images/categories/leather.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/plus-size-lingerie.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Leather</p>
+										<a href="mens_accessories.html"><img src="images/categories/leather.jpg" alt="Groovy Apparel"></a>
+									</div>
+
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
+										<p>Latex</p>
 										<a href="mens_accessories.html"><img src="images/categories/latex.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
-										<p>Latex</p>
-										<a href="mens_accessories.html"><img src="images/categories/accessories.jpg" alt="Groovy Apparel"></a>
-									</div>
-
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Accessories</p>
-										<a href="mens.html"><img src="images/categories/body-jewellery.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/accessories.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Body Jewellery</p>
 										<a href="mens.html"><img src="images/categories/body-jewellery.jpg" alt="Groovy Apparel"></a>
 									</div>
@@ -239,7 +231,6 @@
 									<div class="clearfix"></div>
 									<p class="promo">Use Promo Code <span>#CFFGTY56</span> and take 30% off the products. <a href="#">Details</a></p>
 								</div>
-
 							</ul>
 						</li>
 
@@ -266,105 +257,102 @@
 											<li><a href="womens_accessories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Fetish Fantasy Series</a></li>
 											<li><a href="womens_accessories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Large Accessories</a></li>
 											<li><a href="womens_accessories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Male Chasity</a></li>
-											<li><a href="womens_accessories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Medical Instriments</a></li>
+											<li><a href="womens_accessories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Medical Instruments</a></li>
 											<li><a href="womens_accessories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Paddles</a></li>
 											<li><a href="womens_accessories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>PVC Orgy Beddingk</a></li>
 										</ul>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Restraints</p>
 										<a href="mens.html"><img src="images/categories/restraints.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Handcuffs</p>
-										<a href="mens_accessories.html"><img src="images/categories/whips.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/handcuffs.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Whips</p>
-										<a href="mens.html"><img src="images/categories/collars.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/whips.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Collars</p>
-										<a href="mens.html"><img src="images/categories/bondage-kits.jpg" alt="Groovy Apparel"></a>
-									</div>
-
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
-										<p>Gags And Bits</p>
-										<a href="mens.html"><img src="images/categories/large-accessories.jpg" alt="Groovy Apparel"></a>
-									</div>
-
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
-										<p>Nipple Clamps</p>
-										<a href="mens_accessories.html"><img src="images/categories/medical-instruments.jpg" alt="Groovy Apparel"></a>
-									</div>
-
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
-										<p>Masks</p>
-										<a href="mens.html"><img src="images/categories/restraints.jpg" alt="Groovy Apparel"></a>
-									</div>
-
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
-										<p>Bondage Cock Rings</p>
-										<a href="mens_accessories.html"><img src="images/categories/whips.jpg" alt="Groovy Apparel"></a>
-									</div>
-
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
-										<p>Bondage Hoods</p>
 										<a href="mens.html"><img src="images/categories/collars.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
+										<p>Gags And Bits</p>
+										<a href="mens.html"><img src="images/categories/gags-and-bits.jpg" alt="Groovy Apparel"></a>
+									</div>
+
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
+										<p>Nipple Clamps</p>
+										<a href="mens_accessories.html"><img src="images/categories/nipple-clamps.jpg" alt="Groovy Apparel"></a>
+									</div>
+
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
+										<p>Masks</p>
+										<a href="mens.html"><img src="images/categories/masks.jpg" alt="Groovy Apparel"></a>
+									</div>
+
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
+										<p>Bondage Cock Rings</p>
+										<a href="mens_accessories.html"><img src="images/categories/bondage-cock-rings.jpg" alt="Groovy Apparel"></a>
+									</div>
+
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
+										<p>Bondage Hoods</p>
+										<a href="mens.html"><img src="images/categories/bondage-hoods.jpg" alt="Groovy Apparel"></a>
+									</div>
+
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Bondage Kits</p>
 										<a href="mens.html"><img src="images/categories/bondage-kits.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Large Accessories</p>
 										<a href="mens.html"><img src="images/categories/large-accessories.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Electro Sex Stimulation</p>
-										<a href="mens_accessories.html"><img src="images/categories/medical-instruments.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/electro-sex-stimulation.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Fetish Fantasy Series</p>
-										<a href="mens.html"><img src="images/categories/restraints.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/fetish-fantasy-series.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Cock And Ball Bondage</p>
-										<a href="mens_accessories.html"><img src="images/categories/whips.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/cock-and-ball-bondage.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Male Chasity</p>
-										<a href="mens.html"><img src="images/categories/collars.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/male-chasity.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Medical Instruments</p>
-										<a href="mens.html"><img src="images/categories/bondage-kits.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/medical-instruments.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu">
 										<p>Paddles</p>
-										<a href="mens.html"><img src="images/categories/large-accessories.jpg" alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src="images/categories/paddles.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>PVC Orgy Bedding</p>
-										<a href="mens_accessories.html"><img src="images/categories/medical-instruments.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/pvc-orgy-bedding.jpg" alt="Groovy Apparel"></a>
 									</div>
-									- 
-									- 
-									- 
-									- 
+
 									<div class="clearfix"></div>
 									<p class="promo">Use Promo Code <span>#CFFGTY56</span> and take 30% off the products. <a href="#">Details</a></p>
 								</div>
@@ -436,39 +424,39 @@
 										</ul>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
 										<p>Media</p>
+										<a href="mens.html"><img src="images/categories/media.jpg" alt="Groovy Apparel"></a>
+									</div>
+
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar block-menu">
+										<p>Games</p>
 										<a href="mens.html"><img src="images/categories/games.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3 categories-top-bar">
-										<p>Games</p>
-										<a href="mens.html"><img src="images/categories/novelties.jpg" alt="Groovy Apparel"></a>
-									</div>
-
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Novelties</p>
-										<a href="mens_accessories.html"><img src="images/categories/lubricants-and-oils.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/novelties.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Hen And Stag Nights</p>
-										<a href="mens_accessories.html"><img src="images/categories/personal-hygiene.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/hen-and-stag-nights.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Relaxation Zone</p>
-										<a href="mens_accessories.html"><img src="images/categories/bath-and-massage.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/relaxation-zone.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Lubricants</p>
-										<a href="mens_accessories.html"><img src="images/categories/personal-hygiene.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/lubricants.jpg" alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4 categories-top-bar block-menu">
 										<p>Condoms</p>
-										<a href="mens_accessories.html"><img src="images/categories/bath-and-massage.jpg" alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src="images/categories/condoms.jpg" alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
