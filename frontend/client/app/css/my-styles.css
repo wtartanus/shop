@@ -55,10 +55,57 @@
     #header-logo {
         width: 23%;
     }
+
+    .w3view-cart {
+        margin-top: 20%;
+    }
+
+}
+
+@media screen and (max-width: 930px) {
+    .navbar-nav {
+        margin-top: 1%;
+    }
+}
+
+@media screen and (min-width: 1229px) {
+    .navbar-header{
+        width: 15%;
+    }
+}
+
+
+@media screen and (min-width: 1270px) {
+    .w3view-cart {
+        margin-top: 27%;
+    }
 }
 
 @media screen and (max-width: 1450px) {
     .block-menu {
         display: none;
+    }
+
+    .dropdown-menu,
+    .multi,
+    .multi2
+    .multi3,
+    .multi4,
+    .multi5 {
+        left: 0 !important;
+    }
+
+    .categories-top-bar {
+        width: 100%;
+    }
+
+    .dropdown-menu.multi {
+        min-width: 200px;
+    }
+}
+
+@media screen and (min-width: 1460px) {
+    .navbar-nav {
+        margin: 1% 7%;
     }
 }
