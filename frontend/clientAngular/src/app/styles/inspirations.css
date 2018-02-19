@@ -1,0 +1,303 @@
+.inspiration-container-small,
+.inspiration-activities-small,
+.inspiration-activities {
+    width: 98%;
+}
+
+.inspiration-container-small {
+  margin: 20px auto;
+}
+
+.inspiration-container-small,
+.arrows-container-small,
+.inspiration-menu-element-small,
+.arrows-container {
+    text-align: center;
+}
+
+.inspiration-name-small,
+.inspiration-top-li,
+.inspirations-side-nav-li {
+  font-family: 'Josefin Slab', serif;
+}
+
+.isnpiration-name-small {
+  color: brown;
+}
+
+.inspiration-photo-small {
+  width: 100%;
+  height: 95%;
+}
+
+.inspiration-photo-container-small,
+.inspiration-description-small,
+.inspiration-description,
+.inspiration-history {
+  width: 90%;
+}
+
+.arrows-container-small,
+.inspiration-menu-element-small,
+.arrows-container {
+  color: darkorange;
+}
+
+.arrows-container-small,
+.arrows-container {
+    font-size: 4em;
+}
+
+.arrows-container-small,
+.inspiration-menu-element-small,
+.inspiration-button-small,
+.inspiration-top-li,
+.inspirations-side-nav-li,
+.arrows-container {
+  cursor: pointer;
+}
+
+.inspiration-photo-container-small {
+  height: 370px;
+}
+
+.arrows-container-small,
+.arrows-container {
+  margin-top: 5px;
+}
+
+.inspiration-description-small,
+.inspiration-activities-small,
+.inspiration-description,
+.inspiration-history,
+.inspiration-activities {
+  text-align: left;
+}
+
+.inspiration-description-small,
+.inspiration-photo-container-small {
+  margin: auto;
+}
+
+.inspiration-history-small {
+  max-height: 260px;
+  overflow-y: scroll;
+}
+
+.inspiration-activities-small,
+.inspiration-activities {
+  margin: 10px auto;
+}
+
+.inspiration-activities-photo-small,
+.inspiration-activities-photo {
+  float: left;
+  width: 56%;
+  margin: 10px 10px 5px 1px;
+}
+
+.inspiration-activities-description-small,
+.inspiration-activities-description {
+  margin-top: 10px;
+}
+
+.inspiration-menu-small,
+.inspirations-top-ul,
+.inspiration-gallery {
+  display: flex;
+}
+
+.inspirations-top-ul {
+  justify-content: space-around;
+}
+
+.inspiration-gallery,
+.inspiration-menu-small {
+  justify-content: space-between;
+}
+
+.inspiration-menu-small {
+  border: 2px solid;
+  margin: 16px auto;
+  height: 65px;
+}
+
+.inspiration-menu-element-small {
+  border-left: 1px solid black;
+  padding: 3%;
+}
+
+.inspiration-button-small {
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  background-color: darkorange;
+  color: white;
+  padding: 0 22px;
+}
+
+.inspiration-search-small {
+  margin-right: 5%;
+}
+
+/*Medium Size*/
+
+@media screen and (min-width: 800px) {
+  #inspirations-container {
+    display: grid;
+  }
+  #inspirations-container {
+    grid-template-columns: [first] 13% [line2] 85%;
+    grid-template-rows: [row1-start] 100px [row1-end] 650px;
+  }
+  .inspirations-side-nav-container{
+    grid-column-start: 1;
+    grid-column-end: 1;
+  }
+  .inspirations-side-nav-container,
+  .inspirations-top-nav{
+    grid-row-start: 1;
+    border-bottom: 1px solid;
+  }
+  .inspirations-side-nav-container {
+    grid-row-end: span 2;
+  }
+  .inspirations-top-nav-container,
+  .inspiration-container,
+  .inpsirations-top-nav {
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+  .inspirations-top-nav-container,
+  .inpsirations-top-nav {
+    grid-row-end: 1;
+    border-bottom: 1px solid black;
+  }
+  .inpsirations-top-ul {
+    justify-content: space-around;
+  }
+  .inpsirations-top-ul,
+  .inspirations-side-nav,
+  .inspirations-side-nav-ul {
+    height: 100%;
+  }
+  .inspiration-top-li,
+  .inspirations-side-nav-li,
+  .full-icon {
+    color: chocolate;
+  }
+  .full-icon {
+    font-size: 2em;
+    position: relative;
+    top: -30px;
+    left: 48%;
+  }
+  .inspiration-top-li {
+    font-size: x-large;
+  }
+  .inspiration-top-li {
+    padding: 4%;
+  }
+  .inspiration-container {
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+  .inspiration-gallery {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+  .inspiration-photo {
+    width: 33%;
+    height: 224px;
+    margin: 1%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+    border-radius: 5px 5px;
+  }
+  .inspirations-side-nav-container {
+    border-right: 1px solid black;
+  }
+  .inspirations-side-nav {
+    padding-top: 85px;
+  }
+  .inspirations-side-nav-li {
+    white-space: nowrap;
+    -webkit-transform: translate(1.1em, 0) rotate(90deg);
+    -moz-transform: translate(1.1em, 0) rotate(90deg);
+    -o-transform: translate(1.1em, 0) rotate(90deg);
+    transform: translate(1.1em, 0) rotate(90deg);
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -ms-transform: none;
+    -ms-transform-origin: none;
+    -ms-writing-mode: tb-rl;
+    *writing-mode: tb-rl;
+    font-size: 1.4em;
+    height: 20%;
+  }
+  .inspiration-description,
+  .inspiration-history {
+    margin: 10% auto;
+    line-height: 1.3em;
+    font-size: 1.2em;
+    font-family: sans-serif;
+  }
+  .inspiration-activities {
+    padding: 1%;
+  }
+  .selected {
+    color: white !important;
+    text-shadow: 0px -1px 3px black;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  #inspirations-container {
+    grid-template-columns: [first] 6% [line2] 94%;
+    grid-template-rows: [row1-start] 100px [row1-end] 750px;
+  }
+  .inspiration-top-li {
+    padding: 2%;
+  }
+  .inspiration-photo {
+    width: 14%;
+    height: 206px;
+  }
+  .inspiration-description,
+  .inspiration-history,
+  .big-photo {
+    width: 50%;
+  }
+  .inspiration-description,
+  .inspiration-history {
+    line-height: 1.4em;
+    font-size: 1.3em;
+    font-family: sans-serif;
+    margin: 4% auto;
+  }
+
+  .inspiration-activities {
+    width: 70%;
+  }
+  .inspiration-activities-photo {
+    width: 510px;
+    height: 340px;
+  }
+  .inspiration-activities-description {
+    width: 84%;
+  }
+  .big-photo {
+    position: absolute;
+    left: 28%;
+    height: 50%;
+    z-index: 1000;
+    border-radius: 10px 10px;
+    box-shadow: -1px 0px 5px black;
+    opacity: .9;
+  }
+
+}

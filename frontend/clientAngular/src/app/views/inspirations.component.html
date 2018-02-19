@@ -1,0 +1,150 @@
+<section id="inspirations-container-small" *ngIf="windowSize.width < 800" >
+  <section *ngFor="let inspiration of inspirations; let i = index" class="inspiration-container-small">
+    <h2 class="isnpiration-name-small">{{inspiration.city.name}}</h2>
+    <div *ngIf="!inspiration.menu.displayActivities" class="inspiration-photo-container-small">
+      <img  class="inspiration-photo-small" src="{{inspiration.photos[inspiration.photoPosition].link}}" />
+    </div>
+    <nav *ngIf="!inspiration.menu.displayActivities" class="arrows-container-small">
+      <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'photoPosition', i)"></i>
+      <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'photoPosition', i)"></i>
+    </nav>
+    <p *ngIf="inspiration.menu.displayDescription" class="inspiration-description-small">{{inspiration.city.description}}</p>
+    <p *ngIf="inspiration.menu.displayHistory" class="inspiration-history-small">{{inspiration.city.history}}</p>
+    <section *ngIf="inspiration.menu.displayActivities" class="inspiration-activities-small">
+
+      <h3 class="inspiration-activities-heading-small">{{inspiration.activities[inspiration.activityPosition].name}}</h3>
+      <p class="inspiration-activities-address-small">{{inspiration.activities[inspiration.activityPosition].address}}</p>
+
+      <img class="inspiration-activities-photo-small clearfix" src="{{inspiration.activities[inspiration.activityPosition].imgLink}}" />
+
+      <p class="inspiration-activities-description-small clearfix">{{inspiration.activities[inspiration.activityPosition].desc}}</p>
+
+      <nav class="arrows-container-small">
+        <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'activityPosition', i)"></i>
+        <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'activityPosition', i)"></i>
+      </nav>
+
+    </section>
+    <section *ngIf="inspiration.menu.displayWeather">
+      <chart [options]="inspiration.chartOptions"></chart>
+    </section>
+    <nav class="inspiration-menu-small">
+      <span class="inspiration-menu-element-small" [style.flex-grow]="'1'" (click)="changeDisplay('displayDescription', i)"><i class="fa fa-file-text-o" aria-hidden="true"></i><p>Description</p></span>
+      <span class="inspiration-menu-element-small" [style.flex-grow]="'1'" (click)="changeDisplay('displayHistory', i)"><i class="fa fa-university" aria-hidden="true"></i><p>History</p></span>
+      <span class="inspiration-menu-element-small" [style.flex-grow]="'1'" (click)="changeDisplay('displayActivities', i)"><i class="fa fa-bicycle" aria-hidden="true"></i><p>Activivties</p></span>
+      <span class="inspiration-menu-element-small" [style.flex-grow]="'1'" (click)="changeDisplay('displayWeather', i)"><i class="fa fa-thermometer-full" aria-hidden="true"></i><p>Weather</p></span>
+    </nav>
+    <button class="inspiration-button-small inspiration-search-small" (click)="searchForInspiration(inspiration.city.name)"><a href="#form-small">Search For: {{inspiration.city.name}} <i class="fa fa-search" aria-hidden="true"></i></a></button>
+    <!-- <button class="inspiration-button-small inspiration-toggle" ><i class="fa fa-envelope-o" aria-hidden="true"></i> Expand</button> -->
+  </section>
+</section>
+
+<section id="inspirations-container" *ngIf="windowSize.width >= 800 && windowSize.width < 1500">
+
+  <section class="inspirations-side-nav-container">
+    <nav class="inspirations-side-nav">
+      <ul class="inspirations-side-nav-ul">
+        <li class="inspirations-side-nav-li" (click)="changeDisplay('displayDescription')" [ngClass]="{'selected': selectedSideNav === 'displayDescription'}">Description</li><br>
+        <li class="inspirations-side-nav-li" (click)="changeDisplay('displayHistory')" [ngClass]="{'selected': selectedSideNav === 'displayHistory'}">History</li><br>
+        <li class="inspirations-side-nav-li" (click)="changeDisplay('displayActivities')" [ngClass]="{'selected': selectedSideNav === 'displayActivities'}">Activities</li><br>
+        <li class="inspirations-side-nav-li" (click)="changeDisplay('displayWeather')" [ngClass]="{'selected': selectedSideNav === 'displayWeather'}">Weather</li>
+      </ul>
+    </nav>
+  </section>
+
+  <section class="inpsirations-top-nav-container">
+    <nav class="inspirations-top-nav">
+      <ul class="inspirations-top-ul">
+        <li class="inspiration-top-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
+      </ul>
+    </nav>
+  </section>
+  <section *ngIf="selectedInspiration" class="inspiration-container">
+    <article class="inspiration-gallery">
+      <img class="inspiration-photo" *ngFor="let image of selectedInspiration.photos; let i = index" src="{{image.link}}" />
+    </article>
+    <article *ngIf="selectedInspiration.menu.displayDescription" class="inspiration-description">
+      <span class="full-icon"><i aria-hidden="true" class="fa fa-file-text-o"></i></span>
+      <p>{{selectedInspiration.city.description}}</p>
+    </article>
+    <article *ngIf="selectedInspiration.menu.displayHistory" class="inspiration-history">
+      <span class="full-icon"><i aria-hidden="true" class="fa fa-university"></i></span>
+      <p>{{selectedInspiration.city.history}}</p>
+    </article>
+    <article *ngIf="selectedInspiration.menu.displayActivities" class="inspiration-activities">
+      <section class="inspiration-activity-container">
+        <h3 class="inspiration-activities-heading">{{selectedInspiration.activities[selectedInspiration.activityPosition].name}}</h3>
+        <p class="inspiration-activities-address">{{selectedInspiration.activities[selectedInspiration.activityPosition].address}}</p>
+
+        <img class="inspiration-activities-photo clearfix" src="{{selectedInspiration.activities[selectedInspiration.activityPosition].imgLink}}" />
+
+        <p class="inspiration-activities-description clearfix">{{selectedInspiration.activities[selectedInspiration.activityPosition].desc}}</p>
+
+        <nav class="arrows-container">
+          <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'activityPosition')"></i>
+          <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'activityPosition')"></i>
+        </nav>
+      </section>
+    </article>
+    <article *ngIf="selectedInspiration.menu.displayWeather" class="inspiration-weather">
+      <chart [options]="selectedInspiration.chartOptions"></chart>
+    </article>
+  </section>
+</section>
+
+<section id="inspirations-container" *ngIf="windowSize.width >= 1500">
+
+  <section class="inspirations-side-nav-container">
+    <nav class="inspirations-side-nav">
+      <ul class="inspirations-side-nav-ul">
+        <li class="inspirations-side-nav-li" (click)="changeDisplay('displayDescription')" [ngClass]="{'selected': selectedSideNav === 'displayDescription'}">Description</li><br>
+        <li class="inspirations-side-nav-li" (click)="changeDisplay('displayHistory')" [ngClass]="{'selected': selectedSideNav === 'displayHistory'}">History</li><br>
+        <li class="inspirations-side-nav-li" (click)="changeDisplay('displayActivities')" [ngClass]="{'selected': selectedSideNav === 'displayActivities'}">Activities</li><br>
+        <li class="inspirations-side-nav-li" (click)="changeDisplay('displayWeather')" [ngClass]="{'selected': selectedSideNav === 'displayWeather'}">Weather</li>
+      </ul>
+    </nav>
+  </section>
+
+  <section class="inpsirations-top-nav-container">
+    <nav class="inspirations-top-nav">
+      <ul class="inspirations-top-ul">
+        <li class="inspiration-top-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration; changeDisplay('displayDescription')" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
+      </ul>
+    </nav>
+  </section>
+  <section *ngIf="selectedInspiration" class="inspiration-container">
+
+    <article class="inspiration-gallery">
+      <img class="inspiration-photo" *ngFor="let image of selectedInspiration.photos; let i = index" src="{{image.link}}" (mouseover)="showPhoto = true; photo=image.link" (mouseleave)="showPhoto=false;photo=''"  />
+    </article>
+    <img *ngIf="showPhoto" class="big-photo" src="{{photo}}" alt="">
+
+
+
+    <article *ngIf="selectedInspiration.menu.displayDescription" class="inspiration-description">
+      <span class="full-icon"><i aria-hidden="true" class="fa fa-file-text-o"></i></span>
+      <p>{{selectedInspiration.city.description}}</p>
+    </article>
+    <article *ngIf="selectedInspiration.menu.displayHistory" class="inspiration-history">
+     <span class="full-icon"><i aria-hidden="true" class="fa fa-university"></i></span>
+      <p>{{selectedInspiration.city.history}}</p>
+    </article>
+    <article *ngIf="selectedInspiration.menu.displayActivities" class="inspiration-activities">
+      <div class="inspiration-activity-container">
+        <h3 class="inspiration-activities-heading">{{selectedInspiration.activities[selectedInspiration.activityPosition].name}}</h3>
+        <p class="inspiration-activities-address">{{selectedInspiration.activities[selectedInspiration.activityPosition].address}}</p>
+
+        <img class="inspiration-activities-photo clearfix" src="{{selectedInspiration.activities[selectedInspiration.activityPosition].imgLink}}" />
+
+        <p class="inspiration-activities-description clearfix">{{selectedInspiration.activities[selectedInspiration.activityPosition].desc}}</p>
+
+        <div class="arrows-container">
+          <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'activityPosition')"></i>
+          <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'activityPosition')"></i>
+        </div>
+      </div>
+    </article>
+    <article *ngIf="selectedInspiration.menu.displayWeather" class="inspiration-weather">
+      <chart [options]="selectedInspiration.chartOptions"></chart>
+    </article>
+</section>

@@ -1,0 +1,30 @@
+<section id="datepicker-container">
+  <input class="datepicker-input" type="text" value="{{datesDisplay}}" (click)="toggleCalendar()" readonly>
+  <span class="datepicker-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+  <div *ngIf="showCalendar" class="calendar-container">
+      <span class="datepicker-close" (click)="showCalendar = false"><i class="fa fa-times" aria-hidden="true"></i></span>
+      <div class="calendar-title-container">
+        <span class="calendar-arrow calendar-left-arrow" (click)="changeMonth(false)"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+        <span class="calendar-title">{{currentMonth}}</span>
+        <span class="calendar-arrow calendar-right-arrow" (click)="changeMonth(true)"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+      </div>
+      <table>
+          <thead>
+              <tr>
+                  <td class="calendar-weekend">Sun</td>
+                  <td>Mon</td>
+                  <td>Tue</td>
+                  <td>Wed</td>
+                  <td>Thu</td>
+                  <td>Fri</td>
+                  <td class="calendar-weekend">Sat</td>                  
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let week of weeksList">
+                <td *ngFor="let day of currentMonthMap[week]" [ngClass]="{'calendar-out-month': !day.isCurrentMonth, 'calendar-past': day.isPast, 'calendar-selected': day.isSelected}" class="calendar-td" (click)="setDate(day)">{{day.display}}</td>
+            </tr>
+          </tbody>
+      </table>
+  </div>
+</section>

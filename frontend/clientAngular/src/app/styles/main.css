@@ -1,0 +1,377 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hiden;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.menu {
+  font-family: 'Josefin Slab', serif;
+}
+
+.navigation-element, .bottom-menu, #logo-heading-small {
+  font-size: xx-large;
+}
+
+.navigation-element {
+  color: white;
+}
+
+.menu-heading-small, #nav-small {
+  padding-top: 5px;
+}
+
+.menu-heading-small {
+  padding-bottom: 20px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+#logo-heading-small, #logo-nav-medium, #logo-nav-full {
+  font-family: 'Cinzel', serif;
+}
+
+#logo-heading-small {
+  color: white;
+  letter-spacing: -7px;
+  margin-left: 2%;
+}
+#logo-nav-medium {
+  color: white;
+}
+
+#logo-nav-full {
+  color: white;
+}
+
+#logo-heading-small {
+
+}
+.close-modal, .search-button-full {
+  float: right;
+}
+
+.input-icon {
+  position: relative;
+  left: -42px;
+  top: 10px;
+}
+
+#logo-heading-small {
+  margin-right: 5%;
+}
+
+#nav-small {
+  background-color: rgba(0, 0, 0, .3);
+}
+
+#nav-small, .bottom-menu, .input-small, .search-button-small, .input-medium, #nav-container-full {
+  width: 100%;
+}
+
+#nav-small, .bottom-menu, #nav-container-full {
+  z-index: 1000;
+}
+
+#nav-small {
+  padding-bottom: 15px;
+  border-bottom: 1.5px solid black;
+  position: absolute;
+}
+
+.nav-small-list, #nav-container-full {
+  text-align: center;
+}
+
+.nav-small-list {
+  padding: 0;
+}
+
+.nav-item-small {
+  display: block;
+  line-height: 1.6em;
+}
+
+.splash-container-small, .splash-container-medium, .splash-container-full {
+  background-size: cover;
+}
+
+.splash-container-small {
+  background-image: url("./../../../images/sky.jpg");
+  height: 400px;
+}
+
+.splash-box-small, .modal-header {
+  border-bottom: 1px solid black;
+}
+
+.splash-box-small {
+  padding: 2em 3%;
+}
+
+.splash-par-small, .splash-par-medium {
+  font-size: large;
+}
+
+.splash-par-small {
+  line-height: 1.4em;
+}
+
+.bottom-menu, #nav-container-full {
+  position: fixed;
+}
+
+.bottom-menu, #nav-container-medium, .nav-list-medium, #nav-container-full, .nav-list-full {
+  display: flex;
+}
+
+.search-button-small, .splash-par-medium, .search-button-medium, .modal-header, .search-button-full {
+  color: white;
+}
+
+.bottom-menu {
+  height: 6%;
+  background-color: chocolate;
+  bottom: 0;
+  justify-content: space-around;
+  padding-top: 2%;
+  cursor: pointer;
+}
+
+.bottom-menu a {
+  color: white;
+}
+
+.form-container-small, .form-medium, .modal-header, .modal-footer {
+  padding: 1%;
+}
+
+.input-small, .search-button-small, .input-medium, .search-button-medium {
+  height: 50px;
+}
+
+.input-label-small, .input-label-medium {
+  margin: 2%;
+}
+
+.form-icon {
+  margin-right: 5px;
+}
+
+.search-button-small {
+  margin-left: 29%;
+  width: 206px;
+  height: 52px;
+}
+
+.search-button-small, .search-button-medium {
+  margin-top: 5%;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+}
+
+#nav-container-medium, #nav-container-full {
+  padding-bottom: 1em;
+}
+
+.invalid-small {
+  color: red;
+  position: relative;
+  top: -3em;
+  left: 68%;
+  font-size: small;
+}
+
+.invalid-small i {
+  font-size: xx-large;
+}
+
+
+/*Medium Size*/
+
+@media screen and (min-width: 800px) {
+  #nav-container-medium {
+    padding-top: .4em;
+    background-color: rgba(0, 0, 0, .3);
+    border-bottom: rgba(0,0,0,.4);
+    justify-content: space-between;
+  }
+  .menu, #logo-nav-medium {
+    font-size: 2em;
+  }
+  #log-nav-medium, #nav-full {
+    flex-grow: 1;
+  }
+  #logo-nav-medium {
+    color: white;
+    margin-left: 25px;
+    letter-spacing: -7px;
+  }
+  .nav-list-medium {
+    flex-grow: 4;
+  }
+  .nav-list-item-medium {
+    margin-right: 20px;
+  }
+  .splash-container-medium, .splash-container-full {
+    background-repeat: no-repeat;
+  }
+  .splash-container-medium {
+    background-image: url("./../../../images/sky.jpg");
+    height: 700px;
+  }
+  .invalid-small {
+    left: 44%;
+  }
+  .splash-box-medium, .search-button-medium {
+    width: 50%;
+  }
+  .splash-box-medium {
+    background-color: rgba(255, 0, 0, .2);
+    padding: 3em;
+    position: relative;
+    top: 28%;
+    left: 5%;
+  }
+  .splash-par-medium {
+    line-height: 1.3em;
+    font-weight: 600;
+  }
+  .form-container-medium {
+    padding: 3%;
+  }
+  .form-medium {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .input-label-medium, .input-label-full {
+    font-size: larger;
+  }
+}
+
+
+/*Full Size*/
+
+@media screen and (min-width: 1200px) {
+  #nav-container-full {
+    height: 10%;
+    background-color: rgba(0, 0, 0, .3);
+    border-bottom: 1px solid rgba(0,0,0,.4);
+  }
+  #logo-nav-full, .input-label-full {
+    margin-left: 10px;
+  }
+  #logo-nav-full {
+    letter-spacing: -7px;
+    padding-top: 1%;
+    flex-grow: 3;
+  }
+  .nav-list-item-full {
+    margin-left: 50px;
+    padding-top: 17px;
+  }
+  .invalid-small {
+    left: 14%;
+    top: 80px;
+  }
+  .navigation-element:hover {
+    color: white;
+    text-shadow: 1px 1px 5px black;
+  }
+  .splash-container-full {
+    background-image: url("./../../../images/35.jpg");
+  }
+ .modal-header {
+    height: 30%;
+  }
+  .search {
+    position: relative;
+    bottom: -13px;
+    cursor: pointer;
+  }
+  .form-new {
+    width: 75%;
+    position: fixed !important;
+    top: 20%;
+    left: 14%;
+    height: 10%;
+    padding: 1%;
+    border: 3px solid black;
+    border-radius: 40px;
+    display: flex;
+  }
+  .close-modal, .search-button-full {
+    cursor: pointer;
+  }
+  .close-modal {
+    font-size: x-large;
+  }
+  /* .modal-header h1 {
+        margin: 0;
+    } */
+  .modal-header, .input-label-full {
+    text-shadow: 1px 1px 1px black;
+  }
+  .modal-body {
+    height: 50%;
+    display: flex;
+  }
+  .form-table {
+    height: 85%;
+  }
+  .form-table-td {
+    width: 24%;
+    margin-left: 3%;
+  }
+  .input-full {
+    width: 25%;
+    height: 56.79px;
+    border-radius: 29px;
+    background-color: rgba(250, 250, 250, 1);
+    border: 1px solid royalblue;
+  }
+  .input-full:focus {
+    border-radius: 29px;
+  }
+  .datepicker {
+    width: 25%;
+    margin-right: 7px;
+  }
+  .search-button-full {
+    background-color: blue;
+    height: 57px;
+    width: 60px;
+    border: none;
+    border-radius: 25px;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .menu, #logo-nav-full {
+    font-size: 3em;
+  }
+  #logo-nav-full {
+    letter-spacing: -7px;
+  }
+}
+
+
+/*---------------------------*/
