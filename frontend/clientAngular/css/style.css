@@ -3816,10 +3816,10 @@ p.single-price-text {
 		margin: 13px 5px 17px;
 	}
 	.dropdown-menu.multi {
-		min-width: 935px!important;
+		min-width: 100px!important;
 	}
 	.dropdown-menu {
-		width: 935px!important;
+		width: 300px!important;
 	}
 	p.promo {
 		width: 935px;
@@ -3923,10 +3923,10 @@ p.single-price-text {
 		left: -458px;
 	}
 	li.wthreesearch {
-		right: 11%;
+		right: 8%;
 	}
 	li.wthreecartaits {
-		right: 5%;
+		right: 1%;
 	}
 	.badge {
 		position: absolute;
@@ -3934,8 +3934,7 @@ p.single-price-text {
 		top: 20px;
 	}
 	.agileheader-topbar-grid, .wthreehome-latest-grid, .style-grid, .agileshoppinggrid, .agileshoppinggrids-bottom-grid, .about-us-image, .aitscommercial-grid, .w3laccessoriesaits-grids, .agilelocationsw3ls-grid {
-		width: 50%;
-		float: left;
+		width: 51%;
 	}
 	.style-grid-1-text h3, .style-grid-2-text h3 {
 		font-size: 31px;

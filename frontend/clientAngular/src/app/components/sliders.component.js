@@ -7,6 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+// import { Subscription } from 'rxjs/Subscription';
+// import 'rxjs/add/operator/toPromise';
+// import { InspirationsComponent } from "./../components/inspirations.component.js";
 // import { DatePickerComponent } from "./../components/datepicker.component.js"
 // import {CommonService} from './../services/common.service.js';
 // import {SearchService} from './../services/search.service.js';
@@ -14,22 +17,33 @@ var core_1 = require("@angular/core");
 // import { WindowSize } from './../models/windowSize.js';
 // import { Inspiration } from './../models/inspiration.js';
 // declare var google: any;
-var AppComponent = (function () {
-    // export class AppComponent implements OnInit, OnDestroy {
-    function AppComponent() {
+var ModelSliderComponent = (function () {
+    function ModelSliderComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () {
+    ModelSliderComponent.prototype.ngOnInit = function () {
+        this.initModelSlider();
     };
-    return AppComponent;
+    ModelSliderComponent.prototype.initModelSlider = function () {
+        (function () {
+            $(function () {
+                this.film_rolls || (this.film_rolls = []);
+                this.film_rolls['film_roll_1'] = new FilmRoll({
+                    container: '#film_roll_1',
+                    height: 560
+                });
+                return true;
+            });
+        }).call(this);
+    };
+    return ModelSliderComponent;
 }());
-AppComponent = __decorate([
+ModelSliderComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
-        templateUrl: 'src/app/views/app.component.html'
+        selector: 'model-slider',
+        templateUrl: 'src/app/views/modelSlider.component.html'
         // providers: [CommonService],
         // entryComponents: [InspirationsComponent, DatePickerComponent]
     })
-    // export class AppComponent implements OnInit, OnDestroy {
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], ModelSliderComponent);
+exports.ModelSliderComponent = ModelSliderComponent;
+//# sourceMappingURL=sliders.component.js.map

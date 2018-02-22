@@ -6,8 +6,9 @@ import { HttpModule }       from '@angular/http';
 // import { ChartModule } from 'angular2-highcharts';
 
 import { AppComponent } from './../components/app.component.js';
-// import { InspirationsComponent } from "./../components/inspirations.component.js";
-// import { DatePickerComponent } from "./../components/datepicker.component.js";
+import { HeaderComponent } from './../components/header.component.js';
+import { ModelSliderComponent } from './../components/modelSlider.component.js';
+import { HeaderSliderComponent } from './../components/headerSlider.component.js';
 
 // import { CommonService } from './../services/common.service.js';
 // import { SearchService } from './../services/search.service.js';
@@ -32,9 +33,10 @@ import { AppComponent } from './../components/app.component.js';
     // ChartModule.forRoot(require('highcharts'), require('highcharts/highcharts-3d'), require('highcharts/modules/exporting'))
   ],
   declarations: [
-    AppComponent
-    // InspirationsComponent,
-    // DatePickerComponent
+    AppComponent,
+    HeaderComponent,
+    HeaderSliderComponent,
+    ModelSliderComponent
   ],
   // providers: [CommonService, SearchService, SearchResultService, MessageService, WindowSize, Inspiration, Activity, City, Photo, Weather, DayObject],
   bootstrap: [ AppComponent ]

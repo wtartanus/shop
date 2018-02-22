@@ -1,10 +1,13 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+declare var jquery:any;
+declare var $ :any;
+declare var FilmRoll:any;
 // import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
 
-// import { InspirationsComponent } from "./../components/inspirations.component.js";
+import { HeaderComponent } from "./../components/header.component.js";
 // import { DatePickerComponent } from "./../components/datepicker.component.js"
 
 // import {CommonService} from './../services/common.service.js';
@@ -21,7 +24,12 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
   // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
 // export class AppComponent implements OnInit, OnDestroy {
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+
+ngOnInit() {
+   
+}
   // private showNav = false;
   // private showModal = false;
   // private today = new Date();

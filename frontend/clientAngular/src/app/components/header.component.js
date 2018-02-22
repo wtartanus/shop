@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+// import { InspirationsComponent } from "./../components/inspirations.component.js";
 // import { DatePickerComponent } from "./../components/datepicker.component.js"
 // import {CommonService} from './../services/common.service.js';
 // import {SearchService} from './../services/search.service.js';
@@ -14,22 +15,21 @@ var core_1 = require("@angular/core");
 // import { WindowSize } from './../models/windowSize.js';
 // import { Inspiration } from './../models/inspiration.js';
 // declare var google: any;
-var AppComponent = (function () {
-    // export class AppComponent implements OnInit, OnDestroy {
-    function AppComponent() {
+var HeaderComponent = (function () {
+    function HeaderComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () {
+    HeaderComponent.prototype.ngOnInit = function () {
+        // this.initSmallSlider();
     };
-    return AppComponent;
+    return HeaderComponent;
 }());
-AppComponent = __decorate([
+HeaderComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
-        templateUrl: 'src/app/views/app.component.html'
+        selector: 'ng-header',
+        templateUrl: 'src/app/views/header.component.html'
         // providers: [CommonService],
         // entryComponents: [InspirationsComponent, DatePickerComponent]
     })
-    // export class AppComponent implements OnInit, OnDestroy {
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], HeaderComponent);
+exports.HeaderComponent = HeaderComponent;
+//# sourceMappingURL=header.component.js.map
