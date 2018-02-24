@@ -16,6 +16,8 @@ var app_component_js_1 = require("./../components/app.component.js");
 var header_component_js_1 = require("./../components/header.component.js");
 var modelSlider_component_js_1 = require("./../components/modelSlider.component.js");
 var headerSlider_component_js_1 = require("./../components/headerSlider.component.js");
+//import { ProductsComponent } from './../components/products.component.js';
+var footer_component_js_1 = require("./../components/footer.component.js");
 // import { CommonService } from './../services/common.service.js';
 // import { SearchService } from './../services/search.service.js';
 // import {SearchResultService } from './../services/searchResult.service.js';
@@ -45,7 +47,8 @@ AppModule = __decorate([
             app_component_js_1.AppComponent,
             header_component_js_1.HeaderComponent,
             headerSlider_component_js_1.HeaderSliderComponent,
-            modelSlider_component_js_1.ModelSliderComponent
+            modelSlider_component_js_1.ModelSliderComponent,
+            footer_component_js_1.FooterComponent
         ],
         // providers: [CommonService, SearchService, SearchResultService, MessageService, WindowSize, Inspiration, Activity, City, Photo, Weather, DayObject],
         bootstrap: [app_component_js_1.AppComponent]

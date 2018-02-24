@@ -1,14 +1,13 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-declare var jquery:any;
-declare var $ :any;
-declare var FilmRoll:any;
+// declare var jquery:any;
+// declare var $ :any;
+// declare var FilmRoll:any;
 // import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
 
-import { HeaderComponent } from "./../components/header.component.js";
-import { FooterComponent } from "./../components/footer.component.js";
+// import { HeaderComponent } from "./../components/header.component.js";
 // import { DatePickerComponent } from "./../components/datepicker.component.js"
 
 // import {CommonService} from './../services/common.service.js';
@@ -19,31 +18,12 @@ import { FooterComponent } from "./../components/footer.component.js";
 // declare var google: any;
 
 @Component({
-  selector: 'my-app',
-  templateUrl: 'src/app/views/app.component.html'
+  selector: 'footer',
+  templateUrl: 'src/app/views/footer.component.html'
   // providers: [CommonService],
   // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
-// export class AppComponent implements OnInit, OnDestroy {
-export class AppComponent implements OnInit {
-
-
-ngOnInit() {
-   
-}
-  // private showNav = false;
-  // private showModal = false;
-  // private today = new Date();
-  // private returnDate = new Date();
-  // private windowSize: WindowSize;
-  // private returnOptions: IMyOptions = {};
-  // private departOptions: IMyOptions = {};
-  // private width = '100%';
-  // private height = '50px';
-  // public destination: String;
-  // public substriction: Subscription;
-  // public message: any;
-  // public datesDisplay: string;
+export class FooterComponent {
 
 //   constructor(private commonService: CommonService, private searchService: SearchService, private messageService: MessageService) { 
 //     this.substriction = this.messageService.getMessage().subscribe(message => this.updateDates(message));
@@ -119,15 +99,4 @@ ngOnInit() {
 //     };
 //   }
 
-//   searchForInspiration(city: string): void {
-//     this.destination = city;
-//   }
-
-
-//  search() {
-//    let input = document.getElementById('locationTextField');
-//    this.destination = input["value"];
-//    console.log("@@", this.destination);
-//    this.searchService.processSearch(this.destination);
-//  }
 }
