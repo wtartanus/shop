@@ -1,7 +1,6 @@
-
-<!-- Header -->
-<ng-header></ng-header>
-<splash></splash>
+<ng-header [selectedCategory]="selectedCategory" (onCategoryChange)="onCategoryChange($event)"></ng-header>
+<splash *ngIf="!selectedCategory"></splash>
+<products *ngIf="selectedCategory" [selectedCategory]="selectedCategory"></products>
 <footer></footer>
 
 

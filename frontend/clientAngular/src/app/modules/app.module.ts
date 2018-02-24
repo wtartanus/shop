@@ -9,7 +9,7 @@ import { AppComponent } from "./../components/app.component.js";
 import { HeaderComponent } from "./../components/header.component.js";
 import { ModelSliderComponent } from "./../components/modelSlider.component.js";
 import { HeaderSliderComponent } from "./../components/headerSlider.component.js";
-//import { ProductsComponent } from "./../components/products.component.js";
+import { ProductsComponent } from "./../components/products.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
 
@@ -41,7 +41,8 @@ import { SplashComponent } from "./../components/splash.component.js";
     HeaderSliderComponent,
     ModelSliderComponent,
     FooterComponent,
-    SplashComponent
+    SplashComponent,
+    ProductsComponent
   ],
   // providers: [CommonService, SearchService, SearchResultService, MessageService, WindowSize, Inspiration, Activity, City, Photo, Weather, DayObject],
   bootstrap: [ AppComponent ]

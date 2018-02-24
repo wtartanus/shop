@@ -8,9 +8,9 @@ declare var FilmRoll:any;
 // import 'rxjs/add/operator/toPromise';
 
 import { HeaderComponent } from "./../components/header.component.js";
+import { ProductsComponent } from "./../components/products.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
-// import { DatePickerComponent } from "./../components/datepicker.component.js"
 
 // import {CommonService} from './../services/common.service.js';
 // import {SearchService} from './../services/search.service.js';
@@ -21,77 +21,26 @@ import { FooterComponent } from "./../components/footer.component.js";
 
 @Component({
   selector: 'my-app',
-  templateUrl: 'src/app/views/app.component.html'
+  templateUrl: 'src/app/views/app.component.html',
   // providers: [CommonService],
-  // entryComponents: [InspirationsComponent, DatePickerComponent]
+  entryComponents: [HeaderComponent]
 })
 // export class AppComponent implements OnInit, OnDestroy {
 export class AppComponent implements OnInit {
+    public selectedCategory: string = null; //This should be null when in home page
 
+    ngOnInit() {
+      
+    }
 
-ngOnInit() {
-   
-}
-  // private showNav = false;
-  // private showModal = false;
-  // private today = new Date();
-  // private returnDate = new Date();
-  // private windowSize: WindowSize;
-  // private returnOptions: IMyOptions = {};
-  // private departOptions: IMyOptions = {};
-  // private width = '100%';
-  // private height = '50px';
-  // public destination: String;
-  // public substriction: Subscription;
-  // public message: any;
-  // public datesDisplay: string;
+    onCategoryChange(category: string): void {
+      this.selectedCategory = category;
+    }
 
 //   constructor(private commonService: CommonService, private searchService: SearchService, private messageService: MessageService) { 
 //     this.substriction = this.messageService.getMessage().subscribe(message => this.updateDates(message));
 //   };
 
-//   updateDates(message: any): void {
-//     if(message.text === "dates-changed") {
-//        console.log("dayFrom: ", message.body.dateFrom); 
-//        console.log("dayFrom: ", message.body.dateTo);        
-//     }
-//   }
-
-//   setOptions(isReturn: boolean) {
-//     let date = isReturn ? this.returnDate : this.today;
-//     return {
-//       dateFormat: 'dd.mm.yyyy',
-//       showTodayBtn: false,
-//       sunHighlight: true,
-//       disableUntil: {
-//         year: date.getFullYear(),
-//         month: date.getMonth() + 1,
-//         day: date.getDate() - 1
-//       },
-//       showClearDateBtn: false,
-//       height: this.height,
-//       width: this.width,
-//       editableDateField: false,
-//       openSelectorOnInputClick: true,
-//       selectionTxtFontSize: '1.5em'
-//     };
-//   }
-
-//   private departDateValue: Object = {
-//     date: {
-//       year: this.today.getFullYear(),
-//       month: this.today.getMonth() + 1,
-//       day: this.today.getDate()
-//     }
-//   };
-
-//   private returnDateValue: Object = {
-//     date: {
-//       year: this.today.getFullYear(),
-//       month: this.today.getMonth() + 1,
-//       day: this.today.getDate()
-//     }
-//   };
 
 //   ngOnInit(): void {
 //     this.windowSize = this.commonService.getWindowSize();
@@ -110,25 +59,4 @@ ngOnInit() {
 //      this.substriction.unsubscribe();
 //   }
 
-
-//   onDateChanged(event: IMyDateModel): void {
-//     this.returnDate = new Date(event.jsdate);
-//     console.info("departDateValue: ", this.departDateValue);
-//     this.setOptions(true);
-//     this.returnDateValue = {
-//       date: event.date
-//     };
-//   }
-
-//   searchForInspiration(city: string): void {
-//     this.destination = city;
-//   }
-
-
-//  search() {
-//    let input = document.getElementById('locationTextField');
-//    this.destination = input["value"];
-//    console.log("@@", this.destination);
-//    this.searchService.processSearch(this.destination);
-//  }
 }
