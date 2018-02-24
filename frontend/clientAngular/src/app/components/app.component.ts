@@ -8,6 +8,7 @@ declare var FilmRoll:any;
 // import 'rxjs/add/operator/toPromise';
 
 import { HeaderComponent } from "./../components/header.component.js";
+import { SplashComponent } from "./../components/splash.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
 // import { DatePickerComponent } from "./../components/datepicker.component.js"
 
