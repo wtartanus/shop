@@ -11,17 +11,21 @@ require_relative( './models/mapData.rb' )
 
 
 options '/*' do
-    response["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type"
+    response["Access-Control-Allow-Headers"] = "*"
+    content_type :json    
+    headers 'Access-Control-Allow-Origin' => '*', 
+             'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST']  
 end
 
 before do
     content_type :json    
     headers 'Access-Control-Allow-Origin' => '*', 
              'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST']  
+             response["Access-Control-Allow-Headers"] = "*"
  end
 
 get '/' do
-  return "OK"
+  return "{wojtek: wojtek}"
 end
 
 get '/mapProductsFromXML' do

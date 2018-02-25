@@ -12,20 +12,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 // import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
-var ProductsComponent = (function () {
-    function ProductsComponent() {
+var SingleProductComponent = (function () {
+    function SingleProductComponent() {
     }
-    ProductsComponent.prototype.ngOnInit = function () {
+    SingleProductComponent.prototype.ngOnInit = function () {
         // this.initShop();
         // this.initPopUpBox();
+        this.initSome();
     };
-    ProductsComponent.prototype.onProductSelection = function (selectedProduct) {
-        this.selectedProduct = selectedProduct;
-    };
-    ProductsComponent.prototype.initShop = function () {
+    SingleProductComponent.prototype.initShop = function () {
         var shop = new cbpShop(document.getElementById('cbp-pgcontainer'));
     };
-    ProductsComponent.prototype.initPopUpBox = function () {
+    SingleProductComponent.prototype.initSome = function () {
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    };
+    SingleProductComponent.prototype.initPopUpBox = function () {
         $(document).ready(function () {
             $('.popup-with-zoom-anim').magnificPopup({
                 type: 'inline',
@@ -40,7 +46,7 @@ var ProductsComponent = (function () {
             });
         });
     };
-    ProductsComponent.prototype.initCart = function () {
+    SingleProductComponent.prototype.initCart = function () {
         //TODO maybe not needed
         w3l.render();
         w3l.cart.on('w3agile_checkout', function (evt) {
@@ -52,22 +58,21 @@ var ProductsComponent = (function () {
             }
         });
     };
-    return ProductsComponent;
+    return SingleProductComponent;
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", String)
-], ProductsComponent.prototype, "selectedCategory", void 0);
+    __metadata("design:type", Object)
+], SingleProductComponent.prototype, "data", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Object)
-], ProductsComponent.prototype, "data", void 0);
-ProductsComponent = __decorate([
+], SingleProductComponent.prototype, "product", void 0);
+SingleProductComponent = __decorate([
     core_1.Component({
-        selector: 'products',
-        templateUrl: 'src/app/views/products.component.html'
-        //entryComponents: [ProductsListComponent, SingleProductComponent]
+        selector: 'singleProduct',
+        templateUrl: 'src/app/views/singleProduct.component.html',
     })
-], ProductsComponent);
-exports.ProductsComponent = ProductsComponent;
-//# sourceMappingURL=products.component.js.map
+], SingleProductComponent);
+exports.SingleProductComponent = SingleProductComponent;
+//# sourceMappingURL=singleProduct.component.js.map

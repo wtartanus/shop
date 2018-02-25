@@ -9,21 +9,11 @@ declare var FilmRoll:any;
 
 import { ModelSliderComponent } from "./../components/modelSlider.component.js"
 import { HeaderSliderComponent } from "./../components/headerSlider.component.js";
-// import { InspirationsComponent } from "./../components/inspirations.component.js";
-// import { DatePickerComponent } from "./../components/datepicker.component.js"
 
-// import {CommonService} from './../services/common.service.js';
-// import {SearchService} from './../services/search.service.js';
-// import {MessageService} from './../services/message.service.js';W
-// import { WindowSize } from './../models/windowSize.js';
-// import { Inspiration } from './../models/inspiration.js';
-// declare var google: any;
 
 @Component({
   selector: 'ng-header',
   templateUrl: 'src/app/views/header.component.html'
-  // providers: [CommonService],
-  // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
 export class HeaderComponent implements OnInit {
     @Input() selectedCategory: string;
@@ -78,11 +68,11 @@ export class HeaderComponent implements OnInit {
                     img: "images/categories/babydolls.jpg"
                 }, 
                 {
-                    name: "Basques And Corsets",
+                    name: "Basques and Corsets",
                     img: "images/categories/basques-and-corsets.jpg"
                 }, 
                 {
-                    name: "Bodies And Playsuits",
+                    name: "Bodies and Playsuits",
                     img: "images/categories/bodies-and-playsuits.jpg"
                 },
                 {
@@ -90,7 +80,7 @@ export class HeaderComponent implements OnInit {
                     img: "images/categories/bra-sets.jpg"
                 }, 
                 {
-                    name: "Dresses And Chemises",
+                    name: "Dresses and Chemises",
                     img: "images/categories/dresses-and-chemises.jpg"
                 },
                 {
@@ -147,7 +137,7 @@ export class HeaderComponent implements OnInit {
                     img: "images/categories/collars.jpg"
                 }, 
                 {
-                    name: "Gags And Bits",
+                    name: "Gags and Bits",
                     img: "images/categories/gags-and-bits.jpg"
                 }, 
                 {
@@ -171,7 +161,7 @@ export class HeaderComponent implements OnInit {
                     img: "images/categories/bondage-kits.jpg"
                 },
                 {
-                    name: "Cock And Ball Bondage",
+                    name: "Cock and Ball Bondage",
                     img: "images/categories/cock-and-ball-bondage.jpg"
                 },
                 {
@@ -224,7 +214,7 @@ export class HeaderComponent implements OnInit {
                     img: "images/categories/hen-and-stag-nights.jpg"
                 }, 
                 {
-                    name: "Hen And Stag Nights",
+                    name: "Hen and Stag Nights",
                     img: "images/categories/relaxation-zone.jpg"
                 }, 
                 {
@@ -246,7 +236,6 @@ export class HeaderComponent implements OnInit {
     changeCategory(category: string): void {
         this.selectedCategory = category;
         this.onCategoryChange.emit(this.selectedCategory);
-        console.log("change category", this.selectedCategory);
     }
 
     goToHomePage(): void{

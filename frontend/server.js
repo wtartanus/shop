@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/client2/index.html'));
+  res.sendFile(path.join(__dirname + '/clientAngular/index.html'));
 });
 
 

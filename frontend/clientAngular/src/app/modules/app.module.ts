@@ -10,10 +10,12 @@ import { HeaderComponent } from "./../components/header.component.js";
 import { ModelSliderComponent } from "./../components/modelSlider.component.js";
 import { HeaderSliderComponent } from "./../components/headerSlider.component.js";
 import { ProductsComponent } from "./../components/products.component.js";
+import { SingleProductComponent } from "./../components/singleProduct.component.js";
+import { ProductsListComponent } from "./../components/productsList.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
 
-// import { CommonService } from "./../services/common.service.js";
+import { WarehouseService } from "./../services/warehouse.service.js";
 // import { SearchService } from "./../services/search.service.js";
 // import {SearchResultService } from "./../services/searchResult.service.js";
 // import { MessageService } from "./../services/message.service.js";
@@ -42,9 +44,11 @@ import { SplashComponent } from "./../components/splash.component.js";
     ModelSliderComponent,
     FooterComponent,
     SplashComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductsListComponent,
+    SingleProductComponent
   ],
-  // providers: [CommonService, SearchService, SearchResultService, MessageService, WindowSize, Inspiration, Activity, City, Photo, Weather, DayObject],
+  providers: [WarehouseService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

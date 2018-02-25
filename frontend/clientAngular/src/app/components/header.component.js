@@ -10,14 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-// import { InspirationsComponent } from "./../components/inspirations.component.js";
-// import { DatePickerComponent } from "./../components/datepicker.component.js"
-// import {CommonService} from './../services/common.service.js';
-// import {SearchService} from './../services/search.service.js';
-// import {MessageService} from './../services/message.service.js';W
-// import { WindowSize } from './../models/windowSize.js';
-// import { Inspiration } from './../models/inspiration.js';
-// declare var google: any;
 var HeaderComponent = (function () {
     function HeaderComponent() {
         this.onCategoryChange = new core_1.EventEmitter();
@@ -71,11 +63,11 @@ var HeaderComponent = (function () {
                         img: "images/categories/babydolls.jpg"
                     },
                     {
-                        name: "Basques And Corsets",
+                        name: "Basques and Corsets",
                         img: "images/categories/basques-and-corsets.jpg"
                     },
                     {
-                        name: "Bodies And Playsuits",
+                        name: "Bodies and Playsuits",
                         img: "images/categories/bodies-and-playsuits.jpg"
                     },
                     {
@@ -83,7 +75,7 @@ var HeaderComponent = (function () {
                         img: "images/categories/bra-sets.jpg"
                     },
                     {
-                        name: "Dresses And Chemises",
+                        name: "Dresses and Chemises",
                         img: "images/categories/dresses-and-chemises.jpg"
                     },
                     {
@@ -140,7 +132,7 @@ var HeaderComponent = (function () {
                         img: "images/categories/collars.jpg"
                     },
                     {
-                        name: "Gags And Bits",
+                        name: "Gags and Bits",
                         img: "images/categories/gags-and-bits.jpg"
                     },
                     {
@@ -164,7 +156,7 @@ var HeaderComponent = (function () {
                         img: "images/categories/bondage-kits.jpg"
                     },
                     {
-                        name: "Cock And Ball Bondage",
+                        name: "Cock and Ball Bondage",
                         img: "images/categories/cock-and-ball-bondage.jpg"
                     },
                     {
@@ -217,7 +209,7 @@ var HeaderComponent = (function () {
                         img: "images/categories/hen-and-stag-nights.jpg"
                     },
                     {
-                        name: "Hen And Stag Nights",
+                        name: "Hen and Stag Nights",
                         img: "images/categories/relaxation-zone.jpg"
                     },
                     {
@@ -238,7 +230,6 @@ var HeaderComponent = (function () {
     HeaderComponent.prototype.changeCategory = function (category) {
         this.selectedCategory = category;
         this.onCategoryChange.emit(this.selectedCategory);
-        console.log("change category", this.selectedCategory);
     };
     HeaderComponent.prototype.goToHomePage = function () {
         this.selectedCategory = null;
@@ -258,8 +249,6 @@ HeaderComponent = __decorate([
     core_1.Component({
         selector: 'ng-header',
         templateUrl: 'src/app/views/header.component.html'
-        // providers: [CommonService],
-        // entryComponents: [InspirationsComponent, DatePickerComponent]
     })
 ], HeaderComponent);
 exports.HeaderComponent = HeaderComponent;
