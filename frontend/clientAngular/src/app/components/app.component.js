@@ -62,8 +62,6 @@ AppComponent = __decorate([
 ], AppComponent);
 exports.AppComponent = AppComponent;
 /******* TODO
- * - Download all photos
- * - Navigation items should have pointer cursor on hover
  * - Fix photos display in singleProduct, if most of things have only one photo then show only one
  * - Remove all not need things from singleProduct
  * - assuer that data been loaded

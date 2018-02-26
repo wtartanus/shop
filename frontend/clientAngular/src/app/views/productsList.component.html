@@ -2,8 +2,6 @@
 <h1 class="w3wthreeheadingaits">{{selectedCategory}}</h1>
 <!-- //Heading -->
 
-
-
 <!-- Women's-Product-Display -->
 <div class="wthreeproductdisplay">
 	<div id="cbp-pgcontainer" class="cbp-pgcontainer">
@@ -11,11 +9,11 @@
 			<li class="wthree aits w3l" *ngFor="let product of products">
 				<div class="cbp-pgcontent" id="women-1">
 					<span class="cbp-pgrotate"><i class="fa fa-exchange" aria-hidden="true"></i></span>
-					<a (click)="selectProduct(product)">
+					<a class="pointer-cursor" (click)="selectProduct(product)">
 						<div class="cbp-pgitem a3ls">
 							<div class="cbp-pgitem-flip">
-								<img src="{{'images/main/' + product.image}}" alt="Groovy Apparel">
-								<img src="images/11-back.jpg" alt="Groovy Apparel">
+								<img src="{{'images/main/' + product.image}}" alt="{{product.name}}">
+								<img src="images/11-back.jpg" alt="">
 							</div>
 						</div>
 					</a>
@@ -48,7 +46,7 @@
 						</li>
 					</ul>
 				</div>
-				<a href="#">
+				<a href="#" (click)="selectProduct(product)">
 					<div class="cbp-pginfo w3layouts">
 						<h3>{{product.name}}</h3>
 						<span class="cbp-pgprice">£{{product.rpr}}</span>
@@ -59,7 +57,6 @@
 	</div>
 </div>
 <!-- //Women's-Product-Display -->
-
 
 
 <!-- Newsletter -->

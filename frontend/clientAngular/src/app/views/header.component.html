@@ -26,13 +26,13 @@
                        <div class="row">
                           <div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-1 categories-top-bar">
                               <ul class="multi-column-dropdown">
-                                  <li *ngFor="let subCategory of category.subCategories" (click)="changeCategory(subCategory.name)">
+                                  <li *ngFor="let subCategory of category.subCategories" class="pointer-cursor" (click)="changeCategory(subCategory.name)">
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     {{subCategory.name}}
                                   </li>
                               </ul>
                           </div>
-                          <div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu" *ngFor="let sub of category.subCategories" (click)="changeCategory(sub.name)">
+                          <div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2 categories-top-bar block-menu pointer-cursor" *ngFor="let sub of category.subCategories" (click)="changeCategory(sub.name)">
                               <p>{{sub.name}}</p>
                               <img src="{{sub.img}}" alt="{{sub.name}}">
                            </div>
