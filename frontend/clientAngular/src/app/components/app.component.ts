@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
 /******* TODO
  * - Fix photos display in singleProduct, if most of things have only one photo then show only one
  * - Remove all not need things from singleProduct 
- * - assuer that data been loaded
+ * - assure that data been loaded
  * - add page to ask if user is 18 years old
  * - Products list should display set number of items
  * - hook up search
