@@ -54,6 +54,30 @@ var ProductsListComponent = (function () {
         this.currentPage = this.pages[pageNumber];
         this.pageSelected = pageNumber;
     };
+    ProductsListComponent.prototype.goToStartEnd = function (goToStart) {
+        if (goToStart) {
+            this.currentPage = this.pages[0];
+            this.pageSelected = 0;
+        }
+        else {
+            this.currentPage = this.pages[this.pages.length - 1];
+            this.pageSelected = this.pages.length - 1;
+        }
+    };
+    ProductsListComponent.prototype.moveByOnePage = function (goLeft) {
+        if (goLeft) {
+            if (this.pageSelected) {
+                this.pageSelected--;
+                this.currentPage = this.pages[this.pageSelected];
+            }
+        }
+        else {
+            if (this.pageSelected !== this.pages.length - 1) {
+                this.pageSelected++;
+                this.currentPage = this.pages[this.pageSelected];
+            }
+        }
+    };
     ProductsListComponent.prototype.selectProduct = function (product) {
         this.selectedProduct = product;
         this.onProductSelection.emit(this.selectedProduct);

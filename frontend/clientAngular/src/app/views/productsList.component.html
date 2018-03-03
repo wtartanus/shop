@@ -75,7 +75,11 @@
 </div>
 <div class="pages-index-container">
 	<ul>
+		<li class="pages-index" *ngIf="pageSelected !== 0" (click)="goToStartEnd(true)"><i class="fas fa-angle-double-left"></i></li>
+		<li class="pages-index" *ngIf="pageSelected !== 0" (click)="moveByOnePage(true)"><i class="fas fa-angle-left"></i></li>
 		<li class="pages-index" [ngClass]="{'page-selected': pageSelected === pageIndex}" *ngFor="let pageIndex of pagesIndex" (click)="changePage(pageIndex)">{{pageIndex + 1}}</li>
+		<li class="pages-index" *ngIf="pageSelected !== pagesIndex.length - 1" (click)="moveByOnePage(false)"><i class="fas fa-angle-right"></i></li>
+		<li class="pages-index" *ngIf="pageSelected !== pagesIndex.length - 1" (click)="goToStartEnd(false)"><i class="fas fa-angle-double-right"></i></li>
 	</ul>
 </div>
 

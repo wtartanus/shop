@@ -63,6 +63,30 @@ export class ProductsListComponent implements OnInit {
      this.pageSelected = pageNumber;
   }
 
+  goToStartEnd(goToStart: boolean): void{
+    if (goToStart) {
+      this.currentPage = this.pages[0];
+      this.pageSelected = 0;
+    } else {
+      this.currentPage = this.pages[this.pages.length - 1];
+      this.pageSelected = this.pages.length - 1;
+    }
+  }
+
+  moveByOnePage(goLeft: boolean): void{
+    if (goLeft) {
+      if (this.pageSelected) {
+        this.pageSelected--;
+        this.currentPage = this.pages[this.pageSelected];
+      }
+    } else {
+      if (this.pageSelected !== this.pages.length - 1) {
+        this.pageSelected++;
+        this.currentPage = this.pages[this.pageSelected];
+      }
+    }
+  }
+
   selectProduct(product: any): void{
     this.selectedProduct = product;
     this.onProductSelection.emit(this.selectedProduct);

@@ -89,6 +89,7 @@
 
 .page-selected {
     background-color: dodgerblue;
+    color: white;
 }
 
 .pages-index {
@@ -101,6 +102,11 @@
   border-radius: 25%;
   font-size: 1.2em;
   font-family: 'Noto Serif', serif;
+}
+
+.pages-index:hover {
+    background-color: dodgerblue;
+    color: white;
 }
 
 @media screen and (min-width: 320px) {
