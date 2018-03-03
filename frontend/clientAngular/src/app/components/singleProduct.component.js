@@ -16,12 +16,27 @@ var SingleProductComponent = (function () {
     function SingleProductComponent() {
     }
     SingleProductComponent.prototype.ngOnInit = function () {
+        this.currentImage = this.product.xlImage2;
         // this.initShop();
         // this.initPopUpBox();
         this.initSome();
+        console.log("product", this.product);
+        console.log("stock", this.productStock);
     };
     SingleProductComponent.prototype.initShop = function () {
         var shop = new cbpShop(document.getElementById('cbp-pgcontainer'));
+    };
+    SingleProductComponent.prototype.changeImage = function (image) {
+        this.currentImage = image;
+    };
+    SingleProductComponent.prototype.convertString = function (item) {
+        var parsedItem = JSON.parse(item);
+        if (Array.isArray(parsedItem)) {
+            return parsedItem[0];
+        }
+        else {
+            return parsedItem;
+        }
     };
     SingleProductComponent.prototype.initSome = function () {
         $(window).load(function () {
@@ -68,6 +83,10 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", Object)
 ], SingleProductComponent.prototype, "product", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], SingleProductComponent.prototype, "productStock", void 0);
 SingleProductComponent = __decorate([
     core_1.Component({
         selector: 'singleProduct',

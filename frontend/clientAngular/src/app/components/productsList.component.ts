@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 declare var jquery:any;
@@ -13,7 +13,7 @@ declare var w3l: any;
   templateUrl: 'src/app/views/productsList.component.html'
   // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnInit, OnChanges {
   @Input() selectedCategory: string;
   @Input() products: any;
   @Output() onProductSelection = new EventEmitter<any>();
@@ -33,6 +33,17 @@ export class ProductsListComponent implements OnInit {
     this.createNumbersArray();
     console.log("splited products: ", this.pages);
     console.log("pagesIndex", this.pagesIndex);
+  }
+
+  ngOnChanges() {
+    this.pages.length = 0;
+    this.splitProducts();
+    if (this.currentPage) {
+      this.currentPage.length = 0;
+    }
+    this.currentPage = this.pages[0];
+    this.pageSelected = 0;
+    this.createNumbersArray();
   }
 
   splitProducts(): void{

@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
 declare var jquery:any;
 declare var $ :any;
 declare var FilmRoll:any;
@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
     public data: any;
     public selectedProducts: any;
     private dataReceived: boolean = false;
+    public selectedProduct: any;
     ngOnInit() {
       var dataPromise = this.warehouse.initData();
       dataPromise.then(result => this.onDataReceived(result));
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
     onCategoryChange(category: string): void {
       this.selectedCategory = category;
       if (this.dataReceived) {
+         this.selectedProduct = null;
          this.selectedProducts = this.data.productsByCategory[this.selectedCategory];
          console.log("selected", this.selectedProducts[0]);
       } else {
@@ -75,21 +77,18 @@ export class AppComponent implements OnInit {
 }
 
 /******* TODO
- * - Fix photos display in singleProduct, if most of things have only one photo then show only one
- * - Remove all not need things from singleProduct 
+ * - fix missing photos
+ * - add side menu
+ * - add place to add reviews
+ * - add ranking
  * - assure that data been loaded
  * - add page to ask if user is 18 years old
- * - Products list should display set number of items
  * - hook up search
  * - add filters to products list
  * - Single product should show sizes
- * - Products list should show only existing sizes
  * - Update home page 
- * - Map if product is in stock in to items
- * - Map sizes in to items
+ * - Disable add to cart if product is out of stock
  * - Map discounted
- * - On singleProduct display the same things what in xtrader
- * - Work out relation between selecting category, selecting product
  * - Check if basket work properly
  * - Add videos.
  * - Add basket page??

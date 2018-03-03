@@ -109,6 +109,27 @@
     color: white;
 }
 
+.specifications {
+    padding-left: 1%;
+}
+
+.specifications p {
+    display: inline-block;
+    width: 20%;
+}
+
+.sliders-container {
+    padding-top: 1%;
+    list-style: none;
+} 
+
+.sliders-container li {
+    display: inline-block;
+    width: 20%;
+    padding-left: 1%;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 320px) {
     .nav-logo {
         margin-left: 12%;

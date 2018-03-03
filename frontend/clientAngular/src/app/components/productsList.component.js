@@ -29,6 +29,16 @@ var ProductsListComponent = (function () {
         console.log("splited products: ", this.pages);
         console.log("pagesIndex", this.pagesIndex);
     };
+    ProductsListComponent.prototype.ngOnChanges = function () {
+        this.pages.length = 0;
+        this.splitProducts();
+        if (this.currentPage) {
+            this.currentPage.length = 0;
+        }
+        this.currentPage = this.pages[0];
+        this.pageSelected = 0;
+        this.createNumbersArray();
+    };
     ProductsListComponent.prototype.splitProducts = function () {
         if (this.products) {
             var items = [];

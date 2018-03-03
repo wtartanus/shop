@@ -1768,18 +1768,18 @@ h1.w3wthreeheadingaits {
 	backface-visibility: hidden;
 }
 
-.cbp-pgitem img:first-child {
+.cbp-pgitem img {
 	position: relative;
 }
 
-.cbp-pgitem img:nth-child(2) {
+/* .cbp-pgitem img:nth-child(2) {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	-webkit-transform: translateX(-50%) translateY(-50%) rotateY(-180deg);
 	-moz-transform: translateX(-50%) translateY(-50%) rotateY(-180deg);
 	transform: translateX(-50%) translateY(-50%) rotateY(-180deg);
-}
+} */
 
 .no-csstransforms3d .cbp-pgitem img:nth-child(2) {
 	position: relative;

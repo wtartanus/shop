@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, Input} from '@angular/core';
+import {Component, OnInit, OnDestroy, OnChanges, Input} from '@angular/core';
 // import { SingleProductComponent } from './singleProduct.component.js';
 // import { ProductsListComponent } from "./productsList.component.js";
 declare var jquery:any;
@@ -14,18 +14,29 @@ declare var w3l: any;
   templateUrl: 'src/app/views/products.component.html'
   //entryComponents: [ProductsListComponent, SingleProductComponent]
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnChanges {
   @Input() selectedCategory: string;
   @Input() data: any;
-  public selectedProduct: any;
+  @Input() stock: any;
+  @Input() selectedProduct: any;
+  public productStock: any;
 
   ngOnInit() {
-    // this.initShop();
-    // this.initPopUpBox();
+
+  }
+
+  ngOnChanges(changes: any) {
+       this.selectedProduct = null;
+    console.log("change", this.selectedCategory);
   }
 
   onProductSelection(selectedProduct: any): void{
     this.selectedProduct = selectedProduct;
+    this.productStock = this.stock[selectedProduct.id];
+  }
+
+  categorySelect(clearSelectedProduct: boolean): void{
+    this.selectedProduct = null;
   }
 
   initShop(): void {

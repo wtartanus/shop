@@ -26,7 +26,7 @@ var HeaderComponent = (function () {
                         img: "images/categories/sex-toys-for-men.jpg"
                     },
                     {
-                        name: "Realistic Dildos And Vibes",
+                        name: "Realistic Dildos and Vibes",
                         img: "images/categories/realistic-dildos-and-vibes.jpg"
                     },
                     {
@@ -116,7 +116,7 @@ var HeaderComponent = (function () {
                 name: "Bondage Gear",
                 subCategories: [
                     {
-                        name: "Restrains",
+                        name: "Restraints",
                         img: "images/categories/restraints.jpg"
                     },
                     {

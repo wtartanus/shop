@@ -16,15 +16,33 @@ declare var w3l: any;
 export class SingleProductComponent implements OnInit {
   @Input() data: any;
   @Input() product: any;
+  @Input() productStock: any;
+  public currentImage: any;
 
   ngOnInit() {
+    this.currentImage = this.product.xlImage2;
     // this.initShop();
     // this.initPopUpBox();
     this.initSome();
+    console.log("product", this.product);
+    console.log("stock", this.productStock);
   }
 
   initShop(): void {
     var shop = new cbpShop( document.getElementById( 'cbp-pgcontainer' ) ); 
+  }
+
+  changeImage(image: string): void{
+    this.currentImage = image;
+  }
+  
+  convertString(item: string): any{
+    let parsedItem = JSON.parse(item);
+    if (Array.isArray(parsedItem)) {
+       return parsedItem[0];
+    } else {
+      return parsedItem;
+    }
   }
 
   initSome(): void{

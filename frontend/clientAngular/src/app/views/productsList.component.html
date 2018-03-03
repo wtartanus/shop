@@ -15,12 +15,12 @@
 		<div id="cbp-pgcontainer" class="cbp-pgcontainer">
 			<ul class="cbp-pggrid">
 				<li class="wthree aits w3l" *ngFor="let product of currentPage">
-					<div class="cbp-pgcontent" id="women-1">
+					<div class="cbp-pgcontent">
 						<a class="pointer-cursor" (click)="selectProduct(product)">
 							<div class="cbp-pgitem a3ls">
-								<div class="cbp-pgitem-flip">
-									<img src="{{'images/main/' + product.image}}" alt="{{product.name}}">
-									<img src="images/11-back.jpg" alt="">
+								<div class="cbp-pgitem-flip" (mouseenter)="product.secondPhoto = true" (mouseleave)="product.secondPhoto = null">
+									<img *ngIf="!product.secondPhoto || (!product.xlImage3 || product.xlImage3 === '{}')" src="{{'images/hires/' + product.xlImage2}}" alt="{{product.name}}">
+									<img *ngIf="product.secondPhoto && (product.xlImage3 && product.xlImage3 !== '{}')" src="{{'images/hires/' + product.xlImage3}}" alt="{{product.name}}">
 								</div>
 							</div>
 						</a>
