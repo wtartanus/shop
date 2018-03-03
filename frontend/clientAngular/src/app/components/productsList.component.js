@@ -15,10 +15,44 @@ var core_1 = require("@angular/core");
 var ProductsListComponent = (function () {
     function ProductsListComponent() {
         this.onProductSelection = new core_1.EventEmitter();
+        this.itemsShowNumber = 15;
+        this.pages = new Array();
+        this.pagesIndex = new Array();
     }
     ProductsListComponent.prototype.ngOnInit = function () {
         this.initShop();
         this.initPopUpBox();
+        this.splitProducts();
+        this.currentPage = this.pages[0];
+        this.createNumbersArray();
+        this.pageSelected = 0;
+        console.log("splited products: ", this.pages);
+        console.log("pagesIndex", this.pagesIndex);
+    };
+    ProductsListComponent.prototype.splitProducts = function () {
+        if (this.products) {
+            var items = [];
+            for (var i = 0; i < this.products.length; i++) {
+                items.push(this.products[i]);
+                if (items.length === this.itemsShowNumber) {
+                    var itemsCopy = Object.assign([], items);
+                    this.pages.push(itemsCopy);
+                    items.length = 0;
+                }
+            }
+            if (items.length) {
+                this.pages.push(items);
+            }
+        }
+    };
+    ProductsListComponent.prototype.createNumbersArray = function () {
+        for (var i = 0; i < this.pages.length; i++) {
+            this.pagesIndex.push(i);
+        }
+    };
+    ProductsListComponent.prototype.changePage = function (pageNumber) {
+        this.currentPage = this.pages[pageNumber];
+        this.pageSelected = pageNumber;
     };
     ProductsListComponent.prototype.selectProduct = function (product) {
         this.selectedProduct = product;

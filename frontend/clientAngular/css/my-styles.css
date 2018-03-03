@@ -67,6 +67,42 @@
     color:red;
 }
 
+.side-menu {
+    flex-basis: 20%;
+    height: 600px;
+    border-right: 1px solid red;
+}
+
+.products-cart {
+    float: right;
+}
+
+.products-cart span {
+    color: blue;
+}
+
+.pages-index-container {
+    text-align: right;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+.page-selected {
+    background-color: dodgerblue;
+}
+
+.pages-index {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid lightgray;
+  margin-left: 0.2%;
+  width: 1.4%;
+  text-align: center;
+  border-radius: 25%;
+  font-size: 1.2em;
+  font-family: 'Noto Serif', serif;
+}
+
 @media screen and (min-width: 320px) {
     .nav-logo {
         margin-left: 12%;

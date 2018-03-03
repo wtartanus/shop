@@ -18,10 +18,49 @@ export class ProductsListComponent implements OnInit {
   @Input() products: any;
   @Output() onProductSelection = new EventEmitter<any>();
   public selectedProduct: any;
+  public itemsShowNumber: number = 15;
+  public currentPage: any;
+  private pages: Array<any> = new Array();
+  public pagesIndex: Array<number> = new Array();
+  public pageSelected: number;
 
   ngOnInit() {
     this.initShop();
     this.initPopUpBox();
+    this.splitProducts();
+    this.currentPage = this.pages[0];
+    this.createNumbersArray();
+    this.pageSelected = 0;
+    console.log("splited products: ", this.pages);
+    console.log("pagesIndex", this.pagesIndex);
+  }
+
+  splitProducts(): void{
+    if (this.products) {
+        let items = [];
+        for (var i = 0; i < this.products.length; i++) {
+           items.push(this.products[i]);
+           if (items.length === this.itemsShowNumber) {
+              var itemsCopy = Object.assign([], items);
+              this.pages.push(itemsCopy);
+              items.length = 0;
+           } 
+        }
+        if (items.length) {
+          this.pages.push(items);
+        }
+    }
+  }
+
+  createNumbersArray(): void{
+     for (var i = 0; i < this.pages.length; i++) {
+        this.pagesIndex.push(i);
+     }
+  }
+
+  changePage(pageNumber: number): void{
+     this.currentPage = this.pages[pageNumber];
+     this.pageSelected = pageNumber;
   }
 
   selectProduct(product: any): void{
