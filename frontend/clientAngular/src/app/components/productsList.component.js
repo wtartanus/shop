@@ -24,8 +24,8 @@ var ProductsListComponent = (function () {
         this.initPopUpBox();
         this.splitProducts();
         this.currentPage = this.pages[0];
-        this.createNumbersArray();
         this.pageSelected = 0;
+        this.createNumbersArray();
         console.log("splited products: ", this.pages);
         console.log("pagesIndex", this.pagesIndex);
     };
@@ -46,13 +46,35 @@ var ProductsListComponent = (function () {
         }
     };
     ProductsListComponent.prototype.createNumbersArray = function () {
-        for (var i = 0; i < this.pages.length; i++) {
-            this.pagesIndex.push(i);
+        if (this.pages.length <= 10 && !this.pagesIndex.length) {
+            for (var i = 0; i < this.pages.length; i++) {
+                this.pagesIndex.push(i);
+            }
+        }
+        else if ((this.pageSelected === 0) || (this.pageSelected - 10 <= 0 && this.pageSelected !== this.pagesIndex[this.pagesIndex.length - 1])) {
+            this.pagesIndex.length = 0;
+            for (var i = 0; i < 10; i++) {
+                this.pagesIndex.push(i);
+            }
+        }
+        else if ((this.pageSelected === this.pages.length - 1) || (this.pageSelected + 10 >= this.pages.length - 1 && this.pageSelected !== this.pagesIndex[0])) {
+            this.pagesIndex.length = 0;
+            for (var i = this.pages.length - 11; i < this.pages.length; i++) {
+                this.pagesIndex.push(i);
+            }
+        }
+        else {
+            this.pagesIndex.length = 0;
+            var end = (this.pageSelected - 4) + 11;
+            for (var i = this.pageSelected - 4; i < end; i++) {
+                this.pagesIndex.push(i);
+            }
         }
     };
     ProductsListComponent.prototype.changePage = function (pageNumber) {
         this.currentPage = this.pages[pageNumber];
         this.pageSelected = pageNumber;
+        this.createNumbersArray();
     };
     ProductsListComponent.prototype.goToStartEnd = function (goToStart) {
         if (goToStart) {
@@ -63,6 +85,7 @@ var ProductsListComponent = (function () {
             this.currentPage = this.pages[this.pages.length - 1];
             this.pageSelected = this.pages.length - 1;
         }
+        this.createNumbersArray();
     };
     ProductsListComponent.prototype.moveByOnePage = function (goLeft) {
         if (goLeft) {
@@ -77,6 +100,7 @@ var ProductsListComponent = (function () {
                 this.currentPage = this.pages[this.pageSelected];
             }
         }
+        this.createNumbersArray();
     };
     ProductsListComponent.prototype.selectProduct = function (product) {
         this.selectedProduct = product;
