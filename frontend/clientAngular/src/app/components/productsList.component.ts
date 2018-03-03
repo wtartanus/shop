@@ -57,7 +57,7 @@ export class ProductsListComponent implements OnInit {
       for (var i = 0; i < this.pages.length; i++) {
         this.pagesIndex.push(i);
       }
-    } else if ((this.pageSelected === 0) || (this.pageSelected -10 <= 0 && this.pageSelected !== this.pagesIndex[this.pagesIndex.length - 1])) {
+    } else if ((this.pageSelected === 0) || (this.pageSelected - 9 <= 0 && this.pageSelected !== this.pagesIndex[this.pagesIndex.length - 1])) {
       this.pagesIndex.length = 0;
       for (var i = 0; i < 10; i++) {
         this.pagesIndex.push(i);
