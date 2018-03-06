@@ -16,7 +16,7 @@ var SingleProductComponent = (function () {
     function SingleProductComponent() {
     }
     SingleProductComponent.prototype.ngOnInit = function () {
-        this.currentImage = this.product.xlImage2;
+        this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
         // this.initShop();
         // this.initPopUpBox();
         this.initSome();
@@ -37,6 +37,11 @@ var SingleProductComponent = (function () {
         else {
             return parsedItem;
         }
+    };
+    SingleProductComponent.prototype.addReview = function () {
+        //reviewName
+        //reviewText
+        //product id
     };
     SingleProductComponent.prototype.initSome = function () {
         $(window).load(function () {

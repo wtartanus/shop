@@ -7,7 +7,10 @@
                     <div class="single-page-row" id="detail-21">
                         <div class="col-md-6 single-top-left">
                             <div class="flexslider">
-                                <div class="thumb-image detail_images"> <img src="{{'images/hires/' +  currentImage}}" data-imagezoom="true" class="img-responsive"></div>
+                                <div class="thumb-image detail_images"> 
+                                    <img *ngIf="product.xlImage2 && product.xlImage2 !== '{}'" src="{{'images/hires/' +  currentImage}}" data-imagezoom="true" class="img-responsive">
+                                    <img *ngIf="!product.xlImage2 || product.xlImage2 === '{}'" src="{{'images/main/' + currentImage}}" data-imagezoom="true" class="img-responsive">
+                                </div>
                                 <ul class="sliders-container">
                                     <li *ngIf="product.xlImage2 && product.xlImage2 !== '{}' && currentImage !== product.xlImage2" (click)="changeImage(product.xlImage2)"><img src="{{'images/hires/' + product.xlImage2}}"></li>
                                     <li *ngIf="product.xlImage3 && product.xlImage3 !== '{}' && currentImage !== product.xlImage3" (click)="changeImage(product.xlImage3)"><img src="{{'images/hires/' + product.xlImage3}}"></li>
@@ -201,16 +204,17 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingThree">
                                 <h4 class="panel-title asd">
-                                    <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Rating & Reviews (40+) <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+                                    <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Reviews<span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
                                     </a>
                                 </h4>
                             </div>
                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                <h3>"Excellent Quality & Fitting!"</h3>
-                                <h4>Mathilda, Certified Buyer.</h4>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                <span>5 Stars</span>
-                                <a href="#" class="next">Next Review &rarr;</a>
+                                <!-- <label for="name">Name:</label><br> -->
+                                <input type="text" name="name" placeholder="Name" id="name-input-review" [(ngModel)]="reviewName"><br>
+                                <textarea rows="4" cols="100" placeholder="Write review ..." id="review-text" [(ngModel)]="reviewText"></textarea><br>
+                                <div class="row">
+                                     <button class="btn btn-secondary pull-right" (click)="addReview">Add</button>
+                                </div>
                             </div>
                         </div>
     

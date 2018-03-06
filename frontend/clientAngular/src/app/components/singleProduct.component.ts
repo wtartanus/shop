@@ -18,9 +18,11 @@ export class SingleProductComponent implements OnInit {
   @Input() product: any;
   @Input() productStock: any;
   public currentImage: any;
+  public reviewName: string;
+  public reviewText: string;
 
   ngOnInit() {
-    this.currentImage = this.product.xlImage2;
+    this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
     // this.initShop();
     // this.initPopUpBox();
     this.initSome();
@@ -43,6 +45,12 @@ export class SingleProductComponent implements OnInit {
     } else {
       return parsedItem;
     }
+  }
+
+  addReview(): void{
+    //reviewName
+    //reviewText
+    //product id
   }
 
   initSome(): void{

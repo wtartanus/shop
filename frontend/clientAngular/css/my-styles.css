@@ -130,6 +130,28 @@
     cursor: pointer;
 }
 
+#name-input-review {
+    width: 25%;
+    background: white;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    color: black;
+}
+
+#name-input-review::-webkit-input-placeholder {
+    color: gray;
+}
+#review-text {
+    background: white;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    color: black;
+}
+
+#review-text::placeholder {
+    color: gray;
+}
+
 @media screen and (min-width: 320px) {
     .nav-logo {
         margin-left: 12%;
