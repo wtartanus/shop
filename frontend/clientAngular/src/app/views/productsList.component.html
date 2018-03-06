@@ -19,7 +19,8 @@
 						<a class="pointer-cursor" (click)="selectProduct(product)">
 							<div class="cbp-pgitem a3ls">
 								<div class="cbp-pgitem-flip" (mouseenter)="product.secondPhoto = true" (mouseleave)="product.secondPhoto = null">
-									<img *ngIf="!product.secondPhoto || (!product.xlImage3 || product.xlImage3 === '{}')" src="{{'images/hires/' + product.xlImage2}}" alt="{{product.name}}">
+									<img *ngIf="!product.xlImage2 || product.xlImage2 === '{}'" src="{{'images/main/' + product.image}}" alt="{{product.name}}">
+									<img *ngIf="(product.xlImage2 &&  product.xlImage2 !== '{}') && (!product.secondPhoto || (!product.xlImage3 || product.xlImage3 === '{}'))" src="{{'images/hires/' + product.xlImage2}}" alt="{{product.name}}">
 									<img *ngIf="product.secondPhoto && (product.xlImage3 && product.xlImage3 !== '{}')" src="{{'images/hires/' + product.xlImage3}}" alt="{{product.name}}">
 								</div>
 							</div>

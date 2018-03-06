@@ -63,7 +63,6 @@ AppComponent = __decorate([
 ], AppComponent);
 exports.AppComponent = AppComponent;
 /******* TODO
- * - fix missing photos
  * - add side menu
  * - add place to add reviews
  * - add ranking
