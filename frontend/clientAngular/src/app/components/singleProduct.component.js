@@ -10,10 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var warehouse_service_js_1 = require("./../services/warehouse.service.js");
 // import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
 var SingleProductComponent = (function () {
-    function SingleProductComponent() {
+    function SingleProductComponent(warehouse) {
+        this.warehouse = warehouse;
     }
     SingleProductComponent.prototype.ngOnInit = function () {
         this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
@@ -23,6 +25,7 @@ var SingleProductComponent = (function () {
         console.log("product", this.product);
         console.log("stock", this.productStock);
     };
+    ;
     SingleProductComponent.prototype.initShop = function () {
         var shop = new cbpShop(document.getElementById('cbp-pgcontainer'));
     };
@@ -42,6 +45,14 @@ var SingleProductComponent = (function () {
         //reviewName
         //reviewText
         //product id
+        console.log("revieName", this.reviewName, "reviewNumber", this.reviewRanking, "reviewText", this.reviewText);
+        var msg = {
+            name: this.reviewName,
+            ranking: this.reviewRanking,
+            text: this.reviewText,
+            productId: this.product.id
+        };
+        this.warehouse.httpPost("http://localhost:8080/review", msg);
     };
     SingleProductComponent.prototype.initSome = function () {
         $(window).load(function () {
@@ -96,7 +107,10 @@ SingleProductComponent = __decorate([
     core_1.Component({
         selector: 'singleProduct',
         templateUrl: 'src/app/views/singleProduct.component.html',
-    })
+        providers: [warehouse_service_js_1.WarehouseService]
+        // entryComponents: [InspirationsComponent, DatePickerComponent]
+    }),
+    __metadata("design:paramtypes", [warehouse_service_js_1.WarehouseService])
 ], SingleProductComponent);
 exports.SingleProductComponent = SingleProductComponent;
 //# sourceMappingURL=singleProduct.component.js.map

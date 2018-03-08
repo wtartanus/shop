@@ -8,6 +8,7 @@ require_relative( './models/mapStocksFromXML.rb' )
 require_relative( './models/mapCategoriesFromXML.rb' )
 require_relative( './models/mapDiscontinuedFromXML.rb' )
 require_relative( './models/mapData.rb' )
+require_relative( './models/review.rb' )
 
 
 options '/*' do
@@ -52,5 +53,19 @@ get '/data' do
     # data = MapData.new()
     result = MapData.getData()
     return result
+end
+
+get '/review/:productId' do
+
+  result = Review.getByProductId(params['productId'].to_i)
+  return result
+end
+
+post '/review' do
+ payload = JSON.parse(request.body.read)
+ puts("!!!!!!!!!!#{payload}")
+ review = Review.new(payload)
+ review.save()
+ return review
 end
 

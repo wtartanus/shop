@@ -18,15 +18,15 @@ var WarehouseService = (function () {
     }
     ;
     WarehouseService.prototype.httpGet = function (url) {
-        // const headers = new Headers();
-        // headers.append('Content-Type', 'application/json');
-        // headers.append('Access-Control-Allow-Origin', '*');
-        // headers.append('Access-Control-Allow-Origin', 'localhost:4567');
-        // const options = new RequestOptions({headers: headers});
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
+    };
+    WarehouseService.prototype.httpPost = function (url, msg) {
+        console.log("@@@@@", msg, url);
+        this.http.post(url, msg);
+        return this.http.post(url, msg).toPromise().then(function (response) { return response.json(); }, this.handleError);
     };
     WarehouseService.prototype.initData = function () {
         return this.httpGet("http://localhost:8080/data");

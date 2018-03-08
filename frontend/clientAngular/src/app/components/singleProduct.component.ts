@@ -1,6 +1,9 @@
 import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
+import {WarehouseService} from './../services/warehouse.service.js';
+
 declare var jquery:any;
 declare var $ :any;
 declare var cbpShop: any;
@@ -11,6 +14,7 @@ declare var w3l: any;
 @Component({
   selector: 'singleProduct',
   templateUrl: 'src/app/views/singleProduct.component.html',
+  providers: [WarehouseService]
   // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
 export class SingleProductComponent implements OnInit {
@@ -20,6 +24,7 @@ export class SingleProductComponent implements OnInit {
   public currentImage: any;
   public reviewName: string;
   public reviewText: string;
+  public reviewRanking: number;
 
   ngOnInit() {
     this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
@@ -29,6 +34,9 @@ export class SingleProductComponent implements OnInit {
     console.log("product", this.product);
     console.log("stock", this.productStock);
   }
+
+  constructor(private warehouse: WarehouseService ) {
+  };
 
   initShop(): void {
     var shop = new cbpShop( document.getElementById( 'cbp-pgcontainer' ) ); 
@@ -51,6 +59,14 @@ export class SingleProductComponent implements OnInit {
     //reviewName
     //reviewText
     //product id
+    console.log("revieName", this.reviewName, "reviewNumber", this.reviewRanking, "reviewText", this.reviewText);
+    var msg = {
+      name: this.reviewName,
+      ranking: this.reviewRanking,
+      text: this.reviewText,
+      productId: this.product.id
+    }
+    this.warehouse.httpPost("http://localhost:8080/review", msg);
   }
 
   initSome(): void{
