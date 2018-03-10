@@ -16,16 +16,28 @@ var warehouse_service_js_1 = require("./../services/warehouse.service.js");
 var SingleProductComponent = (function () {
     function SingleProductComponent(warehouse) {
         this.warehouse = warehouse;
+        this.reviewRanking = 5;
+        this.productReviews = new Array();
+        this.savingReview = false;
     }
     SingleProductComponent.prototype.ngOnInit = function () {
         this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
         // this.initShop();
         // this.initPopUpBox();
         this.initSome();
+        this.getReviews();
         console.log("product", this.product);
         console.log("stock", this.productStock);
     };
     ;
+    SingleProductComponent.prototype.getReviews = function () {
+        var reviewPromise = this.warehouse.httpGet("http://localhost:8080//review/" + this.product.id);
+        reviewPromise.then(function onSuccess(result) {
+            if (result && result.length) {
+                this.productReviews = this.productReviews.concat(result);
+            }
+        }.bind(this));
+    };
     SingleProductComponent.prototype.initShop = function () {
         var shop = new cbpShop(document.getElementById('cbp-pgcontainer'));
     };
@@ -42,17 +54,21 @@ var SingleProductComponent = (function () {
         }
     };
     SingleProductComponent.prototype.addReview = function () {
-        //reviewName
-        //reviewText
-        //product id
-        console.log("revieName", this.reviewName, "reviewNumber", this.reviewRanking, "reviewText", this.reviewText);
+        this.savingReview = true;
         var msg = {
             name: this.reviewName,
             ranking: this.reviewRanking,
             text: this.reviewText,
             productId: this.product.id
         };
-        this.warehouse.httpPost("http://localhost:8080/review", msg);
+        var reviewPromise = this.warehouse.httpPost("http://localhost:8080/review", msg);
+        reviewPromise.then(function reviewAdded(result) {
+            this.productReviews.push(result[0]);
+            this.savingReview = false;
+            this.reviewName = "";
+            this.reviewText = "";
+            this.reviewRanking = 5;
+        }.bind(this));
     };
     SingleProductComponent.prototype.initSome = function () {
         $(window).load(function () {

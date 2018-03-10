@@ -50,22 +50,19 @@ get '/mapDiscFromXML' do
 end
 
 get '/data' do 
-    # data = MapData.new()
     result = MapData.getData()
     return result
 end
 
 get '/review/:productId' do
-
   result = Review.getByProductId(params['productId'].to_i)
-  return result
+  return result.to_json
 end
 
 post '/review' do
  payload = JSON.parse(request.body.read)
- puts("!!!!!!!!!!#{payload}")
  review = Review.new(payload)
- review.save()
- return review
+ reviewAfterSave = review.save()
+ return reviewAfterSave.to_json
 end
 

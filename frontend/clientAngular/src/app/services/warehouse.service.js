@@ -24,7 +24,6 @@ var WarehouseService = (function () {
             .catch(this.handleError);
     };
     WarehouseService.prototype.httpPost = function (url, msg) {
-        console.log("@@@@@", msg, url);
         this.http.post(url, msg);
         return this.http.post(url, msg).toPromise().then(function (response) { return response.json(); }, this.handleError);
     };

@@ -22,7 +22,6 @@ export class WarehouseService {
     }
 
     httpPost(url: string, msg: any): Promise<any> {
-        console.log("@@@@@", msg, url);
         this.http.post(url, msg);
         return this.http.post(url, msg).toPromise().then(response => { return response.json() }, this.handleError);
     }

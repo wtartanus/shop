@@ -220,7 +220,21 @@
                                 <br>
                                 <textarea rows="4" cols="100" placeholder="Write review ..." id="review-text" [(ngModel)]="reviewText"></textarea><br>
                                 <div class="row">
-                                     <button class="btn btn-secondary pull-right" (click)="addReview()">Add</button>
+                                     <button class="btn btn-secondary pull-right" (click)="addReview()">
+                                         <span *ngIf="!savingReview">Add</span>
+                                         <span *ngIf="savingReview"><i class="fas fa-spinner fa-spin"></i></span>
+                                     </button>
+                                </div>
+                                <div *ngIf="!productReviews || !productReviews.length">
+                                    <p>{{product.name}} has no reviews.</p>
+                                </div>
+                                <div *ngIf="productReviews && productReviews.length">
+                                        <div *ngFor="let review of productReviews">
+                                            <p>{{review.name}}</p>
+                                            <p>{{review.ranking}}</p>
+                                            <p>{{review.text}}</p>
+                                            <div class="divider"></div>
+                                        </div>
                                 </div>
                             </div>
                         </div>

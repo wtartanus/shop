@@ -3122,13 +3122,13 @@ p.single-price-text {
 	margin-bottom: 20px;
 }
 
-.aitsaccordionw3layouts div#collapseThree span {
+/* .aitsaccordionw3layouts div#collapseThree span {
 	background: url("../images/5stars.png") no-repeat 0px 0px;
 	color: #31708f;
 	font-weight: 500;
 	padding-left: 140px;
 	padding-top: 4px;
-}
+} */
 
 .aitsaccordionw3layouts div#collapseFour {
 	padding: 30px;
@@ -5124,11 +5124,11 @@ p.single-price-text {
 	.aitsaccordionw3layouts div#collapseThree h4 { 
 		font-size: 14px; 
 	}
-	.aitsaccordionw3layouts div#collapseThree span { 
+	/* .aitsaccordionw3layouts div#collapseThree span { 
 		padding-left: 105px;
 		padding-top: 0;
 		background-size: 61%;
-	}
+	} */
 	.aitsaccordionw3layouts a.next { 
 		margin: 0; 
 		font-size: 13px; 
@@ -5354,9 +5354,9 @@ p.single-price-text {
 	.aitsaccordionw3layouts div#collapseThree h4 {
 		font-size: 13px;
 	}
-	.aitsaccordionw3layouts div#collapseThree span {
+	/* .aitsaccordionw3layouts div#collapseThree span {
 		padding-left: 84px; 
-	}
+	} */
 	h1.w3wthreeheadingaits {
 		font-size: 15px;
 		padding: 14px 0;

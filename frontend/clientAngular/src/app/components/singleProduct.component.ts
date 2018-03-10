@@ -24,19 +24,31 @@ export class SingleProductComponent implements OnInit {
   public currentImage: any;
   public reviewName: string;
   public reviewText: string;
-  public reviewRanking: number;
+  public reviewRanking: number = 5;
+  public productReviews: Array<any> = new Array();
+  public savingReview: boolean = false;
 
   ngOnInit() {
     this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
     // this.initShop();
     // this.initPopUpBox();
     this.initSome();
+    this.getReviews();
     console.log("product", this.product);
     console.log("stock", this.productStock);
   }
 
   constructor(private warehouse: WarehouseService ) {
   };
+
+  getReviews(): void{
+    var reviewPromise = this.warehouse.httpGet("http://localhost:8080//review/" + this.product.id);
+    reviewPromise.then(function onSuccess(result: any) {
+       if (result && result.length) {
+          this.productReviews = this.productReviews.concat(result);
+       }
+    }.bind(this));
+  }
 
   initShop(): void {
     var shop = new cbpShop( document.getElementById( 'cbp-pgcontainer' ) ); 
@@ -56,17 +68,21 @@ export class SingleProductComponent implements OnInit {
   }
 
   addReview(): void{
-    //reviewName
-    //reviewText
-    //product id
-    console.log("revieName", this.reviewName, "reviewNumber", this.reviewRanking, "reviewText", this.reviewText);
+    this.savingReview = true;
     var msg = {
       name: this.reviewName,
       ranking: this.reviewRanking,
       text: this.reviewText,
       productId: this.product.id
     }
-    this.warehouse.httpPost("http://localhost:8080/review", msg);
+    var reviewPromise = this.warehouse.httpPost("http://localhost:8080/review", msg);
+    reviewPromise.then(function reviewAdded(result: any) {
+      this.productReviews.push(result[0]);
+      this.savingReview = false;
+      this.reviewName = "";
+      this.reviewText = "";
+      this.reviewRanking = 5;
+    }.bind(this));
   }
 
   initSome(): void{
