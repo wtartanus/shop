@@ -26,6 +26,9 @@ var SingleProductComponent = (function () {
         this.starFour = { selected: true, value: 4, id: "star-4", position: 3 };
         this.starFive = { selected: true, value: 5, id: "star-5", position: 4 };
         this.orderedStars = new Array();
+        this.itemsShowNumber = 5;
+        this.pages = new Array();
+        this.pagesIndex = new Array();
     }
     SingleProductComponent.prototype.ngOnInit = function () {
         this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
@@ -33,11 +36,58 @@ var SingleProductComponent = (function () {
         // this.initPopUpBox();
         this.initSome();
         this.getReviews();
-        this.initOrderedStars();
         console.log("product", this.product);
         console.log("stock", this.productStock);
     };
     ;
+    SingleProductComponent.prototype.splitProducts = function () {
+        if (this.productReviews) {
+            var items = [];
+            for (var i = 0; i < this.productReviews.length; i++) {
+                items.push(this.productReviews[i]);
+                if (items.length === this.itemsShowNumber) {
+                    var itemsCopy = Object.assign([], items);
+                    this.pages.push(itemsCopy);
+                    items.length = 0;
+                }
+            }
+            if (items.length) {
+                this.pages.push(items);
+            }
+        }
+    };
+    SingleProductComponent.prototype.createNumbersArray = function () {
+        if (this.pages.length <= 10 || !this.pagesIndex.length) {
+            this.pagesIndex.length = 0;
+            for (var i = 0; i < this.pages.length; i++) {
+                this.pagesIndex.push(i);
+            }
+        }
+        else if ((this.pageSelected === 0) || (this.pageSelected - 9 <= 0 && this.pageSelected !== this.pagesIndex[this.pagesIndex.length - 1])) {
+            this.pagesIndex.length = 0;
+            for (var i = 0; i < 10; i++) {
+                this.pagesIndex.push(i);
+            }
+        }
+        else if ((this.pageSelected === this.pages.length - 1) || (this.pageSelected + 10 >= this.pages.length - 1 && this.pageSelected !== this.pagesIndex[0])) {
+            this.pagesIndex.length = 0;
+            for (var i = this.pages.length - 11; i < this.pages.length; i++) {
+                this.pagesIndex.push(i);
+            }
+        }
+        else {
+            this.pagesIndex.length = 0;
+            var end = (this.pageSelected - 4) + 11;
+            for (var i = this.pageSelected - 4; i < end; i++) {
+                this.pagesIndex.push(i);
+            }
+        }
+    };
+    SingleProductComponent.prototype.changePage = function (pageNumber) {
+        this.currentPage = this.pages[pageNumber];
+        this.pageSelected = pageNumber;
+        this.createNumbersArray();
+    };
     SingleProductComponent.prototype.getReviews = function () {
         var reviewPromise = this.warehouse.httpGet("http://localhost:8080//review/" + this.product.id);
         reviewPromise.then(function onSuccess(result) {
@@ -46,6 +96,11 @@ var SingleProductComponent = (function () {
             }
             this.reviewsLoaded = true;
             this.calculateAverageRanking();
+            this.initOrderedStars();
+            this.splitProducts();
+            this.currentPage = this.pages[0];
+            this.pageSelected = 0;
+            this.createNumbersArray();
         }.bind(this));
     };
     SingleProductComponent.prototype.calculateAverageRanking = function () {

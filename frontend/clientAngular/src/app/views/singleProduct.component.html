@@ -234,7 +234,7 @@
                                         <span><i class="fas fa-spinner fa-spin"></i></span>
                                 </div>
                                 <div *ngIf="reviewsLoaded && productReviews && productReviews.length">
-                                        <div *ngFor="let review of productReviews">
+                                        <div *ngFor="let review of currentPage">
                                             <p>{{review.name}}</p>
                                             <p>
                                                 <span class="review-star"><i class="fas fa-star"></i></span>
@@ -246,6 +246,9 @@
                                             <p>{{review.text}}</p>
                                             <hr />
                                         </div>
+                                        <ul>
+                                            <li class="pages-index" [ngClass]="{'page-selected': pageSelected === pageIndex}" *ngFor="let pageIndex of pagesIndex" (click)="changePage(pageIndex)">{{pageIndex + 1}}</li>
+                                        </ul>
                                 </div>
                             </div>
                         </div>
