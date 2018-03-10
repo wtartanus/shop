@@ -27,6 +27,15 @@ export class SingleProductComponent implements OnInit {
   public reviewRanking: number = 5;
   public productReviews: Array<any> = new Array();
   public savingReview: boolean = false;
+  public reviewsLoaded: boolean = false;
+  public averageRanking: number;
+
+  public starOne: any = {selected: true, value: 1, id: "star-1", position: 0};
+  public starTwo: any = {selected: true, value: 2, id: "star-2", position: 1};
+  public starThree: any = {selected: true, value: 3, id: "star-3", position: 2};
+  public starFour: any = {selected: true, value: 4, id: "star-4", position: 3};
+  public starFive: any = {selected: true, value: 5, id: "star-5", position: 4};
+  public orderedStars: Array<any> = new Array();
 
   ngOnInit() {
     this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
@@ -34,6 +43,7 @@ export class SingleProductComponent implements OnInit {
     // this.initPopUpBox();
     this.initSome();
     this.getReviews();
+    this.initOrderedStars();
     console.log("product", this.product);
     console.log("stock", this.productStock);
   }
@@ -47,7 +57,23 @@ export class SingleProductComponent implements OnInit {
        if (result && result.length) {
           this.productReviews = this.productReviews.concat(result);
        }
+       this.reviewsLoaded = true;
+       this.calculateAverageRanking();
     }.bind(this));
+  }
+
+  calculateAverageRanking() :void{
+    if (!this.productReviews || !this.productReviews.length) {
+        this.averageRanking = 5;
+    } else {
+      var total = 0;
+      for (var i = 0; i < this.productReviews.length; i++) {
+          total += this.productReviews[i]['ranking'];
+      }
+      var result = total / this.productReviews.length;
+      result = Math.round(result);
+      this.averageRanking = result;
+    }
   }
 
   initShop(): void {
@@ -82,7 +108,59 @@ export class SingleProductComponent implements OnInit {
       this.reviewName = "";
       this.reviewText = "";
       this.reviewRanking = 5;
+      this.calculateAverageRanking();
     }.bind(this));
+  }
+
+  /**** Stars functionality* *****/
+
+  
+  initOrderedStars(): void{
+    this.orderedStars = [this.starOne, this.starTwo, this.starThree, this.starFour, this.starFive];
+  }
+
+  toggleStarClass(selectedStar: any): void{
+    for (var i = 0; i < this.orderedStars.length; i++) {
+        var star = this.orderedStars[i];
+        var starElement = document.getElementById(star.id);
+        if (star.position <= selectedStar.position) {
+           if (!star.selected) {
+            starElement.classList.remove("far");
+            starElement.classList.add("fas");
+            star.selected = true;
+           }
+        } else {
+          if (star.selected) {
+            starElement.classList.remove("fas");
+            starElement.classList.add("far");
+            star.selected = false;
+          }
+        }
+    }
+  }
+  
+  selectRanking(star: any): void{
+    this.reviewRanking = star.value;
+  }
+
+  resetStars(): void{
+    for (var i = 0; i < this.orderedStars.length; i++) {
+       var star = this.orderedStars[i];
+       var starElement = document.getElementById(star.id);
+        if (star.value <= this.reviewRanking) {
+           if (!star.selected) {
+            starElement.classList.remove("far");
+            starElement.classList.add("fas");
+            star.selected = true;
+           }
+        } else {
+          if (star.selected) {
+            starElement.classList.remove("fas");
+            starElement.classList.add("far");
+            star.selected = false;
+          }
+        }
+    }
   }
 
   initSome(): void{

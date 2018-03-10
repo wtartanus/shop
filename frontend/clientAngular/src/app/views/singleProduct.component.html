@@ -23,18 +23,13 @@
                             <h1 class="item_name">{{product.name}}</h1>
                             <p>Brand: {{product.brandName}}</p>
                             <div class="rating">
-                                <span class="starRating">
-                                    <input id="rating5" type="radio" name="rating" value="5">
-                                    <label for="rating5">5</label>
-                                    <input id="rating4" type="radio" name="rating" value="4" checked>
-                                    <label for="rating4">4</label>
-                                    <input id="rating3" type="radio" name="rating" value="3">
-                                    <label for="rating3">3</label>
-                                    <input id="rating2" type="radio" name="rating" value="2">
-                                    <label for="rating2">2</label>
-                                    <input id="rating1" type="radio" name="rating" value="1">
-                                    <label for="rating1">1</label>
-                                </span>
+                                    <p>
+                                        <span class="review-star"><i class="fas fa-star"></i></span>
+                                        <span class="review-star"><i class="fa-star" [ngClass]="{'far': averageRanking < 2, 'fas': averageRanking > 1}"></i></span>
+                                        <span class="review-star"><i class="fa-star" [ngClass]="{'far': averageRanking < 3, 'fas': averageRanking > 2}"></i></span>
+                                        <span class="review-star"><i class="fa-star" [ngClass]="{'far': averageRanking < 4, 'fas': averageRanking > 3}"></i></span>
+                                        <span class="review-star"><i class="fa-star" [ngClass]="{'far': averageRanking < 5, 'fas': averageRanking > 4}"></i></span>
+                                    </p>
                             </div>
                             <div class="single-price">
                                 <ul>
@@ -210,8 +205,15 @@
                             </div>
                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                 <input type="text" name="name" placeholder="Name" id="name-input-review" [(ngModel)]="reviewName">
+                                <p (mouseleave)="resetStars()">
+                                    <span class="review-star pointer-cursor"><i id="star-1" class="fas fa-star" (mouseenter)="toggleStarClass(starOne)" (click)="selectRanking(starOne)"></i></span>
+                                    <span class="review-star pointer-cursor"><i id="star-2" class="fas fa-star" (mouseenter)="toggleStarClass(starTwo)" (click)="selectRanking(starTwo)"></i></span>
+                                    <span class="review-star pointer-cursor"><i id="star-3" class="fas fa-star" (mouseenter)="toggleStarClass(starThree)" (click)="selectRanking(starThree)"></i></span>
+                                    <span class="review-star pointer-cursor"><i id="star-4" class="fas fa-star" (mouseenter)="toggleStarClass(starFour)" (click)="selectRanking(starFour)"></i></span>
+                                    <span class="review-star pointer-cursor"><i id="star-5" class="fas fa-star" (mouseenter)="toggleStarClass(starFive)" (click)="selectRanking(starFive)"></i></span>
+                                </p>
                                 <select [(ngModel)]="reviewRanking">
-                                    <option value="1" selected>1</option>
+                                    <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -228,12 +230,21 @@
                                 <div *ngIf="!productReviews || !productReviews.length">
                                     <p>{{product.name}} has no reviews.</p>
                                 </div>
-                                <div *ngIf="productReviews && productReviews.length">
+                                <div *ngIf="!reviewsLoaded">
+                                        <span><i class="fas fa-spinner fa-spin"></i></span>
+                                </div>
+                                <div *ngIf="reviewsLoaded && productReviews && productReviews.length">
                                         <div *ngFor="let review of productReviews">
                                             <p>{{review.name}}</p>
-                                            <p>{{review.ranking}}</p>
+                                            <p>
+                                                <span class="review-star"><i class="fas fa-star"></i></span>
+                                                <span class="review-star"><i class="fa-star" [ngClass]="{'far': review.ranking < 2, 'fas': review.ranking > 1}"></i></span>
+                                                <span class="review-star"><i class="fa-star" [ngClass]="{'far': review.ranking < 3, 'fas': review.ranking > 2}"></i></span>
+                                                <span class="review-star"><i class="fa-star" [ngClass]="{'far': review.ranking < 4, 'fas': review.ranking > 3}"></i></span>
+                                                <span class="review-star"><i class="fa-star" [ngClass]="{'far': review.ranking < 5, 'fas': review.ranking > 4}"></i></span>
+                                            </p>
                                             <p>{{review.text}}</p>
-                                            <div class="divider"></div>
+                                            <hr />
                                         </div>
                                 </div>
                             </div>

@@ -7,7 +7,6 @@
     animation: spin 2s linear infinite;
     margin: auto;
     margin-top: 37vh;
-
 }
 
 @keyframes spin {
@@ -150,6 +149,10 @@
 
 #review-text::placeholder {
     color: gray;
+}
+
+.review-star {
+    color: gold;
 }
 
 @media screen and (min-width: 320px) {

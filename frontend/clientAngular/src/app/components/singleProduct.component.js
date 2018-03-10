@@ -19,6 +19,13 @@ var SingleProductComponent = (function () {
         this.reviewRanking = 5;
         this.productReviews = new Array();
         this.savingReview = false;
+        this.reviewsLoaded = false;
+        this.starOne = { selected: true, value: 1, id: "star-1", position: 0 };
+        this.starTwo = { selected: true, value: 2, id: "star-2", position: 1 };
+        this.starThree = { selected: true, value: 3, id: "star-3", position: 2 };
+        this.starFour = { selected: true, value: 4, id: "star-4", position: 3 };
+        this.starFive = { selected: true, value: 5, id: "star-5", position: 4 };
+        this.orderedStars = new Array();
     }
     SingleProductComponent.prototype.ngOnInit = function () {
         this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
@@ -26,6 +33,7 @@ var SingleProductComponent = (function () {
         // this.initPopUpBox();
         this.initSome();
         this.getReviews();
+        this.initOrderedStars();
         console.log("product", this.product);
         console.log("stock", this.productStock);
     };
@@ -36,7 +44,23 @@ var SingleProductComponent = (function () {
             if (result && result.length) {
                 this.productReviews = this.productReviews.concat(result);
             }
+            this.reviewsLoaded = true;
+            this.calculateAverageRanking();
         }.bind(this));
+    };
+    SingleProductComponent.prototype.calculateAverageRanking = function () {
+        if (!this.productReviews || !this.productReviews.length) {
+            this.averageRanking = 5;
+        }
+        else {
+            var total = 0;
+            for (var i = 0; i < this.productReviews.length; i++) {
+                total += this.productReviews[i]['ranking'];
+            }
+            var result = total / this.productReviews.length;
+            result = Math.round(result);
+            this.averageRanking = result;
+        }
     };
     SingleProductComponent.prototype.initShop = function () {
         var shop = new cbpShop(document.getElementById('cbp-pgcontainer'));
@@ -68,7 +92,55 @@ var SingleProductComponent = (function () {
             this.reviewName = "";
             this.reviewText = "";
             this.reviewRanking = 5;
+            this.calculateAverageRanking();
         }.bind(this));
+    };
+    /**** Stars functionality* *****/
+    SingleProductComponent.prototype.initOrderedStars = function () {
+        this.orderedStars = [this.starOne, this.starTwo, this.starThree, this.starFour, this.starFive];
+    };
+    SingleProductComponent.prototype.toggleStarClass = function (selectedStar) {
+        for (var i = 0; i < this.orderedStars.length; i++) {
+            var star = this.orderedStars[i];
+            var starElement = document.getElementById(star.id);
+            if (star.position <= selectedStar.position) {
+                if (!star.selected) {
+                    starElement.classList.remove("far");
+                    starElement.classList.add("fas");
+                    star.selected = true;
+                }
+            }
+            else {
+                if (star.selected) {
+                    starElement.classList.remove("fas");
+                    starElement.classList.add("far");
+                    star.selected = false;
+                }
+            }
+        }
+    };
+    SingleProductComponent.prototype.selectRanking = function (star) {
+        this.reviewRanking = star.value;
+    };
+    SingleProductComponent.prototype.resetStars = function () {
+        for (var i = 0; i < this.orderedStars.length; i++) {
+            var star = this.orderedStars[i];
+            var starElement = document.getElementById(star.id);
+            if (star.value <= this.reviewRanking) {
+                if (!star.selected) {
+                    starElement.classList.remove("far");
+                    starElement.classList.add("fas");
+                    star.selected = true;
+                }
+            }
+            else {
+                if (star.selected) {
+                    starElement.classList.remove("fas");
+                    starElement.classList.add("far");
+                    star.selected = false;
+                }
+            }
+        }
     };
     SingleProductComponent.prototype.initSome = function () {
         $(window).load(function () {
