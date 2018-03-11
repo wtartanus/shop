@@ -3,6 +3,7 @@ import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import {WarehouseService} from './../services/warehouse.service.js';
+import { BasketService } from '../services/basket.service.js';
 
 declare var jquery:any;
 declare var $ :any;
@@ -14,7 +15,7 @@ declare var w3l: any;
 @Component({
   selector: 'singleProduct',
   templateUrl: 'src/app/views/singleProduct.component.html',
-  providers: [WarehouseService]
+  providers: [WarehouseService, BasketService]
   // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
 export class SingleProductComponent implements OnInit {
@@ -24,11 +25,13 @@ export class SingleProductComponent implements OnInit {
   public currentImage: any;
   public reviewName: string;
   public reviewText: string;
+  public quantity: number = 1;
   public reviewRanking: number = 5;
   public productReviews: Array<any> = new Array();
   public savingReview: boolean = false;
   public reviewsLoaded: boolean = false;
   public averageRanking: number;
+  //public basket: BasketService;
 
   public starOne: any = {selected: true, value: 1, id: "star-1", position: 0};
   public starTwo: any = {selected: true, value: 2, id: "star-2", position: 1};
@@ -53,7 +56,8 @@ export class SingleProductComponent implements OnInit {
     console.log("stock", this.productStock);
   }
 
-  constructor(private warehouse: WarehouseService ) {
+  constructor(private warehouse: WarehouseService, public basket: BasketService) {
+    //this.basket = basket;
   };
 
   splitProducts(): void{

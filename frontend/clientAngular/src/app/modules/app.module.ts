@@ -16,18 +16,7 @@ import { FooterComponent } from "./../components/footer.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
 
 import { WarehouseService } from "./../services/warehouse.service.js";
-// import { SearchService } from "./../services/search.service.js";
-// import {SearchResultService } from "./../services/searchResult.service.js";
-// import { MessageService } from "./../services/message.service.js";
-// import { WindowSize } from "./../models/windowSize.js";
-// import { Inspiration } from "./../models/inspiration.js";
-// import { Activity } from "./../models/activity.js";
-// import { City } from "./../models/city.js";
-// import { Photo } from "./../models/photo.js";
-// import { Weather } from "./../models/weather.js";
-// import { DayObject } from "./../models/dayObject.js"
-
-
+import { BasketService } from "../services/basket.service.js";
 
 @NgModule({
   imports: [
@@ -48,7 +37,7 @@ import { WarehouseService } from "./../services/warehouse.service.js";
     ProductsListComponent,
     SingleProductComponent
   ],
-  providers: [WarehouseService],
+  providers: [WarehouseService, BasketService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -11,15 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var warehouse_service_js_1 = require("./../services/warehouse.service.js");
+var basket_service_js_1 = require("../services/basket.service.js");
 // import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
 var SingleProductComponent = (function () {
-    function SingleProductComponent(warehouse) {
+    function SingleProductComponent(warehouse, basket) {
         this.warehouse = warehouse;
+        this.basket = basket;
+        this.quantity = 1;
         this.reviewRanking = 5;
         this.productReviews = new Array();
         this.savingReview = false;
         this.reviewsLoaded = false;
+        //public basket: BasketService;
         this.starOne = { selected: true, value: 1, id: "star-1", position: 0 };
         this.starTwo = { selected: true, value: 2, id: "star-2", position: 1 };
         this.starThree = { selected: true, value: 3, id: "star-3", position: 2 };
@@ -29,6 +33,7 @@ var SingleProductComponent = (function () {
         this.itemsShowNumber = 5;
         this.pages = new Array();
         this.pagesIndex = new Array();
+        //this.basket = basket;
     }
     SingleProductComponent.prototype.ngOnInit = function () {
         this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
@@ -250,10 +255,10 @@ SingleProductComponent = __decorate([
     core_1.Component({
         selector: 'singleProduct',
         templateUrl: 'src/app/views/singleProduct.component.html',
-        providers: [warehouse_service_js_1.WarehouseService]
+        providers: [warehouse_service_js_1.WarehouseService, basket_service_js_1.BasketService]
         // entryComponents: [InspirationsComponent, DatePickerComponent]
     }),
-    __metadata("design:paramtypes", [warehouse_service_js_1.WarehouseService])
+    __metadata("design:paramtypes", [warehouse_service_js_1.WarehouseService, basket_service_js_1.BasketService])
 ], SingleProductComponent);
 exports.SingleProductComponent = SingleProductComponent;
 //# sourceMappingURL=singleProduct.component.js.map

@@ -155,6 +155,17 @@
     color: gold;
 }
 
+.add-to-cart-row {
+    display: flex;
+    justify-content: space-around;
+    height: 5%;
+}
+
+.qty {
+    width: 15%;
+    height: 100%;
+}
+
 @media screen and (min-width: 320px) {
     .nav-logo {
         margin-left: 12%;

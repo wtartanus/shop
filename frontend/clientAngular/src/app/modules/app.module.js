@@ -22,16 +22,7 @@ var productsList_component_js_1 = require("./../components/productsList.componen
 var footer_component_js_1 = require("./../components/footer.component.js");
 var splash_component_js_1 = require("./../components/splash.component.js");
 var warehouse_service_js_1 = require("./../services/warehouse.service.js");
-// import { SearchService } from "./../services/search.service.js";
-// import {SearchResultService } from "./../services/searchResult.service.js";
-// import { MessageService } from "./../services/message.service.js";
-// import { WindowSize } from "./../models/windowSize.js";
-// import { Inspiration } from "./../models/inspiration.js";
-// import { Activity } from "./../models/activity.js";
-// import { City } from "./../models/city.js";
-// import { Photo } from "./../models/photo.js";
-// import { Weather } from "./../models/weather.js";
-// import { DayObject } from "./../models/dayObject.js"
+var basket_service_js_1 = require("../services/basket.service.js");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -57,7 +48,7 @@ AppModule = __decorate([
             productsList_component_js_1.ProductsListComponent,
             singleProduct_component_js_1.SingleProductComponent
         ],
-        providers: [warehouse_service_js_1.WarehouseService],
+        providers: [warehouse_service_js_1.WarehouseService, basket_service_js_1.BasketService],
         bootstrap: [app_component_js_1.AppComponent]
     })
 ], AppModule);
