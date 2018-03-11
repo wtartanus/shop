@@ -1,8 +1,12 @@
 import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
+import { WarehouseService } from "../services/warehouse.service.js";
 import { BasketService } from '../services/basket.service.js';
 import { MessageService } from '../services/message.service.js';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 declare var jquery:any;
 declare var $ :any;
 declare var cbpShop: any;
@@ -26,19 +30,27 @@ export class ProductsListComponent implements OnInit, OnChanges {
   public pagesIndex: Array<number> = new Array();
   public pageSelected: number;
 
-  constructor(private message: MessageService, public basket: BasketService) {
-    
+  constructor(private message: MessageService, private warehouse: WarehouseService, public basket: BasketService, private route: ActivatedRoute, private router: Router) {
+    this.ngOnInit();
   }
 
   ngOnInit() {
-    this.initShop();
-    this.initPopUpBox();
+    this.getProducts();
+    //this.initShop();
+    //this.initPopUpBox();
     this.splitProducts();
     this.currentPage = this.pages[0];
     this.pageSelected = 0;
     this.createNumbersArray();
     console.log("splited products: ", this.pages);
     console.log("pagesIndex", this.pagesIndex);
+  }
+
+  getProducts(): void{
+    let category = this.route.snapshot.paramMap.get('category');
+    this.products = this.warehouse.getProductsByCategory(category);
+    console.log("@@@@@@", this.products);
+    //this.products = this.route.paramMap.switchMap((params: ParamMap) => this.warehouse.getProductsByCategory(params.get('category')));
   }
 
   ngOnChanges() {

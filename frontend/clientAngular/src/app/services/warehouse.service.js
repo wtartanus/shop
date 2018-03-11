@@ -12,8 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/toPromise");
+var message_service_js_1 = require("../services/message.service.js");
 var WarehouseService = (function () {
-    function WarehouseService(http) {
+    function WarehouseService(http, message) {
+        this.message = message;
         this.http = http;
     }
     ;
@@ -28,9 +30,15 @@ var WarehouseService = (function () {
         return this.http.post(url, msg).toPromise().then(function (response) { return response.json(); }, this.handleError);
     };
     WarehouseService.prototype.initData = function () {
-        return this.httpGet("http://localhost:8080/data");
+        this.httpGet("http://localhost:8080/data").then(function processResult(result) {
+            this.data = result;
+            this.message.sendMessage("data-arrived", {});
+        }.bind(this));
     };
     ;
+    WarehouseService.prototype.getProductsByCategory = function (category) {
+        return this.data.productsByCategory[category];
+    };
     WarehouseService.prototype.handleError = function (error) {
         console.error('An error occured', error);
         return Promise.reject(error.message || error);
@@ -40,7 +48,7 @@ var WarehouseService = (function () {
 }());
 WarehouseService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, message_service_js_1.MessageService])
 ], WarehouseService);
 exports.WarehouseService = WarehouseService;
 //# sourceMappingURL=warehouse.service.js.map

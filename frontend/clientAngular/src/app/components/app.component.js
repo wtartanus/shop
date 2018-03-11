@@ -24,19 +24,20 @@ var basket_service_js_1 = require("./../services/basket.service.js");
 // import { Inspiration } from './../models/inspiration.js';
 // declare var google: any;
 var AppComponent = (function () {
-    function AppComponent(warehouse) {
+    function AppComponent(warehouse, message) {
+        var _this = this;
         this.warehouse = warehouse;
+        this.message = message;
         this.selectedCategory = null; //This should be null when in home page
         this.dataReceived = false;
         this.selectedBasket = false;
-        //this.substriction = this.messageService.getMessage().subscribe(message => this.updateDates(message));
+        this.subscription = this.message.getMessage().subscribe(function (message) { return _this.processMessage(message); });
     }
     AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
         var dataPromise = this.warehouse.initData();
-        dataPromise.then(function (result) { return _this.onDataReceived(result); });
     };
     AppComponent.prototype.onCategoryChange = function (category) {
+        //this should be in selected product
         if (this.dataReceived) {
             this.selectedCategory = category;
             this.selectedProduct = null;
@@ -53,10 +54,11 @@ var AppComponent = (function () {
         this.selectedBasket = true;
     };
     ;
-    AppComponent.prototype.onDataReceived = function (data) {
-        this.data = data;
-        this.dataReceived = true;
-        console.log("Data in place");
+    AppComponent.prototype.processMessage = function (message) {
+        if (message.text === "data-arrived") {
+            this.dataReceived = true;
+            console.log("Data in place");
+        }
     };
     return AppComponent;
 }());
@@ -69,26 +71,7 @@ AppComponent = __decorate([
     })
     // export class AppComponent implements OnInit, OnDestroy {
     ,
-    __metadata("design:paramtypes", [warehouse_service_js_1.WarehouseService])
+    __metadata("design:paramtypes", [warehouse_service_js_1.WarehouseService, message_service_js_1.MessageService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
-/******* TODO
- * - add side menu
- * - add place to add reviews
- * - add ranking
- * - assure that data been loaded
- * - add page to ask if user is 18 years old
- * - hook up search
- * - add filters to products list
- * - Single product should show sizes
- * - Update home page
- * - Disable add to cart if product is out of stock
- * - Map discounted
- * - Check if basket work properly
- * - Add videos.
- * - Add basket page??
- * - Add checkout page
- * - Add new table for orders
- * - Add page to display all orders
- * ********/
 //# sourceMappingURL=app.component.js.map

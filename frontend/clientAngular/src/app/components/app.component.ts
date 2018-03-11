@@ -1,5 +1,6 @@
 import {Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 declare var jquery:any;
 declare var $ :any;
 declare var FilmRoll:any;
@@ -33,13 +34,14 @@ export class AppComponent implements OnInit {
     private dataReceived: boolean = false;
     public selectedProduct: any;
     public selectedBasket: boolean = false;
+    private subscription: Subscription;
 
     ngOnInit() {
       var dataPromise = this.warehouse.initData();
-      dataPromise.then(result => this.onDataReceived(result));
     }
 
     onCategoryChange(category: string): void {
+      //this should be in selected product
       if (this.dataReceived) {
          this.selectedCategory = category;
          this.selectedProduct = null;
@@ -56,14 +58,15 @@ export class AppComponent implements OnInit {
       this.selectedBasket = true;
     }
 
-  constructor(private warehouse: WarehouseService) { //private messageService: MessageService
-    //this.substriction = this.messageService.getMessage().subscribe(message => this.updateDates(message));
+  constructor(private warehouse: WarehouseService, private message: MessageService) { //private messageService: MessageService
+    this.subscription = this.message.getMessage().subscribe(message => this.processMessage(message));
   };
 
-  onDataReceived(data: any): void{
-    this.data = data;
-    this.dataReceived = true;
-    console.log("Data in place");
+  processMessage(message: any): void{
+    if (message.text === "data-arrived" ) {
+      this.dataReceived = true;
+      console.log("Data in place");
+    }
   }
 
 
@@ -86,23 +89,4 @@ export class AppComponent implements OnInit {
 
 }
 
-/******* TODO
- * - add side menu
- * - add place to add reviews
- * - add ranking
- * - assure that data been loaded
- * - add page to ask if user is 18 years old
- * - hook up search
- * - add filters to products list
- * - Single product should show sizes
- * - Update home page 
- * - Disable add to cart if product is out of stock
- * - Map discounted
- * - Check if basket work properly
- * - Add videos.
- * - Add basket page??
- * - Add checkout page
- * - Add new table for orders
- * - Add page to display all orders
- * ********/
 

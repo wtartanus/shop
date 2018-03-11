@@ -24,6 +24,7 @@ import { MessageService } from "../services/message.service.js";
 const appRoutes: Routes = [
   { path: '', component: SplashComponent},
   { path: 'basket', component: BasketComponent },
+  { path: 'categories/:category', component: ProductsListComponent}
 ];
 
 @NgModule({

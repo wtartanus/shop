@@ -12,11 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var basket_service_js_1 = require("../services/basket.service.js");
 var message_service_js_1 = require("../services/message.service.js");
+var router_1 = require("@angular/router");
 var HeaderComponent = (function () {
-    function HeaderComponent(basket, messageService) {
+    function HeaderComponent(basket, messageService, router) {
         var _this = this;
         this.basket = basket;
         this.messageService = messageService;
+        this.router = router;
         this.onCategoryChange = new core_1.EventEmitter();
         this.basketValues = { itemsCount: 0, totalCost: 0 };
         this.itemsCount = this.basket.itemsCount;
@@ -242,8 +244,7 @@ var HeaderComponent = (function () {
         console.log("category header", this.selectedCategory);
     };
     HeaderComponent.prototype.changeCategory = function (category) {
-        this.selectedCategory = category;
-        this.onCategoryChange.emit(this.selectedCategory);
+        this.router.navigate(["/categories", category]);
     };
     HeaderComponent.prototype.goToHomePage = function () {
         this.selectedCategory = null;
@@ -268,7 +269,7 @@ HeaderComponent = __decorate([
         selector: 'ng-header',
         templateUrl: 'src/app/views/header.component.html'
     }),
-    __metadata("design:paramtypes", [basket_service_js_1.BasketService, message_service_js_1.MessageService])
+    __metadata("design:paramtypes", [basket_service_js_1.BasketService, message_service_js_1.MessageService, router_1.Router])
 ], HeaderComponent);
 exports.HeaderComponent = HeaderComponent;
 //# sourceMappingURL=header.component.js.map

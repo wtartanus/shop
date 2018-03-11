@@ -1,16 +1,9 @@
-import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, HostBinding} from '@angular/core';
-import {IMyOptions, IMyDateModel} from 'mydatepicker';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-declare var jquery:any;
-declare var $ :any;
-declare var FilmRoll:any;
-// import 'rxjs/add/operator/toPromise';
 
-import { ModelSliderComponent } from "./../components/modelSlider.component.js"
-import { HeaderSliderComponent } from "./../components/headerSlider.component.js";
 import { BasketService } from '../services/basket.service.js';
 import { MessageService } from '../services/message.service.js';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -235,7 +228,7 @@ export class HeaderComponent implements OnInit {
         }
     ];
 
-    constructor (public basket: BasketService, private messageService: MessageService) {
+    constructor (public basket: BasketService, private messageService: MessageService, private router: Router) {
         this.subscription = this.messageService.getMessage().subscribe(message => this.processMessage(message));
     }
 
@@ -251,8 +244,7 @@ export class HeaderComponent implements OnInit {
     }
 
     changeCategory(category: string): void {
-        this.selectedCategory = category;
-        this.onCategoryChange.emit(this.selectedCategory);
+        this.router.navigate(["/categories", category]);
     }
 
     goToHomePage(): void{

@@ -10,28 +10,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var warehouse_service_js_1 = require("../services/warehouse.service.js");
 var basket_service_js_1 = require("../services/basket.service.js");
 var message_service_js_1 = require("../services/message.service.js");
+var router_1 = require("@angular/router");
+require("rxjs/add/operator/switchMap");
 // import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
 var ProductsListComponent = (function () {
-    function ProductsListComponent(message, basket) {
+    function ProductsListComponent(message, warehouse, basket, route, router) {
         this.message = message;
+        this.warehouse = warehouse;
         this.basket = basket;
+        this.route = route;
+        this.router = router;
         this.onProductSelection = new core_1.EventEmitter();
         this.itemsShowNumber = 15;
         this.pages = new Array();
         this.pagesIndex = new Array();
+        this.ngOnInit();
     }
     ProductsListComponent.prototype.ngOnInit = function () {
-        this.initShop();
-        this.initPopUpBox();
+        this.getProducts();
+        //this.initShop();
+        //this.initPopUpBox();
         this.splitProducts();
         this.currentPage = this.pages[0];
         this.pageSelected = 0;
         this.createNumbersArray();
         console.log("splited products: ", this.pages);
         console.log("pagesIndex", this.pagesIndex);
+    };
+    ProductsListComponent.prototype.getProducts = function () {
+        var category = this.route.snapshot.paramMap.get('category');
+        this.products = this.warehouse.getProductsByCategory(category);
+        console.log("@@@@@@", this.products);
+        //this.products = this.route.paramMap.switchMap((params: ParamMap) => this.warehouse.getProductsByCategory(params.get('category')));
     };
     ProductsListComponent.prototype.ngOnChanges = function () {
         this.pages.length = 0;
@@ -170,7 +184,7 @@ ProductsListComponent = __decorate([
         templateUrl: 'src/app/views/productsList.component.html'
         // entryComponents: [InspirationsComponent, DatePickerComponent]
     }),
-    __metadata("design:paramtypes", [message_service_js_1.MessageService, basket_service_js_1.BasketService])
+    __metadata("design:paramtypes", [message_service_js_1.MessageService, warehouse_service_js_1.WarehouseService, basket_service_js_1.BasketService, router_1.ActivatedRoute, router_1.Router])
 ], ProductsListComponent);
 exports.ProductsListComponent = ProductsListComponent;
 //# sourceMappingURL=productsList.component.js.map
