@@ -254,8 +254,7 @@ __decorate([
 SingleProductComponent = __decorate([
     core_1.Component({
         selector: 'singleProduct',
-        templateUrl: 'src/app/views/singleProduct.component.html',
-        providers: [warehouse_service_js_1.WarehouseService, basket_service_js_1.BasketService]
+        templateUrl: 'src/app/views/singleProduct.component.html'
         // entryComponents: [InspirationsComponent, DatePickerComponent]
     }),
     __metadata("design:paramtypes", [warehouse_service_js_1.WarehouseService, basket_service_js_1.BasketService])

@@ -13,9 +13,13 @@ var core_1 = require("@angular/core");
 // import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
 var header_component_js_1 = require("./../components/header.component.js");
+var products_component_js_1 = require("./../components/products.component.js");
+var splash_component_js_1 = require("./../components/splash.component.js");
+var footer_component_js_1 = require("./../components/footer.component.js");
+var basket_component_js_1 = require("./../components/basket.component.js");
 var warehouse_service_js_1 = require("./../services/warehouse.service.js");
-// import {SearchService} from './../services/search.service.js';
-// import {MessageService} from './../services/message.service.js';
+var message_service_js_1 = require("./../services/message.service.js");
+var basket_service_js_1 = require("./../services/basket.service.js");
 // import { WindowSize } from './../models/windowSize.js';
 // import { Inspiration } from './../models/inspiration.js';
 // declare var google: any;
@@ -24,6 +28,7 @@ var AppComponent = (function () {
         this.warehouse = warehouse;
         this.selectedCategory = null; //This should be null when in home page
         this.dataReceived = false;
+        this.selectedBasket = false;
         //this.substriction = this.messageService.getMessage().subscribe(message => this.updateDates(message));
     }
     AppComponent.prototype.ngOnInit = function () {
@@ -32,8 +37,8 @@ var AppComponent = (function () {
         dataPromise.then(function (result) { return _this.onDataReceived(result); });
     };
     AppComponent.prototype.onCategoryChange = function (category) {
-        this.selectedCategory = category;
         if (this.dataReceived) {
+            this.selectedCategory = category;
             this.selectedProduct = null;
             this.selectedProducts = this.data.productsByCategory[this.selectedCategory];
             console.log("selected", this.selectedProducts[0]);
@@ -41,6 +46,11 @@ var AppComponent = (function () {
         else {
             this.selectedProducts = [];
         }
+    };
+    AppComponent.prototype.renderBasket = function () {
+        this.selectedProducts = null;
+        this.selectedProduct = null;
+        this.selectedBasket = true;
     };
     ;
     AppComponent.prototype.onDataReceived = function (data) {
@@ -54,8 +64,8 @@ AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
         templateUrl: 'src/app/views/app.component.html',
-        providers: [warehouse_service_js_1.WarehouseService],
-        entryComponents: [header_component_js_1.HeaderComponent]
+        providers: [warehouse_service_js_1.WarehouseService, message_service_js_1.MessageService, basket_service_js_1.BasketService],
+        entryComponents: [header_component_js_1.HeaderComponent, products_component_js_1.ProductsComponent, splash_component_js_1.SplashComponent, footer_component_js_1.FooterComponent, basket_component_js_1.BasketComponent]
     })
     // export class AppComponent implements OnInit, OnDestroy {
     ,

@@ -14,9 +14,11 @@ import { SingleProductComponent } from "./../components/singleProduct.component.
 import { ProductsListComponent } from "./../components/productsList.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
+import { BasketComponent } from "./../components/basket.component.js";
 
 import { WarehouseService } from "./../services/warehouse.service.js";
 import { BasketService } from "../services/basket.service.js";
+import { MessageService } from "../services/message.service.js";
 
 @NgModule({
   imports: [
@@ -35,9 +37,10 @@ import { BasketService } from "../services/basket.service.js";
     SplashComponent,
     ProductsComponent,
     ProductsListComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    BasketComponent
   ],
-  providers: [WarehouseService, BasketService],
+  providers: [WarehouseService, MessageService, BasketService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-
+import {Injectable, Output, EventEmitter} from '@angular/core';
+import {MessageService} from './message.service.js';
 
 @Injectable()
 export class BasketService {
@@ -8,6 +8,7 @@ export class BasketService {
   public basketItemsById: any = {};
   public itemsCount: number = 0;
 
+  constructor(private message: MessageService) { }
 
   addToBasket(quantity: number, product: any): void{
     if (quantity && product) {
@@ -33,6 +34,11 @@ export class BasketService {
         }
         this.totalCost += cost;
         this.itemsCount += quantity;
+        let body = {
+            totalCost: this.totalCost,
+            itemsCount: this.itemsCount
+        }
+        this.message.sendMessage("basket-update", body);
     }
   }
 
@@ -57,6 +63,11 @@ export class BasketService {
            }
            this.basketItems.splice(index, 1);
         }
+        let body = {
+            totalCost: this.totalCost,
+            itemsCount: this.itemsCount
+        }
+        this.message.sendMessage("basket-update", body);
      }
   }
 }

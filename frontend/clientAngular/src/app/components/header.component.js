@@ -10,9 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var basket_service_js_1 = require("../services/basket.service.js");
+var message_service_js_1 = require("../services/message.service.js");
 var HeaderComponent = (function () {
-    function HeaderComponent() {
+    function HeaderComponent(basket, messageService) {
+        var _this = this;
+        this.basket = basket;
+        this.messageService = messageService;
         this.onCategoryChange = new core_1.EventEmitter();
+        this.basketValues = { itemsCount: 0, totalCost: 0 };
+        this.itemsCount = this.basket.itemsCount;
         this.categories = [
             {
                 name: "Sex Toys",
@@ -223,7 +230,14 @@ var HeaderComponent = (function () {
                 ]
             }
         ];
+        this.subscription = this.messageService.getMessage().subscribe(function (message) { return _this.processMessage(message); });
     }
+    HeaderComponent.prototype.processMessage = function (message) {
+        if (message.text === "basket-update") {
+            this.basketValues.itemsCount = message.body.itemsCount;
+            this.basketValues.totalCost = message.body.totalCost;
+        }
+    };
     HeaderComponent.prototype.ngOnInit = function () {
         console.log("category header", this.selectedCategory);
     };
@@ -242,6 +256,10 @@ __decorate([
     __metadata("design:type", String)
 ], HeaderComponent.prototype, "selectedCategory", void 0);
 __decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], HeaderComponent.prototype, "selectedBasket", void 0);
+__decorate([
     core_1.Output(),
     __metadata("design:type", Object)
 ], HeaderComponent.prototype, "onCategoryChange", void 0);
@@ -249,7 +267,8 @@ HeaderComponent = __decorate([
     core_1.Component({
         selector: 'ng-header',
         templateUrl: 'src/app/views/header.component.html'
-    })
+    }),
+    __metadata("design:paramtypes", [basket_service_js_1.BasketService, message_service_js_1.MessageService])
 ], HeaderComponent);
 exports.HeaderComponent = HeaderComponent;
 //# sourceMappingURL=header.component.js.map

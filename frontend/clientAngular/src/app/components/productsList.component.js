@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var basket_service_js_1 = require("../services/basket.service.js");
+var message_service_js_1 = require("../services/message.service.js");
 // import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
 var ProductsListComponent = (function () {
-    function ProductsListComponent(basket) {
+    function ProductsListComponent(message, basket) {
+        this.message = message;
         this.basket = basket;
         this.onProductSelection = new core_1.EventEmitter();
         this.itemsShowNumber = 15;
@@ -165,11 +167,10 @@ __decorate([
 ProductsListComponent = __decorate([
     core_1.Component({
         selector: 'productsList',
-        templateUrl: 'src/app/views/productsList.component.html',
-        providers: [basket_service_js_1.BasketService]
+        templateUrl: 'src/app/views/productsList.component.html'
         // entryComponents: [InspirationsComponent, DatePickerComponent]
     }),
-    __metadata("design:paramtypes", [basket_service_js_1.BasketService])
+    __metadata("design:paramtypes", [message_service_js_1.MessageService, basket_service_js_1.BasketService])
 ], ProductsListComponent);
 exports.ProductsListComponent = ProductsListComponent;
 //# sourceMappingURL=productsList.component.js.map

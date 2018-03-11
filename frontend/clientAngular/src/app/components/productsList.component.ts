@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges} fr
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { BasketService } from '../services/basket.service.js';
+import { MessageService } from '../services/message.service.js';
 declare var jquery:any;
 declare var $ :any;
 declare var cbpShop: any;
@@ -11,8 +12,7 @@ declare var w3l: any;
 
 @Component({
   selector: 'productsList',
-  templateUrl: 'src/app/views/productsList.component.html',
-  providers: [BasketService]
+  templateUrl: 'src/app/views/productsList.component.html'
   // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
 export class ProductsListComponent implements OnInit, OnChanges {
@@ -26,7 +26,9 @@ export class ProductsListComponent implements OnInit, OnChanges {
   public pagesIndex: Array<number> = new Array();
   public pageSelected: number;
 
-  constructor(public basket: BasketService) {}
+  constructor(private message: MessageService, public basket: BasketService) {
+    
+  }
 
   ngOnInit() {
     this.initShop();

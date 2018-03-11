@@ -1,14 +1,16 @@
-import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, HostBinding} from '@angular/core';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Subscription } from 'rxjs/Subscription';
 declare var jquery:any;
 declare var $ :any;
 declare var FilmRoll:any;
-// import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
 
 import { ModelSliderComponent } from "./../components/modelSlider.component.js"
 import { HeaderSliderComponent } from "./../components/headerSlider.component.js";
+import { BasketService } from '../services/basket.service.js';
+import { MessageService } from '../services/message.service.js';
 
 
 @Component({
@@ -17,8 +19,12 @@ import { HeaderSliderComponent } from "./../components/headerSlider.component.js
 })
 export class HeaderComponent implements OnInit {
     @Input() selectedCategory: string;
+    @Input() selectedBasket: boolean;
     @Output() onCategoryChange = new EventEmitter<string>();
-    categories: any = [
+    public basketValues: any = {itemsCount: 0, totalCost: 0};
+    public itemsCount: number = this.basket.itemsCount;
+    subscription: Subscription;
+    public categories: any = [
         {
             name: "Sex Toys",
             subCategories: [
@@ -228,6 +234,17 @@ export class HeaderComponent implements OnInit {
             ]
         }
     ];
+
+    constructor (public basket: BasketService, private messageService: MessageService) {
+        this.subscription = this.messageService.getMessage().subscribe(message => this.processMessage(message));
+    }
+
+    processMessage(message: any): void{
+      if (message.text === "basket-update") {
+          this.basketValues.itemsCount = message.body.itemsCount;
+          this.basketValues.totalCost = message.body.totalCost;
+      }
+    }
 
     ngOnInit() {
       console.log("category header", this.selectedCategory);

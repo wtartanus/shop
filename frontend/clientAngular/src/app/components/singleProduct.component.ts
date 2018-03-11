@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import {WarehouseService} from './../services/warehouse.service.js';
 import { BasketService } from '../services/basket.service.js';
+import { MessageService } from '../services/message.service.js';
 
 declare var jquery:any;
 declare var $ :any;
@@ -14,8 +15,7 @@ declare var w3l: any;
 
 @Component({
   selector: 'singleProduct',
-  templateUrl: 'src/app/views/singleProduct.component.html',
-  providers: [WarehouseService, BasketService]
+  templateUrl: 'src/app/views/singleProduct.component.html'
   // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
 export class SingleProductComponent implements OnInit {

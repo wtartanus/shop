@@ -21,8 +21,10 @@ var singleProduct_component_js_1 = require("./../components/singleProduct.compon
 var productsList_component_js_1 = require("./../components/productsList.component.js");
 var footer_component_js_1 = require("./../components/footer.component.js");
 var splash_component_js_1 = require("./../components/splash.component.js");
+var basket_component_js_1 = require("./../components/basket.component.js");
 var warehouse_service_js_1 = require("./../services/warehouse.service.js");
 var basket_service_js_1 = require("../services/basket.service.js");
+var message_service_js_1 = require("../services/message.service.js");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -46,9 +48,10 @@ AppModule = __decorate([
             splash_component_js_1.SplashComponent,
             products_component_js_1.ProductsComponent,
             productsList_component_js_1.ProductsListComponent,
-            singleProduct_component_js_1.SingleProductComponent
+            singleProduct_component_js_1.SingleProductComponent,
+            basket_component_js_1.BasketComponent
         ],
-        providers: [warehouse_service_js_1.WarehouseService, basket_service_js_1.BasketService],
+        providers: [warehouse_service_js_1.WarehouseService, message_service_js_1.MessageService, basket_service_js_1.BasketService],
         bootstrap: [app_component_js_1.AppComponent]
     })
 ], AppModule);

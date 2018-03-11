@@ -52,12 +52,12 @@
                     </button>
                   </form>
                 </li>
-                <li class="wthreecartaits wthreecartaits2 cart cart box_1"> 
-                 <form action="#" method="post" class="last"> 
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="display" value="1" />
-                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-                  </form>   
+                <li class="wthreecartaits wthreecartaits2 cart cart box_1">
+                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button> 
+                  <div>
+                      <span class="cart-values" *ngIf="basketValues.itemsCount">{{basketValues.itemsCount > 1 ? basketValues.itemsCount + ' items' : basketValues.itemsCount + ' item'}}</span>
+                      <span class="cart-values" *ngIf="basketValues.itemsCount">£{{basketValues.totalCost}}</span>
+                  </div> 
                 </li>
               </ul>
             </div>

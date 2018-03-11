@@ -9,10 +9,11 @@ import { HeaderComponent } from "./../components/header.component.js";
 import { ProductsComponent } from "./../components/products.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
+import { BasketComponent } from "./../components/basket.component.js";
 
 import {WarehouseService} from './../services/warehouse.service.js';
-// import {SearchService} from './../services/search.service.js';
-// import {MessageService} from './../services/message.service.js';
+import {MessageService} from './../services/message.service.js';
+import {BasketService} from './../services/basket.service.js';
 // import { WindowSize } from './../models/windowSize.js';
 // import { Inspiration } from './../models/inspiration.js';
 // declare var google: any;
@@ -20,8 +21,8 @@ import {WarehouseService} from './../services/warehouse.service.js';
 @Component({
   selector: 'my-app',
   templateUrl: 'src/app/views/app.component.html',
-  providers: [WarehouseService],
-  entryComponents: [HeaderComponent]
+  providers: [WarehouseService, MessageService, BasketService],
+  entryComponents: [HeaderComponent, ProductsComponent, SplashComponent, FooterComponent, BasketComponent]
 })
 // export class AppComponent implements OnInit, OnDestroy {
 export class AppComponent implements OnInit {
@@ -30,14 +31,16 @@ export class AppComponent implements OnInit {
     public selectedProducts: any;
     private dataReceived: boolean = false;
     public selectedProduct: any;
+    public selectedBasket: boolean = false;
+
     ngOnInit() {
       var dataPromise = this.warehouse.initData();
       dataPromise.then(result => this.onDataReceived(result));
     }
 
     onCategoryChange(category: string): void {
-      this.selectedCategory = category;
       if (this.dataReceived) {
+         this.selectedCategory = category;
          this.selectedProduct = null;
          this.selectedProducts = this.data.productsByCategory[this.selectedCategory];
          console.log("selected", this.selectedProducts[0]);
@@ -46,7 +49,13 @@ export class AppComponent implements OnInit {
       }
     }
 
-  constructor(private warehouse: WarehouseService ) { //private messageService: MessageService
+    renderBasket(): void{
+      this.selectedProducts = null;
+      this.selectedProduct = null;
+      this.selectedBasket = true;
+    }
+
+  constructor(private warehouse: WarehouseService) { //private messageService: MessageService
     //this.substriction = this.messageService.getMessage().subscribe(message => this.updateDates(message));
   };
 

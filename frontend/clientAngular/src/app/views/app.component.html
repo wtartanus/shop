@@ -1,6 +1,7 @@
-<ng-header [selectedCategory]="selectedCategory" (onCategoryChange)="onCategoryChange($event)"></ng-header>
-<splash *ngIf="!selectedCategory"></splash>
-<products *ngIf="selectedCategory" [selectedCategory]="selectedCategory" [data]="selectedProducts" [selectedProduct]="selectedProduct" [stock]="data.stockByProductsId"></products>
+<ng-header [selectedCategory]="selectedCategory" (onCategoryChange)="onCategoryChange($event)" [selectedBasket]="selectedBasket" (onBasketRender)="renderBasket()"></ng-header>
+<splash *ngIf="!selectedCategory && !selectedBasket"></splash>
+<products *ngIf="selectedCategory && !selectedBasket" [selectedCategory]="selectedCategory" [data]="selectedProducts" [selectedProduct]="selectedProduct" [stock]="data.stockByProductsId"></products>
+<basket *ngIf="selectedBasket"></basket>
 <footer></footer>
 
 

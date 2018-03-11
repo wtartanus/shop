@@ -166,6 +166,10 @@
     height: 100%;
 }
 
+.cart-values {
+    font-size: 0.3em;
+}
+
 @media screen and (min-width: 320px) {
     .nav-logo {
         margin-left: 12%;
