@@ -1,4 +1,5 @@
 import {Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 declare var jquery:any;
 declare var $ :any;
 declare var FilmRoll:any;

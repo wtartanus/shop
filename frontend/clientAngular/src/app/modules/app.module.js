@@ -10,6 +10,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 // import { MyDatePickerModule } from "mydatepicker";
 // import { ChartModule } from "angular2-highcharts";
 var app_component_js_1 = require("./../components/app.component.js");
@@ -25,6 +26,10 @@ var basket_component_js_1 = require("./../components/basket.component.js");
 var warehouse_service_js_1 = require("./../services/warehouse.service.js");
 var basket_service_js_1 = require("../services/basket.service.js");
 var message_service_js_1 = require("../services/message.service.js");
+var appRoutes = [
+    { path: '', component: splash_component_js_1.SplashComponent },
+    { path: 'basket', component: basket_component_js_1.BasketComponent },
+];
 var AppModule = (function () {
     function AppModule() {
     }
@@ -33,6 +38,8 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [
+            router_1.RouterModule.forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
+            ),
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule

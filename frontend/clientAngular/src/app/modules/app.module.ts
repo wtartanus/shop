@@ -2,6 +2,7 @@ import { NgModule }       from "@angular/core";
 import { BrowserModule }  from "@angular/platform-browser";
 import { FormsModule }    from "@angular/forms";
 import { HttpModule }       from "@angular/http";
+import { RouterModule, Routes } from "@angular/router";
 // import { MyDatePickerModule } from "mydatepicker";
 // import { ChartModule } from "angular2-highcharts";
 
@@ -20,8 +21,17 @@ import { WarehouseService } from "./../services/warehouse.service.js";
 import { BasketService } from "../services/basket.service.js";
 import { MessageService } from "../services/message.service.js";
 
+const appRoutes: Routes = [
+  { path: '', component: SplashComponent},
+  { path: 'basket', component: BasketComponent },
+];
+
 @NgModule({
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule,
     FormsModule,
     HttpModule
