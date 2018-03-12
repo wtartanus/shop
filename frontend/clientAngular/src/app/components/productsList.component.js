@@ -125,11 +125,9 @@ var ProductsListComponent = (function () {
         this.createNumbersArray();
     };
     ProductsListComponent.prototype.selectProduct = function (product) {
-        this.selectedProduct = product;
-        this.onProductSelection.emit(this.selectedProduct);
-    };
-    ProductsListComponent.prototype.initShop = function () {
-        var shop = new cbpShop(document.getElementById('cbp-pgcontainer'));
+        // this.selectedProduct = product;
+        this.router.navigate(["/product", product.id]);
+        // this.onProductSelection.emit(this.selectedProduct);
     };
     return ProductsListComponent;
 }());

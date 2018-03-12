@@ -124,12 +124,8 @@ export class ProductsListComponent implements OnInit {
   }
 
   selectProduct(product: any): void{
-    this.selectedProduct = product;
-    this.onProductSelection.emit(this.selectedProduct);
-  }
-
-
-  initShop(): void {
-    var shop = new cbpShop( document.getElementById( 'cbp-pgcontainer' ) ); 
+    // this.selectedProduct = product;
+    this.router.navigate(["/product", product.id]);
+    // this.onProductSelection.emit(this.selectedProduct);
   }
 }

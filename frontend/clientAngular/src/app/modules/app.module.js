@@ -26,7 +26,8 @@ var message_service_js_1 = require("../services/message.service.js");
 var appRoutes = [
     { path: '', component: splash_component_js_1.SplashComponent },
     { path: 'basket', component: basket_component_js_1.BasketComponent },
-    { path: 'categories/:category', component: productsList_component_js_1.ProductsListComponent }
+    { path: 'categories/:category', component: productsList_component_js_1.ProductsListComponent },
+    { path: 'product/:id', component: singleProduct_component_js_1.SingleProductComponent }
 ];
 var AppModule = (function () {
     function AppModule() {
