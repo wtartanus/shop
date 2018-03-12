@@ -14,9 +14,6 @@ var warehouse_service_js_1 = require("../services/warehouse.service.js");
 var basket_service_js_1 = require("../services/basket.service.js");
 var message_service_js_1 = require("../services/message.service.js");
 var router_1 = require("@angular/router");
-require("rxjs/add/operator/switchMap");
-// import { Subscription } from 'rxjs/Subscription';
-// import 'rxjs/add/operator/toPromise';
 var ProductsListComponent = (function () {
     function ProductsListComponent(message, warehouse, basket, route, router) {
         this.message = message;
@@ -24,30 +21,27 @@ var ProductsListComponent = (function () {
         this.basket = basket;
         this.route = route;
         this.router = router;
-        this.onProductSelection = new core_1.EventEmitter();
         this.itemsShowNumber = 15;
         this.pages = new Array();
         this.pagesIndex = new Array();
-        this.ngOnInit();
     }
     ProductsListComponent.prototype.ngOnInit = function () {
         this.getProducts();
-        //this.initShop();
-        //this.initPopUpBox();
         this.splitProducts();
         this.currentPage = this.pages[0];
         this.pageSelected = 0;
         this.createNumbersArray();
-        console.log("splited products: ", this.pages);
-        console.log("pagesIndex", this.pagesIndex);
     };
     ProductsListComponent.prototype.getProducts = function () {
-        var category = this.route.snapshot.paramMap.get('category');
-        this.products = this.warehouse.getProductsByCategory(category);
-        console.log("@@@@@@", this.products);
-        //this.products = this.route.paramMap.switchMap((params: ParamMap) => this.warehouse.getProductsByCategory(params.get('category')));
+        var _this = this;
+        this.route.params
+            .subscribe(function (value) {
+            var category = _this.route.snapshot.paramMap.get('category');
+            _this.products = _this.warehouse.getProductsByCategory(category);
+            _this.categoryChange();
+        });
     };
-    ProductsListComponent.prototype.ngOnChanges = function () {
+    ProductsListComponent.prototype.categoryChange = function () {
         this.pages.length = 0;
         this.splitProducts();
         if (this.currentPage) {
@@ -137,52 +131,12 @@ var ProductsListComponent = (function () {
     ProductsListComponent.prototype.initShop = function () {
         var shop = new cbpShop(document.getElementById('cbp-pgcontainer'));
     };
-    ProductsListComponent.prototype.initPopUpBox = function () {
-        $(document).ready(function () {
-            $('.popup-with-zoom-anim').magnificPopup({
-                type: 'inline',
-                fixedContentPos: false,
-                fixedBgPos: true,
-                overflowY: 'auto',
-                closeBtnInside: true,
-                preloader: false,
-                midClick: true,
-                removalDelay: 300,
-                mainClass: 'my-mfp-zoom-in'
-            });
-        });
-    };
-    ProductsListComponent.prototype.initCart = function () {
-        //TODO maybe not needed
-        w3l.render();
-        w3l.cart.on('w3agile_checkout', function (evt) {
-            var items, len, i;
-            if (this.subtotal() > 0) {
-                items = this.items();
-                for (i = 0, len = items.length; i < len; i++) {
-                }
-            }
-        });
-    };
     return ProductsListComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], ProductsListComponent.prototype, "selectedCategory", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], ProductsListComponent.prototype, "products", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], ProductsListComponent.prototype, "onProductSelection", void 0);
 ProductsListComponent = __decorate([
     core_1.Component({
         selector: 'productsList',
         templateUrl: 'src/app/views/productsList.component.html'
-        // entryComponents: [InspirationsComponent, DatePickerComponent]
     }),
     __metadata("design:paramtypes", [message_service_js_1.MessageService, warehouse_service_js_1.WarehouseService, basket_service_js_1.BasketService, router_1.ActivatedRoute, router_1.Router])
 ], ProductsListComponent);

@@ -11,13 +11,10 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
-// import { MyDatePickerModule } from "mydatepicker";
-// import { ChartModule } from "angular2-highcharts";
 var app_component_js_1 = require("./../components/app.component.js");
 var header_component_js_1 = require("./../components/header.component.js");
 var modelSlider_component_js_1 = require("./../components/modelSlider.component.js");
 var headerSlider_component_js_1 = require("./../components/headerSlider.component.js");
-var products_component_js_1 = require("./../components/products.component.js");
 var singleProduct_component_js_1 = require("./../components/singleProduct.component.js");
 var productsList_component_js_1 = require("./../components/productsList.component.js");
 var footer_component_js_1 = require("./../components/footer.component.js");
@@ -44,8 +41,6 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule
-            // MyDatePickerModule,
-            // ChartModule.forRoot(require("highcharts"), require("highcharts/highcharts-3d"), require("highcharts/modules/exporting"))
         ],
         declarations: [
             app_component_js_1.AppComponent,
@@ -54,7 +49,6 @@ AppModule = __decorate([
             modelSlider_component_js_1.ModelSliderComponent,
             footer_component_js_1.FooterComponent,
             splash_component_js_1.SplashComponent,
-            products_component_js_1.ProductsComponent,
             productsList_component_js_1.ProductsListComponent,
             singleProduct_component_js_1.SingleProductComponent,
             basket_component_js_1.BasketComponent

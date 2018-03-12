@@ -1,4 +1,0 @@
-<div>
-        <productsList *ngIf="!selectedProduct" [selectedCategory]="selectedCategory" [products]="data" (onProductSelection)="onProductSelection($event)"></productsList>
-        <singleProduct *ngIf="selectedProduct" [product]="selectedProduct" [productStock]="productStock"></singleProduct>
-</div>

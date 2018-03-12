@@ -1,28 +1,17 @@
-import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges} from '@angular/core';
-import {IMyOptions, IMyDateModel} from 'mydatepicker';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 
 import { WarehouseService } from "../services/warehouse.service.js";
 import { BasketService } from '../services/basket.service.js';
 import { MessageService } from '../services/message.service.js';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
-declare var jquery:any;
-declare var $ :any;
-declare var cbpShop: any;
-declare var w3l: any;
-// import { Subscription } from 'rxjs/Subscription';
-// import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'productsList',
   templateUrl: 'src/app/views/productsList.component.html'
-  // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
-export class ProductsListComponent implements OnInit, OnChanges {
-  @Input() selectedCategory: string;
-  @Input() products: any;
-  @Output() onProductSelection = new EventEmitter<any>();
+export class ProductsListComponent implements OnInit {
+  public selectedCategory: string;
+  public products: any;
   public selectedProduct: any;
   public itemsShowNumber: number = 15;
   public currentPage: any;
@@ -31,29 +20,26 @@ export class ProductsListComponent implements OnInit, OnChanges {
   public pageSelected: number;
 
   constructor(private message: MessageService, private warehouse: WarehouseService, public basket: BasketService, private route: ActivatedRoute, private router: Router) {
-    this.ngOnInit();
   }
 
   ngOnInit() {
     this.getProducts();
-    //this.initShop();
-    //this.initPopUpBox();
     this.splitProducts();
     this.currentPage = this.pages[0];
     this.pageSelected = 0;
     this.createNumbersArray();
-    console.log("splited products: ", this.pages);
-    console.log("pagesIndex", this.pagesIndex);
   }
 
   getProducts(): void{
-    let category = this.route.snapshot.paramMap.get('category');
-    this.products = this.warehouse.getProductsByCategory(category);
-    console.log("@@@@@@", this.products);
-    //this.products = this.route.paramMap.switchMap((params: ParamMap) => this.warehouse.getProductsByCategory(params.get('category')));
+    this.route.params
+      .subscribe((value) => {
+        let category = this.route.snapshot.paramMap.get('category');
+        this.products = this.warehouse.getProductsByCategory(category);
+        this.categoryChange();
+    });
   }
 
-  ngOnChanges() {
+  categoryChange() {
     this.pages.length = 0;
     this.splitProducts();
     if (this.currentPage) {
@@ -145,37 +131,5 @@ export class ProductsListComponent implements OnInit, OnChanges {
 
   initShop(): void {
     var shop = new cbpShop( document.getElementById( 'cbp-pgcontainer' ) ); 
-  }
-
- initPopUpBox(): void {
-    $(document).ready(function() {
-      $('.popup-with-zoom-anim').magnificPopup({
-        type: 'inline',
-        fixedContentPos: false,
-        fixedBgPos: true,
-        overflowY: 'auto',
-        closeBtnInside: true,
-        preloader: false,
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in'
-      });
-    });
- }
-
- initCart(): void {
-   //TODO maybe not needed
-  w3l.render();
-
-    w3l.cart.on('w3agile_checkout', function (evt: any) {
-        var items, len, i;
-
-        if (this.subtotal() > 0) {
-          items = this.items();
-
-          for (i = 0, len = items.length; i < len; i++) { 
-          }
-        }
-      });
   }
 }
