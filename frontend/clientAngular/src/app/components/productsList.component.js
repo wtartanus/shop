@@ -24,6 +24,7 @@ var ProductsListComponent = (function () {
         this.itemsShowNumber = 15;
         this.pages = new Array();
         this.pagesIndex = new Array();
+        this.loading = true;
     }
     ProductsListComponent.prototype.ngOnInit = function () {
         this.getProducts();
@@ -37,8 +38,18 @@ var ProductsListComponent = (function () {
         this.route.params
             .subscribe(function (value) {
             var category = _this.route.snapshot.paramMap.get('category');
-            _this.products = _this.warehouse.getProductsByCategory(category);
-            _this.categoryChange();
+            if (!_this.warehouse.data) {
+                _this.warehouse.dataPromise.then(function onSuccess() {
+                    this.products = this.warehouse.getProductsByCategory(category);
+                    this.categoryChange();
+                    this.loading = false;
+                }.bind(_this));
+            }
+            else {
+                _this.products = _this.warehouse.getProductsByCategory(category);
+                _this.categoryChange();
+                _this.loading = false;
+            }
         });
     };
     ProductsListComponent.prototype.categoryChange = function () {

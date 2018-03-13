@@ -30,7 +30,8 @@ var WarehouseService = (function () {
         return this.http.post(url, msg).toPromise().then(function (response) { return response.json(); }, this.handleError);
     };
     WarehouseService.prototype.initData = function () {
-        this.httpGet("http://localhost:8080/data").then(function processResult(result) {
+        this.dataPromise = this.httpGet("http://localhost:8080/data");
+        this.dataPromise.then(function processResult(result) {
             this.data = result;
             this.message.sendMessage("data-arrived", {});
         }.bind(this));

@@ -26,6 +26,7 @@ var SingleProductComponent = (function () {
         this.productReviews = new Array();
         this.savingReview = false;
         this.reviewsLoaded = false;
+        this.loading = true;
         this.starOne = { selected: true, value: 1, id: "star-1", position: 0 };
         this.starTwo = { selected: true, value: 2, id: "star-2", position: 1 };
         this.starThree = { selected: true, value: 3, id: "star-3", position: 2 };
@@ -39,8 +40,6 @@ var SingleProductComponent = (function () {
     }
     SingleProductComponent.prototype.ngOnInit = function () {
         this.getProduct();
-        this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
-        this.getReviews();
         console.log("product", this.product);
         console.log("stock", this.productStock);
     };
@@ -49,8 +48,22 @@ var SingleProductComponent = (function () {
         this.route.params
             .subscribe(function (value) {
             var productId = _this.route.snapshot.paramMap.get('id');
-            _this.product = _this.warehouse.data.productsById[productId];
-            _this.productStock = _this.warehouse.data.stockByProductsId[productId];
+            if (!_this.warehouse.data) {
+                _this.warehouse.dataPromise.then(function onSuccess() {
+                    this.product = this.warehouse.data.productsById[productId];
+                    this.productStock = this.warehouse.data.stockByProductsId[productId];
+                    this.loading = false;
+                    this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
+                    this.getReviews();
+                }.bind(_this));
+            }
+            else {
+                _this.product = _this.warehouse.data.productsById[productId];
+                _this.productStock = _this.warehouse.data.stockByProductsId[productId];
+                _this.loading = false;
+                _this.currentImage = _this.product.xlImage2 && _this.product.xlImage2 !== '{}' ? _this.product.xlImage2 : _this.product.image;
+                _this.getReviews();
+            }
         });
     };
     ;

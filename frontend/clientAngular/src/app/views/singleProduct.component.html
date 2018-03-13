@@ -1,7 +1,7 @@
 	<!-- Single-Product-View -->
 	<div class="w3aitssinglewthree">
-            <div class="container">
-    
+            <div *ngIf="loading" class="loader-container"><i class="fas fa-spinner fa-pulse loader-margin"></i></div>
+            <div *ngIf="!loading" class="container">
                 <div class="products">
                 <div class="single-page">
                     <div class="single-page-row" id="detail-21">

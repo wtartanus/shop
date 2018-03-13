@@ -13,6 +13,7 @@
   <!-- Women's-Product-Display -->
 <div class="wthreeproductdisplay">
 		<div id="cbp-pgcontainer" class="cbp-pgcontainer">
+			<div *ngIf="loading" class="loader-container"><i class="fas fa-spinner fa-pulse loader-margin"></i></div>
 			<ul class="cbp-pggrid">
 				<li class="wthree aits w3l" *ngFor="let product of currentPage">
 					<div class="cbp-pgcontent">

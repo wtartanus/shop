@@ -18,6 +18,7 @@ export class ProductsListComponent implements OnInit {
   private pages: Array<any> = new Array();
   public pagesIndex: Array<number> = new Array();
   public pageSelected: number;
+  public loading: boolean = true;
 
   constructor(private message: MessageService, private warehouse: WarehouseService, public basket: BasketService, private route: ActivatedRoute, private router: Router) {
   }
@@ -34,8 +35,17 @@ export class ProductsListComponent implements OnInit {
     this.route.params
       .subscribe((value) => {
         let category = this.route.snapshot.paramMap.get('category');
-        this.products = this.warehouse.getProductsByCategory(category);
-        this.categoryChange();
+        if (!this.warehouse.data) {
+            this.warehouse.dataPromise.then(function onSuccess() {
+                this.products = this.warehouse.getProductsByCategory(category);
+                this.categoryChange();
+                this.loading = false;
+            }.bind(this));
+        } else {
+            this.products = this.warehouse.getProductsByCategory(category);
+            this.categoryChange();
+            this.loading = false;
+        }
     });
   }
 

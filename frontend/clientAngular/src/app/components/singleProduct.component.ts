@@ -31,6 +31,7 @@ export class SingleProductComponent implements OnInit {
   public savingReview: boolean = false;
   public reviewsLoaded: boolean = false;
   public averageRanking: number;
+  public loading: boolean = true;
 
   public starOne: any = {selected: true, value: 1, id: "star-1", position: 0};
   public starTwo: any = {selected: true, value: 2, id: "star-2", position: 1};
@@ -47,8 +48,6 @@ export class SingleProductComponent implements OnInit {
 
   ngOnInit() {
     this.getProduct();
-    this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
-    this.getReviews();
     console.log("product", this.product);
     console.log("stock", this.productStock);
   }
@@ -57,8 +56,21 @@ export class SingleProductComponent implements OnInit {
     this.route.params
       .subscribe((value) => {
         let productId = this.route.snapshot.paramMap.get('id');
-        this.product = this.warehouse.data.productsById[productId];
-        this.productStock = this.warehouse.data.stockByProductsId[productId];
+        if (!this.warehouse.data) {
+          this.warehouse.dataPromise.then(function onSuccess() {
+              this.product = this.warehouse.data.productsById[productId];
+              this.productStock = this.warehouse.data.stockByProductsId[productId];
+              this.loading = false;
+              this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
+              this.getReviews();
+          }.bind(this));
+        } else {
+          this.product = this.warehouse.data.productsById[productId];
+          this.productStock = this.warehouse.data.stockByProductsId[productId];
+          this.loading = false;
+          this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
+          this.getReviews();
+        }
     });
   }
 

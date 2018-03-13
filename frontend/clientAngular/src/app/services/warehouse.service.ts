@@ -10,6 +10,7 @@ import { MessageService } from "../services/message.service.js";
 export class WarehouseService {
     public http: Http;
     public data: any;
+    public dataPromise: Promise<any>;
 
     constructor(http: Http, private message: MessageService) {
        this.http = http;
@@ -29,10 +30,11 @@ export class WarehouseService {
     }
 
     initData() {
-       this.httpGet("http://localhost:8080/data").then(function processResult(result: any) {
-          this.data = result;
-          this.message.sendMessage("data-arrived", {});
-       }.bind(this));
+       this.dataPromise = this.httpGet("http://localhost:8080/data")
+       this.dataPromise.then(function processResult(result: any) {
+            this.data = result;
+            this.message.sendMessage("data-arrived", {});
+        }.bind(this));
     };
 
     getProductsByCategory(category: string): any{
