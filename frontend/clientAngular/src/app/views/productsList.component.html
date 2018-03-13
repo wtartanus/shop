@@ -30,9 +30,10 @@
 					<div class="cbp-pginfo w3layouts">
 						<h3 class="pointer-cursor" (click)="selectProduct(product)">{{product.name}}</h3>
 						<span class="cbp-pgprice">£{{product.rpr}}</span>
-						<span class="pointer-cursor" style="color: brown;font-size: 2em;float:right;" (click)="basket.addToBasket(1, product)">
+						<span *ngIf="!warehouse.data.stockByProductsId[product.id]" style="color:red;">Out Of Stock</span>
+						<button [disabled]="!warehouse.data.stockByProductsId[product.id]" class="pointer-cursor" style="color: brown;font-size: 2em;float:right;border:none;background:none;" (click)="basket.addToBasket(1, product)">
 							<i class="fa fa-cart-plus" aria-hidden="true"></i>
-						</span>
+						</button>
 					</div>
 				</li>
 			</ul>
