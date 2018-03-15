@@ -44,6 +44,9 @@
                             </p>
                             <div class="cbp-pgcontent aitssinglew3 add-to-cart-row" id="mens_single">
                                 <input class="form-control qty" type="number" min="0" placeholder="Qty" [(ngModel)]="quantity">
+                                <select *ngIf="productStock && productStock.size" [(ngModel)]="size">
+                                    <option *ngFor="let s of productStock.size" [ngValue]="s.Size">{{s.Size}}</option>
+                                </select>
                                 <button [disabled]="!productStock || !productStock.inStock" class="btn btn-danger agileits my-cart-btn" (click)="basket.addToBasket(quantity, product)" [attr.title]="!productStock || !productStock.inStock ? 'Sorry, item is out of stock.' : ''"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
                                 <div class="clearfix"></div>
                             </div>

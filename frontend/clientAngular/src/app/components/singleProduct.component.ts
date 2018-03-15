@@ -26,6 +26,7 @@ export class SingleProductComponent implements OnInit {
   public reviewName: string;
   public reviewText: string;
   public quantity: number = 1;
+  public size: any;
   public reviewRanking: number = 5;
   public productReviews: Array<any> = new Array();
   public savingReview: boolean = false;
@@ -60,6 +61,17 @@ export class SingleProductComponent implements OnInit {
           this.warehouse.dataPromise.then(function onSuccess() {
               this.product = this.warehouse.data.productsById[productId];
               this.productStock = this.warehouse.data.stockByProductsId[productId];
+              if (this.productStock.size) {
+                this.productStock.size = JSON.parse(this.productStock.size);
+                for(var i = this.productStock.size.length -1; i >=0; i--) {
+                   if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
+                      this.productStock.size.splice(i, 1);
+                   }
+                }
+                this.size = this.productStock.size[0].Size;
+              } else {
+                this.productStock.size = null;
+              }
               this.loading = false;
               this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
               this.getReviews();
@@ -67,6 +79,17 @@ export class SingleProductComponent implements OnInit {
         } else {
           this.product = this.warehouse.data.productsById[productId];
           this.productStock = this.warehouse.data.stockByProductsId[productId];
+          if (this.productStock.size) {
+            this.productStock.size = JSON.parse(this.productStock.size);
+            for(var i = this.productStock.size.length -1; i >=0; i--) {
+              if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
+                 this.productStock.size.splice(i, 1);
+              }
+            }
+            this.size = this.productStock.size[0].Size;
+          } else {
+            this.productStock.size = null;
+          }
           this.loading = false;
           this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
           this.getReviews();

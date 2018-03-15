@@ -66,6 +66,14 @@ CREATE TABLE stocks (
   size VARCHAR
 )
 
+CREATE TABLE reviews (
+  id SERIAL4 PRIMARY KEY,
+  productId INT REFERENCES products(id),
+  name VARCHAR,
+  text VARCHAR,
+  ranking INT
+)
+
 CREATE TABLE categories (
   id SERIAL4 PRIMARY KEY,
   categoryId INT,

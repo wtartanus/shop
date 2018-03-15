@@ -52,6 +52,18 @@ var SingleProductComponent = (function () {
                 _this.warehouse.dataPromise.then(function onSuccess() {
                     this.product = this.warehouse.data.productsById[productId];
                     this.productStock = this.warehouse.data.stockByProductsId[productId];
+                    if (this.productStock.size) {
+                        this.productStock.size = JSON.parse(this.productStock.size);
+                        for (var i = this.productStock.size.length - 1; i >= 0; i--) {
+                            if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
+                                this.productStock.size.splice(i, 1);
+                            }
+                        }
+                        this.size = this.productStock.size[0].Size;
+                    }
+                    else {
+                        this.productStock.size = null;
+                    }
                     this.loading = false;
                     this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
                     this.getReviews();
@@ -60,6 +72,18 @@ var SingleProductComponent = (function () {
             else {
                 _this.product = _this.warehouse.data.productsById[productId];
                 _this.productStock = _this.warehouse.data.stockByProductsId[productId];
+                if (_this.productStock.size) {
+                    _this.productStock.size = JSON.parse(_this.productStock.size);
+                    for (var i = _this.productStock.size.length - 1; i >= 0; i--) {
+                        if (_this.productStock.size[i].content === "No Stock." || _this.productStock.size[i].content === "No Stock") {
+                            _this.productStock.size.splice(i, 1);
+                        }
+                    }
+                    _this.size = _this.productStock.size[0].Size;
+                }
+                else {
+                    _this.productStock.size = null;
+                }
                 _this.loading = false;
                 _this.currentImage = _this.product.xlImage2 && _this.product.xlImage2 !== '{}' ? _this.product.xlImage2 : _this.product.image;
                 _this.getReviews();

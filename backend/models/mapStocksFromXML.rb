@@ -34,7 +34,7 @@ class MapStocksFromXML
             productId = productsIdsByName[product['NAME']]
             if productId
                 inStock = self.itemInStock(product)
-                size = product['STOCK'] && product['STOCK'].length > 1 ? product['STOCK'] : nil
+                size = product['STOCK'] && product['STOCK'].length > 1 ? product['STOCK'].to_json : nil
                 stock = MapStocksFromXML.new(productId, inStock, size)
                 result.push(stock)
             end
