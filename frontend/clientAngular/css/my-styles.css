@@ -181,6 +181,11 @@
     margin-top: 25vh;
 }
 
+.basket-empty {
+    height: 50vh;
+    margin-top: 10vh;
+}
+
 .basket-header {
     background-color: lightgray;
     text-align: center;
@@ -190,7 +195,7 @@
 .proceed-container {
     position: fixed;
     right: 0;
-    top: 50%;
+    top: 40%;
     background-color: cornflowerblue;
     padding: 2%;
     z-index: 1000;
@@ -216,6 +221,13 @@
 
 .basket-items-container {
    width: 100%;
+}
+
+.item-title {
+    width: 80%;
+    margin-bottom: 2%;
+    font-family: Noto, serif;
+    color: brown;
 }
 
 .basket-item-container {
@@ -246,6 +258,10 @@
     margin-top: 10px;
 }
 
+.proceed-header {
+    display: none;
+}
+
 @media screen and (min-width: 320px) {
     .nav-logo {
         margin-left: 12%;
@@ -258,6 +274,23 @@
 @media screen and (min-width: 490px) {
     .nav-logo {
         margin-left: 20%;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    .basket-item {
+        width: 50%;
+    }
+    
+    .basket-product-container {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .basket-item-info {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
     }
 }
 
@@ -280,9 +313,62 @@
 
 }
 
+@media screen and (min-width: 900px) {
+    .basket-header {
+        display: none;
+    }
+
+    .proceed-container {
+        top: auto;
+        background-color: white;
+        border: 2px solid cornflowerblue;
+        right: 1vw;
+        width: 40vw;
+    }
+
+    .proceed-container p {
+        color: black;
+    }
+
+    .proceed-header {
+        display: inline;
+    }
+
+    .proceed-button {
+        margin: 0 auto;
+        width: 65%;
+        border: 1px solid cornflowerblue;
+        padding: 1%;
+        margin-top: 3%;
+        border-radius: 10px;
+        background-color: cornflowerblue;
+        opacity: 0.9;
+        color: white;
+        text-align: center;
+    }
+
+    .proceed-container p {
+        writing-mode: initial;
+    }
+
+    .basket-item-container {
+        width: 60%;
+    }
+}
+
 @media screen and (max-width: 930px) {
     .navbar-nav {
         margin-top: 1%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .proceed-container {
+        right: 2vw;
+    }
+
+    .basket-page-container {
+        width: 70%;
     }
 }
 
@@ -299,7 +385,22 @@
     }
 }
 
+@media screen and (min-width: 1100px) {
+    .basket-page-container {
+        width: 80%;
+    }
+
+    .proceed-container {
+        width: 30vw;
+        right: 7vw;
+    }
+}
+
 @media screen and (max-width: 1450px) {
+    .basket-item-container {
+        width: 50%;
+    }
+
     .block-menu {
         display: none;
     }
@@ -335,5 +436,11 @@
 @media screen and (min-width: 1460px) {
     .navbar-nav {
         margin: 1% 7%;
+    }
+}
+
+@media screen and (min-width: 1550px) {
+    .proceed-container {
+        right: 9vw;
     }
 }
