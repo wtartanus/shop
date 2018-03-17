@@ -1,4 +1,29 @@
-<h1>!!!!!!!!!!!!!!!!!!!!!!1</h1>
+<h1 *ngIf="!basketItems || !basketItems.length">Basket is empty.</h1>
+<div *ngIf="basketItems && basketItems.length" class="basket-page-container">
+	<div class="basket-header">
+		<p>Items: {{basket.itemsCount}}</p>
+		<p>Total price: £{{basket.totalCost}}</p>
+	</div>
+	<div class="proceed-container">
+		<p>Proceed To Checkout</p>
+	</div>
+	<div class="basket-items-container">
+		<div class="basket-item-container" *ngFor="let item of basketItems">
+			<div class="basket-item">
+				<h4>{{item.product.name}}</h4>
+				<img src="{{'images/main/' + item.product.image}}" alt="{{item.product.name}}">
+			</div>
+			<div class="basket-item-info">
+				 <p>Quantity: {{item.quantity}}</p>
+				 <p>£{{item.cost}}</p>
+			</div>
+			<div class="basket-remove-container">
+				<button type="button" class="btn btn-danger">Remove</button>
+			</div>
+			<hr/>
+		</div>
+	</div>
+</div>
 <!-- Newsletter -->
 <!-- TODO Refactor to fedback box -->
 <div class="w3lsnewsletter" id="w3lsnewsletter">

@@ -36,7 +36,6 @@ var SingleProductComponent = (function () {
         this.itemsShowNumber = 5;
         this.pages = new Array();
         this.pagesIndex = new Array();
-        //this.basket = basket;
     }
     SingleProductComponent.prototype.ngOnInit = function () {
         this.getProduct();

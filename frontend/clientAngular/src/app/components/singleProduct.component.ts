@@ -98,7 +98,7 @@ export class SingleProductComponent implements OnInit {
   }
 
   constructor(private warehouse: WarehouseService, public basket: BasketService, private route: ActivatedRoute, private router: Router) {
-    //this.basket = basket;
+
   };
 
   splitProducts(): void{

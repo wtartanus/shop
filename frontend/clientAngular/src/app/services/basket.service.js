@@ -19,7 +19,7 @@ var BasketService = (function () {
         this.basketItemsById = {};
         this.itemsCount = 0;
     }
-    BasketService.prototype.addToBasket = function (quantity, product) {
+    BasketService.prototype.addToBasket = function (quantity, product, size) {
         if (quantity && product) {
             var cost = product.rpr * quantity;
             if (this.basketItemsById[product.id]) {

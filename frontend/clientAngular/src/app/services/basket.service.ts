@@ -10,12 +10,13 @@ export class BasketService {
 
   constructor(private message: MessageService) { }
 
-  addToBasket(quantity: number, product: any): void{
+  addToBasket(quantity: number, product: any, size: any): void{
     if (quantity && product) {
         let cost = product.rpr * quantity;
         if (this.basketItemsById[product.id]) {
            this.basketItemsById[product.id]['cost'] += cost;
            this.basketItemsById[product.id]['quantity'] += quantity;
+
 
            for (var i = 0; i < this.basketItems.length; i++) {
               if (product.id === this.basketItems[i].product.id) {

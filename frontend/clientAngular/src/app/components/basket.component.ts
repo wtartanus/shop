@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { BasketService } from '../services/basket.service.js';
 import { MessageService } from '../services/message.service.js';
+import { WarehouseService } from '../services/warehouse.service.js';
 
 
 @Component({
@@ -11,7 +12,15 @@ import { MessageService } from '../services/message.service.js';
   templateUrl: 'src/app/views/basket.component.html'
 })
 export class BasketComponent implements OnInit {
-   ngOnInit() {
+    public basketItems: any;
 
-   }
+    constructor(private warehouse: WarehouseService, public basket: BasketService) {
+    };
+
+    ngOnInit() {
+      if (this.basket.basketItemsById) {
+        this.basketItems = this.basket.basketItems;
+        console.log("this.basketItems", this.basketItems);
+      }
+    }
 }
