@@ -25,6 +25,7 @@ var ProductsListComponent = (function () {
         this.pages = new Array();
         this.pagesIndex = new Array();
         this.loading = true;
+        this.sort = "2";
     }
     ProductsListComponent.prototype.ngOnInit = function () {
         this.getProducts();
@@ -43,12 +44,14 @@ var ProductsListComponent = (function () {
                 if (!_this.warehouse.data) {
                     _this.warehouse.dataPromise.then(function onSuccess() {
                         this.products = this.warehouse.getProductsByCategory(category);
+                        this.sortBy(null);
                         this.categoryChange();
                         this.loading = false;
                     }.bind(_this));
                 }
                 else {
                     _this.products = _this.warehouse.getProductsByCategory(category);
+                    _this.sortBy(null);
                     _this.categoryChange();
                     _this.loading = false;
                 }
@@ -64,12 +67,14 @@ var ProductsListComponent = (function () {
                 if (!_this.warehouse.data) {
                     _this.warehouse.dataPromise.then(function onSuccess() {
                         this.products = this.warehouse.getSearchProducts(searchQuery);
+                        this.sortBy(null);
                         this.categoryChange();
                         this.loading = false;
                     }.bind(_this));
                 }
                 else {
                     _this.products = _this.warehouse.getSearchProducts(searchQuery);
+                    _this.sortBy(null);
                     _this.categoryChange();
                     _this.loading = false;
                 }

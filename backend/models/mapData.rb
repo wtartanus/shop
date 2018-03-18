@@ -65,12 +65,14 @@ class MapData
            if !data[:productsByCategory][category['name']]
               data[:productsByCategory][category['name']] = []
            end
-           for  product in products
-             if product['categoryName'].include?(category['name'])
-                data[:productsByCategory][category['name']].push(product)
-             end
-           end
         }
+        for  product in products
+            for category in product['categoryName']
+                if data[:productsByCategory][category]
+                    data[:productsByCategory][category].push(product)
+                end
+            end
+        end
         #stockByProductId
         stocks.each{ |stock|
            data[:stockByProductsId][stock['productId']] = stock

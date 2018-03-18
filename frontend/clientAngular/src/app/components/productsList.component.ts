@@ -19,7 +19,7 @@ export class ProductsListComponent implements OnInit {
   public pagesIndex: Array<number> = new Array();
   public pageSelected: number;
   public loading: boolean = true;
-  public sort: any;
+  public sort: any = "2";
 
   constructor(private message: MessageService, private warehouse: WarehouseService, public basket: BasketService, private route: ActivatedRoute, private router: Router) {
   }
@@ -41,11 +41,13 @@ export class ProductsListComponent implements OnInit {
           if (!this.warehouse.data) {
             this.warehouse.dataPromise.then(function onSuccess() {
                 this.products = this.warehouse.getProductsByCategory(category);
+                this.sortBy(null);
                 this.categoryChange();
                 this.loading = false;
             }.bind(this));
           } else {
               this.products = this.warehouse.getProductsByCategory(category);
+              this.sortBy(null);
               this.categoryChange();
               this.loading = false;
           }
@@ -61,11 +63,13 @@ export class ProductsListComponent implements OnInit {
           if (!this.warehouse.data) {
             this.warehouse.dataPromise.then(function onSuccess() {
                 this.products = this.warehouse.getSearchProducts(searchQuery);
+                this.sortBy(null);
                 this.categoryChange();
                 this.loading = false;
             }.bind(this));
           } else {
               this.products = this.warehouse.getSearchProducts(searchQuery);
+              this.sortBy(null);
               this.categoryChange();
               this.loading = false;
           }
