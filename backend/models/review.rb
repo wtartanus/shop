@@ -6,7 +6,7 @@ class Review
                  
     def initialize(options)
       @id = options['id'].to_i
-      @productId = options['productId'].to_i
+      @productId = options['productid'].to_i
       @text = options['text'] 
       @name = options['name']
       @ranking = options['ranking'].to_i
@@ -16,7 +16,8 @@ class Review
       sql = "INSERT INTO reviews (productId, text, name, ranking)
              VALUES (#{@productId}, '#{@text}', '#{@name}', #{@ranking}) RETURNING *"
      review = SqlRunner.run( sql )
-     return Review.mapToObjects(review)
+     reviewC = Review.new(review[0])
+     return Review.mapToObjects([reviewC])
     end
   
     def self.find( id )
@@ -29,24 +30,47 @@ class Review
     def self.all()
       sql = "SELECT * FROM reviews"
       result = Review.map_items( sql )
-      return result
+      return Review.mapToObjects( result )
     end
 
     def self.getByProductId(id)
         sql = "SELECT * FROM reviews where productId = #{id}"
-        result = SqlRunner.run( sql )
+        result = Review.map_items( sql )
         return Review.mapToObjects(result)
+    end
+
+    def self.getReviewsByProductId()
+      reviews = Review.all();
+      result = {}
+      if reviews.length > 0
+        result = {}
+        for review in reviews
+          if !result[review[:productId]]
+            result[review[:productId]] = {
+              :productId => review[:productId],
+              :rankings => [review[:ranking]],
+              :rankingTotal => review[:ranking],
+              :avgRanking => review[:ranking]
+            }
+          else
+            result[review[:productId]][:rankings].push(review[:ranking])
+            result[review[:productId]][:rankingTotal] = review[:ranking] + result[review[:productId]][:rankingTotal]
+            result[review[:productId]][:avgRanking] = result[review[:productId]][:rankingTotal] / result[review[:productId]][:rankings].length
+          end
+        end
+      end
+      return result
     end
 
     def self.mapToObjects(list)
       result = []
       list.each{ |item|
          itemCopy = {
-           :id => item['id'].to_i,
-           :productId => item['productId'].to_i,
-           :text => item['text'],
-           :name => item['name'],
-           :ranking => item['ranking'].to_i
+           :id => item.id,
+           :productId => item.productId,
+           :text => item.text,
+           :name => item.name,
+           :ranking => item.ranking
          }
          result.push(itemCopy)
       }

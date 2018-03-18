@@ -202,7 +202,7 @@ export class SingleProductComponent implements OnInit {
       name: this.reviewName,
       ranking: this.reviewRanking,
       text: this.reviewText,
-      productId: this.product.id
+      productid: this.product.id
     }
     var reviewPromise = this.warehouse.httpPost("http://localhost:8080/review", msg);
     reviewPromise.then(function reviewAdded(result: any) {

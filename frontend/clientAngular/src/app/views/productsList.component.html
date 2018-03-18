@@ -2,7 +2,11 @@
 <h1 class="w3wthreeheadingaits">{{selectedCategory}}</h1>
 <div style="float:right;">
 	<span>Sort by</span>
-	<span>Show</span>
+	<select [(ngModel)]="sort" (ngModelChange)="sortBy($event)">
+		<option value="0">Price: Low to High</option>
+		<option value="1">Price: High to Low</option>
+		<option value="2"> Avg. Customer Review</option>
+	</select>
 </div>
 <!-- //Heading -->
 <div style="display:flex;width:100%;">

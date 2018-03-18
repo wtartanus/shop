@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
       if (message.text === "data-arrived" ) {
         this.dataReceived = true;
         console.log("Data in place");
+        console.log("data", this.warehouse.data);
       }
     }
 

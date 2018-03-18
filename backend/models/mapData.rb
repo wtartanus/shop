@@ -1,7 +1,8 @@
 require_relative( './stock.rb' )
 require_relative( './product.rb' )
-require_relative( './category' )
+require_relative( './category.rb' )
 require_relative( './discountinued.rb' )
+require_relative( './review.rb')
 
 require('json')
 
@@ -44,13 +45,15 @@ class MapData
         stocks = Stock.getAllAsHash()
         categories = Category.getAllAsHash()
         discountinued = Discountinued.getAllAsHash()
+        reviews = Review.getReviewsByProductId()
 
         data = {
             :productsById => {},
             :productsByCategory => {},
             :stockByProductsId => {},
             :discountedProductsByItem => {},
-            :categoryTree => {}
+            :categoryTree => {},
+            :reviews => reviews
         }
         
         products.each { |product|

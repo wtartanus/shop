@@ -160,9 +160,37 @@ var ProductsListComponent = (function () {
         this.createNumbersArray();
     };
     ProductsListComponent.prototype.selectProduct = function (product) {
-        // this.selectedProduct = product;
         this.router.navigate(["/product", product.id]);
-        // this.onProductSelection.emit(this.selectedProduct);
+    };
+    ProductsListComponent.prototype.sortBy = function (event) {
+        var type = parseInt(this.sort, 10);
+        if (type === 0) {
+            this.products.sort(function sortLowToHigh(a, b) {
+                if (a.rpr < b.rpr) {
+                    return -1;
+                }
+                else if (a.rpr > b.rpr) {
+                    return 1;
+                }
+                else if (a.rpr === b.rpr) {
+                    return 0;
+                }
+            });
+        }
+        else if (type === 1) {
+            this.products.sort(function sortHighToLow(a, b) {
+                if (a.rpr > b.rpr) {
+                    return -1;
+                }
+                else if (a.rpr < b.rpr) {
+                    return 1;
+                }
+                else if (a.rpr === b.rpr) {
+                    return 0;
+                }
+            });
+        }
+        this.categoryChange();
     };
     return ProductsListComponent;
 }());
