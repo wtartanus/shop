@@ -55,6 +55,13 @@ export class WarehouseService {
                     continue;
                  }
 
+                 var brand = product.brandName.toLowerCase();
+
+                 if (brand.includes(search)) {
+                    result.push(product);
+                    continue;
+                 }
+
                  for (var j = 0; j < product.categoryName.length; j++) {
                     if (product.categoryName[j].toLowerCase().includes(search)) {
                       result.push(product);
