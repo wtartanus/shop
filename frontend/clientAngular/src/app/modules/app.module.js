@@ -23,6 +23,7 @@ var basket_component_js_1 = require("./../components/basket.component.js");
 var warehouse_service_js_1 = require("./../services/warehouse.service.js");
 var basket_service_js_1 = require("../services/basket.service.js");
 var message_service_js_1 = require("../services/message.service.js");
+var categories_service_js_1 = require("../services/categories.service.js");
 var appRoutes = [
     { path: '', component: splash_component_js_1.SplashComponent },
     { path: 'basket', component: basket_component_js_1.BasketComponent },
@@ -55,7 +56,7 @@ AppModule = __decorate([
             singleProduct_component_js_1.SingleProductComponent,
             basket_component_js_1.BasketComponent
         ],
-        providers: [warehouse_service_js_1.WarehouseService, message_service_js_1.MessageService, basket_service_js_1.BasketService],
+        providers: [warehouse_service_js_1.WarehouseService, message_service_js_1.MessageService, basket_service_js_1.BasketService, categories_service_js_1.CategoriesService],
         bootstrap: [app_component_js_1.AppComponent]
     })
 ], AppModule);

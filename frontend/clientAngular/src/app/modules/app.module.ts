@@ -17,6 +17,7 @@ import { BasketComponent } from "./../components/basket.component.js";
 import { WarehouseService } from "./../services/warehouse.service.js";
 import { BasketService } from "../services/basket.service.js";
 import { MessageService } from "../services/message.service.js";
+import { CategoriesService } from "../services/categories.service.js";
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent},
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
     SingleProductComponent,
     BasketComponent
   ],
-  providers: [WarehouseService, MessageService, BasketService],
+  providers: [WarehouseService, MessageService, BasketService, CategoriesService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
