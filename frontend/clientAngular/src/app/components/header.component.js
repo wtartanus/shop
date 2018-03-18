@@ -22,6 +22,7 @@ var HeaderComponent = (function () {
         this.onCategoryChange = new core_1.EventEmitter();
         this.basketValues = { itemsCount: 0, totalCost: 0 };
         this.itemsCount = this.basket.itemsCount;
+        this.searchQuery = "";
         this.categories = [
             {
                 name: "Sex Toys",
@@ -245,6 +246,9 @@ var HeaderComponent = (function () {
     };
     HeaderComponent.prototype.changeCategory = function (category) {
         this.router.navigate(["/categories", category]);
+    };
+    HeaderComponent.prototype.search = function () {
+        this.router.navigate(["/search", this.searchQuery]);
     };
     HeaderComponent.prototype.goToHomePage = function () {
         this.selectedCategory = null;

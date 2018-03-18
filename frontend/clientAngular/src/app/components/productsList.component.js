@@ -28,6 +28,7 @@ var ProductsListComponent = (function () {
     }
     ProductsListComponent.prototype.ngOnInit = function () {
         this.getProducts();
+        this.getSearchProducts();
         this.splitProducts();
         this.currentPage = this.pages[0];
         this.pageSelected = 0;
@@ -38,17 +39,40 @@ var ProductsListComponent = (function () {
         this.route.params
             .subscribe(function (value) {
             var category = _this.route.snapshot.paramMap.get('category');
-            if (!_this.warehouse.data) {
-                _this.warehouse.dataPromise.then(function onSuccess() {
-                    this.products = this.warehouse.getProductsByCategory(category);
-                    this.categoryChange();
-                    this.loading = false;
-                }.bind(_this));
+            if (category) {
+                if (!_this.warehouse.data) {
+                    _this.warehouse.dataPromise.then(function onSuccess() {
+                        this.products = this.warehouse.getProductsByCategory(category);
+                        this.categoryChange();
+                        this.loading = false;
+                    }.bind(_this));
+                }
+                else {
+                    _this.products = _this.warehouse.getProductsByCategory(category);
+                    _this.categoryChange();
+                    _this.loading = false;
+                }
             }
-            else {
-                _this.products = _this.warehouse.getProductsByCategory(category);
-                _this.categoryChange();
-                _this.loading = false;
+        });
+    };
+    ProductsListComponent.prototype.getSearchProducts = function () {
+        var _this = this;
+        this.route.params
+            .subscribe(function (value) {
+            var searchQuery = _this.route.snapshot.paramMap.get('searchQuery');
+            if (searchQuery) {
+                if (!_this.warehouse.data) {
+                    _this.warehouse.dataPromise.then(function onSuccess() {
+                        this.products = this.warehouse.getSearchProducts(searchQuery);
+                        this.categoryChange();
+                        this.loading = false;
+                    }.bind(_this));
+                }
+                else {
+                    _this.products = _this.warehouse.getSearchProducts(searchQuery);
+                    _this.categoryChange();
+                    _this.loading = false;
+                }
             }
         });
     };

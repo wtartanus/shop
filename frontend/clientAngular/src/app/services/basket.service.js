@@ -19,12 +19,21 @@ var BasketService = (function () {
         this.basketItemsById = {};
         this.itemsCount = 0;
     }
+    //TODO double check if array updates after updating objects
     BasketService.prototype.addToBasket = function (quantity, product, size) {
         if (quantity && product) {
             var cost = product.rpr * quantity;
             if (this.basketItemsById[product.id]) {
                 this.basketItemsById[product.id]['cost'] += cost;
                 this.basketItemsById[product.id]['quantity'] += quantity;
+                if (this.basketItemsById[product.id]['size'][size]) {
+                    this.basketItemsById[product.id].size[size].quantity += quantity;
+                }
+                else {
+                    this.basketItemsById[product.id]['size'][size] = {};
+                    this.basketItemsById[product.id]['size'][size]["value"] = size;
+                    this.basketItemsById[product.id]['size'][size]["quantity"] = quantity;
+                }
                 for (var i = 0; i < this.basketItems.length; i++) {
                     if (product.id === this.basketItems[i].product.id) {
                         if (this.basketItems[i].quantity !== this.basketItemsById[product.id].quantity)
@@ -38,8 +47,13 @@ var BasketService = (function () {
                 var basketItem = {
                     quantity: quantity,
                     product: product,
-                    cost: cost
+                    cost: cost,
+                    size: {}
                 };
+                if (size) {
+                    basketItem.size[size]["value"] = size;
+                    basketItem.size[size]["quantity"] = quantity;
+                }
                 this.basketItems.push(basketItem);
                 this.basketItemsById[product.id] = basketItem;
             }

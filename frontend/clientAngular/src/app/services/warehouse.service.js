@@ -40,6 +40,28 @@ var WarehouseService = (function () {
     WarehouseService.prototype.getProductsByCategory = function (category) {
         return this.data.productsByCategory[category];
     };
+    WarehouseService.prototype.getSearchProducts = function (searchQuery) {
+        var search = searchQuery.toLowerCase();
+        var keys = Object.keys(this.data.productsById);
+        var result = new Array();
+        for (var i = 0; i < keys.length; i++) {
+            if (this.data.productsById.hasOwnProperty(keys[i])) {
+                var product = this.data.productsById[keys[i]];
+                var name = product.name.toLowerCase();
+                if (name.includes(search)) {
+                    result.push(product);
+                    continue;
+                }
+                for (var j = 0; j < product.categoryName.length; j++) {
+                    if (product.categoryName[j].toLowerCase().includes(search)) {
+                        result.push(product);
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    };
     WarehouseService.prototype.handleError = function (error) {
         console.error('An error occured', error);
         return Promise.reject(error.message || error);

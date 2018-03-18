@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
     @Output() onCategoryChange = new EventEmitter<string>();
     public basketValues: any = {itemsCount: 0, totalCost: 0};
     public itemsCount: number = this.basket.itemsCount;
+    public searchQuery: string = "";
     subscription: Subscription;
     public categories: any = [
         {
@@ -245,6 +246,10 @@ export class HeaderComponent implements OnInit {
 
     changeCategory(category: string): void {
         this.router.navigate(["/categories", category]);
+    }
+
+    search(): void {
+        this.router.navigate(["/search", this.searchQuery]);
     }
 
     goToHomePage(): void{

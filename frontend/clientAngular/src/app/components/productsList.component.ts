@@ -25,6 +25,7 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
+    this.getSearchProducts()
     this.splitProducts();
     this.currentPage = this.pages[0];
     this.pageSelected = 0;
@@ -35,16 +36,38 @@ export class ProductsListComponent implements OnInit {
     this.route.params
       .subscribe((value) => {
         let category = this.route.snapshot.paramMap.get('category');
-        if (!this.warehouse.data) {
+        if (category) {
+          if (!this.warehouse.data) {
             this.warehouse.dataPromise.then(function onSuccess() {
                 this.products = this.warehouse.getProductsByCategory(category);
                 this.categoryChange();
                 this.loading = false;
             }.bind(this));
-        } else {
-            this.products = this.warehouse.getProductsByCategory(category);
-            this.categoryChange();
-            this.loading = false;
+          } else {
+              this.products = this.warehouse.getProductsByCategory(category);
+              this.categoryChange();
+              this.loading = false;
+          }
+        }
+    });
+  }
+
+  getSearchProducts(): void {
+    this.route.params
+      .subscribe((value) => {
+        let searchQuery = this.route.snapshot.paramMap.get('searchQuery');
+        if (searchQuery) {
+          if (!this.warehouse.data) {
+            this.warehouse.dataPromise.then(function onSuccess() {
+                this.products = this.warehouse.getSearchProducts(searchQuery);
+                this.categoryChange();
+                this.loading = false;
+            }.bind(this));
+          } else {
+              this.products = this.warehouse.getSearchProducts(searchQuery);
+              this.categoryChange();
+              this.loading = false;
+          }
         }
     });
   }

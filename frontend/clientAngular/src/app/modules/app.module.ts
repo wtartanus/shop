@@ -22,6 +22,7 @@ const appRoutes: Routes = [
   { path: '', component: SplashComponent},
   { path: 'basket', component: BasketComponent },
   { path: 'categories/:category', component: ProductsListComponent},
+  { path: 'search/:searchQuery', component: ProductsListComponent},
   { path: 'product/:id', component: SingleProductComponent}
 ];
 
