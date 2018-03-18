@@ -183,6 +183,24 @@ export class ProductsListComponent implements OnInit {
            return 0;
         }
      });
+    } else if (type === 2) {
+      this.products.sort(function sortByRanking(a: any, b: any) {
+        var value1 = this.warehouse.data.reviews[a.id];
+        var value2 = this.warehouse.data.reviews[b.id];
+        if (!value1 && !value2) {
+           return 0;
+        } else if (value1 && !value2) {
+           return -1;
+        } else if (!value1 && value2) {
+           return 1;
+        } else if (value1 > value2) {
+           return -1;
+        } else if (value1 < value2) {
+           return 1;
+        } else if (value1 === value2) {
+           return 0;
+        }
+     }.bind(this));
     }
     this.categoryChange();
   }
