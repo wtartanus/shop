@@ -14,6 +14,45 @@
     100% { transform: rotate(360deg); }
 }
 
+.header-container {
+    width: 100%;
+    height: 20vh;
+    border-bottom: lightgray;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo-container img {
+    width: 10%;
+    height: 23%;
+}
+
+.logo-container span {
+    color: red;
+    font-family: 'Amita', cursive;
+}
+
+.navigation-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-button {
+    height: 26%;
+    width: 24%;
+    background-color: red;
+    border: none;
+    color: white;
+    font-size: 2.5em;
+    text-align: center;
+    border-radius: 8px;
+    margin: 2% 0 0 2%;
+}
+
 .pointer-cursor {
     cursor: pointer;
 }

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class CategoriesService {
-     public categories: any = [
+     public categoriesTree: any = [
         {
             name: "Sex Toys",
             subCategories: [
@@ -12,67 +12,67 @@ export class CategoriesService {
                     subCategories: [
                         {
                             name: "Bunny Vibrators",
-                            img: ""
+                            img: "images/categories/bunny-vibrators.jpg"
                         },
                         {
                             name: "Female Pumps",
-                            img: ""
+                            img: "images/categories/female-pumps.jpg"
                         },
                         {
                             name: "Finger Vibrators",
-                            img: ""
+                            img: "images/categories/finger-vibrators.jpg"
                         },
                         {
                             name: "G-Spot Vibrators",
-                            img: ""
+                            img: "images/categories/g-spot-vibrators.jpg"
                         },
                         {
                             name: "Kegel Exercise",
-                            img: ""
+                            img: "images/categories/kegel-exercise.jpg"
                         },
                         {
                             name: "Mini Vibrators",
-                            img: ""
+                            img: "images/categories/mini-vibrators.jpg"
                         },
                         {
                             name: "Nipple Vibrators",
-                            img: ""
+                            img: "images/categories/nipple-vibrators.jpg"
                         },
                         {
                             name: "Remote Control Toys",
-                            img: ""
+                            img: "images/categories/remote-control-toys.jpg"
                         },
                         {
                             name: "Vibrators With Clit Stims",
-                            img: ""
+                            img: "images/categories/vibrators-with-clit-stims.jpg"
                         },
                         {
                             name: "Wand Massagers and Attachments",
-                            img: ""
+                            img: "images/categories/wand-massagers-and-attachments.jpg"
                         },
                         {
                             name: "Standard Vibrators",
-                            img: ""
+                            img: "images/categories/standard-vibrators.jpg"
                         },
                         {
                             name: "Orgasm Balls",
-                            img: ""
+                            img: "images/categories/orgasm-balls.jpg"
                         },
                         {
                             name: "Other Style Vibrators",
-                            img: ""
+                            img: "images/categories/other-style-vibrators.jpg"
                         },
                         {
                             name: "Clitoral Vibrators and Stimulators",
-                            img: ""
+                            img: "images/categories/clitoral-vibrators-and-stimulators.jpg"
                         },
                         {
                             name: "Duo Penetrator",
-                            img: ""
+                            img: "images/categories/duo-penetrator.jpg"
                         },
                         {
                             name: "Vibrating Eggs",
-                            img: ""
+                            img: "images/categories/vibrating-eggs.jpg"
                         }
                     ]
                 },
@@ -82,47 +82,47 @@ export class CategoriesService {
                     subCategories: [
                         {
                             name: "Fleshlight Range",
-                            img: ""
+                            img: "images/categories/fleshlight-range.jpg"
                         },
                         {
                             name: "Penis Developers",
-                            img: ""
+                            img: "images/categories/penis-developers.jpg"
                         },
                         {
                             name: "Vibrating Masturbators",
-                            img: ""
+                            img: "images/categories/vibrating-masturbators.jpg"
                         },
                         {
                             name: "Realistic Masturbators",
-                            img: ""
+                            img: "images/categories/realistic-masturbators.jpg"
                         },
                         {
                             name: "Love Rings",
-                            img: ""
+                            img: "images/categories/love-rings.jpg"
                         },
                         {
                             name: "Vibrating Vaginas",
-                            img: ""
+                            img: "images/categories/vibrating-vagina.jpgs"
                         },
                         {
                             name: "Love Ring Vibrators",
-                            img: ""
+                            img: "images/categories/love-ring-vibrators.jpg"
                         },
                         {
                             name: "Penis Extenders",
-                            img: ""
+                            img: "images/categories/penis-extenders.jpg"
                         },
                         {
                             name: "Masturbators",
-                            img: ""
+                            img: "images/categories/masturbators.jpg"
                         },
                         {
                             name: "Penis Enlargers",
-                            img: ""
+                            img: "images/categories/penis-enlargers.jpg"
                         },
                         {
                             name: "Penis Sleeves",
-                            img: ""
+                            img: "images/categories/penis-sleeves.jpg"
                         }
                     ]
                 }, 
@@ -132,55 +132,51 @@ export class CategoriesService {
                     subCategories: [
                         {
                             name: "Penis Vibrators",
-                            img: ""
+                            img: "images/categories/penis-vibrators.jpg"
                         },
                         {
                             name: "Realistic Dildos",
-                            img: ""
+                            img: "images/categories/realistic-dildos.jpg"
                         },
                         {
                             name: "Strap on Dildo",
-                            img: ""
-                        },
-                        {
-                            name:"",
-                            img: ""
+                            img: "images/categories/strap-on-dildo.jpg"
                         },
                         {
                             name:"Strapless Strap Ons",
-                            img: ""
+                            img: "images/categories/strapless-strap-ons.jpg"
                         },
                         {
                             name:"Hollow Strap Ons",
-                            img: ""
+                            img: "images/categories/hollow-strap-ons.jpg"
                         },
                         {
                             name:"Mould your own kits",
-                            img: ""
+                            img: "images/categories/mould-your-own-kits.jpg"
                         },
                         {
                             name:"Strap On Harnesses",
-                            img: ""
+                            img: "images/categories/strap-on-harnesses.jpg"
                         },
                         {
                             name:"Vibrating Strap Ons",
-                            img: ""
+                            img: "images/categories/vibrating-strap-ons.jpg"
                         },
                         {
                             name:"Penis Dildo",
-                            img: ""
+                            img: "images/categories/penis-dildo.jpg"
                         },
                         {
                             name:"Squirting Dildos",
-                            img: ""
+                            img: "images/categories/squirting-dildos.jpg"
                         },
                         {
                             name: "Double Dildos",
-                            img: ""
+                            img: "images/categories/double-dildos.jpg"
                         },
                         {
                             name: "Realistic Vibrators",
-                            img: ""
+                            img: "images/categories/realistic-vibrators.jpg"
                         }
                     ]
                 }, 
@@ -198,35 +194,35 @@ export class CategoriesService {
                     subCategories: [
                         {
                             name: "Butt Plugs",
-                            img: ""
+                            img: "images/categories/butt-plugs.jpg"
                         },
                         {
                             name: "Prostate Massagers",
-                            img: ""
+                            img: "images/categories/prostate-massagers.jpg"
                         },
                         {
                             name: "Anal Probes",
-                            img: ""
+                            img: "images/categories/anal-probes.jpg"
                         },
                         {
                             name: "Anal Inflatables",
-                            img: ""
+                            img: "images/categories/anal-inflatables.jpg"
                         },
                         {
                             name: "Anal Beads",
-                            img: ""
+                            img: "images/categories/anal-beads.jpg"
                         },
                         {
                             name: "Tunnel and Stretchers",
-                            img: ""
+                            img: "images/categories/tunnel-and-stretchers.jpg"
                         },
                         {
                             name: "Tail Butt Plugs",
-                            img: ""
+                            img: "images/categories/tail-butt-plugs.jpg"
                         },
                         {
                             name: "Vibrating Buttplug",
-                            img: ""
+                            img: "images/categories/vibrating-buttplug.jpg"
                         }
                     ]
                 },
@@ -240,11 +236,11 @@ export class CategoriesService {
                     subCategories: [
                         {
                             name: "Female Love Dolls",
-                            img: ""
+                            img: "images/categories/female-love-dolls.jpg"
                         },
                         {
                             name: "Male Love Dolls",
-                            img: ""
+                            img: "images/categories/male-love-dolls.jpg"
                         }
                     ]
                 },
@@ -254,87 +250,87 @@ export class CategoriesService {
                     subCategories: [
                         {
                             name: "Berman Centre",
-                            img: ""
+                            img: "images/categories/berman-centre.jpg"
                         },
                         {
                             name: "Big Tease Toys",
-                            img: ""
+                            img: "images/categories/big-tease-toys.jpg"
                         },
                         {
                             name: "Bijoux Indiscrets",
-                            img: ""
+                            img: "images/categories/bijoux-indiscrets.jpg"
                         },
                         {
                             name: "Colt",
-                            img: ""
+                            img: "images/categories/colt.jpg"
                         },
                         {
                             name: "Feelztoys",
-                            img: ""
+                            img: "images/categories/feelztoys.jpg"
                         },
                         {
                             name: "Fifty Shades of Grey",
-                            img: ""
+                            img: "images/categories/fifty-shades-of-grey.jpg"
                         },
                         {
                             name: "Jimmy Jane",
-                            img: ""
+                            img: "images/categories/jimmy-jane.jpg"
                         },
                         {
                             name: "Lelo",
-                            img: ""
+                            img: "images/categories/lelo.jpg"
                         },
                         {
                             name: "Nexus",
-                            img: ""
+                            img: "images/categories/nexus.jpg"
                         },
                         {
                             name: "Njoy",
-                            img: ""
+                            img: "images/categories/njoy.jpg"
                         },
                         {
                             name: "OVO",
-                            img: ""
+                            img: "images/categories/ovo.jpg"
                         },
                         {
                             name: "Rends",
-                            img: ""
+                            img: "images/categories/rends.jpg"
                         },
                         {
                             name: "Rocks Off",
-                            img: ""
+                            img: "images/categories/rocks-off.jpg"
                         },
                         {
                             name: "Screaming O",
-                            img: ""
+                            img: "images/categories/screaming-o.jpg"
                         },
                         {
                             name: "Tantus",
-                            img: ""
+                            img: "images/categories/tantus.jpg"
                         },
                         {
                             name: "Tenga Masturbators",
-                            img: ""
+                            img: "images/categories/tenga-masturbators.jpg"
                         },
                         {
                             name: "Toy Joy",
-                            img: ""
+                            img: "images/categories/toy-joy.jpg"
                         },
                         {
                             name: "VacuLock Sex System",
-                            img: ""
+                            img: "images/categories/vacuLock-sex-system.jpg"
                         },
                         {
                             name: "Vibratex",
-                            img: ""
+                            img: "images/categories/vibratex.jpg"
                         },
                         {
                             name: "We-Vibe",
-                            img: ""
+                            img: "images/categories/we-vibe.jpg"
                         },
                         {
                             name: "Zini",
-                            img: ""
+                            img: "images/categories/zini.jpg"
                         }
                     ]
                 }
@@ -495,31 +491,31 @@ export class CategoriesService {
                     subCategories: [
                         {
                             name: "Lubricants and Oils",
-                            img: ""
+                            img: "images/categories/lubricants-and-oils.jpg"
                         },
                         {
                             name: "Flavoured Lubricants and Oils",
-                            img: ""
+                            img: "images/categories/flavoured-lubricants-and-oils.jpg"
                         },
                         {
                             name: "Personal Hygiene",
-                            img: ""
+                            img: "images/categories/personal-hygiene.jpg"
                         },
                         {
                             name: "Anal Lubricants",
-                            img: ""
+                            img: "images/categories/anal-lubricants.jpg"
                         },
                         {
                             name: "Edible Treats",
-                            img: ""
+                            img: "images/categories/edible-treats.jpg"
                         },
                         {
                             name: "Bath and Massage",
-                            img: ""
+                            img: "images/categories/bath-and-massage.jpg"
                         },
                         {
                             name: "Kama Sutra",
-                            img: ""
+                            img: "images/categories/kama-sutra.jpg"
                         }
                     ]
                 }, 
@@ -537,31 +533,31 @@ export class CategoriesService {
                     subCategories: [
                         {
                             name: "Control Condoms",
-                            img: ""
+                            img: "images/categories/control-condoms.jpg"
                         },
                         {
                             name: "Flavoured, Coloured, Novelty",
-                            img: ""
+                            img: "images/categories/flavoured-coloured-novelty.jpg"
                         },
                         {
                             name: "Large and X-Large",
-                            img: ""
+                            img: "images/categories/large-and-x-large.jpg"
                         },
                         {
                             name: "Natural and Regular",
-                            img: ""
+                            img: "images/categories/natural-and-regular.jpg"
                         },
                         {
                             name: "Safe and Strong",
-                            img: ""
+                            img: "images/categories/safe-and-strong.jpg"
                         },
                         {
                             name: "Stimulating, Ribbed, Warming",
-                            img: ""
+                            img: "images/categories/stimulating-ribbed-warming.jpg"
                         },
                         {
                             name: "Ultra Thin",
-                            img: ""
+                            img: "images/categories/ultra-thin.jpg"
                         }
                     ]
                 }
