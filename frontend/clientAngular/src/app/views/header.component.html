@@ -7,23 +7,41 @@
       
       <div class="navigation-container">
           <!-- button to toggle navigation -->
-          <button class="nav-button">
+          <button class="nav-button" (click)="showNavigation = !showNavigation">
               <i class="fas fa-bars"></i>
           </button>
 
           <!-- navigation -->
-          <nav class="main-navigation">
+          <nav *ngIf="showNavigation" class="main-navigation">
+              <ul class="main-list">
+                  <li *ngFor="let category of categories" (click)="toggleCategory(category); $event.stopPropagation();">
+                      {{category.name}}
+                      <ul *ngIf="category.$open" class="second-level-list">
+                         <p>{{category.name}} home page <i class="fas fa-angle-double-right"></i></p>
+                         <li *ngFor="let subCategory of category.subCategories" (click)="toggleCategory(subCategory); $event.stopPropagation();" [ngStyle]="{'background-color': !subCategory.subCategories ? 'orangered' : 'red'}">
+                             {{subCategory.name}}
+                             <ul *ngIf="subCategory.subCategories && subCategory.$open" class="third-level-list">
+                                <p>{{subCategory.name}} home page <i class="fas fa-angle-double-right"></i></p>
+                                 <li *ngFor="let sub of subCategory.subCategories">
+                                     {{sub.name}}
+                                 </li>
+                             </ul>
+                        </li>
+                      </ul>
+                  </li>
+              </ul>
           </nav>
       
           <!-- container for search and basket -->
           <div class="actions-container">
                <!-- search -->
                <div class="search-container">
-
+                    <input type="text" />
+                    <i class="fas fa-search"></i>
                </div>
                <!-- basket -->
                <div class="basket-container">
-
+                    <i class="fas fa-shopping-cart"></i>
                </div>
           </div>
       </div>

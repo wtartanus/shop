@@ -53,6 +53,56 @@
     margin: 2% 0 0 2%;
 }
 
+.actions-container {
+    width: 100%;
+    display: flex;
+}
+
+.main-list {
+    list-style-type: none;
+    background-color: firebrick;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 3%;
+    z-index: 1000;
+    color: white;
+    font-family: sans-serif;
+    font-size: 2em;
+    line-height: 2em;
+    text-align: center;
+    max-height: 16%;
+    overflow-y:auto;
+}
+
+.main-list p {
+    background-color: white;
+    color: red;
+    display: block;
+}
+
+.main-list li {
+    border-bottom: 1px solid black;
+}
+
+.second-level-list {
+    font-size: 0.7em;
+    background: red;
+}
+
+.second-level-list li {
+    border-bottom: 1px solid firebrick;
+}
+
+.third-level-list {
+    background-color: orangered;
+}
+
+.third-level-list li {
+    border-bottom: 1px solid red;
+    font-size: 0.9em;
+}
+
 .pointer-cursor {
     cursor: pointer;
 }

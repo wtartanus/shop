@@ -26,6 +26,7 @@ var HeaderComponent = (function () {
         this.itemsCount = this.basket.itemsCount;
         this.searchQuery = "";
         this.categories = this.categoriesService.categoriesTree;
+        this.showNavigation = false;
         this.subscription = this.messageService.getMessage().subscribe(function (message) { return _this.processMessage(message); });
     }
     HeaderComponent.prototype.processMessage = function (message) {
@@ -36,6 +37,14 @@ var HeaderComponent = (function () {
     };
     HeaderComponent.prototype.ngOnInit = function () {
         console.log("category header", this.selectedCategory);
+    };
+    HeaderComponent.prototype.toggleCategory = function (category) {
+        if (category.$open === undefined || category.$open === null) {
+            category.$open = true;
+        }
+        else {
+            category.$open = !category.$open;
+        }
     };
     HeaderComponent.prototype.changeCategory = function (category) {
         this.router.navigate(["/categories", category]);

@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
     public searchQuery: string = "";
     subscription: Subscription;
     public categories: any = this.categoriesService.categoriesTree;
+    public showNavigation: boolean = false;
    
     constructor (public basket: BasketService, private messageService: MessageService, private router: Router, public categoriesService: CategoriesService) {
         this.subscription = this.messageService.getMessage().subscribe(message => this.processMessage(message));
@@ -34,6 +35,14 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
       console.log("category header", this.selectedCategory);
+    }
+
+    toggleCategory(category: any): void{
+      if (category.$open === undefined || category.$open === null) {
+          category.$open = true;
+      } else {
+          category.$open = !category.$open;
+      }
     }
 
     changeCategory(category: string): void {
