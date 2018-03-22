@@ -46,14 +46,35 @@ var HeaderComponent = (function () {
             category.$open = !category.$open;
         }
     };
+    HeaderComponent.prototype.closeAll = function () {
+        this.showNavigation = false;
+        for (var i = 0; i < this.categories.length; i++) {
+            this.categories[i].$open = false;
+            if (this.categories[i].subCategories) {
+                var subCategories = this.categories[i].subCategories;
+                for (var j = 0; j < subCategories.length; j++) {
+                    subCategories[j].$open = false;
+                    if (subCategories[j].subCategories) {
+                        var subs = subCategories[j].subCategories;
+                        for (var k = 0; k < subs.length; k++) {
+                            subs[k].$open = false;
+                        }
+                    }
+                }
+            }
+        }
+    };
     HeaderComponent.prototype.changeCategory = function (category) {
+        this.closeAll();
         this.router.navigate(["/categories", category]);
     };
     HeaderComponent.prototype.search = function () {
+        this.closeAll();
         this.router.navigate(["/search", this.searchQuery]);
     };
     HeaderComponent.prototype.goToHomePage = function () {
         this.selectedCategory = null;
+        this.closeAll();
         this.onCategoryChange.emit(this.selectedCategory);
     };
     return HeaderComponent;

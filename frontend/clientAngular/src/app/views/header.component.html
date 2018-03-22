@@ -17,12 +17,13 @@
                   <li *ngFor="let category of categories" (click)="toggleCategory(category); $event.stopPropagation();">
                       {{category.name}}
                       <ul *ngIf="category.$open" class="second-level-list">
-                         <p>{{category.name}} home page <i class="fas fa-angle-double-right"></i></p>
+                         <p (click)="changeCategory(category.name); $event.stopPropagation();">{{category.name}} home page <i class="fas fa-angle-double-right"></i></p>
                          <li *ngFor="let subCategory of category.subCategories" (click)="toggleCategory(subCategory); $event.stopPropagation();" [ngStyle]="{'background-color': !subCategory.subCategories ? 'orangered' : 'red'}">
-                             {{subCategory.name}}
+                             <span *ngIf="!subCategory.subCategories" (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}}</span>
+                             <span *ngIf="subCategory.subCategories">{{subCategory.name}}</span>
                              <ul *ngIf="subCategory.subCategories && subCategory.$open" class="third-level-list">
-                                <p>{{subCategory.name}} home page <i class="fas fa-angle-double-right"></i></p>
-                                 <li *ngFor="let sub of subCategory.subCategories">
+                                <p (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}} home page <i class="fas fa-angle-double-right"></i></p>
+                                 <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name); $event.stopPropagation();">
                                      {{sub.name}}
                                  </li>
                              </ul>
@@ -39,8 +40,8 @@
 
         <!-- search -->
         <div class="search-container">
-            <input type="text" class="form-control" id="search-input" />
-            <i class="fas fa-search"></i>
+            <input type="text" class="form-control" id="search-input" [(ngModel)]="searchQuery" />
+            <i class="fas fa-search" (click)="search()"></i>
         </div>
       </div>
 </div>
