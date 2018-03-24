@@ -20,6 +20,17 @@
             <input type="text" class="form-control" id="search-input" [(ngModel)]="searchQuery" />
             <i class="fas fa-search" (click)="search()"></i>
         </div>
+        <nav class="inline-navigation">
+            <ul class="inline-list">
+                <li *ngFor="let category of categories" (mouseenter)="toggleCategory(category); $event.stopPropagation();" (mouseleave)="toggleCategory(category); $event.stopPropagation();">
+                    {{category.name}}
+                    <ul *ngIf="category.$open" class="inline-sub-list">
+                        <p>{{category.name}} home page</p>
+                        <li *ngFor="let subCategory of category.subCategories">{{subCategory.name}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
       </div>
 </div>
 <nav *ngIf="showNavigation" class="main-navigation-mobile-tablet">
