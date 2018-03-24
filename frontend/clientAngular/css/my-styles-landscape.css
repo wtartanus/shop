@@ -1,0 +1,51 @@
+@media screen and (min-width: 400px) {
+    .header-container {
+        height: 31vh;
+    }
+
+    .logo-container img {
+        width: 4%;
+    }
+
+    .main-navigation-mobile-tablet {
+        font-size: 1.6em;
+    }
+
+    .navigation-container {
+        justify-content: flex-end;
+    }
+
+    .nav-button {
+        margin: 2% 33% 0 5%;
+    }
+
+    .basket-container {
+        width: initial;
+    }
+
+    .search-container {
+        padding: 0;
+        width: initial;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .nav-button {
+        margin: 2% 40% 0 5%;
+    }
+
+}
+
+@media screen and (min-width: 700px) {
+    .nav-button {
+        margin: 2% 45% 0 5%;
+    }
+
+}
+
+@media screen and (min-width: 800px) {
+    .nav-button {
+        margin: 2% 49% 0 5%;
+    }
+
+}
