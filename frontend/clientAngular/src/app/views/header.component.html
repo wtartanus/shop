@@ -12,6 +12,10 @@
           </button>
         <!-- basket -->
         <div class="basket-container">
+            <div *ngIf="basketValues.itemsCount" style="display:inline-block;">
+                <p>{{basketValues.itemsCount}} {{basketValues.itemsCount > 1 ? 'Items' : 'Item'}}</p>
+                <p>£{{basketValues.totalCost}}</p>
+            </div>
             <i class="fas fa-shopping-cart"></i>
         </div>
 
