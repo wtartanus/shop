@@ -22,11 +22,13 @@
         </div>
         <nav class="inline-navigation">
             <ul class="inline-list">
-                <li *ngFor="let category of categories" (mouseenter)="toggleCategory(category); $event.stopPropagation();" (mouseleave)="toggleCategory(category); $event.stopPropagation();">
+                <li *ngFor="let category of categories" (click)="changeCategory(category.name); $event.stopPropagation();" 
+                     (mouseenter)="category.$open = true; $event.stopPropagation();" (mouseleave)="category.$open = false; $event.stopPropagation();">
                     {{category.name}}
                     <ul *ngIf="category.$open" class="inline-sub-list">
-                        <p>{{category.name}} home page</p>
-                        <li *ngFor="let subCategory of category.subCategories">{{subCategory.name}}</li>
+                        <li *ngFor="let subCategory of category.subCategories" (click)="changeCategory(subCategory.name); $event.stopPropagation();">
+                            {{subCategory.name}}
+                        </li>
                     </ul>
                 </li>
             </ul>

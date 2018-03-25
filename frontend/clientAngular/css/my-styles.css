@@ -45,6 +45,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    font-family: 'Cormorant Unicase', serif;
 }
 
 .nav-button {

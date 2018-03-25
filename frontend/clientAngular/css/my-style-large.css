@@ -42,6 +42,7 @@
    .inline-list {
        width: 100%;
        list-style-type: none;
+       text-align: center;
    }
 
    .inline-list li {
@@ -51,21 +52,36 @@
        margin-right: 6%;
    }
 
+   .inline-list li:hover {
+       color: white;
+       text-shadow: 1px 1px 1px black;
+   }
+
    .inline-sub-list {
         display: block;
         position: absolute;
         z-index: 10000;
-        /* left: 0; */
         list-style-type: none;
         text-align: left;
-        /* top: 2%; */
-        background-color: red;
-        color: white;
+        background-color: #F5F5F5;
+        color: red;
+        font-size: 0.8em;
+        padding-right: 1%;
+        padding-left: 1%;
    }
 
    .inline-sub-list li {
         display: list-item;
         font-size: 1em;
+        line-height: 2em;
+        border-bottom: 1px solid rgba(0,0,0,.1);
+        margin: 0;
+        text-shadow: 0 0 0;
+   }
+
+   .inline-sub-list li:hover {
+       color: mediumpurple;
+       text-shadow: 0 0 0;
    }
 
    .basket-container {
