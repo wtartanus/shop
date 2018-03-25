@@ -4,6 +4,99 @@ import {Injectable} from '@angular/core';
 export class CategoriesService {
      public categoriesTree: any = [
         {
+            name: "Novelties",
+            subCategories: [
+                {
+                    name: "Media",
+                    img: "images/categories/media.jpg"
+                }, 
+                {
+                    name: "Games",
+                    img: "images/categories/games.jpg"
+                }, 
+                {
+                    name: "Brands",
+                    img: "images/categories/novelties.jpg"
+                },
+                {
+                    name: "Relaxation Zone",
+                    img: "images/categories/hen-and-stag-nights.jpg",
+                    subCategories: [
+                        {
+                            name: "Lubricants and Oils",
+                            img: "images/categories/lubricants-and-oils.jpg"
+                        },
+                        {
+                            name: "Flavoured Lubricants and Oils",
+                            img: "images/categories/flavoured-lubricants-and-oils.jpg"
+                        },
+                        {
+                            name: "Personal Hygiene",
+                            img: "images/categories/personal-hygiene.jpg"
+                        },
+                        {
+                            name: "Anal Lubricants",
+                            img: "images/categories/anal-lubricants.jpg"
+                        },
+                        {
+                            name: "Edible Treats",
+                            img: "images/categories/edible-treats.jpg"
+                        },
+                        {
+                            name: "Bath and Massage",
+                            img: "images/categories/bath-and-massage.jpg"
+                        },
+                        {
+                            name: "Kama Sutra",
+                            img: "images/categories/kama-sutra.jpg"
+                        }
+                    ]
+                }, 
+                {
+                    name: "Hen and Stag Nights",
+                    img: "images/categories/relaxation-zone.jpg"
+                }, 
+                {
+                    name: "Lubricants",
+                    img: "images/categories/lubricants.jpg"
+                }, 
+                {
+                    name: "Condoms",
+                    img: "images/categories/condoms.jpg",
+                    subCategories: [
+                        {
+                            name: "Control Condoms",
+                            img: "images/categories/control-condoms.jpg"
+                        },
+                        {
+                            name: "Flavoured, Coloured, Novelty",
+                            img: "images/categories/flavoured-coloured-novelty.jpg"
+                        },
+                        {
+                            name: "Large and X-Large",
+                            img: "images/categories/large-and-x-large.jpg"
+                        },
+                        {
+                            name: "Natural and Regular",
+                            img: "images/categories/natural-and-regular.jpg"
+                        },
+                        {
+                            name: "Safe and Strong",
+                            img: "images/categories/safe-and-strong.jpg"
+                        },
+                        {
+                            name: "Stimulating, Ribbed, Warming",
+                            img: "images/categories/stimulating-ribbed-warming.jpg"
+                        },
+                        {
+                            name: "Ultra Thin",
+                            img: "images/categories/ultra-thin.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             name: "Sex Toys",
             subCategories: [
                 {
@@ -125,7 +218,97 @@ export class CategoriesService {
                             img: "images/categories/penis-sleeves.jpg"
                         }
                     ]
-                }, 
+                },
+                {
+                    name: "Branded Toys",
+                    img: "images/categories/branded-toys.jpg",
+                    subCategories: [
+                        {
+                            name: "Berman Centre",
+                            img: "images/categories/berman-centre.jpg"
+                        },
+                        {
+                            name: "Big Tease Toys",
+                            img: "images/categories/big-tease-toys.jpg"
+                        },
+                        {
+                            name: "Bijoux Indiscrets",
+                            img: "images/categories/bijoux-indiscrets.jpg"
+                        },
+                        {
+                            name: "Colt",
+                            img: "images/categories/colt.jpg"
+                        },
+                        {
+                            name: "Feelztoys",
+                            img: "images/categories/feelztoys.jpg"
+                        },
+                        {
+                            name: "Fifty Shades of Grey",
+                            img: "images/categories/fifty-shades-of-grey.jpg"
+                        },
+                        {
+                            name: "Jimmy Jane",
+                            img: "images/categories/jimmy-jane.jpg"
+                        },
+                        {
+                            name: "Lelo",
+                            img: "images/categories/lelo.jpg"
+                        },
+                        {
+                            name: "Nexus",
+                            img: "images/categories/nexus.jpg"
+                        },
+                        {
+                            name: "Njoy",
+                            img: "images/categories/njoy.jpg"
+                        },
+                        {
+                            name: "OVO",
+                            img: "images/categories/ovo.jpg"
+                        },
+                        {
+                            name: "Rends",
+                            img: "images/categories/rends.jpg"
+                        },
+                        {
+                            name: "Rocks Off",
+                            img: "images/categories/rocks-off.jpg"
+                        },
+                        {
+                            name: "Screaming O",
+                            img: "images/categories/screaming-o.jpg"
+                        },
+                        {
+                            name: "Tantus",
+                            img: "images/categories/tantus.jpg"
+                        },
+                        {
+                            name: "Tenga Masturbators",
+                            img: "images/categories/tenga-masturbators.jpg"
+                        },
+                        {
+                            name: "Toy Joy",
+                            img: "images/categories/toy-joy.jpg"
+                        },
+                        {
+                            name: "VacuLock Sex System",
+                            img: "images/categories/vacuLock-sex-system.jpg"
+                        },
+                        {
+                            name: "Vibratex",
+                            img: "images/categories/vibratex.jpg"
+                        },
+                        {
+                            name: "We-Vibe",
+                            img: "images/categories/we-vibe.jpg"
+                        },
+                        {
+                            name: "Zini",
+                            img: "images/categories/zini.jpg"
+                        }
+                    ]
+                },
                 {
                     name: "Realistic Dildos and Vibes",
                     img: "images/categories/realistic-dildos-and-vibes.jpg",
@@ -241,96 +424,6 @@ export class CategoriesService {
                         {
                             name: "Male Love Dolls",
                             img: "images/categories/male-love-dolls.jpg"
-                        }
-                    ]
-                },
-                {
-                    name: "Branded Toys",
-                    img: "images/categories/branded-toys.jpg",
-                    subCategories: [
-                        {
-                            name: "Berman Centre",
-                            img: "images/categories/berman-centre.jpg"
-                        },
-                        {
-                            name: "Big Tease Toys",
-                            img: "images/categories/big-tease-toys.jpg"
-                        },
-                        {
-                            name: "Bijoux Indiscrets",
-                            img: "images/categories/bijoux-indiscrets.jpg"
-                        },
-                        {
-                            name: "Colt",
-                            img: "images/categories/colt.jpg"
-                        },
-                        {
-                            name: "Feelztoys",
-                            img: "images/categories/feelztoys.jpg"
-                        },
-                        {
-                            name: "Fifty Shades of Grey",
-                            img: "images/categories/fifty-shades-of-grey.jpg"
-                        },
-                        {
-                            name: "Jimmy Jane",
-                            img: "images/categories/jimmy-jane.jpg"
-                        },
-                        {
-                            name: "Lelo",
-                            img: "images/categories/lelo.jpg"
-                        },
-                        {
-                            name: "Nexus",
-                            img: "images/categories/nexus.jpg"
-                        },
-                        {
-                            name: "Njoy",
-                            img: "images/categories/njoy.jpg"
-                        },
-                        {
-                            name: "OVO",
-                            img: "images/categories/ovo.jpg"
-                        },
-                        {
-                            name: "Rends",
-                            img: "images/categories/rends.jpg"
-                        },
-                        {
-                            name: "Rocks Off",
-                            img: "images/categories/rocks-off.jpg"
-                        },
-                        {
-                            name: "Screaming O",
-                            img: "images/categories/screaming-o.jpg"
-                        },
-                        {
-                            name: "Tantus",
-                            img: "images/categories/tantus.jpg"
-                        },
-                        {
-                            name: "Tenga Masturbators",
-                            img: "images/categories/tenga-masturbators.jpg"
-                        },
-                        {
-                            name: "Toy Joy",
-                            img: "images/categories/toy-joy.jpg"
-                        },
-                        {
-                            name: "VacuLock Sex System",
-                            img: "images/categories/vacuLock-sex-system.jpg"
-                        },
-                        {
-                            name: "Vibratex",
-                            img: "images/categories/vibratex.jpg"
-                        },
-                        {
-                            name: "We-Vibe",
-                            img: "images/categories/we-vibe.jpg"
-                        },
-                        {
-                            name: "Zini",
-                            img: "images/categories/zini.jpg"
                         }
                     ]
                 }
@@ -467,99 +560,6 @@ export class CategoriesService {
                 {
                     name: "PVC Orgy Beddingk",
                     img: "images/categories/pvc-orgy-bedding.jpg"
-                }
-            ]
-        },
-        {
-            name: "Other",
-            subCategories: [
-                {
-                    name: "Media",
-                    img: "images/categories/media.jpg"
-                }, 
-                {
-                    name: "Games",
-                    img: "images/categories/games.jpg"
-                }, 
-                {
-                    name: "Brands",
-                    img: "images/categories/novelties.jpg"
-                },
-                {
-                    name: "Relaxation Zone",
-                    img: "images/categories/hen-and-stag-nights.jpg",
-                    subCategories: [
-                        {
-                            name: "Lubricants and Oils",
-                            img: "images/categories/lubricants-and-oils.jpg"
-                        },
-                        {
-                            name: "Flavoured Lubricants and Oils",
-                            img: "images/categories/flavoured-lubricants-and-oils.jpg"
-                        },
-                        {
-                            name: "Personal Hygiene",
-                            img: "images/categories/personal-hygiene.jpg"
-                        },
-                        {
-                            name: "Anal Lubricants",
-                            img: "images/categories/anal-lubricants.jpg"
-                        },
-                        {
-                            name: "Edible Treats",
-                            img: "images/categories/edible-treats.jpg"
-                        },
-                        {
-                            name: "Bath and Massage",
-                            img: "images/categories/bath-and-massage.jpg"
-                        },
-                        {
-                            name: "Kama Sutra",
-                            img: "images/categories/kama-sutra.jpg"
-                        }
-                    ]
-                }, 
-                {
-                    name: "Hen and Stag Nights",
-                    img: "images/categories/relaxation-zone.jpg"
-                }, 
-                {
-                    name: "Lubricants",
-                    img: "images/categories/lubricants.jpg"
-                }, 
-                {
-                    name: "Condoms",
-                    img: "images/categories/condoms.jpg",
-                    subCategories: [
-                        {
-                            name: "Control Condoms",
-                            img: "images/categories/control-condoms.jpg"
-                        },
-                        {
-                            name: "Flavoured, Coloured, Novelty",
-                            img: "images/categories/flavoured-coloured-novelty.jpg"
-                        },
-                        {
-                            name: "Large and X-Large",
-                            img: "images/categories/large-and-x-large.jpg"
-                        },
-                        {
-                            name: "Natural and Regular",
-                            img: "images/categories/natural-and-regular.jpg"
-                        },
-                        {
-                            name: "Safe and Strong",
-                            img: "images/categories/safe-and-strong.jpg"
-                        },
-                        {
-                            name: "Stimulating, Ribbed, Warming",
-                            img: "images/categories/stimulating-ribbed-warming.jpg"
-                        },
-                        {
-                            name: "Ultra Thin",
-                            img: "images/categories/ultra-thin.jpg"
-                        }
-                    ]
                 }
             ]
         }
