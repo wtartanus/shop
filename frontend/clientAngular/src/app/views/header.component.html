@@ -26,6 +26,7 @@
         </div>
         <nav class="inline-navigation">
             <ul class="inline-list">
+                <!--  -->
                 <li *ngFor="let category of categories" (click)="changeCategory(category.name); $event.stopPropagation();" 
                      (mouseenter)="category.$open = true; $event.stopPropagation();" (mouseleave)="category.$open = false; $event.stopPropagation();">
                     {{category.name}}
@@ -35,7 +36,7 @@
                             {{subCategory.name}}
                             <span *ngIf="subCategory.subCategories && !subCategory.$open" class="subCategories-arrow"><i class="fas fa-chevron-right"></i></span>
                             <span *ngIf="subCategory.subCategories && subCategory.$open" class="subCategories-arrow"><i class="fas fa-chevron-down"></i></span>
-                            <ul *ngIf="subCategory.subCategories && subCategory.$open" class="inline-sub-sub-list" [ngStyle]="{'top': i*2 + 'em'}">
+                            <ul *ngIf="subCategory.subCategories && subCategory.$open" class="inline-sub-sub-list" [ngStyle]="{'top': i*2.4 + 'em'}">
                                <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(subCategory.name); $event.stopPropagation();">
                                    {{sub.name}}
                                 </li>
