@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { BasketService } from '../services/basket.service.js';
 import { MessageService } from '../services/message.service.js';
 import { Route, Router } from '@angular/router';
+import { CategoriesService } from '../services/categories.service.js';
 
 
 @Component({
@@ -18,218 +19,10 @@ export class HeaderComponent implements OnInit {
     public itemsCount: number = this.basket.itemsCount;
     public searchQuery: string = "";
     subscription: Subscription;
-    public categories: any = [
-        {
-            name: "Sex Toys",
-            subCategories: [
-                {
-                    name: "Sex Toys For Ladies",
-                    img: "images/categories/sex-toys-for-ladies.jpg"
-                },
-                {
-                    name: "Sex Toys For Men",
-                    img: "images/categories/sex-toys-for-men.jpg"
-                }, 
-                {
-                    name: "Realistic Dildos and Vibes",
-                    img: "images/categories/realistic-dildos-and-vibes.jpg"
-                }, 
-                {
-                    name: "Other Dildos",
-                    img: "images/categories/other-dildos.jpg"
-                }, 
-                {
-                    name: "Glass",
-                    img: "images/categories/glass.jpg"
-                },
-                {
-                    name: "Anal Range",
-                    img: "images/categories/anal-range.jpg"
-                },
-                {
-                    name: "Sex Kits",
-                    img: "images/categories/sex-kits.jpg"
-                },
-                {
-                    name: "Sex Dolls",
-                    img: "images/categories/sex-dolls.jpg"
-                },
-                {
-                    name: "Branded Toys",
-                    img: "images/categories/branded-toys.jpg"
-                }
-            ]
-        },
-        {
-            name: "Clothes",
-            subCategories: [
-                {
-                    name: "Babydolls",
-                    img: "images/categories/babydolls.jpg"
-                }, 
-                {
-                    name: "Basques and Corsets",
-                    img: "images/categories/basques-and-corsets.jpg"
-                }, 
-                {
-                    name: "Bodies and Playsuits",
-                    img: "images/categories/bodies-and-playsuits.jpg"
-                },
-                {
-                    name: "Bra Sets",
-                    img: "images/categories/bra-sets.jpg"
-                }, 
-                {
-                    name: "Dresses and Chemises",
-                    img: "images/categories/dresses-and-chemises.jpg"
-                },
-                {
-                    name: "Sexy Briefs",
-                    img: "images/categories/sexy-briefs.jpg"
-                },
-                {
-                    name: "Fantasy",
-                    img: "images/categories/fantasy.jpg"
-                },
-                {
-                    name: "Stockings",
-                    img: "images/categories/stockings.jpg"
-                },
-                {
-                    name: "Plus Size Lingerie",
-                    img: "images/categories/plus-size-lingerie.jpg"
-                },
-                {
-                    name: "Leather",
-                    img: "images/categories/leather.jpg"
-                }, 
-                {
-                    name: "Latex",
-                    img: "images/categories/latex.jpg"
-                }, 
-                {
-                    name: "Accessories",
-                    img: "images/categories/accessories.jpg"
-                }, 
-                {
-                    name: "Body Jewellery",
-                    img: "images/categories/body-jewellery.jpg"
-                }
-            ]
-        },
-        {
-            name: "Bondage Gear",
-            subCategories: [
-                {
-                    name: "Restraints",
-                    img: "images/categories/restraints.jpg"
-                }, 
-                {
-                    name: "Handcuffs",
-                    img: "images/categories/handcuffs.jpg"
-                }, 
-                {
-                    name: "Whips",
-                    img: "images/categories/whips.jpg"
-                }, 
-                {
-                    name: "Collars",
-                    img: "images/categories/collars.jpg"
-                }, 
-                {
-                    name: "Gags and Bits",
-                    img: "images/categories/gags-and-bits.jpg"
-                }, 
-                {
-                    name: "Nipple Clamps",
-                    img: "images/categories/nipple-clamps.jpg"
-                }, 
-                {
-                    name: "Masks",
-                    img: "images/categories/masks.jpg"
-                }, 
-                {
-                    name: "Bondage Cock Rings",
-                    img: "images/categories/bondage-cock-rings.jpg"
-                },
-                {
-                    name: "Bondage Hoods",
-                    img: "images/categories/bondage-hoods.jpg"
-                },
-                {
-                    name: "Bondage Kits",
-                    img: "images/categories/bondage-kits.jpg"
-                },
-                {
-                    name: "Cock and Ball Bondage",
-                    img: "images/categories/cock-and-ball-bondage.jpg"
-                },
-                {
-                    name: "Electro Sex Stimulation",
-                    img: "images/categories/electro-sex-stimulation.jpg"
-                },
-                {
-                    name: "Fetish Fantasy Series",
-                    img: "images/categories/fetish-fantasy-series.jpg"
-                },
-                {
-                    name: "Large Accessories",
-                    img: "images/categories/large-accessories.jpg"
-                },
-                {
-                    name: "Male Chasity",
-                    img: "images/categories/male-chasity.jpg"
-                },
-                {
-                    name: "Medical Instruments",
-                    img: "images/categories/medical-instruments.jpg"
-                },
-                {
-                    name: "Paddles",
-                    img: "images/categories/paddles.jpg"
-                },
-                {
-                    name: "PVC Orgy Beddingk",
-                    img: "images/categories/pvc-orgy-bedding.jpg"
-                }
-            ]
-        },
-        {
-            name: "Other",
-            subCategories: [
-                {
-                    name: "Media",
-                    img: "images/categories/media.jpg"
-                }, 
-                {
-                    name: "Games",
-                    img: "images/categories/games.jpg"
-                }, 
-                {
-                    name: "Brands",
-                    img: "images/categories/novelties.jpg"
-                },
-                {
-                    name: "Relaxation Zone",
-                    img: "images/categories/hen-and-stag-nights.jpg"
-                }, 
-                {
-                    name: "Hen and Stag Nights",
-                    img: "images/categories/relaxation-zone.jpg"
-                }, 
-                {
-                    name: "Lubricants",
-                    img: "images/categories/lubricants.jpg"
-                }, 
-                {
-                    name: "Condoms",
-                    img: "images/categories/condoms.jpg"
-                }
-            ]
-        }
-    ];
-
-    constructor (public basket: BasketService, private messageService: MessageService, private router: Router) {
+    public categories: any = this.categoriesService.categoriesTree;
+    public showNavigation: boolean = false;
+   
+    constructor (public basket: BasketService, private messageService: MessageService, private router: Router, public categoriesService: CategoriesService) {
         this.subscription = this.messageService.getMessage().subscribe(message => this.processMessage(message));
     }
 
@@ -244,16 +37,47 @@ export class HeaderComponent implements OnInit {
       console.log("category header", this.selectedCategory);
     }
 
+    toggleCategory(category: any): void{
+      if (category.$open === undefined || category.$open === null) {
+          category.$open = true;
+      } else {
+          category.$open = !category.$open;
+      }
+    }
+
+    closeAll(): void {
+        this.showNavigation = false;
+
+        for (var i = 0; i < this.categories.length; i++) {
+            this.categories[i].$open = false;
+            if (this.categories[i].subCategories) {
+                var subCategories = this.categories[i].subCategories;
+                for (var j = 0; j < subCategories.length; j++) {
+                    subCategories[j].$open = false;
+                    if (subCategories[j].subCategories) {
+                        var subs = subCategories[j].subCategories;
+                        for (var k = 0; k < subs.length; k++) {
+                            subs[k].$open = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     changeCategory(category: string): void {
+        this.closeAll();
         this.router.navigate(["/categories", category]);
     }
 
     search(): void {
+        this.closeAll();
         this.router.navigate(["/search", this.searchQuery]);
     }
 
     goToHomePage(): void{
         this.selectedCategory = null;
+        this.closeAll();
         this.onCategoryChange.emit(this.selectedCategory);
     }
 }
