@@ -403,3 +403,15 @@
     width: 100%;
     flex-direction: column;
 }
+
+.home-category {
+    color: blue;
+    font-size: 1em;
+    line-height: 2.4em;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    text-shadow: 0 0 0;
+}
+
+.home-category:hover {
+    color: purple;
+}

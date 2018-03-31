@@ -65,6 +65,33 @@ export class HeaderComponent implements OnInit {
         }
     }
 
+    openCategory(category: any): void{
+       category.$open = !category.$open;
+       
+       for (var i = 0; i < this.categories.length; i++) {
+          if (this.categories[i].name !== category.name && (!category.parents || category.parents.indexOf(this.categories[i].name) < 0)) {
+              this.categories[i].$open = false;
+          }
+
+          if (this.categories[i].subCategories) {
+            let subCategories = this.categories[i].subCategories;
+            for (let j = 0; j < subCategories.length; j++) {
+                if (category.name !== subCategories[j].name && (!category.parents || category.parents.indexOf(subCategories[j].name) < 0)) {
+                    subCategories[j].$open = false;
+                }
+                if (subCategories[j].subCategories) {
+                    var subs = subCategories[j].subCategories;
+                    for (var k = 0; k < subs.length; k++) {
+                        if (subs[k].name !== category.name) {
+                            subs[k].$open = false;
+                        }
+                    }
+                }
+            }
+          }
+       }
+    }
+
     changeCategory(category: string): void {
         this.closeAll();
         this.router.navigate(["/categories", category]);

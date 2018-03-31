@@ -21,6 +21,7 @@ export class CategoriesService {
                 {
                     name: "Relaxation Zone",
                     img: "images/categories/hen-and-stag-nights.jpg",
+                    parents: ["Novelties"],
                     subCategories: [
                         {
                             name: "Lubricants and Oils",
@@ -63,6 +64,7 @@ export class CategoriesService {
                 {
                     name: "Condoms",
                     img: "images/categories/condoms.jpg",
+                    parents: ["Novelties"],
                     subCategories: [
                         {
                             name: "Control Condoms",
@@ -102,6 +104,7 @@ export class CategoriesService {
                 {
                     name: "Sex Toys For Ladies",
                     img: "images/categories/sex-toys-for-ladies.jpg",
+                    parents: ["Sex Toys"],
                     subCategories: [
                         {
                             name: "Bunny Vibrators",
@@ -172,6 +175,7 @@ export class CategoriesService {
                 {
                     name: "Sex Toys For Men",
                     img: "images/categories/sex-toys-for-men.jpg",
+                    parents: ["Sex Toys"],
                     subCategories: [
                         {
                             name: "Fleshlight Range",
@@ -222,6 +226,7 @@ export class CategoriesService {
                 {
                     name: "Branded Toys",
                     img: "images/categories/branded-toys.jpg",
+                    parents: ["Sex Toys"],
                     subCategories: [
                         {
                             name: "Berman Centre",
@@ -312,6 +317,7 @@ export class CategoriesService {
                 {
                     name: "Realistic Dildos and Vibes",
                     img: "images/categories/realistic-dildos-and-vibes.jpg",
+                    parents: ["Sex Toys"],
                     subCategories: [
                         {
                             name: "Penis Vibrators",
@@ -374,6 +380,7 @@ export class CategoriesService {
                 {
                     name: "Anal Range",
                     img: "images/categories/anal-range.jpg",
+                    parents: ["Sex Toys"],
                     subCategories: [
                         {
                             name: "Butt Plugs",
@@ -416,6 +423,7 @@ export class CategoriesService {
                 {
                     name: "Sex Dolls",
                     img: "images/categories/sex-dolls.jpg",
+                    parents: ["Sex Toys"],
                     subCategories: [
                         {
                             name: "Female Love Dolls",

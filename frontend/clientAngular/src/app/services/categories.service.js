@@ -28,6 +28,7 @@ var CategoriesService = (function () {
                     {
                         name: "Relaxation Zone",
                         img: "images/categories/hen-and-stag-nights.jpg",
+                        parents: ["Novelties"],
                         subCategories: [
                             {
                                 name: "Lubricants and Oils",
@@ -70,6 +71,7 @@ var CategoriesService = (function () {
                     {
                         name: "Condoms",
                         img: "images/categories/condoms.jpg",
+                        parents: ["Novelties"],
                         subCategories: [
                             {
                                 name: "Control Condoms",
@@ -109,6 +111,7 @@ var CategoriesService = (function () {
                     {
                         name: "Sex Toys For Ladies",
                         img: "images/categories/sex-toys-for-ladies.jpg",
+                        parents: ["Sex Toys"],
                         subCategories: [
                             {
                                 name: "Bunny Vibrators",
@@ -179,6 +182,7 @@ var CategoriesService = (function () {
                     {
                         name: "Sex Toys For Men",
                         img: "images/categories/sex-toys-for-men.jpg",
+                        parents: ["Sex Toys"],
                         subCategories: [
                             {
                                 name: "Fleshlight Range",
@@ -229,6 +233,7 @@ var CategoriesService = (function () {
                     {
                         name: "Branded Toys",
                         img: "images/categories/branded-toys.jpg",
+                        parents: ["Sex Toys"],
                         subCategories: [
                             {
                                 name: "Berman Centre",
@@ -319,6 +324,7 @@ var CategoriesService = (function () {
                     {
                         name: "Realistic Dildos and Vibes",
                         img: "images/categories/realistic-dildos-and-vibes.jpg",
+                        parents: ["Sex Toys"],
                         subCategories: [
                             {
                                 name: "Penis Vibrators",
@@ -381,6 +387,7 @@ var CategoriesService = (function () {
                     {
                         name: "Anal Range",
                         img: "images/categories/anal-range.jpg",
+                        parents: ["Sex Toys"],
                         subCategories: [
                             {
                                 name: "Butt Plugs",
@@ -423,6 +430,7 @@ var CategoriesService = (function () {
                     {
                         name: "Sex Dolls",
                         img: "images/categories/sex-dolls.jpg",
+                        parents: ["Sex Toys"],
                         subCategories: [
                             {
                                 name: "Female Love Dolls",
