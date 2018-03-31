@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: 'src/app/views/productsList.component.html'
 })
 export class ProductsListComponent implements OnInit {
-  public selectedCategory: string;
+  public selectedCategory: any;
   public products: any;
   public selectedProduct: any;
   public itemsShowNumber: number = 15;
@@ -36,17 +36,17 @@ export class ProductsListComponent implements OnInit {
   getProducts(): void{
     this.route.params
       .subscribe((value) => {
-        let category = this.route.snapshot.paramMap.get('category');
-        if (category) {
+        this.selectedCategory = this.route.snapshot.paramMap.get('category');
+        if (this.selectedCategory) {
           if (!this.warehouse.data) {
             this.warehouse.dataPromise.then(function onSuccess() {
-                this.products = this.warehouse.getProductsByCategory(category);
+                this.products = this.warehouse.getProductsByCategory(this.selectedCategory);
                 this.sortBy(null);
                 this.categoryChange();
                 this.loading = false;
             }.bind(this));
           } else {
-              this.products = this.warehouse.getProductsByCategory(category);
+              this.products = this.warehouse.getProductsByCategory(this.selectedCategory);
               this.sortBy(null);
               this.categoryChange();
               this.loading = false;

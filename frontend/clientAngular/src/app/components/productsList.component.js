@@ -39,18 +39,18 @@ var ProductsListComponent = (function () {
         var _this = this;
         this.route.params
             .subscribe(function (value) {
-            var category = _this.route.snapshot.paramMap.get('category');
-            if (category) {
+            _this.selectedCategory = _this.route.snapshot.paramMap.get('category');
+            if (_this.selectedCategory) {
                 if (!_this.warehouse.data) {
                     _this.warehouse.dataPromise.then(function onSuccess() {
-                        this.products = this.warehouse.getProductsByCategory(category);
+                        this.products = this.warehouse.getProductsByCategory(this.selectedCategory);
                         this.sortBy(null);
                         this.categoryChange();
                         this.loading = false;
                     }.bind(_this));
                 }
                 else {
-                    _this.products = _this.warehouse.getProductsByCategory(category);
+                    _this.products = _this.warehouse.getProductsByCategory(_this.selectedCategory);
                     _this.sortBy(null);
                     _this.categoryChange();
                     _this.loading = false;
