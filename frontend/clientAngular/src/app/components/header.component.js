@@ -34,6 +34,9 @@ var HeaderComponent = (function () {
             this.basketValues.itemsCount = message.body.itemsCount;
             this.basketValues.totalCost = message.body.totalCost;
         }
+        if (message.text === "close-nav") {
+            this.closeAll();
+        }
     };
     HeaderComponent.prototype.ngOnInit = function () {
         console.log("category header", this.selectedCategory);

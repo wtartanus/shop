@@ -31,6 +31,9 @@ export class HeaderComponent implements OnInit {
           this.basketValues.itemsCount = message.body.itemsCount;
           this.basketValues.totalCost = message.body.totalCost;
       }
+      if (message.text === "close-nav") {
+          this.closeAll();
+      }
     }
 
     ngOnInit() {

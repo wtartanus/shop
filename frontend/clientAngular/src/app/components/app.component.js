@@ -38,6 +38,9 @@ var AppComponent = (function () {
             console.log("data", this.warehouse.data);
         }
     };
+    AppComponent.prototype.closeNav = function () {
+        this.message.sendMessage("close-nav", {});
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([

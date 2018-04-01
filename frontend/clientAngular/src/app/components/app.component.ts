@@ -43,6 +43,10 @@ export class AppComponent implements OnInit {
       }
     }
 
+    closeNav(): void{
+      this.message.sendMessage("close-nav", {});
+    }
+
 //   ngOnDestroy(): void {
 //      this.substriction.unsubscribe();
 //   }
