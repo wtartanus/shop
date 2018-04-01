@@ -227,12 +227,17 @@
     color: white;
 }
 
+.pages-selection {
+    width: 100%;
+    text-align: center;
+}
+
 .pages-index {
   display: inline-block;
   cursor: pointer;
   border: 1px solid lightgray;
   margin-left: 0.2%;
-  width: 1.4%;
+  width: 10%;
   text-align: center;
   border-radius: 25%;
   font-size: 1.2em;

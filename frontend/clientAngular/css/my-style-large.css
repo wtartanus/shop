@@ -131,6 +131,14 @@
        padding-top: 20vh;
    }
 
+   .pages-selection {
+       text-align: right;
+   }
+
+    .pages-index {
+       width: 1.4%;
+    }
+
 }
 
 @media screen and (min-width: 900px) {

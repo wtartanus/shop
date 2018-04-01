@@ -103,6 +103,7 @@ export class ProductsListComponent implements OnInit {
           this.pages.push(items);
         }
     }
+    window.scrollTo(0, 0);
   }
 
   createNumbersArray(): void{
@@ -133,6 +134,7 @@ export class ProductsListComponent implements OnInit {
      this.currentPage = this.pages[pageNumber];
      this.pageSelected = pageNumber;
      this.createNumbersArray();
+     window.scrollTo(0, 0);
   }
 
   goToStartEnd(goToStart: boolean): void{
@@ -144,6 +146,7 @@ export class ProductsListComponent implements OnInit {
       this.pageSelected = this.pages.length - 1;
     }
     this.createNumbersArray();
+    window.scrollTo(0, 0);
   }
 
   moveByOnePage(goLeft: boolean): void{
@@ -159,6 +162,7 @@ export class ProductsListComponent implements OnInit {
       }
     }
     this.createNumbersArray();
+    window.scrollTo(0, 0);
   }
 
   selectProduct(product: any): void{

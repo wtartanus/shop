@@ -106,6 +106,7 @@ var ProductsListComponent = (function () {
                 this.pages.push(items);
             }
         }
+        window.scrollTo(0, 0);
     };
     ProductsListComponent.prototype.createNumbersArray = function () {
         if (this.pages.length <= 10 && !this.pagesIndex.length) {
@@ -137,6 +138,7 @@ var ProductsListComponent = (function () {
         this.currentPage = this.pages[pageNumber];
         this.pageSelected = pageNumber;
         this.createNumbersArray();
+        window.scrollTo(0, 0);
     };
     ProductsListComponent.prototype.goToStartEnd = function (goToStart) {
         if (goToStart) {
@@ -148,6 +150,7 @@ var ProductsListComponent = (function () {
             this.pageSelected = this.pages.length - 1;
         }
         this.createNumbersArray();
+        window.scrollTo(0, 0);
     };
     ProductsListComponent.prototype.moveByOnePage = function (goLeft) {
         if (goLeft) {
@@ -163,6 +166,7 @@ var ProductsListComponent = (function () {
             }
         }
         this.createNumbersArray();
+        window.scrollTo(0, 0);
     };
     ProductsListComponent.prototype.selectProduct = function (product) {
         this.router.navigate(["/product", product.id]);
