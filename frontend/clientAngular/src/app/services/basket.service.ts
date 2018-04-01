@@ -46,6 +46,7 @@ export class BasketService {
             this.basketItemsById[product.id] = basketItem;
         }
         this.totalCost += cost;
+        this.totalCost = parseFloat(this.totalCost.toFixed(2));
         this.itemsCount += quantity;
         let body = {
             totalCost: this.totalCost,

@@ -58,6 +58,7 @@ var BasketService = (function () {
                 this.basketItemsById[product.id] = basketItem;
             }
             this.totalCost += cost;
+            this.totalCost = parseFloat(this.totalCost.toFixed(2));
             this.itemsCount += quantity;
             var body = {
                 totalCost: this.totalCost,
