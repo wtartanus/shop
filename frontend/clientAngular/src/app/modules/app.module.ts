@@ -13,6 +13,7 @@ import { ProductsListComponent } from "./../components/productsList.component.js
 import { FooterComponent } from "./../components/footer.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
 import { BasketComponent } from "./../components/basket.component.js";
+import { CheckoutComponent } from "../components/checkout.component.js";
 
 import { WarehouseService } from "./../services/warehouse.service.js";
 import { BasketService } from "../services/basket.service.js";
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
   { path: 'basket', component: BasketComponent },
   { path: 'categories/:category', component: ProductsListComponent},
   { path: 'search/:searchQuery', component: ProductsListComponent},
-  { path: 'product/:id', component: SingleProductComponent}
+  { path: 'product/:id', component: SingleProductComponent},
+  { path: 'checkout', component: CheckoutComponent}
 ];
 
 @NgModule({
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     SplashComponent,
     ProductsListComponent,
     SingleProductComponent,
-    BasketComponent
+    BasketComponent,
+    CheckoutComponent
   ],
   providers: [WarehouseService, MessageService, BasketService, CategoriesService],
   bootstrap: [ AppComponent ]
