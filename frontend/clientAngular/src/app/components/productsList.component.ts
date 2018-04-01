@@ -79,6 +79,7 @@ export class ProductsListComponent implements OnInit {
 
   categoryChange() {
     this.pages.length = 0;
+    this.pagesIndex.length = 0;
     this.splitProducts();
     if (this.currentPage) {
       this.currentPage.length = 0;
@@ -107,7 +108,8 @@ export class ProductsListComponent implements OnInit {
   }
 
   createNumbersArray(): void{
-    if (this.pages.length <= 10 && !this.pagesIndex.length) {
+    if (this.pages.length <= 10) {
+      this.pagesIndex.length = 0;
       for (var i = 0; i < this.pages.length; i++) {
         this.pagesIndex.push(i);
       }

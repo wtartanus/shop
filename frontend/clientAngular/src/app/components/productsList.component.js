@@ -83,6 +83,7 @@ var ProductsListComponent = (function () {
     };
     ProductsListComponent.prototype.categoryChange = function () {
         this.pages.length = 0;
+        this.pagesIndex.length = 0;
         this.splitProducts();
         if (this.currentPage) {
             this.currentPage.length = 0;
@@ -109,7 +110,8 @@ var ProductsListComponent = (function () {
         window.scrollTo(0, 0);
     };
     ProductsListComponent.prototype.createNumbersArray = function () {
-        if (this.pages.length <= 10 && !this.pagesIndex.length) {
+        if (this.pages.length <= 10) {
+            this.pagesIndex.length = 0;
             for (var i = 0; i < this.pages.length; i++) {
                 this.pagesIndex.push(i);
             }
