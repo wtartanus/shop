@@ -44,7 +44,7 @@
                             <span *ngIf="subCategory.subCategories && subCategory.$open" class="subCategories-arrow"><i class="fas fa-chevron-down"></i></span>
                             <ul *ngIf="subCategory.subCategories && subCategory.$open" class="inline-sub-sub-list" [ngStyle]="{'top': i*2.4 + 'em'}">
                                 <p class="home-category" (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}} <i class="fas fa-angle-double-right"></i></p>
-                               <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(subCategory.name); $event.stopPropagation();">
+                               <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name); $event.stopPropagation();">
                                    {{sub.name}}
                                 </li>
                             </ul>
