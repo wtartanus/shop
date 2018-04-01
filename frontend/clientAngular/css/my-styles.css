@@ -415,3 +415,8 @@
 .home-category:hover {
     color: purple;
 }
+
+.clothes-inline {
+    width: 49%;
+    display: inline-block;
+}

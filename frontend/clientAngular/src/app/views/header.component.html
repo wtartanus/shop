@@ -18,7 +18,9 @@
                 <p>{{basketValues.itemsCount}} {{basketValues.itemsCount > 1 ? 'Items' : 'Item'}}</p>
                 <p>£{{basketValues.totalCost}}</p>
             </div>
-            <i class="fas fa-shopping-cart"></i>
+            <a routerLink="/basket" routerLinkActive="active">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
         </div>
 
         <!-- search -->
