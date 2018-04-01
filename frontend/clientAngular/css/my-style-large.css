@@ -136,7 +136,7 @@
    }
 
     .pages-index {
-       width: 1.4%;
+       width: 5.4%;
     }
 
 }
@@ -181,6 +181,10 @@
 
    .basket-item-container {
        width: 60%;
+   }
+
+   .pages-index {
+      width: 1.4%;
    }
 }
 
