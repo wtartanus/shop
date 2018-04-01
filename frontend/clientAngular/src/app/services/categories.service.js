@@ -22,10 +22,6 @@ var CategoriesService = (function () {
                         img: "images/categories/games.jpg"
                     },
                     {
-                        name: "Brands",
-                        img: "images/categories/novelties.jpg"
-                    },
-                    {
                         name: "Relaxation Zone",
                         img: "images/categories/hen-and-stag-nights.jpg",
                         parents: ["Novelties"],
@@ -61,12 +57,8 @@ var CategoriesService = (function () {
                         ]
                     },
                     {
-                        name: "Hen and Stag Nights",
+                        name: "Hen And Stag Nights",
                         img: "images/categories/relaxation-zone.jpg"
-                    },
-                    {
-                        name: "Lubricants",
-                        img: "images/categories/lubricants.jpg"
                     },
                     {
                         name: "Condoms",
