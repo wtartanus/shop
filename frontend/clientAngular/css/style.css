@@ -593,18 +593,6 @@ a:focus, a:hover {
 			color: #000;
 		}
 
-		input[type="text"], input[type="password"], input.email.aitsw3ls, textarea.text {
-			padding: 15px;
-			width: 100%;
-			border: none;
-			font-family: 'Montserrat', sans-serif;
-			font-size: 11px;
-			color: #FFF;
-			outline: none;
-			margin-bottom: 20px;
-			background-color: #000;
-		}
-
 		ul.tick {
 			list-style: none;
 			display: inline-block;
