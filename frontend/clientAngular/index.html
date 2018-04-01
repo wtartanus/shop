@@ -47,7 +47,6 @@
     <my-app>
         <div class="loader"></div>
     </my-app>
-    <script src="js/minicart.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery.film_roll.js"></script>
@@ -57,23 +56,6 @@
     <script src="js/cbpShop.min.js"></script>
     <script src="js/imagezoom.js"></script>
     <script defer src="js/jquery.flexslider.js"></script>
-
-    <!-- cart-js -->
-        <script>
-            w3l.render();
-
-            w3l.cart.on('w3agile_checkout', function (evt) {
-                var items, len, i;
-
-                if (this.subtotal() > 0) {
-                    items = this.items();
-
-                    for (i = 0, len = items.length; i < len; i++) { 
-                    }
-                }
-            });
-        </script>  
-    <!-- //cart-js --> 
     
     <!-- Pricing-Popup-Box-JavaScript -->
         <script>
