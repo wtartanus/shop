@@ -33,6 +33,7 @@ var WarehouseService = (function () {
         this.dataPromise = this.httpGet("http://localhost:8080/data");
         this.dataPromise.then(function processResult(result) {
             this.data = result;
+            console.log("this.data", this.data);
             this.message.sendMessage("data-arrived", {});
         }.bind(this));
     };

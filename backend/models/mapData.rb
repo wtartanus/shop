@@ -79,7 +79,9 @@ class MapData
         }
         #discounted products by item
         discountinued.each { |disc|
-           data[:discountedProductsByItem][disc['item']] = disc
+           if disc['discountinued'] == true
+            data[:discountedProductsByItem][disc['item']] = disc
+           end
         }
 
         #category tree

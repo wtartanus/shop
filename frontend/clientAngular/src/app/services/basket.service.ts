@@ -39,6 +39,7 @@ export class BasketService {
                 size: {}
             }
             if (size) {
+               basketItem.size[size] = {};
                basketItem.size[size]["value"] = size;
                basketItem.size[size]["quantity"] = quantity;
             }
