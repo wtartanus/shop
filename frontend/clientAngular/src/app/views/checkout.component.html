@@ -85,13 +85,27 @@
     </div>
     <!-- Checkout Payment -->
     <div class="checkout-payment-container">
-
+       <button class="">Order</button>
     </div>
   </div>
 
   <!-- Checkout Summary -->
   <div class="checkout-summary-container">
-
+        <h4>Order Summary</h4>
+        <div *ngFor="let item of basket.basketItems">
+            <p>{{item.product.name}}</p>
+            <p>£{{item.product.rpr}}</p>
+            <p>{{item.quantity}}</p>
+            <p>£{{item.cost}}</p>
+        </div>
+        <!-- Delivery type -->
+        <div>
+          <p>Delivery holder</p>
+        </div>
+        <!-- Total cost -->
+        <div>
+            <p>Total cost holder</p>
+        </div>
   </div>
 </div>
 

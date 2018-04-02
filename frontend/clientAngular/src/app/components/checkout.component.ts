@@ -11,6 +11,10 @@ import { CategoriesService } from '../services/categories.service.js';
   selector: 'checkout',
   templateUrl: 'src/app/views/checkout.component.html'
 })
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit {
+  constructor (public basket: BasketService) {}
 
+  ngOnInit() {
+    console.log("@@@", this.basket);
+  }
 }
