@@ -12,6 +12,7 @@ import { CategoriesService } from '../services/categories.service.js';
   templateUrl: 'src/app/views/checkout.component.html'
 })
 export class CheckoutComponent implements OnInit {
+  public orderConfirmed: boolean = false;
   public email: string;
   public firstName: string;
   public lastName: string;
@@ -34,5 +35,16 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     console.log("@@@", this.basket);
+  }
+
+  proccessOrder(): void{
+     this.orderConfirmed = true;
+  }
+
+  isValid() {
+    if (this.email && this.firstName && this.lastName && this.addressOne && this.city && this.postcode) {
+      return true;
+    }
+    return false;
   }
 }

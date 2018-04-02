@@ -14,6 +14,7 @@ var basket_service_js_1 = require("../services/basket.service.js");
 var CheckoutComponent = (function () {
     function CheckoutComponent(basket) {
         this.basket = basket;
+        this.orderConfirmed = false;
         this.delivery = "1";
         this.deliveryTypes = {
             "1": { name: "Royal Mail Second Class", cost: 2.71 },
@@ -27,6 +28,15 @@ var CheckoutComponent = (function () {
     }
     CheckoutComponent.prototype.ngOnInit = function () {
         console.log("@@@", this.basket);
+    };
+    CheckoutComponent.prototype.proccessOrder = function () {
+        this.orderConfirmed = true;
+    };
+    CheckoutComponent.prototype.isValid = function () {
+        if (this.email && this.firstName && this.lastName && this.addressOne && this.city && this.postcode) {
+            return true;
+        }
+        return false;
     };
     return CheckoutComponent;
 }());

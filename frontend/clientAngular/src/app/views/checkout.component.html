@@ -1,6 +1,10 @@
 <div class="checkout-container">
+    <!-- Order confirmation -->
+  <div *ngIf="orderConfirmed" class="checkout-confirmation">
+     <p>Your order just been confirmed and shortly will be dispatched.</p>
+  </div>
   <!-- Checkout Info -->
-  <div class="checkout-info-container form-group">
+  <div *ngIf="!orderConfirmed" class="checkout-info-container form-group">
     <!-- Checkout Form -->
     <div class="checkout-form-container">
         <label for="email-input">Email:</label>
@@ -16,7 +20,7 @@
         <input [(ngModel)]="addressOne" [ngStyle]="{'border': addressOne ? '1px solid green' : '1px solid red'}" id="address-one-input" class="form-control"  type="text" placeholder="Enter address" autocomplete="address-line1"/>
 
         <label for="address-two-input">Address Line 2:</label>
-        <input [(ngModel)]="addressTwo" [ngStyle]="{'border': addressTwo ? '1px solid green' : '1px solid red'}" id="address-two-input" class="form-control"  type="text" placeholder="Enter address" autocomplete="address-line2"/>
+        <input [(ngModel)]="addressTwo" id="address-two-input" class="form-control"  type="text" placeholder="Enter address" autocomplete="address-line2"/>
 
         <label for="city-input">City:</label>
         <input [(ngModel)]="city" [ngStyle]="{'border': city ? '1px solid green' : '1px solid red'}" id="city-input" class="form-control"  type="text" placeholder="Enter city" autocomplete="address-level2"/>
@@ -26,7 +30,7 @@
     </div>
 
     <!-- Checkout Delivery -->
-    <div class="checkout-delivery-container">
+    <div *ngIf="!orderConfirmed" class="checkout-delivery-container">
         <h4>Delivery Options</h4>
         <div class="form-check">
             <input [(ngModel)]="delivery" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked>
@@ -84,13 +88,13 @@
           </div>
     </div>
     <!-- Checkout Payment -->
-    <div class="checkout-payment-container">
-       <button type="button" class="btn btn-primary">Place Order</button>
+    <div *ngIf="!orderConfirmed" class="checkout-payment-container">
+       <button type="button" class="btn btn-primary" [disabled]="!isValid()"  (click)="proccessOrder()">Place Order</button>
     </div>
   </div>
 
   <!-- Checkout Summary -->
-  <div class="checkout-summary-container">
+  <div *ngIf="!orderConfirmed" class="checkout-summary-container">
         <h4>Order Summary</h4>
         <div *ngFor="let item of basket.basketItems">
             <p>{{item.product.name}}</p>
