@@ -430,3 +430,11 @@
     width: 90%;
     margin: 0 auto;
 }
+
+checkout-valid {
+    border: 1px solid green;
+}
+
+checkout-invalid {
+    border: 1px solid red;
+}

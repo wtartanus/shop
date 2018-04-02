@@ -4,39 +4,39 @@
     <!-- Checkout Form -->
     <div class="checkout-form-container">
         <label for="email-input">Email:</label>
-        <input id="email-input" class="form-control"  type="email" placeholder="Enter your email address"/>
+        <input [(ngModel)]="email" [ngStyle]="{'border': email ? '1px solid green' : '1px solid red'}" id="email-input" class="form-control"  type="email" placeholder="Enter your email address" autocomplete="email" required/>
 
         <label for="">First Name:</label>
-        <input id="first-name" class="form-control"  type="text" placeholder="Enter your first name">
+        <input [(ngModel)]="firstName" [ngStyle]="{'border': firstName ? '1px solid green' : '1px solid red'}" id="first-name" class="form-control"  type="text" placeholder="Enter your first name" autocomplete="given-name"/>
 
         <label for="last-name">Last Name:</label>
-        <input id="last-name" class="form-control"  type="text" placeholder="Enter your last name">
+        <input [(ngModel)]="lastName" [ngStyle]="{'border': lastName ? '1px solid green' : '1px solid red'}" id="last-name" class="form-control"  type="text" placeholder="Enter your last name" autocomplete="family-name"/>
 
         <label for="address-one-input">Address Line 1:</label>
-        <input id="address-one-input" class="form-control"  type="text" placeholder="Enter address">
+        <input [(ngModel)]="addressOne" [ngStyle]="{'border': addressOne ? '1px solid green' : '1px solid red'}" id="address-one-input" class="form-control"  type="text" placeholder="Enter address" autocomplete="address-line1"/>
 
         <label for="address-two-input">Address Line 2:</label>
-        <input id="address-two-input" class="form-control"  type="text" placeholder="Enter address">
+        <input [(ngModel)]="addressTwo" [ngStyle]="{'border': addressTwo ? '1px solid green' : '1px solid red'}" id="address-two-input" class="form-control"  type="text" placeholder="Enter address" autocomplete="address-line2"/>
 
         <label for="city-input">City:</label>
-        <input id="city-input" class="form-control"  type="text" placeholder="Enter city">
+        <input [(ngModel)]="city" [ngStyle]="{'border': city ? '1px solid green' : '1px solid red'}" id="city-input" class="form-control"  type="text" placeholder="Enter city" autocomplete="address-level2"/>
 
         <label for="postcode-input">Postcode:</label>
-        <input for="postcode-input" class="form-control"  type="text" placeholder="Enter postcode">
+        <input [(ngModel)]="postcode" [ngStyle]="{'border': postcode ? '1px solid green' : '1px solid red'}" for="postcode-input" class="form-control"  type="text" placeholder="Enter postcode" autocomplete="postal-code"/>
     </div>
 
     <!-- Checkout Delivery -->
     <div class="checkout-delivery-container">
         <h4>Delivery Options</h4>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <input [(ngModel)]="delivery" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked>
             <label class="form-check-label" for="exampleRadios1">
                 Royal Mail Second Class - From £2.71
             </label> <br/>
             <small>Delivery time: 2 - 3 working days</small>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <input [(ngModel)]="delivery" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2">
             <label class="form-check-label" for="exampleRadios2">
                 Royal Mail First Class - From £2.71
             </label> <br/>
@@ -44,7 +44,7 @@
           </div>
 
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <input [(ngModel)]="delivery" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="3">
               <label class="form-check-label" for="exampleRadios2">
                   Royal Mail Tracked48 - £3.28
               </label> <br/>
@@ -52,7 +52,7 @@
           </div>
 
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <input [(ngModel)]="delivery" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="4">
               <label class="form-check-label" for="exampleRadios2">
                   Royal Mail Tracked24 - From £4.68
               </label> <br/>
@@ -60,7 +60,7 @@
           </div>
 
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <input [(ngModel)]="delivery" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="5">
               <label class="form-check-label" for="exampleRadios2">
                   DPD Express Next Day - £5.05
               </label> <br/>
@@ -68,7 +68,7 @@
           </div>
 
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <input [(ngModel)]="delivery" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="6">
               <label class="form-check-label" for="exampleRadios2">
                   DPD Weekend Shipping - £7.10
               </label> <br/>
@@ -76,7 +76,7 @@
           </div>
 
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <input [(ngModel)]="delivery" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="7">
               <label class="form-check-label" for="exampleRadios2">
                   Royal Mail Overnight - £6.40
               </label> <br/>
@@ -85,7 +85,7 @@
     </div>
     <!-- Checkout Payment -->
     <div class="checkout-payment-container">
-       <button class="">Order</button>
+       <button type="button" class="btn btn-primary">Place Order</button>
     </div>
   </div>
 
@@ -100,11 +100,13 @@
         </div>
         <!-- Delivery type -->
         <div>
-          <p>Delivery holder</p>
+          <p>{{deliveryTypes[delivery].name}}</p>
+          <p>£{{deliveryTypes[delivery].cost}}</p>
         </div>
         <!-- Total cost -->
         <div>
-            <p>Total cost holder</p>
+            <p>Total Cost</p>
+            <p>£{{basket.totalCost + deliveryTypes[delivery].cost}}</p>
         </div>
   </div>
 </div>
