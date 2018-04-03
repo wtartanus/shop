@@ -2,26 +2,27 @@ require_relative('./../db/sqlRunner.rb')
 
 class Order
     attr_reader   :id
-    attr_accessor :referenceNumber, :dateOrdered, :totalCost, totalPersonalCost, ordered, email, fullName, adres, city, postcode, deliveryType
+    attr_accessor :referenceNumber, :dateOrdered, :totalCost, :totalPersonalCost, :ordered, :email, :fullName, :adres, :city, :postcode, :deliveryType
                  
     def initialize(options)
+      puts('initialize')
       @id = options['id'].to_i
-      @referenceNumber = options['referencenumber']
-      @dateOrdered = options['dateordered']
-      @totalCost = options['totalcost'].to_f
-      @totalPersonalCost = options['totalpersonalcost'].to_l
+      @referenceNumber = options['referenceNumber']
+      @dateOrdered = options['dateOrdered']
+      @totalCost = options['totalCost'].to_f
+      @totalPersonalCost = options['totalPersonalCost']
       @ordered = options['ordered'] == "true" ? true : false
       @email = options['email']
-      @fullName = options['fullname']
+      @fullName = options['fullName']
       @adres = options['adres']
       @city = options['city']
       @postcode = options['postcode']
-      @deliveryType = options['deliverytype']
+      @deliveryType = options['deliveryType']
     end
   
     def save()
       sql = "INSERT INTO orders (referenceNumber, dateOrdered, totalCost, totalPersonalCost, ordered, email, fullName, adres, city, postcode, deliveryType)
-             VALUES ('#{@referenceNumber}', '#{@dateOrdered}', #{@totalCost}, #{@totalPersonalCost}, '#{@ordered}', '#{@fullName}', '#{@adres}', '#{@city}', '#{@postcode}', '#{@deliveryType}')"
+             VALUES ('#{@referenceNumber}', '#{@dateOrdered}', #{@totalCost}, #{@totalPersonalCost}, '#{@ordered}', '#{@email}', '#{@fullName}', '#{@adres}', '#{@city}', '#{@postcode}', '#{@deliveryType}') RETURNING *"
       SqlRunner.run(sql)
     end
   

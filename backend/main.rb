@@ -9,6 +9,8 @@ require_relative( './models/mapCategoriesFromXML.rb' )
 require_relative( './models/mapDiscontinuedFromXML.rb' )
 require_relative( './models/mapData.rb' )
 require_relative( './models/review.rb' )
+require_relative('./models/orders.rb')
+require_relative('./models/orderedItem.rb')
 
 
 options '/*' do
@@ -60,9 +62,24 @@ get '/review/:productId' do
 end
 
 post '/review' do
- payload = JSON.parse(request.body.read)
- review = Review.new(payload)
- reviewAfterSave = review.save()
- return reviewAfterSave.to_json
+    payload = JSON.parse(request.body.read)
+    review = Review.new(payload)
+    reviewAfterSave = review.save()
+    return reviewAfterSave.to_json
+end
+
+post '/order' do
+    payload = JSON.parse(request.body.read)
+    puts(payload)
+    order = Order.new(payload['order'])
+    orderAfterSave = order.save()
+    for orderItem in payload['orderItems']
+        puts(orderAfterSave[0]['id'])
+       orderItem['orderId'] = orderAfterSave[0]['id']
+       puts(orderItem)
+       orderItemObject = OrderedItem.new(orderItem)
+       orderItemObject.save()
+    end
+    return "{}".to_json
 end
 

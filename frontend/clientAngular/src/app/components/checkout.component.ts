@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { BasketService } from '../services/basket.service.js';
 import { MessageService } from '../services/message.service.js';
+import { WarehouseService } from '../services/warehouse.service.js';
 import { Route, Router } from '@angular/router';
 import { CategoriesService } from '../services/categories.service.js';
 
@@ -31,14 +32,49 @@ export class CheckoutComponent implements OnInit {
     "7": {name: "Royal Mail Overnight", cost: 6.40}
   }
 
-  constructor (public basket: BasketService) {}
+  constructor (public basket: BasketService, public warehouse: WarehouseService) {}
 
   ngOnInit() {
     console.log("@@@", this.basket);
   }
 
   proccessOrder(): void{
+    var nowDate = new Date();
      this.orderConfirmed = true;
+     var msg = {
+       order: {},
+       orderItems:  new Array()
+     };
+     msg.order = {
+        orderConfirmed: this.orderConfirmed,
+        email: this.email,
+        fullName: this.firstName + " " + this.lastName,
+        adres: this.addressOne + " " + this.addressTwo,
+        city: this.city,
+        postcode: this.postcode,
+        deliveryType: this.deliveryTypes[this.delivery].name,
+        totalCost: this.basket.totalCost,
+        totalPersonalCost: 0,
+        referenceNumber: "1",
+        dateOrdered: nowDate.toISOString()
+     }
+
+     for (var i = 0; i < this.basket.basketItems.length; i++) {
+          var item = this.basket.basketItems[i];
+          console.log("item", item);
+          msg.order['totalPersonalCost'] += item.product.price;
+
+          var orderItem = {
+              orderId: 0,
+              productId: item.product.id,
+              model: item.product.model,
+              size: item.size
+          }
+
+          msg.orderItems.push(orderItem);
+     }
+
+     this.warehouse.httpPost("http://localhost:8080/order", msg);
   }
 
   isValid() {

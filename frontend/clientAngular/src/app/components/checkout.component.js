@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var basket_service_js_1 = require("../services/basket.service.js");
+var warehouse_service_js_1 = require("../services/warehouse.service.js");
 var CheckoutComponent = (function () {
-    function CheckoutComponent(basket) {
+    function CheckoutComponent(basket, warehouse) {
         this.basket = basket;
+        this.warehouse = warehouse;
         this.orderConfirmed = false;
         this.delivery = "1";
         this.deliveryTypes = {
@@ -30,7 +32,38 @@ var CheckoutComponent = (function () {
         console.log("@@@", this.basket);
     };
     CheckoutComponent.prototype.proccessOrder = function () {
+        var nowDate = new Date();
         this.orderConfirmed = true;
+        var msg = {
+            order: {},
+            orderItems: new Array()
+        };
+        msg.order = {
+            orderConfirmed: this.orderConfirmed,
+            email: this.email,
+            fullName: this.firstName + " " + this.lastName,
+            adres: this.addressOne + " " + this.addressTwo,
+            city: this.city,
+            postcode: this.postcode,
+            deliveryType: this.deliveryTypes[this.delivery].name,
+            totalCost: this.basket.totalCost,
+            totalPersonalCost: 0,
+            referenceNumber: "1",
+            dateOrdered: nowDate.toISOString()
+        };
+        for (var i = 0; i < this.basket.basketItems.length; i++) {
+            var item = this.basket.basketItems[i];
+            console.log("item", item);
+            msg.order['totalPersonalCost'] += item.product.price;
+            var orderItem = {
+                orderId: 0,
+                productId: item.product.id,
+                model: item.product.model,
+                size: item.size
+            };
+            msg.orderItems.push(orderItem);
+        }
+        this.warehouse.httpPost("http://localhost:8080/order", msg);
     };
     CheckoutComponent.prototype.isValid = function () {
         if (this.email && this.firstName && this.lastName && this.addressOne && this.city && this.postcode) {
@@ -45,7 +78,7 @@ CheckoutComponent = __decorate([
         selector: 'checkout',
         templateUrl: 'src/app/views/checkout.component.html'
     }),
-    __metadata("design:paramtypes", [basket_service_js_1.BasketService])
+    __metadata("design:paramtypes", [basket_service_js_1.BasketService, warehouse_service_js_1.WarehouseService])
 ], CheckoutComponent);
 exports.CheckoutComponent = CheckoutComponent;
 //# sourceMappingURL=checkout.component.js.map
