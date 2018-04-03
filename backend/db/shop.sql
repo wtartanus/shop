@@ -88,3 +88,26 @@ CREATE TABLE discontinued (
   discontinued BOOLEAN,
   date TIMESTAMP
 )
+
+CREATE TABLE orders (
+  id SERIAL4 PRIMARY KEY,
+  referenceNumber VARCHAR,
+  dateOrdered TIMESTAMP,
+  totalCost FLOAT,
+  totalPersonalCost FLOAT,
+  ordered BOOLEAN,
+  email VARCHAR,
+  fullName VARCHAR,
+  adres VARCHAR,
+  city VARCHAR,
+  postcode VARCHAR,
+  deliveryType VARCHAR,
+)
+
+CREATE TABLE orderedItems (
+  id SERIAL4 PRIMARY KEY,
+  orderId INT REFERENCES orders(id),
+  productId INT REFERENCES products(id),
+  model VARCHAR,
+  size VARCHAR
+)
