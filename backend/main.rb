@@ -1,5 +1,6 @@
 require( 'sinatra' )
 require 'json'
+require 'mail'
 #require( 'sinatra/contrib/all' ) if development?
 #require( 'pry-byebug' )
 
@@ -74,12 +75,33 @@ post '/order' do
     order = Order.new(payload['order'])
     orderAfterSave = order.save()
     for orderItem in payload['orderItems']
-        puts(orderAfterSave[0]['id'])
        orderItem['orderId'] = orderAfterSave[0]['id']
        puts(orderItem)
        orderItemObject = OrderedItem.new(orderItem)
        orderItemObject.save()
     end
+
+    options = { :address              => "smtp.gmail.com",
+                :port                 => 587,
+                :user_name            => 'wtartanus@gmail.com',
+                :password             => 'spierdalaj2',
+                :authentication       => 'plain',
+                :enable_starttls_auto => true  }
+
+    Mail.defaults do
+    delivery_method :smtp, options
+    end
+
+    Mail.deliver do
+        to order.email
+        from 'wtartanus@gmail.com'
+        subject 'Order'
+        html_part do
+            content_type 'text/html; charset=UTF-8'
+            body '<h3>Hi ' + order.fullName + '</h3>'
+        end
+    end
+
     return "{}".to_json
 end
 
