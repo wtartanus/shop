@@ -448,6 +448,10 @@ checkout-invalid {
     margin-bottom: 2%;
 }
 
+.checkout-payment-container {
+    width: 100%;
+}
+
 .delivery-info {
     padding-left: 5%;
 }
