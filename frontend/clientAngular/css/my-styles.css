@@ -467,3 +467,12 @@ checkout-invalid {
     border-bottom: 1px solid;
     margin-bottom: 1%;
 }
+
+.checkout-confirmation p {
+    background: lightgray;
+    padding: 2%;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 5px;
+}
