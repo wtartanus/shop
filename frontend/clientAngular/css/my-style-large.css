@@ -140,6 +140,10 @@
        width: 5.4%;
     }
 
+    .checkout-container {
+        margin-top: 2%;
+    }
+
     .checkout-info-container {
         display: flex;
         justify-content: space-between;
