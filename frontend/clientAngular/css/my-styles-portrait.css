@@ -53,5 +53,20 @@
    .logo-container img {
        width: 6%;
    }
+
+   .checkout-info-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+   }
+
+   .checkout-form-container {
+       width: 45%;
+   }
+
+   .checkout-delivery-container {
+       width: 45%;
+       margin-top: 0;
+   }
 }
 
