@@ -81,24 +81,26 @@ post '/order' do
        orderItemObject.save()
     end
 
-    options = { :address              => "smtp.gmail.com",
-                :port                 => 587,
-                :user_name            => 'wtartanus@gmail.com',
-                :password             => 'spierdalaj2',
-                :authentication       => 'plain',
-                :enable_starttls_auto => true  }
+    options = { 
+        :address => "smtp.gmail.com",
+        :port => 587,
+        :user_name => 'wtartanus@gmail.com',
+        :password => 'spierdalaj2',
+        :authentication => 'plain',
+        :enable_starttls_auto => true  
+    }
 
     Mail.defaults do
-    delivery_method :smtp, options
+        delivery_method :smtp, options
     end
 
     Mail.deliver do
         to order.email
         from 'wtartanus@gmail.com'
-        subject 'Order'
+        subject 'Order Confirmation'
         html_part do
             content_type 'text/html; charset=UTF-8'
-            body '<h3>Hi ' + order.fullName + '</h3>'
+            body '<h3>Dear ' + order.fullName + '</h3></br> Thanks for your order. Your order number is: <span style="color:green">' + 12345 + '</span></br><h3>Delivery Addres</h3>'
         end
     end
 
