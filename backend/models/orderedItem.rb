@@ -2,7 +2,7 @@ require_relative('./../db/sqlRunner.rb')
 
 class OrderedItem
     attr_reader   :id
-    attr_accessor :orderId, :productId, :model, :size
+    attr_accessor :orderId, :productId, :model, :size, :price
                  
     def initialize(options)
       @id = options['id'].to_i
@@ -10,11 +10,13 @@ class OrderedItem
       @productId = options['productId'].to_i
       @model = options['model']
       @size = options['size']
+      @name = options['name']
+      @price = options['price']
     end
   
     def save()
-      sql = "INSERT INTO orderedItems (orderId, productId, model, size)
-             VALUES (#{@orderId}, #{@productId}, '#{@model}', '#{@size}') RETURNING *"
+      sql = "INSERT INTO orderedItems (orderId, productId, model, size, name, price)
+             VALUES (#{@orderId}, #{@productId}, '#{@model}', '#{@size}', '#{@name}', '#{@price}') RETURNING *"
       SqlRunner.run(sql)
     end
   
@@ -51,6 +53,8 @@ class OrderedItem
                 productId = #{options[:productId]},
                 model = '#{options[:model]}',
                 size = '#{@options[:size]}',
+                name = '#{@options[:name]}',
+                price = '#{@options[:price]}'
                 WHERE id = #{ options[:id] }"
         SqlRunner.run(sql)
     end

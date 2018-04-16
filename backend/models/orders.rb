@@ -2,7 +2,7 @@ require_relative('./../db/sqlRunner.rb')
 
 class Order
     attr_reader   :id
-    attr_accessor :referenceNumber, :dateOrdered, :totalCost, :totalPersonalCost, :ordered, :email, :fullName, :adres, :city, :postcode, :deliveryType
+    attr_accessor :referenceNumber, :dateOrdered, :totalCost, :totalPersonalCost, :ordered, :email, :fullName, :adres, :city, :postcode, :deliveryType, :deliveryPrice
                  
     def initialize(options)
       puts('initialize')
@@ -18,11 +18,12 @@ class Order
       @city = options['city']
       @postcode = options['postcode']
       @deliveryType = options['deliveryType']
+      @deliveryPrice = options['deliveryPrice']
     end
   
     def save()
-      sql = "INSERT INTO orders (referenceNumber, dateOrdered, totalCost, totalPersonalCost, ordered, email, fullName, adres, city, postcode, deliveryType)
-             VALUES ('#{@referenceNumber}', '#{@dateOrdered}', #{@totalCost}, #{@totalPersonalCost}, '#{@ordered}', '#{@email}', '#{@fullName}', '#{@adres}', '#{@city}', '#{@postcode}', '#{@deliveryType}') RETURNING *"
+      sql = "INSERT INTO orders (referenceNumber, dateOrdered, totalCost, totalPersonalCost, ordered, email, fullName, adres, city, postcode, deliveryType, deliveryPrice)
+             VALUES ('#{@referenceNumber}', '#{@dateOrdered}', #{@totalCost}, #{@totalPersonalCost}, '#{@ordered}', '#{@email}', '#{@fullName}', '#{@adres}', '#{@city}', '#{@postcode}', '#{@deliveryType}', '#{@deliveryPrice}') RETURNING *"
       SqlRunner.run(sql)
     end
   
@@ -64,8 +65,9 @@ class Order
                 fullName = '#{@options[:fullName]}',
                 adres = '#{@options[:adres]}',
                 city = '#{@options[:city]}',
-                postcode = '#{@postcode[:postcode]}',
-                deliveryType = '#{@deliveryType[:deliveryType]}'
+                postcode = '#{@options[:postcode]}',
+                deliveryType = '#{@options[:deliveryType]}',
+                deliveryPrice = '#{@options[:deliveryPrice]}'
                 WHERE id = #{ options[:id] }"
         SqlRunner.run(sql)
     end

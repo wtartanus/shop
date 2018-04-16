@@ -74,11 +74,15 @@ post '/order' do
     puts(payload)
     order = Order.new(payload['order'])
     orderAfterSave = order.save()
+    items = []
+    itemsHTML = ''
     for orderItem in payload['orderItems']
+        itemHTML = '<tr><td>' + orderItem['name'] + '</td><td>' + orderItem['quantity'].to_s + '</td><td>£' + orderItem['price'].to_s + '</td></tr>';
+        itemsHTML = itemsHTML + itemHTML
        orderItem['orderId'] = orderAfterSave[0]['id']
-       puts(orderItem)
        orderItemObject = OrderedItem.new(orderItem)
        orderItemObject.save()
+       items.push(orderItemObject)
     end
 
     options = { 
@@ -100,7 +104,22 @@ post '/order' do
         subject 'Order Confirmation'
         html_part do
             content_type 'text/html; charset=UTF-8'
-            body '<h3>Dear ' + order.fullName + '</h3></br> Thanks for your order. Your order number is: <span style="color:green">' + 12345 + '</span></br><h3>Delivery Addres</h3>'
+            body '<h3>Dear ' + order.fullName + '</h3></br> Thanks for your order. Your order number is: <span style="color:green">'+
+                  order.referenceNumber + '</span></br><h3>Delivery Addres</h3><br/><p>' + order.adres + '</p></br>' +
+                  '<p>' + order.postcode + '</p></br><h4>Shipment info.</h4></br>' +
+                  '<p>' + order.deliveryType + '</p></br><h3>Items</h3></br><table><tr><th>Item</th><th>Quantity</th><th>Price</th></tr>' +
+                  itemsHTML + '<tr>Delivery</tr><tr><td colspan="2">' + order.deliveryType + '</td><td>£' + order.deliveryPrice + '</td></tr>'+
+                  '<tr><td colspan="2">Total Price</td><td>' + order.totalCost.to_s + '</td></tr></table>'
+        end
+    end
+
+    Mail.deliver do
+        to 'wtartanus@gmail.com'
+        from 'wtartanus@gmail.com'
+        subject 'order'
+        html_part do
+            content_type 'text/html; charset=UTF-8'
+            body ':)'
         end
     end
 

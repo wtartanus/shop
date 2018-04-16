@@ -102,6 +102,7 @@ CREATE TABLE orders (
   city VARCHAR,
   postcode VARCHAR,
   deliveryType VARCHAR,
+  deliveryPrice VARCHAR
 )
 
 CREATE TABLE orderedItems (
@@ -109,5 +110,7 @@ CREATE TABLE orderedItems (
   orderId INT REFERENCES orders(id),
   productId INT REFERENCES products(id),
   model VARCHAR,
-  size VARCHAR
+  size VARCHAR,
+  name VARCHAR,
+  price VARCHAR
 )

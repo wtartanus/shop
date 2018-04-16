@@ -49,13 +49,14 @@ export class CheckoutComponent implements OnInit {
         orderConfirmed: this.orderConfirmed,
         email: this.email,
         fullName: this.firstName + " " + this.lastName,
-        adres: this.addressOne + " " + this.addressTwo,
+        adres: this.addressTwo ? this.addressOne + " " + this.addressTwo : this.addressOne,
         city: this.city,
         postcode: this.postcode,
         deliveryType: this.deliveryTypes[this.delivery].name,
+        deliveryPrice: this.deliveryTypes[this.delivery].cost.toString(),
         totalCost: this.basket.totalCost,
         totalPersonalCost: 0,
-        referenceNumber: "1",
+        referenceNumber: new Date().getTime().toString(),
         dateOrdered: nowDate.toISOString()
      }
 
@@ -68,9 +69,12 @@ export class CheckoutComponent implements OnInit {
               orderId: 0,
               productId: item.product.id,
               model: item.product.model,
-              size: item.size
+              size: item.size,
+              name: item.product.name,
+              quantity: item.quantity,
+              price: item.cost
           }
-
+          console.log(orderItem);
           msg.orderItems.push(orderItem);
      }
 
