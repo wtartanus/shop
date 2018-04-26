@@ -33,6 +33,10 @@ export class SingleProductComponent implements OnInit {
   public reviewsLoaded: boolean = false;
   public averageRanking: number;
   public loading: boolean = true;
+  public description: boolean = true;
+  public specifications: boolean = false;
+  public reviews: boolean = false;
+  public sizeCharts: boolean = false;
 
   public starOne: any = {selected: true, value: 1, id: "star-1", position: 0};
   public starTwo: any = {selected: true, value: 2, id: "star-2", position: 1};

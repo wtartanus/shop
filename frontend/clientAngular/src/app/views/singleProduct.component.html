@@ -70,11 +70,11 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title asd">
-                                    <a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Description <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+                                    <a class="pa_italic" role="button" (click)="description = !description">Description <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div *ngIf="description" class="panel-collapse collapse in">
                                 <div class="panel-body panel_text">
                                     <div class="scrollbar" id="style-2">
                                        {{product.description}}
@@ -86,11 +86,11 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title asd">
-                                    <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Specification<span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+                                    <a class="pa_italic collapsed" role="button" (click)="specifications = !specifications">Specification<span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div *ngIf="specifications">
                                 <div class="panel-body panel_text">
                                     <div class="specifications" *ngIf="product.coulur && product.coulur !== ''">
                                         <p>Colour: </p>
@@ -203,11 +203,11 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingThree">
                                 <h4 class="panel-title asd">
-                                    <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Reviews<span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+                                    <a class="pa_italic collapsed" role="button" (click)="reviews = !reviews">Reviews<span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div *ngIf="reviews">
                                 <input type="text" name="name" placeholder="Name" id="name-input-review" [(ngModel)]="reviewName">
                                 <p (mouseleave)="resetStars()">
                                     <span class="review-star pointer-cursor"><i id="star-1" class="fas fa-star" (mouseenter)="toggleStarClass(starOne)" (click)="selectRanking(starOne)"></i></span>
@@ -260,17 +260,253 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingFour">
                                 <h4 class="panel-title asd">
-                                    <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Shipping Info <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+                                    <a class="pa_italic collapsed" role="button" (click)="sizeCharts = !sizeCharts">Size Charts<span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                <h3>Shipping</h3>
-                                <ul class="ship">
-                                    <li class="day"><i class="fa fa-calendar" aria-hidden="true"></i> 5-10 Business Days</li>
-                                    <li class="home"><i class="fa fa-truck" aria-hidden="true"></i> Free Home Delivery</li>
-                                    <li class="cod"><i class="fa fa-male" aria-hidden="true"></i> Cash On Delivery Available*</li>
-                                </ul>
+                            <div *ngIf="sizeCharts">
+                                <div>
+                                    <table> 
+                                        <thead> 
+                                            <tr> 
+                                                <th>Lingerie Size</th> 
+                                                <th>UK Dress size</th> 
+                                                <th>Bust</th> 
+                                                <th>Cup Size</th> 
+                                                <th>Waist</th> 
+                                                <th>Hips</th> 
+                                            </tr> 
+                                        </thead> 
+                                        <tbody> 
+                                            <tr> 
+                                                <th>Small</th> 
+                                                <td>8 - 10</td> 
+                                                <td>32" - 34"</td> 
+                                                <td>A - B</td> 
+                                                <td>24" - 26"</td> 
+                                                <td>34" - 36"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>Medium</th> 
+                                                <td>12 - 14</td> 
+                                                <td>34" - 36"</td> 
+                                                <td>B - C</td> 
+                                                <td>26" - 28"</td> 
+                                                <td>36" - 38"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>Large</th> 
+                                                <td>14 - 16</td> 
+                                                <td>36" - 38"</td> 
+                                                <td>C - D</td> 
+                                                <td>28" - 32"</td> 
+                                                <td>38" - 40"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>XL</th> 
+                                                <td>16 - 18</td> 
+                                                <td>40" - 42"</td> 
+                                                <td>D - DD</td> 
+                                                <td>34" - 36"</td> 
+                                                <td>42" - 44"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>XXL</th> 
+                                                <td>20 - 22</td> 
+                                                <td>44" - 46"</td> 
+                                                <td>DD - E</td> 
+                                                <td>38" - 40"</td> 
+                                                <td>>46" - 48"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>XXXL</th> 
+                                                <td>22 - 24</td> 
+                                                <td>46" - 48"</td> 
+                                                <td>DD - E</td> 
+                                                <td>40" - 42"</td> 
+                                                <td>48" - 50"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>One size</th> 
+                                                <td>8 - 12</td> 
+                                                <td>32" - 38"</td> 
+                                                <td>B - C</td> 
+                                                <td>24" - 32"</td> 
+                                                <td>34" - 40"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>S / M</th> 
+                                                <td>8 - 10</td> 
+                                                <td></td> 
+                                                <td></td>
+                                                <td></td> 
+                                                <td></td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>M / L</th> 
+                                                <td>12-14</td> 
+                                                <td></td> 
+                                                <td></td> 
+                                                <td></td> 
+                                                <td></td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>L / XL</th> 
+                                                <td>16-18</td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>1XL - 2 XL</th> 
+                                                <td>16-18</td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>3XL - 4 XL</th> 
+                                                <td>20-22</td> 
+                                                <td></td> 
+                                                <td></td> 
+                                                <td></td> 
+                                                <td></td> 
+                                            </tr> 
+                                        </tbody> 
+                                    </table> 
+                                </div>
+
+                                <div> 
+                                    <table> 
+                                        <thead> 
+                                            <tr> 
+                                                <th>Mens Size</th> 
+                                                <th>Waist</th> 
+                                            </tr> 
+                                        </thead> 
+                                        <tbody> 
+                                            <tr> 
+                                                <th>Small</th> 
+                                                <td>28 -30</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>Medium</th>
+                                                <td>32 - 34</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>Large</th> 
+                                                <td>36 - 38</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>XL</th> 
+                                                <td>38 - 40</td> 
+                                            </tr> 
+                                        </tbody> 
+                                    </table> 
+                                </div> 
+                                <table> 
+                                    <thead> 
+                                        <tr> 
+                                            <th>Passion Mens Size</th> 
+                                        </tr>
+                                    </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td>S/M</td>
+                                                <td>L/XL</td>
+                                                <td>XXL/XXL</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chest</td>
+                                                <td>92-104</td>
+                                                <td>104-116</td>
+                                                <td>116-128</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Waist</td>
+                                                <td>80-92</td>
+                                                <td>92-104</td>
+                                                <td>104-116</td>
+                                            </tr>
+                                        </tbody>
+                                </table> 
+
+                                <table> 
+                                    <thead> 
+                                        <tr> 
+                                            <th>Passion Lingerie Size</th> 
+                                            <th>UK Dress size</th> 
+                                            <th>Growth</th> 
+                                            <th>Bust</th> 
+                                            <th>Waist</th> 
+                                            <th>Hips</th> 
+                                        </tr> 
+                                    </thead> 
+                                    <tbody> 
+                                        <tr> 
+                                            <th>S / M</th> 
+                                            <td>8 - 12</td> 
+                                            <td>158 - 164 cm</td> 
+                                            <td>A - C</td> 
+                                            <td>60 - 72 cm</td> 
+                                            <td>88 - 100 cm</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>L / XL</th> 
+                                            <td>12 - 16</td> 
+                                            <td>164 - 170 cm</td> 
+                                            <td>B - D</td> 
+                                            <td>72 - 84 cm</td> 
+                                            <td>100 - 112 cm</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>XXL / XXXL</th> 
+                                            <td>16 - 22</td> 
+                                            <td>170 - 172 cm</td> 
+                                            <td>C - E</td> 
+                                            <td>84 - 96 cm</td> 
+                                            <td>112 - 124 cm</td> 
+                                        </tr> 
+                                    </tbody> 
+                                </table>
+
+                                <table> 
+                                    <thead> 
+                                        <tr> 
+                                            <th>Cotelli Collection Lingerie Size</th> 
+                                            <th>UK Dress size</th> 
+                                        </tr> 
+                                    </thead> 
+                                    <tbody> 
+                                        <tr> 
+                                            <th>70 b/s</th> 
+                                            <td>32B</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>75 b/s</th> 
+                                            <td>34B</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>75 c/m</th> 
+                                            <td>34C</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>80 c/m</th> 
+                                            <td>36C</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>80c/l</th> 
+                                            <td>36C</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>85d/l</th> 
+                                            <td>36D</td> 
+                                        </tbody> 
+                                    </table>
+                                <!-- Size Charts End -->
                             </div>
                         </div>
                     </div>
