@@ -29,7 +29,7 @@ var CheckoutComponent = (function () {
         };
     }
     CheckoutComponent.prototype.ngOnInit = function () {
-        console.log("@@@", this.basket);
+        window.scrollTo(0, 0);
     };
     CheckoutComponent.prototype.proccessOrder = function () {
         var nowDate = new Date();

@@ -10,6 +10,8 @@ import { HeaderSliderComponent } from "./../components/headerSlider.component.js
   templateUrl: 'src/app/views/splash.component.html',
   entryComponents: [ModelSliderComponent, HeaderSliderComponent]
 })
-export class SplashComponent {
-
+export class SplashComponent implements OnInit {
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
 }

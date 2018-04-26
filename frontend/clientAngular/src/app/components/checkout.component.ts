@@ -35,7 +35,7 @@ export class CheckoutComponent implements OnInit {
   constructor (public basket: BasketService, public warehouse: WarehouseService) {}
 
   ngOnInit() {
-    console.log("@@@", this.basket);
+    window.scrollTo(0, 0);
   }
 
   proccessOrder(): void{

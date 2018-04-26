@@ -39,8 +39,7 @@ var SingleProductComponent = (function () {
     }
     SingleProductComponent.prototype.ngOnInit = function () {
         this.getProduct();
-        console.log("product", this.product);
-        console.log("stock", this.productStock);
+        window.scrollTo(0, 0);
     };
     SingleProductComponent.prototype.getProduct = function () {
         var _this = this;

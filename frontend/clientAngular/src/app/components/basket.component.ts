@@ -19,8 +19,8 @@ export class BasketComponent implements OnInit {
 
     ngOnInit() {
       if (this.basket.basketItemsById) {
+        window.scrollTo(0, 0);
         this.basketItems = this.basket.basketItems;
-        console.log("this.basketItems", this.basketItems);
       }
     }
 }

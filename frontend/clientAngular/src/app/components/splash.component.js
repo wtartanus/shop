@@ -12,6 +12,9 @@ var headerSlider_component_js_1 = require("./../components/headerSlider.componen
 var SplashComponent = (function () {
     function SplashComponent() {
     }
+    SplashComponent.prototype.ngOnInit = function () {
+        window.scrollTo(0, 0);
+    };
     return SplashComponent;
 }());
 SplashComponent = __decorate([

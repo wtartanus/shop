@@ -49,8 +49,7 @@ export class SingleProductComponent implements OnInit {
 
   ngOnInit() {
     this.getProduct();
-    console.log("product", this.product);
-    console.log("stock", this.productStock);
+    window.scrollTo(0, 0);
   }
 
   getProduct(): void{
