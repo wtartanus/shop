@@ -224,7 +224,7 @@
                                     <option value="5">5</option>                                    
                                 </select>
                                 <br>
-                                <textarea rows="4" cols="100" placeholder="Write review ..." id="review-text" [(ngModel)]="reviewText"></textarea><br>
+                                <textarea rows="4" placeholder="Write review ..." id="review-text" [(ngModel)]="reviewText"></textarea><br>
                                 <div class="row">
                                      <button class="btn btn-secondary pull-right" (click)="addReview()">
                                          <span *ngIf="!savingReview">Add</span>
@@ -264,7 +264,7 @@
                                     </a>
                                 </h4>
                             </div>
-                            <div *ngIf="sizeCharts">
+                            <div *ngIf="sizeCharts" class="size-chart-container">
                                 <div>
                                     <table> 
                                         <thead> 
