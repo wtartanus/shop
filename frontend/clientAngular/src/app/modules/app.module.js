@@ -21,6 +21,7 @@ var footer_component_js_1 = require("./../components/footer.component.js");
 var splash_component_js_1 = require("./../components/splash.component.js");
 var basket_component_js_1 = require("./../components/basket.component.js");
 var checkout_component_js_1 = require("../components/checkout.component.js");
+var policy_component_js_1 = require("../components/policy.component.js");
 var warehouse_service_js_1 = require("./../services/warehouse.service.js");
 var basket_service_js_1 = require("../services/basket.service.js");
 var message_service_js_1 = require("../services/message.service.js");
@@ -31,7 +32,8 @@ var appRoutes = [
     { path: 'categories/:category', component: productsList_component_js_1.ProductsListComponent },
     { path: 'search/:searchQuery', component: productsList_component_js_1.ProductsListComponent },
     { path: 'product/:id', component: singleProduct_component_js_1.SingleProductComponent },
-    { path: 'checkout', component: checkout_component_js_1.CheckoutComponent }
+    { path: 'checkout', component: checkout_component_js_1.CheckoutComponent },
+    { path: 'policy/:type', component: policy_component_js_1.PolicyComponent }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -57,7 +59,8 @@ AppModule = __decorate([
             productsList_component_js_1.ProductsListComponent,
             singleProduct_component_js_1.SingleProductComponent,
             basket_component_js_1.BasketComponent,
-            checkout_component_js_1.CheckoutComponent
+            checkout_component_js_1.CheckoutComponent,
+            policy_component_js_1.PolicyComponent
         ],
         providers: [warehouse_service_js_1.WarehouseService, message_service_js_1.MessageService, basket_service_js_1.BasketService, categories_service_js_1.CategoriesService],
         bootstrap: [app_component_js_1.AppComponent]

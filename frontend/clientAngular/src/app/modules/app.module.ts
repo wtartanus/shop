@@ -14,6 +14,7 @@ import { FooterComponent } from "./../components/footer.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
 import { BasketComponent } from "./../components/basket.component.js";
 import { CheckoutComponent } from "../components/checkout.component.js";
+import { PolicyComponent } from "../components/policy.component.js";
 
 import { WarehouseService } from "./../services/warehouse.service.js";
 import { BasketService } from "../services/basket.service.js";
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'search/:searchQuery', component: ProductsListComponent},
   { path: 'product/:id', component: SingleProductComponent},
   { path: 'checkout', component: CheckoutComponent}
+  { path: 'policy/:type', component: PolicyComponent}
 ];
 
 @NgModule({
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     ProductsListComponent,
     SingleProductComponent,
     BasketComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    PolicyComponent
   ],
   providers: [WarehouseService, MessageService, BasketService, CategoriesService],
   bootstrap: [ AppComponent ]

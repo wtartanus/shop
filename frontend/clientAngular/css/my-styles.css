@@ -26,7 +26,7 @@
 }
 
 .main-container {
-    padding-top: 26vh;
+    padding-top: 34vh;
 }
 
 .inline-navigation {
@@ -336,10 +336,11 @@
 .proceed-container {
     position: fixed;
     right: 0;
-    top: 40%;
+    top: 50%;
     background-color: cornflowerblue;
     padding: 2%;
     z-index: 1000;
+    width: 33%;
 }
 
 .proceed-container p {
@@ -347,6 +348,11 @@
     color: white;
     font-weight: 100;
     font-size: 1.5em;
+}
+
+.proceed-container a {
+    color: white;
+    display: inline-block;
 }
 
 .basket-header p {
