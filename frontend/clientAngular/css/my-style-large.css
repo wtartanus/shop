@@ -35,8 +35,9 @@
    }
 
    .inline-navigation {
+       order: 1;
        display: initial;
-       width: 100%;
+       width: 60%;
        text-align: right;
    }
 
@@ -112,12 +113,14 @@
        padding: 0;
        margin: 0;
        margin-right: 3%;
+       order: 2;
    }
 
    .search-container {
        width: initial;
        padding: 0;
        margin: 0;
+       order: 2;
    }
 
    #header-logo {

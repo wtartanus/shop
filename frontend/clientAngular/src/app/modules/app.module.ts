@@ -27,7 +27,7 @@ const appRoutes: Routes = [
   { path: 'categories/:category', component: ProductsListComponent},
   { path: 'search/:searchQuery', component: ProductsListComponent},
   { path: 'product/:id', component: SingleProductComponent},
-  { path: 'checkout', component: CheckoutComponent}
+  { path: 'checkout', component: CheckoutComponent},
   { path: 'policy/:type', component: PolicyComponent}
 ];
 

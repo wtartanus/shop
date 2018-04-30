@@ -9,7 +9,7 @@
       
       <div class="navigation-container">
           <!-- button to toggle navigation -->
-          <button class="nav-button" (click)="showNavigation = !showNavigation">
+          <button class="nav-button" (click)="toggleNavigation(); $event.stopPropagation();">
               <i class="fas fa-bars"></i>
           </button>
         <!-- basket -->
@@ -54,8 +54,7 @@
             </ul>
         </nav>
       </div>
-</div>
-<nav *ngIf="showNavigation" class="main-navigation-mobile-tablet">
+      <nav *ngIf="showNavigation" class="main-navigation-mobile-tablet">
         <ul class="main-list">
             <li *ngFor="let category of categories" (click)="toggleCategory(category); $event.stopPropagation();">
                 {{category.name}}
@@ -74,6 +73,8 @@
                 </ul>
             </li>
         </ul>
-     </nav>
+    </nav>
+</div>
+
 
       

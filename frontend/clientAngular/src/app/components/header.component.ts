@@ -26,6 +26,10 @@ export class HeaderComponent implements OnInit {
         this.subscription = this.messageService.getMessage().subscribe(message => this.processMessage(message));
     }
 
+    toggleNavigation(): void {
+        this.showNavigation = !this.showNavigation;
+    }
+
     processMessage(message: any): void{
       if (message.text === "basket-update") {
           this.basketValues.itemsCount = message.body.itemsCount;
@@ -49,8 +53,7 @@ export class HeaderComponent implements OnInit {
     }
 
     closeAll(): void {
-        this.showNavigation = false;
-
+        // this.showNavigation = false;
         for (var i = 0; i < this.categories.length; i++) {
             this.categories[i].$open = false;
             if (this.categories[i].subCategories) {

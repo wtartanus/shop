@@ -29,6 +29,9 @@ var HeaderComponent = (function () {
         this.showNavigation = false;
         this.subscription = this.messageService.getMessage().subscribe(function (message) { return _this.processMessage(message); });
     }
+    HeaderComponent.prototype.toggleNavigation = function () {
+        this.showNavigation = !this.showNavigation;
+    };
     HeaderComponent.prototype.processMessage = function (message) {
         if (message.text === "basket-update") {
             this.basketValues.itemsCount = message.body.itemsCount;
@@ -50,7 +53,7 @@ var HeaderComponent = (function () {
         }
     };
     HeaderComponent.prototype.closeAll = function () {
-        this.showNavigation = false;
+        // this.showNavigation = false;
         for (var i = 0; i < this.categories.length; i++) {
             this.categories[i].$open = false;
             if (this.categories[i].subCategories) {
