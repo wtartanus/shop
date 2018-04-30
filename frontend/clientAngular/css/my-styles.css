@@ -109,17 +109,17 @@
     list-style-type: none;
     background-color: firebrick;
     width: 100%;
-    position: relative;
+    position: absolute;
     left: 0;
-    top: 5%;
+    top: 100%;
     z-index: 1000;
     color: white;
     font-family: sans-serif;
     font-size: 2em;
     line-height: 2em;
     text-align: center;
-    max-height: 16%;
-    overflow-y:auto;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .main-navigation-mobile-tablet p {

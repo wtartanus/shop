@@ -53,7 +53,7 @@ var HeaderComponent = (function () {
         }
     };
     HeaderComponent.prototype.closeAll = function () {
-        // this.showNavigation = false;
+        this.showNavigation = false;
         for (var i = 0; i < this.categories.length; i++) {
             this.categories[i].$open = false;
             if (this.categories[i].subCategories) {
