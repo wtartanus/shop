@@ -217,6 +217,36 @@
     color: blue;
 }
 
+.splash-page-first-section {
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.splash-page-first-section-item-container {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 10%;
+}
+
+.splash-page-first-section-item-container h4 {
+    color: red;
+    margin-top: 5%;
+}
+
+.splash-page-first-section-item-container button {
+   background: red;
+   margin-top: 2%;
+   width: 40%;
+   height: 7%;
+   font-size: 1.3em;
+}
+
+
+.splash-page-first-section-item-container a {
+   color: white;
+}
+
 .pages-index-container {
     text-align: right;
     margin-right: 2%;
