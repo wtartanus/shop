@@ -247,6 +247,32 @@
    color: white;
 }
 
+.wthreewinter-coll {
+    width: 99%;
+    display: block;
+    margin: 0 auto;
+}
+
+.wthreewinter-coll h1 {
+    font-size: 1.5em;
+    color: darkred;
+    font-weight: bold;
+    letter-spacing: 7px;
+    text-shadow: 1px 1px 1px white;
+}
+
+.wthreeshop-a {
+    margin-top: 5%;
+    font-size: 2em;
+}
+
+.wthreeshop-a a {
+    color: white;
+    border-color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+
 .pages-index-container {
     text-align: right;
     margin-right: 2%;
