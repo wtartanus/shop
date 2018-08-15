@@ -213,6 +213,13 @@
     .button-4 {
       top: calc(50vh - 150px);
     }
+
+    .shop-men,
+    .shop-women {
+      display: inline-block;
+      width: 50%;
+      padding: 1% 5%;
+    }
     
 
 }

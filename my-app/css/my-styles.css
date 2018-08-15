@@ -347,9 +347,26 @@
     top: 115px;
 }
 
+.button-women-men {
+    margin-top: 2%;
+}
+
+.button-women-men a {
+    color: red;
+    border-color: red;
+    background: none;
+    font-size: 0.9em;
+}
+
 .page-selected {
     background-color: dodgerblue;
     color: white;
+}
+
+.shop-men,
+.shop-women {
+    width: 70%;
+    margin: 10px auto;
 }
 
 .pages-selection {
