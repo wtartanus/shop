@@ -306,10 +306,14 @@
 .bdsm-collection-2,
 .vibrators-container {
    background-repeat: no-repeat;
-   background-position: center;
+   background-position: top;
    background-size: cover;
    width: 100%;
    height: 35vh;
+}
+
+.vibrators-container { 
+   background-position: center;
 }
 
 .bdsm-collection-1 {
