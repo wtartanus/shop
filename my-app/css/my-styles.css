@@ -248,9 +248,14 @@
 }
 
 .wthreewinter-coll {
-    width: 99%;
     display: block;
-    margin: 0 auto;
+    width: 100%;
+    height: 30vh;
+    padding: 0;
+}
+
+.wthreewinter-coll .container {
+    width: 100%;
 }
 
 .wthreewinter-coll h1 {
@@ -258,12 +263,15 @@
     color: darkred;
     font-weight: bold;
     letter-spacing: 7px;
-    text-shadow: 1px 1px 1px white;
+    margin-top: 4%;
+    background-color: rgba(255,255,255,0.3)
 }
 
 .wthreeshop-a {
-    margin-top: 5%;
     font-size: 2em;
+    text-align: center;
+    margin: 0;
+    position: relative;
 }
 
 .wthreeshop-a a {
@@ -271,6 +279,48 @@
     border-color: white;
     font-size: 1em;
     font-weight: bold;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.button-container {
+    width: fit-content;
+}
+
+.button-container a {
+
+}
+
+.button-1 {
+    top: 71px;
+}
+
+.button-2 {
+    top: 150px;
+}
+
+.button-3 {
+    top: 150px;
+}
+
+.bdsm-collection-container {
+
+}
+
+.bdsm-collection-1,
+.bdsm-collection-2 {
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   width: 100%;
+   height: 35vh;
+}
+
+.bdsm-collection-1 {
+   background-image: url('../images/whip.jpeg');
+}
+
+.bdsm-collection-2 {
+   background-image: url('../images/shop-restraints-2.jpeg');
 }
 
 .pages-index-container {
@@ -571,3 +621,4 @@ checkout-invalid {
     font-weight: 500;
     color: red;
 }
+
