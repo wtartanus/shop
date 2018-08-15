@@ -302,12 +302,9 @@
     top: 150px;
 }
 
-.bdsm-collection-container {
-
-}
-
 .bdsm-collection-1,
-.bdsm-collection-2 {
+.bdsm-collection-2,
+.vibrators-container {
    background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
@@ -327,6 +324,23 @@
     text-align: right;
     margin-right: 2%;
     margin-bottom: 2%;
+}
+
+.vibrators-container {
+    background-image: url('../images/vibrators-splash.jpeg');
+    padding-top: 4%;
+}
+
+.vibrators-container h1 {
+    font-size: 1.5em;
+    color: darkred;
+    font-weight: bold;
+    letter-spacing: 7px;
+    background-color: rgba(255,255,255,0.3)
+}
+
+.button-4 {
+    top: 115px;
 }
 
 .page-selected {
