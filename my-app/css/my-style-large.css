@@ -2,7 +2,7 @@
     .header-container {
         display: flex;
         flex-direction: row;
-        height: 20vh;
+        height: 10vh;
         border-bottom: 1px solid red;
     }
     .logo-container {
@@ -175,7 +175,43 @@
     }
 
     .wthreewinter-coll {
-        background-image: url("../images/kink.jpg");
+        /*background-image: url("../images/kink.jpg"); */
+    }
+
+    .wthreewinter-coll {
+      height: 45vh;
+    }
+
+    .wthreewinter-coll h1 {
+      font-size: 2.5em;
+    }
+
+    .button-1 {
+       top: calc(45vh - 165px);
+    }
+
+    .button-2,
+    .button-3 {
+       top: calc(45vh - 75px);
+    }
+
+    .bdsm-collection-1,
+    .bdsm-collection-2 {
+       display: inline-block;
+       width: 50%;
+       height: 45vh;
+    }
+
+    .vibrators-container {
+       height: 50vh;
+    }
+
+    .vibrators-container h1 {
+       font-size: 2.5em;
+    }
+
+    .button-4 {
+      top: calc(50vh - 150px);
     }
     
 
@@ -250,6 +286,14 @@
     .splash-page-first-section-item-container button {
         width: 25%;
         font-size: 1em;
+    }
+
+    .vibrators-container {
+       height: 60vh;
+    }
+
+    .button-4 {
+      top: calc(60vh - 160px);
     }
 }
 
