@@ -7,10 +7,6 @@ export class CategoriesService {
             name: "Novelties",
             subCategories: [
                 {
-                    name: "Media",
-                    img: "images/categories/media.jpg"
-                }, 
-                {
                     name: "Games",
                     img: "images/categories/games.jpg"
                 }, 

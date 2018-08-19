@@ -1098,7 +1098,7 @@ figure.effect-apollo:hover figcaption::before {
 /*-- Clearance-Sale --*/
 
 .aitsclearance-sales {
-	background-image: url("../images/relaxation.jpeg");
+	background-image: url("../images/splash-page/relaxation.jpeg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -1647,6 +1647,7 @@ h1.w3wthreeheadingaits {
 	padding: 2% 0;
 	background-color: indianred;
 	color: #FFF;
+	margin-top: 10vh;
 }
 
 .wthreeproductdisplay {

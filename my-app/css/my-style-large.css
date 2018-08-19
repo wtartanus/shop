@@ -2,7 +2,7 @@
     .header-container {
         display: flex;
         flex-direction: row;
-        height: 10vh;
+        height: 20vh;
         border-bottom: 1px solid red;
     }
     .logo-container {
@@ -25,6 +25,7 @@
    }
 
    .navigation-container {
+       padding-right: 10%;
        width: 90%;
        justify-content: flex-end;
        align-items: center;
@@ -37,7 +38,7 @@
    .inline-navigation {
        order: 1;
        display: initial;
-       width: 60%;
+       width: 100%;
        text-align: right;
    }
 
@@ -72,6 +73,8 @@
         width: auto;
         padding-left: 1%;
         padding-right: 1%;
+        max-height: 80vh;
+        overflow-y: auto;
    }
 
    .inline-sub-list li {
@@ -113,14 +116,12 @@
        padding: 0;
        margin: 0;
        margin-right: 3%;
-       order: 2;
    }
 
    .search-container {
        width: initial;
        padding: 0;
        margin: 0;
-       order: 2;
    }
 
    #header-logo {
@@ -132,7 +133,11 @@
    }
 
    .main-container {
-       padding-top: 20vh;
+       padding-top: 12vh;
+   }
+
+   .splash-page-container {
+      margin-top: 10vh;
    }
 
    .pages-selection {
@@ -220,6 +225,22 @@
       width: 50%;
       padding: 1% 5%;
     }
+
+    .wthreewinter-coll {
+       background-image: url(../images/splash-page/new-kink-medium.jpg);
+    }
+
+    .bdsm-collection-1 {
+       background-image: url('../images/splash-page/whip-medium.jpg');
+    }
+
+    .bdsm-collection-2 {
+       background-image: url('../images/splash-page/shop-restraints-2-medium.jpg');
+    }
+
+    .vibrators-container {
+        background-image: url('../images/splash-page/vibrators-splash-medium.jpg');
+    }
     
 
 }
@@ -269,6 +290,27 @@
    .pages-index {
       width: 1.4%;
    }
+
+   .wthreewinter-coll {
+       background-image: url(../images/splash-page/new-kink-900.jpg);
+    }
+
+    .bdsm-collection-1 {
+       background-image: url('../images/splash-page/whip-900.jpg');
+    }
+
+    .bdsm-collection-2 {
+       background-image: url('../images/splash-page/shop-restraints-2-900.jpg');
+    }
+
+    .vibrators-container {
+        background-image: url('../images/splash-page/vibrators-splash-900.jpg');
+    }
+
+    .aitsclearance-sales {
+        background-image: url(../images/splash-page/relaxation-900.jpg);
+    }
+
 }
 
 @media screen and (max-width: 930px) {

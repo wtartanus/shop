@@ -1,9 +1,9 @@
  <!-- Shopping -->
- <div>
+ <div class="splash-page-container">
 
   <div class="splash-page-first-section">
     <div class="splash-page-first-section-item-container">
-       <img src="images/m-offer/gorset.jpg" alt="Gorset">
+       <img src="images/m-offer/gorset-r.jpg" alt="Gorset">
        <h4>BASQUES AND CORSETS</h4>
        <button type="button" class="btn btn-danger">
           <a routerLink="/categories/Basques and Corsets" routerLinkActive="active">Shop Now</a>
@@ -11,7 +11,7 @@
     </div>
 
     <div class="splash-page-first-section-item-container">
-       <img src="images/m-offer/stockings.jpg" alt="Stockings" style="height:50%;">
+       <img src="images/m-offer/stockings-r.jpg" alt="Stockings">
        <h4>STOCKINGS</h4>
        <button type="button" class="btn btn-danger">
           <a routerLink="/categories/Stockings" routerLinkActive="active">Shop Now</a>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="splash-page-first-section-item-container">
-        <img src="images/m-offer/dresses.jpg" alt="Dresses and Chemises">
+        <img src="images/m-offer/dresses-r.jpg" alt="Dresses and Chemises">
         <h4>DRESSES AND CHEMISES</h4>
         <button type="button" class="btn btn-danger">
           <a routerLink="/categories/Dresses and Chemises" routerLinkActive="active">Shop Now</a>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="splash-page-first-section-item-container">
-        <img src="images/m-offer/playsuits.jpg" alt="Bodies and Playsuits">
+        <img src="images/m-offer/playsuits-r.jpg" alt="Bodies and Playsuits">
         <h4>BODIES AND PLAYSUITS</h4>
         <button type="button" class="btn btn-danger">
           <a routerLink="/categories/Bodies and Playsuits" routerLinkActive="active">Shop Now</a>
@@ -70,14 +70,24 @@
   <!-- Shop men shop women section -->
   <div>
     <div class="shop-women">
-      <img src="../images/shop-women.jpeg">
+        <picture>
+            <source media="(max-width: 764px)" srcset="../images/splash-page/shop-women-mobile.jpg">
+            <source media="(min-width: 765px)" srcset="../images/splash-page/shop-women-medium.jpg">
+            <!-- <source media="(min-width: 465px)" srcset="img_white_flower.jpg"> -->
+            <img src="../images/shop-women.jpeg">
+        </picture>
       <div class="wthreeshop-a button-women-men">
           <a routerLink="/categories/Sex Toys For Ladies" routerLinkActive="active">SHOP WOMEN</a>
       </div>
     </div>
 
     <div class="shop-men">
-      <img src="../images/shop-men.jpeg">
+      <picture>
+            <source media="(max-width: 764px)" srcset="../images/splash-page/shop-men-mobile.jpg">
+            <source media="(min-width: 765px)" srcset="../images/splash-page/shop-men-medium.jpg">
+            <!-- <source media="(min-width: 465px)" srcset="img_white_flower.jpg"> -->
+            <img src="../images/splash-page/shop-men.jpeg">
+      </picture>
       <div class="wthreeshop-a button-women-men">
           <a routerLink="/categories/Sex Toys For Men" routerLinkActive="active">SHOP MEN</a>
       </div>
