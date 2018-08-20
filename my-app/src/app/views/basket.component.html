@@ -9,14 +9,16 @@
 			<p>Items: {{basket.itemsCount}}</p>
 			<p>Total price: £{{basket.totalCost}}</p>
 		</div>
-		<a routerLink="/checkout" routerLinkActive="active" class="proceed-button">Proceed To Checkout</a>
+		<button class="btn btn-primary">
+		    <a routerLink="/checkout" routerLinkActive="active" class="proceed-button">Proceed To Checkout</a>
+		</button>
 	</div>
 	<div class="basket-items-container">
 		<div class="basket-item-container" *ngFor="let item of basketItems">
 			<h4 class="item-title">{{item.product.name}}</h4>
 			<div class="basket-product-container">
 				<div class="basket-item">
-					<img style="width:50%;" src="{{'images/main/' + item.product.image}}" alt="{{item.product.name}}">
+					<img src="{{'images/main/' + item.product.image}}" alt="{{item.product.name}}">
 				</div>
 				<div class="basket-item-info">
 					<p>Quantity: {{item.quantity}}</p>
@@ -24,7 +26,9 @@
 				</div>
 			</div>
 			<div class="basket-remove-container">
-				<button type="button" class="btn btn-danger" (click)="basket.removeFromBasket(0, item.product)">Remove</button>
+				<button type="button" class="btn btn-link" (click)="basket.removeFromBasket(0, item.product)">
+				   Remove
+				</button>
 			</div>
 			<hr/>
 		</div>

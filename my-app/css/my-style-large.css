@@ -2,7 +2,7 @@
     .header-container {
         display: flex;
         flex-direction: row;
-        height: 20vh;
+        height: 15vh;
         border-bottom: 1px solid red;
     }
     .logo-container {
@@ -47,6 +47,8 @@
        list-style-type: none;
        text-align: left;
        margin-left: 10%;
+       color: red;
+       font-weight: bold;
    }
 
    .inline-list li {
@@ -58,7 +60,7 @@
 
    .inline-list li:hover {
        color: white;
-       text-shadow: 1px 1px 1px black;
+       text-shadow: 1px 1px 1px red;
    }
 
    .inline-sub-list {
@@ -67,12 +69,16 @@
         z-index: 10000;
         list-style-type: none;
         text-align: left;
-        background-color: lightgray;
+        background-color: grey;
         color:  #e50000;
         font-size: 0.8em;
         width: auto;
         padding-left: 1%;
         padding-right: 1%;
+        margin-top: .6%;
+   }
+
+   .inline-sub-list-bondage {
         max-height: 80vh;
         overflow-y: auto;
    }
@@ -87,7 +93,7 @@
    }
 
    .inline-sub-list li:hover {
-       color: mediumpurple;
+       color: white;
        text-shadow: 0 0 0;
    }
 
@@ -100,7 +106,7 @@
         width: 100%;
         padding-left: 2%;
         padding-right: 1%;
-        background-color: #f5f5f5;
+        background-color: darkgrey;
         color: #ff0000;
    }
 
@@ -133,7 +139,7 @@
    }
 
    .main-container {
-       padding-top: 12vh;
+       padding-top: 5vh;
    }
 
    .splash-page-container {
@@ -251,7 +257,7 @@
    }
 
    .proceed-container {
-       top: auto;
+       top: 17vh;
        background-color: white;
        border: 2px solid cornflowerblue;
        right: 1vw;
@@ -371,10 +377,6 @@
 }
 
 @media screen and (max-width: 1450px) {
-   .basket-item-container {
-       width: 50%;
-   }
-
    .block-menu {
        display: none;
    }

@@ -52,6 +52,7 @@ export class CategoriesService {
                 {
                     name: "Condoms",
                     img: "images/categories/condoms.jpg",
+                    scrollable: true,
                     parents: ["Novelties"],
                     subCategories: [
                         {
@@ -91,6 +92,7 @@ export class CategoriesService {
             subCategories: [
                 {
                     name: "Sex Toys For Ladies",
+                    scrollable: true,
                     img: "images/categories/sex-toys-for-ladies.jpg",
                     parents: ["Sex Toys"],
                     subCategories: [
@@ -162,6 +164,7 @@ export class CategoriesService {
                 },
                 {
                     name: "Sex Toys For Men",
+                    scrollable: true,
                     img: "images/categories/sex-toys-for-men.jpg",
                     parents: ["Sex Toys"],
                     subCategories: [
@@ -213,6 +216,7 @@ export class CategoriesService {
                 },
                 {
                     name: "Branded Toys",
+                    scrollable: true,
                     img: "images/categories/branded-toys.jpg",
                     parents: ["Sex Toys"],
                     subCategories: [
@@ -305,6 +309,7 @@ export class CategoriesService {
                 {
                     name: "Realistic Dildos and Vibes",
                     img: "images/categories/realistic-dildos-and-vibes.jpg",
+                    scrollable: true,
                     parents: ["Sex Toys"],
                     subCategories: [
                         {
@@ -368,6 +373,7 @@ export class CategoriesService {
                 {
                     name: "Anal Range",
                     img: "images/categories/anal-range.jpg",
+                    scrollable: true,
                     parents: ["Sex Toys"],
                     subCategories: [
                         {
@@ -427,6 +433,7 @@ export class CategoriesService {
         },
         {
             name: "Clothes",
+            scrollable: true,
             subCategories: [
                 {
                     name: "Babydolls",
@@ -484,6 +491,7 @@ export class CategoriesService {
         },
         {
             name: "Bondage Gear",
+            scrollable: true,
             subCategories: [
                 {
                     name: "Restraints",

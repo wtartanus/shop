@@ -34,7 +34,7 @@
                 <!-- (mouseenter)="category.$open = true; $event.stopPropagation();" (mouseleave)="category.$open = false; $event.stopPropagation();" -->
                 <li *ngFor="let category of categories" (click)="openCategory(category); $event.stopPropagation();">
                     {{category.name}}
-                    <ul *ngIf="category.$open" class="inline-sub-list">
+                    <ul *ngIf="category.$open" class="inline-sub-list" [ngClass]="{'inline-sub-list-bondage': category.scrollable}">
                         <p class="home-category" (click)="changeCategory(category.name); $event.stopPropagation();">{{category.name}} <i class="fas fa-angle-double-right"></i></p>
                         <!-- changeCategory(subCategory.name); $event.stopPropagation(); -->
                         <!-- (mouseenter)="subCategory.$open = true; $event.stopPropagation();" (mouseleave)="subCategory.$open = false; $event.stopPropagation();" -->
@@ -42,7 +42,7 @@
                             {{subCategory.name}}
                             <span *ngIf="subCategory.subCategories && !subCategory.$open" class="subCategories-arrow"><i class="fas fa-chevron-right"></i></span>
                             <span *ngIf="subCategory.subCategories && subCategory.$open" class="subCategories-arrow"><i class="fas fa-chevron-down"></i></span>
-                            <ul *ngIf="subCategory.subCategories && subCategory.$open" class="inline-sub-sub-list" [ngStyle]="{'top': i*2.4 + 'em'}">
+                            <ul *ngIf="subCategory.subCategories && subCategory.$open" class="inline-sub-sub-list" [ngStyle]="{'top': 0}" [ngClass]="{'inline-sub-list-bondage': subCategory.scrollable}">
                                 <p class="home-category" (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}} <i class="fas fa-angle-double-right"></i></p>
                                <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name); $event.stopPropagation();">
                                    {{sub.name}}
