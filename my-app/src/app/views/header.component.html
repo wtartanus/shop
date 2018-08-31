@@ -14,12 +14,12 @@
           </button>
         <!-- basket -->
         <div class="basket-container">
-            <div *ngIf="basketValues.itemsCount" style="display:inline-block;">
-                <p>{{basketValues.itemsCount}} {{basketValues.itemsCount > 1 ? 'Items' : 'Item'}}</p>
-                <p>£{{basketValues.totalCost}}</p>
+            <div *ngIf="basketValues.itemsCount" style="display:inline-block;font-weight: bold;">
+                <p style="color:blue;font-size: .5em;">{{basketValues.itemsCount}} {{basketValues.itemsCount > 1 ? 'Items' : 'Item'}}</p>
+                <p style="color:blue;font-size: .5em;">£{{basketValues.totalCost}}</p>
             </div>
             <a routerLink="/basket" routerLinkActive="active">
-                <i class="fas fa-shopping-cart"></i>
+                <i [ngStyle]="{'color': basketValues.itemsCount ? 'red' : ''}" class="fas fa-shopping-cart"></i>
             </a>
         </div>
 
@@ -30,14 +30,10 @@
         </div>
         <nav class="inline-navigation">
             <ul class="inline-list">
-                <!--changeCategory(category.name); $event.stopPropagation();  -->
-                <!-- (mouseenter)="category.$open = true; $event.stopPropagation();" (mouseleave)="category.$open = false; $event.stopPropagation();" -->
                 <li *ngFor="let category of categories" (click)="openCategory(category); $event.stopPropagation();">
                     {{category.name}}
                     <ul *ngIf="category.$open" class="inline-sub-list" [ngClass]="{'inline-sub-list-bondage': category.scrollable}">
                         <p class="home-category" (click)="changeCategory(category.name); $event.stopPropagation();">{{category.name}} <i class="fas fa-angle-double-right"></i></p>
-                        <!-- changeCategory(subCategory.name); $event.stopPropagation(); -->
-                        <!-- (mouseenter)="subCategory.$open = true; $event.stopPropagation();" (mouseleave)="subCategory.$open = false; $event.stopPropagation();" -->
                         <li *ngFor="let subCategory of category.subCategories; let i = index" (click)="openCategory(subCategory); $event.stopPropagation();">
                             {{subCategory.name}}
                             <span *ngIf="subCategory.subCategories && !subCategory.$open" class="subCategories-arrow"><i class="fas fa-chevron-right"></i></span>

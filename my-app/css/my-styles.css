@@ -14,6 +14,12 @@
     100% { transform: rotate(360deg); }
 }
 
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .header-container {
     width: 100%;
     height: 32vh;
@@ -26,7 +32,7 @@
 }
 
 .main-container {
-    padding-top: 34vh;
+    padding-top: 27vh;
 }
 
 .inline-navigation {
@@ -491,7 +497,11 @@
 }
 
 .proceed-container button {
-    font-size: 2em;
+    font-size: 3em;
+    position: fixed;
+    left: 50%;
+    bottom: 47px;
+    margin-left: -27.5%;
 }
 
 .proceed-container a {
@@ -506,8 +516,8 @@
 }
 
 .basket-page-container {
-    width: 95%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 10vh auto 0 auto;
 }
 
 .basket-items-container {
@@ -518,6 +528,7 @@
     margin-bottom: 2%;
     font-family: Noto, serif;
     color: brown;
+    font-size: 2em;
 }
 
 .basket-item-container {

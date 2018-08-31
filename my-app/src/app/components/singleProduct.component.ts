@@ -63,6 +63,7 @@ export class SingleProductComponent implements OnInit {
         if (!this.warehouse.data) {
           this.warehouse.dataPromise.then(function onSuccess() {
               this.product = this.warehouse.data.productsById[productId];
+              console.log("!!!!!!!!!!!", this.warehouse.data.stockByProductsId, productId);
               this.productStock = this.warehouse.data.stockByProductsId[productId];
               if (this.productStock.size) {
                 this.productStock.size = JSON.parse(this.productStock.size);
