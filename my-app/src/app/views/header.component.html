@@ -14,11 +14,9 @@
         </div>
         <div class="col">
           <div class="basket-container">
-                <div *ngIf="basketValues.itemsCount" style="display:inline-block;font-weight: bold;">
-                    <p style="color:blue;font-size: .4em;">£{{basketValues.totalCost}}</p>
-                </div>
+            <p style="color:white;font-weight: bold;">{{basketValues.itemsCount ? '£' + basketValues.totalCost : ''}}</p>
                 <a routerLink="/basket" routerLinkActive="active">
-                    <i [ngStyle]="{'color': basketValues.itemsCount ? 'green' : 'white'}" class="fas fa-shopping-cart"></i>
+                    <i [ngStyle]="{'color': basketValues.itemsCount ? 'cornflowerblue' : 'white'}" class="fas fa-shopping-cart"></i>
                     <span *ngIf="basketValues.itemsCount" class="badge badge-light items-badge">{{basketValues.itemsCount}}</span>
                 </a>
           </div>
@@ -44,11 +42,11 @@
       <!-- BASKET -->
         <div class="col">
           <div class="basket-container">
-                <div *ngIf="basketValues.itemsCount" style="display:inline-block;font-weight: bold;">
-                    <p style="color:blue;font-size: .4em;">£{{basketValues.totalCost}}</p>
+                <div class="price">
+                    <p>{{basketValues.itemsCount ? '£' + basketValues.totalCost : ''}}</p>
                 </div>
                 <a routerLink="/basket" routerLinkActive="active">
-                    <i [ngStyle]="{'color': basketValues.itemsCount ? 'green' : 'white'}" class="fas fa-shopping-cart"></i>
+                    <i [ngStyle]="{'color': basketValues.itemsCount ? 'cornflowerblue' : 'white'}" class="fas fa-shopping-cart"></i>
                     <span *ngIf="basketValues.itemsCount" class="badge badge-light items-badge">{{basketValues.itemsCount}}</span>
                 </a>
           </div>

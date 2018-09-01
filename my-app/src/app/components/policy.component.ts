@@ -5,7 +5,6 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'policyComponent',
   templateUrl: '../views/policy.component.html'
-  // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
 export class PolicyComponent implements OnInit {
     public selectedPolicy: string = "";

@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
+import {Component, AfterViewInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { BasketService } from '../services/basket.service.js';
@@ -11,7 +11,7 @@ import { CategoriesService } from '../services/categories.service.js';
   selector: 'ng-header',
   templateUrl: '../views/header.component.html'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements AfterViewInit {
     @Input() selectedCategory: string;
     @Input() selectedBasket: boolean;
     @Output() onCategoryChange = new EventEmitter<string>();
@@ -41,11 +41,13 @@ export class HeaderComponent implements OnInit {
       }
     }
 
-    ngOnInit() {
-      let spacer = document.getElementById('spacer');
-      let header = document.getElementById('header');
-      spacer.style.height = header.clientHeight + 5 + 'px';
-      this.addColClass = header.clientWidth >= 1100;
+    ngAfterViewInit() {
+      setTimeout(() => {
+          let spacer = document.getElementById('spacer');
+          let header = document.getElementById('header');
+          spacer.style.height = header.clientHeight + 15 + 'px';
+          this.addColClass = header.clientWidth >= 1100;
+      },500);
     }
 
     toggleCategory(category: any): void{

@@ -1,5 +1,4 @@
 import {Component, OnInit, OnDestroy, Input} from '@angular/core';
-//import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -7,17 +6,9 @@ import {WarehouseService} from './../services/warehouse.service.js';
 import { BasketService } from '../services/basket.service.js';
 import { MessageService } from '../services/message.service.js';
 
-declare var jquery:any;
-declare var $ :any;
-declare var cbpShop: any;
-declare var w3l: any;
-// import { Subscription } from 'rxjs/Subscription';
-// import 'rxjs/add/operator/toPromise';
-
 @Component({
   selector: 'singleProduct',
   templateUrl: '../views/singleProduct.component.html'
-  // entryComponents: [InspirationsComponent, DatePickerComponent]
 })
 export class SingleProductComponent implements OnInit {
   public product: any;
@@ -181,10 +172,6 @@ export class SingleProductComponent implements OnInit {
       result = Math.round(result);
       this.averageRanking = result;
     }
-  }
-
-  initShop(): void {
-    var shop = new cbpShop( document.getElementById( 'cbp-pgcontainer' ) ); 
   }
 
   changeImage(image: string): void{

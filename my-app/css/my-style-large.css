@@ -3,6 +3,10 @@
       display: none;
     }
 
+    .header-container {
+       padding-bottom: 1%;
+    }
+
     .tablet-desktop-header {
       display: inherit;
     }
@@ -13,6 +17,19 @@
 
     .desktop-header-top-row img {
        width: 20%;
+    }
+
+    .price {
+       display: block;
+    }
+
+    .price p {
+       font-size: 1em;
+    }
+
+    .items-badge {
+        top: 1px;
+        right: 15px;
     }
 
     .search-column {
@@ -122,6 +139,7 @@
        padding: 0;
        margin: 0;
        margin-right: 3%;
+       text-align: right;
    }
 
    .search-container {

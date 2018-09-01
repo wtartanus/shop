@@ -6,8 +6,6 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "./../components/app.component.js";
 import { HeaderComponent } from "./../components/header.component.js";
-import { ModelSliderComponent } from "./../components/modelSlider.component.js";
-import { HeaderSliderComponent } from "./../components/headerSlider.component.js";
 import { SingleProductComponent } from "./../components/singleProduct.component.js";
 import { ProductsListComponent } from "./../components/productsList.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
@@ -44,8 +42,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    HeaderSliderComponent,
-    ModelSliderComponent,
     FooterComponent,
     SplashComponent,
     ProductsListComponent,

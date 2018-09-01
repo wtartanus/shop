@@ -1,9 +1,6 @@
 import {Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-declare var jquery:any;
-declare var $ :any;
-declare var FilmRoll:any;
 
 import { HeaderComponent } from "./../components/header.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
@@ -22,16 +19,12 @@ import {BasketService} from './../services/basket.service.js';
   providers: [WarehouseService, MessageService, BasketService],
   entryComponents: [HeaderComponent, SplashComponent, FooterComponent, BasketComponent, ProductsListComponent, SingleProductComponent]
 })
-// export class AppComponent implements OnInit, OnDestroy {
 export class AppComponent implements OnInit {
     private dataReceived: boolean = false;
     private subscription: Subscription;
 
     ngOnInit() {
       this.warehouse.initData();
-
-      let header = document.getElementById('header');
-      console.log("@@@@@@@@", header);
     }
 
     constructor(private warehouse: WarehouseService, private message: MessageService) { //private messageService: MessageService
@@ -41,19 +34,12 @@ export class AppComponent implements OnInit {
     processMessage(message: any): void{
       if (message.text === "data-arrived" ) {
         this.dataReceived = true;
-        console.log("Data in place");
-        console.log("data", this.warehouse.data);
       }
     }
 
     closeNav(): void{
       this.message.sendMessage("close-nav", {});
     }
-
-//   ngOnDestroy(): void {
-//      this.substriction.unsubscribe();
-//   }
-
 }
 
 

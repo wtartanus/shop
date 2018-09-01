@@ -1643,10 +1643,10 @@ div#small-dialog4 {
 }
 
 h1.w3wthreeheadingaits {
-	font-size: 4em;
-	padding: 2% 0;
-	background-color: red;
-	color: #FFF;
+	font-size: 2em;
+    padding: 2% 0;
+    color: black;
+    border-bottom: 1px solid;
 }
 
 .wthreeproductdisplay {
@@ -2566,7 +2566,7 @@ button.w3view-cart {
 	display: block;
 } 
 .panel-default {
-	border-color: #FFF;
+	border:1px solid #FFF;
 	background: #f5f5f5;
 }
 
@@ -2900,19 +2900,10 @@ textarea.text {
 
 /*-- //Contact-Page-Styling --*/
 
-
-
-
-
-
-
-
-
-
 /*-- Single-Page-Styling --*/
 
 .w3aitssinglewthree {
-	padding: 100px 0;
+	padding-top: 1%;
 	background-color: #F5F5F5;
 }
 
@@ -2971,6 +2962,7 @@ textarea.text {
 
 .single-top-right {
 	padding-left: 5em;
+	display:inline-block;
 }
 
 .single-price ul li {
@@ -3456,6 +3448,7 @@ p.single-price-text {
 		padding: 0 24px;
 	}
 	.single-top-left {
+		display: inline-block;
 		width: 45%;
 		margin-left: 5%;
 	}
@@ -4117,7 +4110,7 @@ p.single-price-text {
 		padding: 35px;
 	}
 	.wthreeaddressaits,.agileshopping, .wthreeabout, .w3laccessoriesaits, .w3aitssinglewthree, .agilelocationsw3ls, .aitsstoreaddressw3, .w3aitsfaq, .w3aitscodes, .aitsiconswthree, .w3aitscontactagile, .w3paymentsaits {
-		padding: 60px 0;
+		padding: 40px 0;
 	}
 	.w3lsshoesaits-info h3 {
 		font-size: 40px; 
