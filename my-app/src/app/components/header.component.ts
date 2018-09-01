@@ -45,7 +45,7 @@ export class HeaderComponent implements AfterViewInit {
       setTimeout(() => {
           let spacer = document.getElementById('spacer');
           let header = document.getElementById('header');
-          spacer.style.height = header.clientHeight + 15 + 'px';
+          spacer.style.height = header.clientHeight + 'px';
           this.addColClass = header.clientWidth >= 1100;
       },500);
     }
