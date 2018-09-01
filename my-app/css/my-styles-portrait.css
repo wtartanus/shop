@@ -8,13 +8,6 @@
    }
 }
 
-@media screen and  (min-width: 360px) {
-   .header-container {
-       height: 26vh;
-   }
-}
-
-
 @media screen and (min-width: 400px) {
    .search-container {
        width: 70%;

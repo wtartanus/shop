@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
     subscription: Subscription;
     public categories: any = this.categoriesService.categoriesTree;
     public showNavigation: boolean = false;
+    public addColClass: boolean = false;
    
     constructor (public basket: BasketService, private messageService: MessageService, private router: Router, public categoriesService: CategoriesService) {
         this.subscription = this.messageService.getMessage().subscribe(message => this.processMessage(message));
@@ -44,6 +45,7 @@ export class HeaderComponent implements OnInit {
       let spacer = document.getElementById('spacer');
       let header = document.getElementById('header');
       spacer.style.height = header.clientHeight + 5 + 'px';
+      this.addColClass = header.clientWidth >= 1100;
     }
 
     toggleCategory(category: any): void{
