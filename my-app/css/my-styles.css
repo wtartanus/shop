@@ -87,6 +87,17 @@
     cursor: pointer;
 }
 
+.items-badge {
+    position: relative;
+    top: -28px;
+    right: 25px;
+    border-radius: 32%;
+    font-size: 0.3em;
+    border: 1px solid;
+    background-color: blue;
+    color: white;
+}
+
 .search-container {
     display: flex;
     width: 100%;
@@ -497,11 +508,11 @@
 }
 
 .proceed-container button {
-    font-size: 3em;
+    font-size: 2em;
     position: fixed;
-    left: 50%;
-    bottom: 47px;
-    margin-left: -27.5%;
+    left: 0;
+    width: 100%;
+    bottom: 4%;
 }
 
 .proceed-container a {
@@ -517,7 +528,7 @@
 
 .basket-page-container {
     width: 100%;
-    margin: 10vh auto 0 auto;
+    margin: 2vh auto 0 auto;
 }
 
 .basket-items-container {
@@ -671,5 +682,15 @@ checkout-invalid {
 
 .aitsclearance-sales {
     background-image: url(../images/splash-page/relaxation-mobile.jpg);
+}
+
+.basket-card {
+    width: 100%;
+    position: fixed;
+    left: 0;
+}
+
+.basket-card button a {
+    color: white;
 }
 

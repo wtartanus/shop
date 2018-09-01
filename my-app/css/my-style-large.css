@@ -290,7 +290,13 @@
    }
 
    .basket-item-container {
-       width: 60%;
+       width: 30%;
+   }
+
+   .basket-card {
+       width: 40%;
+      left: unset;
+      right: 0;
    }
 
    .pages-index {

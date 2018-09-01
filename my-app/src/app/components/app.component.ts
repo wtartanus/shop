@@ -29,6 +29,9 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
       this.warehouse.initData();
+
+      let header = document.getElementById('header');
+      console.log("@@@@@@@@", header);
     }
 
     constructor(private warehouse: WarehouseService, private message: MessageService) { //private messageService: MessageService

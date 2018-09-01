@@ -41,7 +41,9 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-      console.log("category header", this.selectedCategory);
+      let spacer = document.getElementById('spacer');
+      let header = document.getElementById('header');
+      spacer.style.height = header.clientHeight + 5 + 'px';
     }
 
     toggleCategory(category: any): void{

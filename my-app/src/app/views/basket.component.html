@@ -1,36 +1,34 @@
-<h1 *ngIf="!basketItems || !basketItems.length" class="basket-empty">Basket is empty.</h1>
-<div *ngIf="basketItems && basketItems.length" class="basket-page-container">
-	<div class="basket-header">
-		<p>Items: {{basket.itemsCount}}</p>
-		<p>Total price: £{{basket.totalCost}}</p>
-	</div>
-	<div class="proceed-container">
-		<div class="proceed-header">
-			<p>Items: {{basket.itemsCount}}</p>
-			<p>Total price: £{{basket.totalCost}}</p>
-		</div>
-		<button class="btn btn-primary">
-		    <a routerLink="/checkout" routerLinkActive="active" class="proceed-button">Proceed To Checkout</a>
-		</button>
-	</div>
-	<div class="basket-items-container">
-		<div class="basket-item-container" *ngFor="let item of basketItems">
-			<h4 class="item-title">{{item.product.name}}</h4>
-			<div class="basket-product-container">
-				<div class="basket-item">
-					<img src="{{'images/main/' + item.product.image}}" alt="{{item.product.name}}">
-				</div>
-				<div class="basket-item-info">
-					<p>Quantity: {{item.quantity}}</p>
-					<p>£{{item.cost}}</p>
-				</div>
-			</div>
-			<div class="basket-remove-container">
-				<button type="button" class="btn btn-link" (click)="basket.removeFromBasket(0, item.product)">
-				   Remove
+<div class="container-fluid">
+	<h1 *ngIf="!basketItems || !basketItems.length" class="basket-empty">Basket is empty.</h1>
+	<div *ngIf="basketItems && basketItems.length" class="container">
+		<div class="row">
+			<div class="card basket-card">
+				<h5 class="card-title">Items: {{basket.itemsCount}}</h5>
+				<h6 class="card-subtitle">Total price: £{{basket.totalCost}}</h6>
+				<button class="btn btn-primary">
+				    <a routerLink="/checkout" routerLinkActive="active">Proceed To Checkout</a>
 				</button>
 			</div>
-			<hr/>
+		</div>
+		<div class="basket-items-container">
+			<div class="basket-item-container" *ngFor="let item of basketItems">
+				<h4 class="item-title">{{item.product.name}}</h4>
+				<div class="basket-product-container">
+					<div class="basket-item">
+						<img src="{{'images/main/' + item.product.image}}" alt="{{item.product.name}}">
+					</div>
+					<div class="basket-item-info">
+						<p>Quantity: {{item.quantity}}</p>
+						<p>£{{item.cost}}</p>
+					</div>
+				</div>
+				<div class="basket-remove-container">
+					<button type="button" class="btn btn-link" (click)="basket.removeFromBasket(0, item.product)">
+					   Remove
+					</button>
+				</div>
+				<hr/>
+			</div>
 		</div>
 	</div>
 </div>

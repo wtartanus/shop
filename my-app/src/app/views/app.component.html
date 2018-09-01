@@ -1,6 +1,7 @@
-<div>
+<div class="container-fluid">
     <ng-header></ng-header>
-    <div class="main-container" (click)="closeNav(); $event.stopPropagation();">
+    <div id="spacer"></div>
+    <div id="main-content" class="container-fluid" (click)="closeNav(); $event.stopPropagation();">
         <router-outlet></router-outlet>
     </div>
     <footer></footer>
