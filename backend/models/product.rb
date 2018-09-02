@@ -14,12 +14,12 @@ class Product
                  
     def initialize(options)
       @id = options['id'].to_i
-      @itemId = options['item']
-      @model = options['model']
-      @name = options['name']
+      @itemId = options['item'] ? options['item'].tr("'", "") : options['item']
+      @model = options['model'] ? options['model'].tr("'", "") : options['model']
+      @name = options['name'] ? options['name'].tr("'", "") : options['name']
       @weightInKg = options['weightinkg'].to_f
-      @image = options['image']
-      @description = options['description']
+      @image = options['image'] ? options['image'].tr("'", "") : options['image']
+      @description = options['description'] ? options['description'].tr("'", "") : options['description']
       @price = options['price'].to_f
       @rpr = options['rrp'].to_f
       @productThumbail = options['productthumbail']
@@ -56,10 +56,10 @@ class Product
       @designedForWho = options['designedforwho']
       @whatIsIt = options['whatisit']
       @whatIsFor = options['whatisfor']
-      @features = options['features']
+      @features = options['features'] ? options['features'].tr("'", "") : options['features']
       @misc = options['misc']
       @materialName = options['materialname']
-      @brandName = options['brandname']
+      @brandName = options['brandname'] ? options['brandname'].tr("'", "") : options['brandname']
       @styleName = options['stylename']
       @productEAN = options['productean']
       @inCatName = options['incatname']

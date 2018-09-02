@@ -550,7 +550,7 @@ export class CategoriesService {
                     img: "images/categories/large-accessories.jpg"
                 },
                 {
-                    name: "Male Chasity",
+                    name: "Male Chastity",
                     img: "images/categories/male-chasity.jpg"
                 },
                 {
@@ -562,7 +562,7 @@ export class CategoriesService {
                     img: "images/categories/paddles.jpg"
                 },
                 {
-                    name: "PVC Orgy Beddingk",
+                    name: "PVC Orgy Bedding",
                     img: "images/categories/pvc-orgy-bedding.jpg"
                 }
             ]
