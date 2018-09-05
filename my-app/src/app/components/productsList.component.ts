@@ -15,7 +15,7 @@ export class ProductsListComponent implements OnInit {
   public selectedProduct: any;
   public itemsShowNumber: number = 15;
   public currentPage: any;
-  private pages: Array<any> = new Array();
+  public pages: Array<any> = new Array();
   public pagesIndex: Array<number> = new Array();
   public pageSelected: number;
   public loading: boolean = true;
