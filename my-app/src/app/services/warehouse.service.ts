@@ -10,6 +10,8 @@ import { MessageService } from "../services/message.service.js";
 export class WarehouseService {
     public http: Http;
     public data: any;
+    private productsByCategory: any;
+    public productsById: any;
     public dataPromise: Promise<any>;
 
     constructor(http: Http, private message: MessageService) {
@@ -29,6 +31,14 @@ export class WarehouseService {
         return this.http.post(url, msg).toPromise().then(response => { return response.json() }, this.handleError);
     }
 
+    fetchCategory(category: string): Promise<any> {
+        let promise = this.httpGet(`http://localhost:8080/category?name=${category}`); 
+        promise.then(result => {
+            this.productsByCategory[category] = result;
+        });
+        return promise;
+    }
+
     initData() {
        this.dataPromise = this.httpGet("http://localhost:8080/data")
        this.dataPromise.then(function processResult(result: any) {
@@ -39,7 +49,7 @@ export class WarehouseService {
     };
 
     getProductsByCategory(category: string): any{
-        return this.data.productsByCategory[category];
+        return this.productsByCategory[category];
     }
 
     getSearchProducts(searchQuery: string): any{

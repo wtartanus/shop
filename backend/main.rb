@@ -52,6 +52,10 @@ get '/mapDiscFromXML' do
     return "OK"
 end
 
+get '/category' do 
+  category = params[:name]
+end
+
 get '/data' do 
     result = MapData.getData()
     return result

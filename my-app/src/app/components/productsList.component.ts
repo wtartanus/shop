@@ -38,18 +38,20 @@ export class ProductsListComponent implements OnInit {
       .subscribe((value) => {
         this.selectedCategory = this.route.snapshot.paramMap.get('category');
         if (this.selectedCategory) {
-          if (!this.warehouse.data) {
-            this.warehouse.dataPromise.then(function onSuccess() {
+          let products = this.warehouse.getProductsByCategory(this.selectedCategory);
+          if (products) {
+              this.products = products;
+              this.sortBy(null);
+              this.categoryChange();
+              this.loading = false;
+          } else {
+            this.warehouse.fetchCategory(this.selectedCategory).then(() => {
                 this.products = this.warehouse.getProductsByCategory(this.selectedCategory);
                 this.sortBy(null);
                 this.categoryChange();
                 this.loading = false;
-            }.bind(this));
-          } else {
-              this.products = this.warehouse.getProductsByCategory(this.selectedCategory);
-              this.sortBy(null);
-              this.categoryChange();
-              this.loading = false;
+            });
+              
           }
         }
     });
