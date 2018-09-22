@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
+import {Component, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -19,13 +19,9 @@ import {BasketService} from './../services/basket.service.js';
   providers: [WarehouseService, MessageService, BasketService],
   entryComponents: [HeaderComponent, SplashComponent, FooterComponent, BasketComponent, ProductsListComponent, SingleProductComponent]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     private dataReceived: boolean = false;
     private subscription: Subscription;
-
-    ngOnInit() {
-      this.warehouse.initData();
-    }
 
     constructor(private warehouse: WarehouseService, private message: MessageService) { //private messageService: MessageService
       this.subscription = this.message.getMessage().subscribe(message => this.processMessage(message));

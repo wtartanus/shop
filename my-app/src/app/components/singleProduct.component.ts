@@ -48,47 +48,47 @@ export class SingleProductComponent implements OnInit {
   }
 
   getProduct(): void{
-    this.route.params
-      .subscribe((value) => {
-        let productId = this.route.snapshot.paramMap.get('id');
-        if (!this.warehouse.data) {
-          this.warehouse.dataPromise.then(function onSuccess() {
-              this.product = this.warehouse.data.productsById[productId];
-              console.log("!!!!!!!!!!!", this.warehouse.data.stockByProductsId, productId);
-              this.productStock = this.warehouse.data.stockByProductsId[productId];
-              if (this.productStock.size) {
-                this.productStock.size = JSON.parse(this.productStock.size);
-                for(var i = this.productStock.size.length -1; i >=0; i--) {
-                   if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
-                      this.productStock.size.splice(i, 1);
-                   }
+    this.route.params.subscribe(value => {
+        const productId = Number(this.route.snapshot.paramMap.get('id'));
+        let product1 = this.warehouse.productsById[productId];
+        if (product1) {
+            this.product = product1;
+            this.productStock = this.warehouse.stockByProductId[productId];
+            if (this.productStock.size) {
+              this.productStock.size = JSON.parse(this.productStock.size);
+              for(let i = this.productStock.size.length -1; i >=0; i--) {
+                if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
+                   this.productStock.size.splice(i, 1);
                 }
-                this.size = this.productStock.size[0].Size;
-              } else {
-                this.productStock.size = null;
               }
-              this.loading = false;
-              this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
-              this.getReviews();
-          }.bind(this));
-        } else {
-          this.product = this.warehouse.data.productsById[productId];
-          this.productStock = this.warehouse.data.stockByProductsId[productId];
-          if (this.productStock.size) {
-            this.productStock.size = JSON.parse(this.productStock.size);
-            for(var i = this.productStock.size.length -1; i >=0; i--) {
-              if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
-                 this.productStock.size.splice(i, 1);
-              }
+              this.size = this.productStock.size[0].Size;
+            } else {
+              this.productStock.size = null;
             }
-            this.size = this.productStock.size[0].Size;
-          } else {
-            this.productStock.size = null;
-          }
-          this.loading = false;
-          this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
-          this.getReviews();
+            this.loading = false;
+            this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
+            this.getReviews();
+        } else {
+            this.warehouse.getProductById(productId).then(() => {
+                 this.product = this.warehouse.productsById[productId];
+                 this.productStock = this.warehouse.stockByProductId[productId];
+            if (this.productStock.size) {
+              this.productStock.size = JSON.parse(this.productStock.size);
+              for(let i = this.productStock.size.length -1; i >=0; i--) {
+                if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
+                   this.productStock.size.splice(i, 1);
+                }
+              }
+              this.size = this.productStock.size[0].Size;
+            } else {
+              this.productStock.size = null;
+            }
+            this.loading = false;
+            this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
+            this.getReviews();
+            });
         }
+          
     });
   }
 

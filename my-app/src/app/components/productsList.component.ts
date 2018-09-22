@@ -37,40 +37,35 @@ export class ProductsListComponent implements OnInit {
     this.route.params
       .subscribe((value) => {
         this.selectedCategory = this.route.snapshot.paramMap.get('category');
-        if (this.selectedCategory) {
-          let products = this.warehouse.getProductsByCategory(this.selectedCategory);
-          if (products) {
-              this.products = products;
-              this.sortBy(null);
+        if (this.warehouse.hasCategory(this.selectedCategory)) {
+              this.products = this.warehouse.productsByCategory[this.selectedCategory];
+              //this.sortBy(null);
               this.categoryChange();
               this.loading = false;
-          } else {
+        } else {
             this.warehouse.fetchCategory(this.selectedCategory).then(() => {
-                this.products = this.warehouse.getProductsByCategory(this.selectedCategory);
-                this.sortBy(null);
+                this.products = this.warehouse.productsByCategory[this.selectedCategory];
+                //this.sortBy(null);
                 this.categoryChange();
                 this.loading = false;
             });
-              
-          }
         }
     });
   }
 
   getSearchProducts(): void {
-    this.route.params
-      .subscribe((value) => {
+    this.route.params.subscribe((value) => {
         let searchQuery = this.route.snapshot.paramMap.get('searchQuery');
         if (searchQuery) {
-          if (!this.warehouse.data) {
-            this.warehouse.dataPromise.then(function onSuccess() {
-                this.products = this.warehouse.getSearchProducts(searchQuery);
+          if (!this.warehouse.productsBySearch[searchQuery]) {
+            this.warehouse.getSearchProducts(searchQuery).then(() => {
+                this.products = this.warehouse.productsBySearch[searchQuery];
                 this.sortBy(null);
                 this.categoryChange();
                 this.loading = false;
-            }.bind(this));
+            });
           } else {
-              this.products = this.warehouse.getSearchProducts(searchQuery);
+              this.products = this.warehouse.productsBySearch[searchQuery];
               this.sortBy(null);
               this.categoryChange();
               this.loading = false;
@@ -197,8 +192,8 @@ export class ProductsListComponent implements OnInit {
      });
     } else if (type === 2) {
       this.products.sort(function sortByRanking(a: any, b: any) {
-        var value1 = this.warehouse.data.reviews[a.id];
-        var value2 = this.warehouse.data.reviews[b.id];
+        var value1 = this.warehouse.reviewsByProductId[a.id];
+        var value2 = this.warehouse.reviewsByProductId[b.id];
         if (!value1 && !value2) {
            return 0;
         } else if (value1 && !value2) {

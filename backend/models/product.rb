@@ -1,6 +1,7 @@
 require 'xmlsimple'
 require_relative('./../db/sqlRunner.rb')
 require('json')
+require('pry')
 
 
 class Product
@@ -92,15 +93,46 @@ class Product
     end
 
     def self.getProductsByCategoryName(categoryName)
-      sql = "SELECT * FROM products WHERE category LIKE '%#{categoryName}%'"
-      result = Product.map_items(sql)
+      sql = "SELECT * FROM products WHERE categoryName LIKE '%#{categoryName}%'"
+      products = Product.map_items(sql)
+      result = []
+      products.each { |product|
+        item = {}
+        product.instance_variables.each {|var| 
+          item[var.to_s.delete("@")] = product.instance_variable_get(var) 
+        }
+        result.push(item)
+      }
       return result
     end
+
+    def self.searchForProducts(searchTerm)
+      sql = "SELECT * FROM products WHERE LOWER(categoryName) LIKE '%#{searchTerm}%'
+             OR LOWER(name) LIKE '%#{searchTerm}%'
+             OR LOWER(brandName) LIKE '%#{searchTerm}%'"
+      products = Product.map_items(sql)
+      result = []
+      products.each { |product|
+        item = {}
+        product.instance_variables.each {|var| 
+          item[var.to_s.delete("@")] = product.instance_variable_get(var) 
+        }
+        result.push(item)
+      }
+      return result
+    end
+
+
   
     def self.find( id )
+      id = id.to_i
       sql = "SELECT * FROM products WHERE id = #{ id }"
       result = Product.map_item( sql )
-      return result
+      item = {}
+      result.instance_variables.each {|var| 
+        item[var.to_s.delete("@")] = result.instance_variable_get(var)
+      }
+      return item
     end
   
   

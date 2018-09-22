@@ -10,8 +10,11 @@ import { MessageService } from "../services/message.service.js";
 export class WarehouseService {
     public http: Http;
     public data: any;
-    private productsByCategory: any;
-    public productsById: any;
+    public stockByProductId: any = new Object();
+    public productsByCategory: any = new Object();
+    public productsById: any = new Object();
+    public reviewsByProductId: any = new Object();
+    public productsBySearch: any = new Object();
     public dataPromise: Promise<any>;
 
     constructor(http: Http, private message: MessageService) {
@@ -28,15 +31,24 @@ export class WarehouseService {
 
     httpPost(url: string, msg: any): Promise<any> {
         this.http.post(url, msg);
-        return this.http.post(url, msg).toPromise().then(response => { return response.json() }, this.handleError);
+        return this.http.post(url, msg).toPromise()
+                   .then(response => { return response.json() }, this.handleError);
     }
 
     fetchCategory(category: string): Promise<any> {
-        let promise = this.httpGet(`http://localhost:8080/category?name=${category}`); 
-        promise.then(result => {
-            this.productsByCategory[category] = result;
-        });
-        return promise;
+        return this.httpGet(`http://localhost:8080/category/${category}`)
+                   .then(result => {
+                         this.init(result, category);
+                    });
+    }
+
+    init(data: any, category: string): void {
+           this.productsByCategory[category] = data.products;
+           this.stockByProductId = Object.assign(this.stockByProductId, data.stockByProductId);
+           this.reviewsByProductId = Object.assign(this.reviewsByProductId, data.reviews);
+           data.products.forEach(product => {
+               if(!this.productsById[product.id]) this.productsById[product.id] = product;
+           });
     }
 
     initData() {
@@ -48,41 +60,43 @@ export class WarehouseService {
         }.bind(this));
     };
 
+    getProductById(id: number): Promise<any> {
+        return this.httpGet(`http://localhost:8080/product/${id}`).then(result => {
+                    this.initProduct(result);
+                });
+    }
+
+    initProduct(data): void {
+       this.stockByProductId[data.stockByProductId.productId] = data.stockByProductId;
+       this.reviewsByProductId = Object.assign(this.reviewsByProductId, data.reviews);
+       this.productsById[data.product.id] = data.product;
+    }
+
+
+
     getProductsByCategory(category: string): any{
         return this.productsByCategory[category];
     }
 
-    getSearchProducts(searchQuery: string): any{
+    getSearchProducts(searchQuery: string): Promise<any>{
          var search = searchQuery.toLowerCase();
-         var keys = Object.keys(this.data.productsById);
-         var result = new Array();
+         return this.httpGet(`http://localhost:8080/search/${searchQuery}`).then(result => {
+                    this.initSearch(result, searchQuery);
+                });
+         
+    }
 
-         for (var i = 0; i < keys.length; i++) {
-            if (this.data.productsById.hasOwnProperty(keys[i])) {
-                 var product = this.data.productsById[keys[i]];
-                 var name = product.name.toLowerCase();
-                 if (name.includes(search)) {
-                    result.push(product);
-                    continue;
-                 }
+    initSearch(data: any, searchQuery: string): void {
+       this.productsBySearch[searchQuery] = data.products;
+       this.stockByProductId = Object.assign(this.stockByProductId, data.stockByProductId);
+       this.reviewsByProductId = Object.assign(this.reviewsByProductId, data.reviews);
+       data.products.forEach(product => {
+           if(!this.productsById[product.id]) this.productsById[product.id] = product;
+       });
+    }
 
-                 var brand = product.brandName.toLowerCase();
-
-                 if (brand.includes(search)) {
-                    result.push(product);
-                    continue;
-                 }
-
-                 for (var j = 0; j < product.categoryName.length; j++) {
-                    if (product.categoryName[j].toLowerCase().includes(search)) {
-                      result.push(product);
-                      break;
-                    }
-                 }
-            }
-         }
-
-         return result;
+    public hasCategory(category: string): boolean {
+      return this.productsByCategory[category] ? true : false;
     }
 
     public handleError(error: any): Promise<any> {

@@ -5,11 +5,10 @@ require_relative('../models/review.rb')
 
 class GetProductsByCategoryQuery
     
-    attr_reader :category, :products, :stock
+    attr_reader :products, :stock
                  
-    def initialize(category)
-      @category = category
-      @products = Product.getProductsByCategoryName(category)
+    def initialize(searchTerm)
+      @products = Product.searchForProducts(searchTerm)
       @stock = Stock.getAllAsHash()
     end
 
