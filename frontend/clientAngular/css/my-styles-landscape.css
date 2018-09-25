@@ -1,0 +1,34 @@
+
+.header-container {
+    height: 31vh;
+}
+
+.logo-container img {
+    width: 4%;
+}
+
+.main-navigation-mobile-tablet {
+    font-size: 1.6em;
+}
+
+.navigation-container {
+    justify-content: flex-end;
+}
+
+.nav-button {
+    margin-right: auto;
+}
+
+.basket-container {
+    width: initial;
+}
+
+.search-container {
+    padding: 0;
+    width: initial;
+}
+
+.main-container {
+    padding-top: 23%;
+}
+

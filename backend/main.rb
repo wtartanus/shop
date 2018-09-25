@@ -1,7 +1,10 @@
 require( 'sinatra' )
 require 'json'
 require 'mail'
+<<<<<<< HEAD
 require('pry')
+=======
+>>>>>>> develop
 #require( 'sinatra/contrib/all' ) if development?
 #require( 'pry-byebug' )
 
@@ -13,9 +16,13 @@ require_relative( './models/mapData.rb' )
 require_relative( './models/review.rb' )
 require_relative('./models/orders.rb')
 require_relative('./models/orderedItem.rb')
+<<<<<<< HEAD
 require_relative('./controllers/GetProductsByCategoryQuery.rb')
 require_relative('./controllers/GetProductsByCategoryQuery.rb')
 require_relative('./controllers/GetProduct.rb')
+=======
+
+>>>>>>> develop
 
 options '/*' do
     response["Access-Control-Allow-Headers"] = "*"
@@ -55,6 +62,7 @@ get '/mapDiscFromXML' do
     return "OK"
 end
 
+<<<<<<< HEAD
 get '/product/:id' do
     getProduct = GetProduct.new(params[:id])
     return getProduct.run()
@@ -70,6 +78,8 @@ get '/search/:term' do
   return getProductsByCategoryQuery.run()
 end
 
+=======
+>>>>>>> develop
 get '/data' do 
     result = MapData.getData()
     return result

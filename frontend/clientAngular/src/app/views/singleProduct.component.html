@@ -1,0 +1,519 @@
+	<!-- Single-Product-View -->
+	<div class="w3aitssinglewthree">
+            <div *ngIf="loading" class="loader-container"><i class="fas fa-spinner fa-pulse loader-margin"></i></div>
+            <div *ngIf="!loading" class="container">
+                <div class="products">
+                <div class="single-page">
+                    <div class="single-page-row" id="detail-21">
+                        <div class="col-md-6 single-top-left">
+                            <div class="flexslider">
+                                <div class="thumb-image detail_images"> 
+                                    <img *ngIf="product.xlImage2 && product.xlImage2 !== '{}'" src="{{'images/hires/' +  currentImage}}" data-imagezoom="true" class="img-responsive">
+                                    <img *ngIf="!product.xlImage2 || product.xlImage2 === '{}'" src="{{'images/main/' + currentImage}}" data-imagezoom="true" class="img-responsive">
+                                </div>
+                                <ul class="sliders-container">
+                                    <li *ngIf="product.xlImage2 && product.xlImage2 !== '{}' && currentImage !== product.xlImage2" (click)="changeImage(product.xlImage2)"><img src="{{'images/hires/' + product.xlImage2}}"></li>
+                                    <li *ngIf="product.xlImage3 && product.xlImage3 !== '{}' && currentImage !== product.xlImage3" (click)="changeImage(product.xlImage3)"><img src="{{'images/hires/' + product.xlImage3}}"></li>
+                                    <li *ngIf="product.xlImage4 && product.xlImage4 !== '{}' && currentImage !== product.xlImage4" (click)="changeImage(product.xlImage4)"><img src="{{'images/hires/' + product.xlImage4}}"></li>
+                                    <li *ngIf="product.xlImage5 && product.xlImage5 !== '{}' && currentImage !== product.xlImage5" (click)="changeImage(product.xlImage5)"><img src="{{'images/hires/' + product.xlImage5}}"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 single-top-right">
+                            <h1 class="item_name">{{product.name}}</h1>
+                            <p>Brand: {{product.brandName}}</p>
+                            <div class="rating">
+                                    <p>
+                                        <span class="review-star"><i class="fas fa-star"></i></span>
+                                        <span class="review-star"><i class="fa-star" [ngClass]="{'far': averageRanking < 2, 'fas': averageRanking > 1}"></i></span>
+                                        <span class="review-star"><i class="fa-star" [ngClass]="{'far': averageRanking < 3, 'fas': averageRanking > 2}"></i></span>
+                                        <span class="review-star"><i class="fa-star" [ngClass]="{'far': averageRanking < 4, 'fas': averageRanking > 3}"></i></span>
+                                        <span class="review-star"><i class="fa-star" [ngClass]="{'far': averageRanking < 5, 'fas': averageRanking > 4}"></i></span>
+                                    </p>
+                            </div>
+                            <div class="single-price">
+                                <ul>
+                                    <li>£{{product.rpr}}</li> <!--<small>10% Off</small> -->
+                                    <!-- <li><del>$75</del></li>
+                                    <li>Ends on: Nov,15th</li>
+                                    <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i>Apply Coupon</a></li> -->
+                                </ul>
+                            </div>
+                            <p class="single-price-text">AVAILABILITY:
+                                <span [ngStyle]="{'color': productStock && productStock.inStock ? 'green' : 'red'}">{{productStock && productStock.inStock ? 'In Stock' : 'Out Of Stock'}}</span>
+                            </p>
+                            <div class="cbp-pgcontent aitssinglew3 add-to-cart-row" id="mens_single">
+                                <input class="form-control qty" type="number" min="0" placeholder="Qty" [(ngModel)]="quantity">
+                                <select *ngIf="productStock && productStock.size" [(ngModel)]="size">
+                                    <option *ngFor="let s of productStock.size" [ngValue]="s.Size">{{s.Size}}</option>
+                                </select>
+                                <button [disabled]="!productStock || !productStock.inStock" class="btn btn-danger agileits my-cart-btn" (click)="basket.addToBasket(quantity, product, size)" [attr.title]="!productStock || !productStock.inStock ? 'Sorry, item is out of stock.' : ''"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
+                                <div class="clearfix"></div>
+                            </div>
+    
+                            <!-- <div class="agilesocialwthree">
+                                <h4>Share this Product</h4>
+                                <ul class="social-icons">
+                                    <li><a href="#" class="facebook w3ls" title="Go to Our Facebook Page"><i class="fa w3ls fa-facebook-square" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="twitter w3l" title="Go to Our Twitter Account"><i class="fa w3l fa-twitter-square" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="googleplus w3" title="Go to Our Google Plus Account"><i class="fa w3 fa-google-plus-square" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="instagram wthree" title="Go to Our Instagram Account"><i class="fa wthree fa-instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div> -->
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+    
+                <div class="aitsaccordionw3layouts">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title asd">
+                                    <a class="pa_italic" role="button" (click)="description = !description">Description <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div *ngIf="description" class="panel-collapse collapse in">
+                                <div class="panel-body panel_text">
+                                    <div class="scrollbar" id="style-2">
+                                       {{product.description}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title asd">
+                                    <a class="pa_italic collapsed" role="button" (click)="specifications = !specifications">Specification<span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div *ngIf="specifications">
+                                <div class="panel-body panel_text">
+                                    <div class="specifications" *ngIf="product.coulur && product.coulur !== ''">
+                                        <p>Colour: </p>
+                                        <p>{{product.coulur}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.washing && product.washing !== '{}'">
+                                        <p>Washing: </p>
+                                        <p>{{product.washing}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.flexability && product.flexability !== '{}'">
+                                        <p>Flexability: </p>
+                                        <p>{{product.flexability}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.waterproof && product.waterproof !== ''">
+                                        <p>Waterproof: </p>
+                                        <p>{{product.waterproof === 'f' ? 'No' : 'Yes'}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.designedForWho && product.designedForWho !== '{}'">
+                                        <p>For Who: </p>
+                                        <p>{{product.designedForWho === 'Both' ? 'Female and Male' : product.designedForWho}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.materialName && product.materialName !== '{}'">
+                                        <p>Material Name: </p>
+                                        <p>{{product.materialName}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.misc && product.misc !== '{}'">
+                                        <p>Info: </p>
+                                        <p>{{product.misc}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.insertable && product.insertable !== '{}'">
+                                        <p>Insertable: </p>
+                                        <p>{{product.insertable}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.noOfPills && product.noOfPills !== '{}'">
+                                        <p>Number Of Pills: </p>
+                                        <p>{{product.noOfPills}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.liquidVolume && product.liquidVolume !== ''">
+                                        <p>Liquid Volume: </p>
+                                        <p>{{product.liquidVolume}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.whatIsFor && product.whatIsFor !== '{}'">
+                                        <p>What Is For: </p>
+                                        <p>{{product.whatIsFor}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.features && product.features !== '{}'">
+                                        <p>Features: </p>
+                                        <p>{{product.features}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.opening && product.opening !== '[{}]'">
+                                        <p>Opening: </p>
+                                        <p>{{convertString(product.opening)}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.productPower && product.productPower !== '{}'">
+                                        <p>Power: </p>
+                                        <p>{{product.productPower}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.lubeType && product.lubeType !== '{}'">
+                                        <p>Lube Type: </p>
+                                        <p>{{product.lubeType}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.styleName && product.styleName !== '{}'">
+                                        <p>Style: </p>
+                                        <p>{{product.styleName}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.motion && product.motion !== '[{}]'">
+                                        <p>Motion: </p>
+                                        <p>{{convertString(product.motion)}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.controller && product.controller !== '{}'">
+                                        <p>Controller: </p>
+                                        <p>{{product.controller}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.fastening && product.fastening !== '{}'">
+                                        <p>Fastening: </p>
+                                        <p>{{product.fastening}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.whatIsIt && product.whatIsIt !== '{}'">
+                                        <p>What Is It: </p>
+                                        <p>{{product.whatIsIt}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.harnessCompatible && product.harnessCompatible !== 'f'">
+                                        <p>Harness Compatible: </p>
+                                        <p>Yes</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.diameter && product.diameter !== '{}'">
+                                        <p>Diameter: </p>
+                                        <p>{{product.diameter}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.productWidth && product.productWidth !== '{}'">
+                                        <p>Width: </p>
+                                        <p>{{product.productWidth}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.productLength && product.productLength !== '[{}]'">
+                                        <p>Length: </p>
+                                        <p>{{convertString(product.productLength)}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.productSize && product.productSize !== '[{}]'">
+                                        <p>Size: </p>
+                                        <p>{{convertString(product.productSize)}}</p>
+                                    </div>
+                                    <div class="specifications" *ngIf="product.condomSafe && product.condomSafe !== 'f'">
+                                        <p>Condom Safe: </p>
+                                        <p>Yes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title asd">
+                                    <a class="pa_italic collapsed" role="button" (click)="reviews = !reviews">Reviews<span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div *ngIf="reviews">
+                                <input type="text" name="name" placeholder="Name" id="name-input-review" [(ngModel)]="reviewName">
+                                <p (mouseleave)="resetStars()">
+                                    <span class="review-star pointer-cursor"><i id="star-1" class="fas fa-star" (mouseenter)="toggleStarClass(starOne)" (click)="selectRanking(starOne)"></i></span>
+                                    <span class="review-star pointer-cursor"><i id="star-2" class="fas fa-star" (mouseenter)="toggleStarClass(starTwo)" (click)="selectRanking(starTwo)"></i></span>
+                                    <span class="review-star pointer-cursor"><i id="star-3" class="fas fa-star" (mouseenter)="toggleStarClass(starThree)" (click)="selectRanking(starThree)"></i></span>
+                                    <span class="review-star pointer-cursor"><i id="star-4" class="fas fa-star" (mouseenter)="toggleStarClass(starFour)" (click)="selectRanking(starFour)"></i></span>
+                                    <span class="review-star pointer-cursor"><i id="star-5" class="fas fa-star" (mouseenter)="toggleStarClass(starFive)" (click)="selectRanking(starFive)"></i></span>
+                                </p>
+                                <select [(ngModel)]="reviewRanking">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>                                    
+                                </select>
+                                <br>
+                                <textarea rows="4" placeholder="Write review ..." id="review-text" [(ngModel)]="reviewText"></textarea><br>
+                                <div class="row">
+                                     <button class="btn btn-secondary pull-right" (click)="addReview()">
+                                         <span *ngIf="!savingReview">Add</span>
+                                         <span *ngIf="savingReview"><i class="fas fa-spinner fa-spin"></i></span>
+                                     </button>
+                                </div>
+                                <div *ngIf="!productReviews || !productReviews.length">
+                                    <p>{{product.name}} has no reviews.</p>
+                                </div>
+                                <div *ngIf="!reviewsLoaded">
+                                        <span><i class="fas fa-spinner fa-spin"></i></span>
+                                </div>
+                                <div *ngIf="reviewsLoaded && productReviews && productReviews.length">
+                                        <div *ngFor="let review of currentPage">
+                                            <p>{{review.name}}</p>
+                                            <p>
+                                                <span class="review-star"><i class="fas fa-star"></i></span>
+                                                <span class="review-star"><i class="fa-star" [ngClass]="{'far': review.ranking < 2, 'fas': review.ranking > 1}"></i></span>
+                                                <span class="review-star"><i class="fa-star" [ngClass]="{'far': review.ranking < 3, 'fas': review.ranking > 2}"></i></span>
+                                                <span class="review-star"><i class="fa-star" [ngClass]="{'far': review.ranking < 4, 'fas': review.ranking > 3}"></i></span>
+                                                <span class="review-star"><i class="fa-star" [ngClass]="{'far': review.ranking < 5, 'fas': review.ranking > 4}"></i></span>
+                                            </p>
+                                            <p>{{review.text}}</p>
+                                            <hr />
+                                        </div>
+                                        <ul>
+                                            <li class="pages-index" [ngClass]="{'page-selected': pageSelected === pageIndex}" *ngFor="let pageIndex of pagesIndex" (click)="changePage(pageIndex)">{{pageIndex + 1}}</li>
+                                        </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title asd">
+                                    <a class="pa_italic collapsed" role="button" (click)="sizeCharts = !sizeCharts">Size Charts<span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div *ngIf="sizeCharts" class="size-chart-container">
+                                <div>
+                                    <table> 
+                                        <thead> 
+                                            <tr> 
+                                                <th>Lingerie Size</th> 
+                                                <th>UK Dress size</th> 
+                                                <th>Bust</th> 
+                                                <th>Cup Size</th> 
+                                                <th>Waist</th> 
+                                                <th>Hips</th> 
+                                            </tr> 
+                                        </thead> 
+                                        <tbody> 
+                                            <tr> 
+                                                <th>Small</th> 
+                                                <td>8 - 10</td> 
+                                                <td>32" - 34"</td> 
+                                                <td>A - B</td> 
+                                                <td>24" - 26"</td> 
+                                                <td>34" - 36"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>Medium</th> 
+                                                <td>12 - 14</td> 
+                                                <td>34" - 36"</td> 
+                                                <td>B - C</td> 
+                                                <td>26" - 28"</td> 
+                                                <td>36" - 38"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>Large</th> 
+                                                <td>14 - 16</td> 
+                                                <td>36" - 38"</td> 
+                                                <td>C - D</td> 
+                                                <td>28" - 32"</td> 
+                                                <td>38" - 40"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>XL</th> 
+                                                <td>16 - 18</td> 
+                                                <td>40" - 42"</td> 
+                                                <td>D - DD</td> 
+                                                <td>34" - 36"</td> 
+                                                <td>42" - 44"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>XXL</th> 
+                                                <td>20 - 22</td> 
+                                                <td>44" - 46"</td> 
+                                                <td>DD - E</td> 
+                                                <td>38" - 40"</td> 
+                                                <td>>46" - 48"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>XXXL</th> 
+                                                <td>22 - 24</td> 
+                                                <td>46" - 48"</td> 
+                                                <td>DD - E</td> 
+                                                <td>40" - 42"</td> 
+                                                <td>48" - 50"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>One size</th> 
+                                                <td>8 - 12</td> 
+                                                <td>32" - 38"</td> 
+                                                <td>B - C</td> 
+                                                <td>24" - 32"</td> 
+                                                <td>34" - 40"</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>S / M</th> 
+                                                <td>8 - 10</td> 
+                                                <td></td> 
+                                                <td></td>
+                                                <td></td> 
+                                                <td></td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>M / L</th> 
+                                                <td>12-14</td> 
+                                                <td></td> 
+                                                <td></td> 
+                                                <td></td> 
+                                                <td></td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>L / XL</th> 
+                                                <td>16-18</td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>1XL - 2 XL</th> 
+                                                <td>16-18</td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                                <td> </td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>3XL - 4 XL</th> 
+                                                <td>20-22</td> 
+                                                <td></td> 
+                                                <td></td> 
+                                                <td></td> 
+                                                <td></td> 
+                                            </tr> 
+                                        </tbody> 
+                                    </table> 
+                                </div>
+
+                                <div> 
+                                    <table> 
+                                        <thead> 
+                                            <tr> 
+                                                <th>Mens Size</th> 
+                                                <th>Waist</th> 
+                                            </tr> 
+                                        </thead> 
+                                        <tbody> 
+                                            <tr> 
+                                                <th>Small</th> 
+                                                <td>28 -30</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>Medium</th>
+                                                <td>32 - 34</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>Large</th> 
+                                                <td>36 - 38</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>XL</th> 
+                                                <td>38 - 40</td> 
+                                            </tr> 
+                                        </tbody> 
+                                    </table> 
+                                </div> 
+                                <table> 
+                                    <thead> 
+                                        <tr> 
+                                            <th>Passion Mens Size</th> 
+                                        </tr>
+                                    </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td>S/M</td>
+                                                <td>L/XL</td>
+                                                <td>XXL/XXL</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chest</td>
+                                                <td>92-104</td>
+                                                <td>104-116</td>
+                                                <td>116-128</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Waist</td>
+                                                <td>80-92</td>
+                                                <td>92-104</td>
+                                                <td>104-116</td>
+                                            </tr>
+                                        </tbody>
+                                </table> 
+
+                                <table> 
+                                    <thead> 
+                                        <tr> 
+                                            <th>Passion Lingerie Size</th> 
+                                            <th>UK Dress size</th> 
+                                            <th>Growth</th> 
+                                            <th>Bust</th> 
+                                            <th>Waist</th> 
+                                            <th>Hips</th> 
+                                        </tr> 
+                                    </thead> 
+                                    <tbody> 
+                                        <tr> 
+                                            <th>S / M</th> 
+                                            <td>8 - 12</td> 
+                                            <td>158 - 164 cm</td> 
+                                            <td>A - C</td> 
+                                            <td>60 - 72 cm</td> 
+                                            <td>88 - 100 cm</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>L / XL</th> 
+                                            <td>12 - 16</td> 
+                                            <td>164 - 170 cm</td> 
+                                            <td>B - D</td> 
+                                            <td>72 - 84 cm</td> 
+                                            <td>100 - 112 cm</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>XXL / XXXL</th> 
+                                            <td>16 - 22</td> 
+                                            <td>170 - 172 cm</td> 
+                                            <td>C - E</td> 
+                                            <td>84 - 96 cm</td> 
+                                            <td>112 - 124 cm</td> 
+                                        </tr> 
+                                    </tbody> 
+                                </table>
+
+                                <table> 
+                                    <thead> 
+                                        <tr> 
+                                            <th>Cotelli Collection Lingerie Size</th> 
+                                            <th>UK Dress size</th> 
+                                        </tr> 
+                                    </thead> 
+                                    <tbody> 
+                                        <tr> 
+                                            <th>70 b/s</th> 
+                                            <td>32B</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>75 b/s</th> 
+                                            <td>34B</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>75 c/m</th> 
+                                            <td>34C</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>80 c/m</th> 
+                                            <td>36C</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>80c/l</th> 
+                                            <td>36C</td> 
+                                        </tr> 
+                                        <tr> 
+                                            <th>85d/l</th> 
+                                            <td>36D</td> 
+                                        </tbody> 
+                                    </table>
+                                <!-- Size Charts End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+            </div>
+        </div>
+        <!-- //Single-Product-View -->

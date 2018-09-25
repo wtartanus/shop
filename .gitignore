@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 my-app/node_modules
 my-app/client/build/bundle.js
 my-app/client/build/bundle.js.map
@@ -47,3 +48,14 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+=======
+frontend/node_modules
+frontend/client/build/bundle.js
+frontend/client/build/bundle.js.map
+frontend/client/node_modules
+frontedn/client/images
+frontend/Photos
+frontend/Prototypes
+frontend/clientAngular/images
+frontend/clientAngular/node_modules
+>>>>>>> develop

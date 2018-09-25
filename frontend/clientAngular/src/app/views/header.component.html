@@ -1,0 +1,80 @@
+<div class="header-container" (click)="closeAll(); $event.stopPropagation();">
+      <!-- Logo -->
+      <div class="logo-container">
+          <a routerLink="/" routerLinkActive="active">
+            <img src="images/new-logo.gif" alt="logo"><br/>
+            <span>Better Love</span>
+          </a>
+      </div>
+      
+      <div class="navigation-container">
+          <!-- button to toggle navigation -->
+          <button class="nav-button" (click)="toggleNavigation(); $event.stopPropagation();">
+              <i class="fas fa-bars"></i>
+          </button>
+        <!-- basket -->
+        <div class="basket-container">
+            <div *ngIf="basketValues.itemsCount" style="display:inline-block;">
+                <p>{{basketValues.itemsCount}} {{basketValues.itemsCount > 1 ? 'Items' : 'Item'}}</p>
+                <p>£{{basketValues.totalCost}}</p>
+            </div>
+            <a routerLink="/basket" routerLinkActive="active">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+
+        <!-- search -->
+        <div class="search-container">
+            <input type="text" class="form-control" id="search-input" [(ngModel)]="searchQuery" />
+            <i class="fas fa-search" (click)="search()"></i>
+        </div>
+        <nav class="inline-navigation">
+            <ul class="inline-list">
+                <!--changeCategory(category.name); $event.stopPropagation();  -->
+                <!-- (mouseenter)="category.$open = true; $event.stopPropagation();" (mouseleave)="category.$open = false; $event.stopPropagation();" -->
+                <li *ngFor="let category of categories" (click)="openCategory(category); $event.stopPropagation();">
+                    {{category.name}}
+                    <ul *ngIf="category.$open" class="inline-sub-list">
+                        <p class="home-category" (click)="changeCategory(category.name); $event.stopPropagation();">{{category.name}} <i class="fas fa-angle-double-right"></i></p>
+                        <!-- changeCategory(subCategory.name); $event.stopPropagation(); -->
+                        <!-- (mouseenter)="subCategory.$open = true; $event.stopPropagation();" (mouseleave)="subCategory.$open = false; $event.stopPropagation();" -->
+                        <li *ngFor="let subCategory of category.subCategories; let i = index" (click)="openCategory(subCategory); $event.stopPropagation();">
+                            {{subCategory.name}}
+                            <span *ngIf="subCategory.subCategories && !subCategory.$open" class="subCategories-arrow"><i class="fas fa-chevron-right"></i></span>
+                            <span *ngIf="subCategory.subCategories && subCategory.$open" class="subCategories-arrow"><i class="fas fa-chevron-down"></i></span>
+                            <ul *ngIf="subCategory.subCategories && subCategory.$open" class="inline-sub-sub-list" [ngStyle]="{'top': i*2.4 + 'em'}">
+                                <p class="home-category" (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}} <i class="fas fa-angle-double-right"></i></p>
+                               <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name); $event.stopPropagation();">
+                                   {{sub.name}}
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+      </div>
+      <nav *ngIf="showNavigation" class="main-navigation-mobile-tablet">
+        <ul class="main-list">
+            <li *ngFor="let category of categories" (click)="toggleCategory(category); $event.stopPropagation();">
+                {{category.name}}
+                <ul *ngIf="category.$open" class="second-level-list">
+                <p (click)="changeCategory(category.name); $event.stopPropagation();">{{category.name}} home page <i class="fas fa-angle-double-right"></i></p>
+                <li *ngFor="let subCategory of category.subCategories" (click)="toggleCategory(subCategory); $event.stopPropagation();" [ngStyle]="{'background-color': !subCategory.subCategories ? 'orangered' : 'red'}">
+                    <span *ngIf="!subCategory.subCategories" (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}}</span>
+                    <span *ngIf="subCategory.subCategories">{{subCategory.name}}</span>
+                    <ul *ngIf="subCategory.subCategories && subCategory.$open" class="third-level-list">
+                        <p (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}} home page <i class="fas fa-angle-double-right"></i></p>
+                        <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name); $event.stopPropagation();">
+                            {{sub.name}}
+                        </li>
+                    </ul>
+                </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+      
