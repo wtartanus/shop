@@ -12,6 +12,10 @@ import { FooterComponent } from "./../components/footer.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
 import { BasketComponent } from "./../components/basket.component.js";
 import { CheckoutComponent } from "../components/checkout.component.js";
+import { TermsAndConditions } from "./../components/TermsAndContitions.js";
+import { Privacy } from "./../components/Privacy.js";
+import { Returns } from "./../components/Returns.js";
+import { Delivery } from "./../components/Delivery.js";
 import { PolicyComponent } from "../components/policy.component.js";
 
 import { WarehouseService } from "./../services/warehouse.service.js";
@@ -26,7 +30,10 @@ const appRoutes: Routes = [
   { path: 'search/:searchQuery', component: ProductsListComponent},
   { path: 'product/:id', component: SingleProductComponent},
   { path: 'checkout', component: CheckoutComponent},
-  { path: 'policy/:type', component: PolicyComponent}
+  { path: 'policy/termsandconditions', component: TermsAndConditions },
+  { path: 'policy/privacy', component: Privacy },
+  { path: 'policy/returns', component: Returns },
+  { path: 'policy/delivery', component: Delivery } 
 ];
 
 @NgModule({
@@ -48,6 +55,10 @@ const appRoutes: Routes = [
     SingleProductComponent,
     BasketComponent,
     CheckoutComponent,
+    TermsAndConditions,
+    Privacy,
+    Returns,
+    Delivery,
     PolicyComponent
   ],
   providers: [WarehouseService, MessageService, BasketService, CategoriesService],

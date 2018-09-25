@@ -7,8 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var modelSlider_component_js_1 = require("./../components/modelSlider.component.js");
-var headerSlider_component_js_1 = require("./../components/headerSlider.component.js");
 var SplashComponent = (function () {
     function SplashComponent() {
     }
@@ -20,9 +18,8 @@ var SplashComponent = (function () {
 SplashComponent = __decorate([
     core_1.Component({
         selector: 'splash',
-        templateUrl: 'src/app/views/splash.component.html',
-        entryComponents: [modelSlider_component_js_1.ModelSliderComponent, headerSlider_component_js_1.HeaderSliderComponent]
-    })
+        templateUrl: 'src/app/views/splash.component.html'
+        })
 ], SplashComponent);
 exports.SplashComponent = SplashComponent;
 //# sourceMappingURL=splash.component.js.map

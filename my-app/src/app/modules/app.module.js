@@ -13,8 +13,6 @@ var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var app_component_js_1 = require("./../components/app.component.js");
 var header_component_js_1 = require("./../components/header.component.js");
-var modelSlider_component_js_1 = require("./../components/modelSlider.component.js");
-var headerSlider_component_js_1 = require("./../components/headerSlider.component.js");
 var singleProduct_component_js_1 = require("./../components/singleProduct.component.js");
 var productsList_component_js_1 = require("./../components/productsList.component.js");
 var footer_component_js_1 = require("./../components/footer.component.js");
@@ -52,8 +50,6 @@ AppModule = __decorate([
         declarations: [
             app_component_js_1.AppComponent,
             header_component_js_1.HeaderComponent,
-            headerSlider_component_js_1.HeaderSliderComponent,
-            modelSlider_component_js_1.ModelSliderComponent,
             footer_component_js_1.FooterComponent,
             splash_component_js_1.SplashComponent,
             productsList_component_js_1.ProductsListComponent,
