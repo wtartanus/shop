@@ -265,8 +265,10 @@
     .vibrators-container {
         background-image: url('../images/splash-page/vibrators-splash-medium.jpg');
     }
-    
 
+    .policy-container {
+        width: 70%;
+    }
 }
 
 @media screen and (min-width: 900px) {
@@ -386,6 +388,10 @@
 
     .button-4 {
       top: calc(60vh - 160px);
+    }
+
+    .policy-container {
+        width: 60%;
     }
 }
 

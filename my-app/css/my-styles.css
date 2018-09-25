@@ -710,3 +710,23 @@ checkout-invalid {
     color: white;
 }
 
+/* Policy Styles */
+.policy-container {
+    width: 95%;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+
+.policy-paragraph-title {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.policy-text {
+    text-align: left;
+    margin-top: 5px;
+    font-family: sans-serif;
+}
+
+/* Policy Styles */
+
