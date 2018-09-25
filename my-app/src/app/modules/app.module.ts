@@ -16,7 +16,6 @@ import { TermsAndConditions } from "./../components/TermsAndContitions.js";
 import { Privacy } from "./../components/Privacy.js";
 import { Returns } from "./../components/Returns.js";
 import { Delivery } from "./../components/Delivery.js";
-import { PolicyComponent } from "../components/policy.component.js";
 
 import { WarehouseService } from "./../services/warehouse.service.js";
 import { BasketService } from "../services/basket.service.js";
@@ -58,8 +57,7 @@ const appRoutes: Routes = [
     TermsAndConditions,
     Privacy,
     Returns,
-    Delivery,
-    PolicyComponent
+    Delivery
   ],
   providers: [WarehouseService, MessageService, BasketService, CategoriesService],
   bootstrap: [ AppComponent ]
