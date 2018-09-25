@@ -1,10 +1,7 @@
 require 'xmlsimple'
 require_relative('./../db/sqlRunner.rb')
 require('json')
-<<<<<<< HEAD
 require('pry')
-=======
->>>>>>> develop
 
 
 class Product
@@ -18,21 +15,12 @@ class Product
                  
     def initialize(options)
       @id = options['id'].to_i
-<<<<<<< HEAD
       @itemId = options['item'] ? options['item'].tr("'", "") : options['item']
       @model = options['model'] ? options['model'].tr("'", "") : options['model']
       @name = options['name'] ? options['name'].tr("'", "") : options['name']
       @weightInKg = options['weightinkg'].to_f
       @image = options['image'] ? options['image'].tr("'", "") : options['image']
       @description = options['description'] ? options['description'].tr("'", "") : options['description']
-=======
-      @itemId = options['item']
-      @model = options['model']
-      @name = options['name']
-      @weightInKg = options['weightinkg'].to_f
-      @image = options['image']
-      @description = options['description']
->>>>>>> develop
       @price = options['price'].to_f
       @rpr = options['rrp'].to_f
       @productThumbail = options['productthumbail']
@@ -69,17 +57,10 @@ class Product
       @designedForWho = options['designedforwho']
       @whatIsIt = options['whatisit']
       @whatIsFor = options['whatisfor']
-<<<<<<< HEAD
       @features = options['features'] ? options['features'].tr("'", "") : options['features']
       @misc = options['misc']
       @materialName = options['materialname']
       @brandName = options['brandname'] ? options['brandname'].tr("'", "") : options['brandname']
-=======
-      @features = options['features']
-      @misc = options['misc']
-      @materialName = options['materialname']
-      @brandName = options['brandname']
->>>>>>> develop
       @styleName = options['stylename']
       @productEAN = options['productean']
       @inCatName = options['incatname']
@@ -112,7 +93,6 @@ class Product
     end
 
     def self.getProductsByCategoryName(categoryName)
-<<<<<<< HEAD
       sql = "SELECT * FROM products WHERE categoryName LIKE '%#{categoryName}%'"
       products = Product.map_items(sql)
       result = []
@@ -153,17 +133,6 @@ class Product
         item[var.to_s.delete("@")] = result.instance_variable_get(var)
       }
       return item
-=======
-      sql = "SELECT * FROM products WHERE category LIKE '%#{categoryName}%'"
-      result = Product.map_items(sql)
-      return result
-    end
-  
-    def self.find( id )
-      sql = "SELECT * FROM products WHERE id = #{ id }"
-      result = Product.map_item( sql )
-      return result
->>>>>>> develop
     end
   
   
