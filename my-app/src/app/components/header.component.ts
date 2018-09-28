@@ -3,13 +3,14 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { BasketService } from '../services/basket.service.js';
 import { MessageService } from '../services/message.service.js';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CategoriesService } from '../services/categories.service.js';
 
 
 @Component({
   selector: 'ng-header',
-  templateUrl: '../views/header.component.html'
+  templateUrl: '../views/header.component.html',
+  styleUrls: ['./Header.css']
 })
 export class HeaderComponent implements AfterViewInit {
     @Input() selectedCategory: string;
@@ -17,7 +18,7 @@ export class HeaderComponent implements AfterViewInit {
     @Output() onCategoryChange = new EventEmitter<string>();
     public basketValues: any = {itemsCount: 0, totalCost: 0};
     public itemsCount: number = this.basket.itemsCount;
-    public searchQuery: string = "";
+    public searchQuery: string = null;
     subscription: Subscription;
     public categories: any = this.categoriesService.categoriesTree;
     public showNavigation: boolean = false;
@@ -42,12 +43,12 @@ export class HeaderComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-      setTimeout(() => {
-          let spacer = document.getElementById('spacer');
-          let header = document.getElementById('header');
-          spacer.style.height = header.clientHeight + 'px';
-          this.addColClass = header.clientWidth >= 1100;
-      },500);
+    //   setTimeout(() => {
+    //       let spacer = document.getElementById('spacer');
+    //       let header = document.getElementsByTagName('header')[0];
+    //       spacer.style.height = header.clientHeight + 'px';
+    //       this.addColClass = header.clientWidth >= 1100;
+    //   },500);
     }
 
     toggleCategory(category: any): void{

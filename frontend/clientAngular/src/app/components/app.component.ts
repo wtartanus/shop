@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     private subscription: Subscription;
 
     ngOnInit() {
-      this.warehouse.initData();
+      // this.warehouse.initData();
     }
 
     constructor(private warehouse: WarehouseService, private message: MessageService) { //private messageService: MessageService

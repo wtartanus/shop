@@ -1,0 +1,104 @@
+header {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-checkout-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 1%;
+}
+
+.header-checkout-button {
+    background: none;
+    border: none;
+    letter-spacing: 4px;
+    font-family: sans-serif;
+}
+
+.header-logo-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.header-logo-container a {
+    text-align: center;
+}
+
+.header-logo {
+    width: 20vw;
+}
+
+.header-logo-container span {
+    font-family: 'Alex Brush', cursive;
+    color: red;
+    font-size: xx-large;
+}
+
+.header-util-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0 15px;
+}
+
+.header-search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-left: 10px;
+    flex-grow: 2;
+}
+
+.header-search-container i {
+    font-size: x-large;
+}
+
+#search-input {
+    border: none;
+    border-bottom: 1px solid;
+    padding-left: 5px;
+    width: 80%;
+}
+
+.basket-container a {
+    color: black;
+}
+
+.basket-container i {
+    font-size: 2em;
+}
+
+.basket-container span {
+    position: relative;
+    top: -25px;
+    left: -8px;
+}
+
+.header-dropdown-menu-util-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 4%;
+    background-color: red;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.header-dropdown-menu-util-container p {
+    color: white;
+    font-family: sans-serif;
+}
+
+.header-dropdown-menu-util-container button {
+    color: white;
+    background: none;
+    border: none;
+    font-size: xx-large;
+}
+
+nav {
+
+}

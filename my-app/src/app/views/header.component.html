@@ -1,70 +1,73 @@
-<div id="header" class="container-fluid header-container" (click)="closeAll(); $event.stopPropagation();">
-  <div class="mobile-header">
-    <div class="row header-top-row">
-        <div class="col">
-           <button class="nav-button" (click)="toggleNavigation(); $event.stopPropagation();">
-              <i class="fas fa-bars"></i>
-            </button>
+<header>
+    <!-- Checkout -->
+    <div class="header-checkout-container">
+        <button class="header-checkout-button">Checkout</button>
+    </div>
+     
+    <!-- Logo -->
+    <div class="header-logo-container">
+        <a routerLink="/" routerLinkActive="active">
+            <img class="header-logo" src="images/new-logo.gif" alt="logo"><br/>
+            <span>Better Love</span>
+        </a>
+    </div>
+       
+    <!-- Basket, Search -->
+    <div class="header-util-container">
+        <div class="header-search-container">
+            <i class="fas fa-search" (click)="search()"></i>
+            <input type="text" id="search-input" [(ngModel)]="searchQuery" placeholder="Search" />
         </div>
-        <div class="col-6">
-          <a routerLink="/" routerLinkActive="active">
-            <img src="images/new-logo.gif" alt="logo"><br/>
-            <span style="color:white;">Better Love</span>
-          </a>
-        </div>
-        <div class="col">
-          <div class="basket-container">
-            <p style="color:white;font-weight: bold;">{{basketValues.itemsCount ? '£' + basketValues.totalCost : ''}}</p>
-                <a routerLink="/basket" routerLinkActive="active">
-                    <i [ngStyle]="{'color': basketValues.itemsCount ? 'cornflowerblue' : 'white'}" class="fas fa-shopping-cart"></i>
-                    <span *ngIf="basketValues.itemsCount" class="badge badge-light items-badge">{{basketValues.itemsCount}}</span>
-                </a>
-          </div>
+        <div class="basket-container">
+            <a routerLink="/basket" routerLinkActive="active">
+                <i class="fas fa-shopping-basket"></i>
+                <span>{{basketValues.itemsCount}}</span>
+            </a>
+            <p>{{basketValues.totalCost ? '£' + basketValues.totalCost : '£0.00'}}</p>
         </div>
     </div>
 
-    <div class="row header-bottom-row">
-      <input type="text" class="form-control" id="search-input" [(ngModel)]="searchQuery" />
-      <i class="fas fa-search" (click)="search()"></i>
+    <div class="header-dropdown-menu-util-container">
+        <p>MENU</p>
+        <button (click)="showNavigation = !showNavigation"><i class="fas fa-bars"></i></button>
     </div>
-  </div>
 
-  <div class="container tablet-desktop-header">
-     <div class="row desktop-header-top-row">
-      <!-- LOGO -->
-       <div class="col col-3" style="text-align: center;">
-          <a routerLink="/" routerLinkActive="active">
-            <img src="images/new-logo.gif" alt="logo"><br/>
-            <span style="color:white;">Better Love</span>
-          </a>
-       </div>
-      <!-- LOGO END -->
-      <!-- BASKET -->
-        <div class="col">
-          <div class="basket-container">
-                <div class="price">
-                    <p>{{basketValues.itemsCount ? '£' + basketValues.totalCost : ''}}</p>
-                </div>
-                <a routerLink="/basket" routerLinkActive="active">
-                    <i [ngStyle]="{'color': basketValues.itemsCount ? 'cornflowerblue' : 'white'}" class="fas fa-shopping-cart"></i>
-                    <span *ngIf="basketValues.itemsCount" class="badge badge-light items-badge">{{basketValues.itemsCount}}</span>
-                </a>
-          </div>
-        </div>
-        <!-- BASKET END -->
-        <!-- SEARCH -->
-        <div class="col search-column" [ngClass]="{'col-3': addColClass}">
+    <!-- Dropdown menu -->
+    <nav *ngIf="showNavigation" class="main-navigation-mobile-tablet">
+        <ul class="main-list">
+                <li *ngFor="let category of categories" (click)="toggleCategory(category); $event.stopPropagation();">
+                    {{category.name}}
+                    <ul *ngIf="category.$open" class="second-level-list">
+                    <p (click)="changeCategory(category.name); $event.stopPropagation();">{{category.name}} home page <i class="fas fa-angle-double-right"></i></p>
+                    <li *ngFor="let subCategory of category.subCategories" (click)="toggleCategory(subCategory); $event.stopPropagation();" [ngStyle]="{'background-color': !subCategory.subCategories ? 'orangered' : 'red'}">
+                        <span *ngIf="!subCategory.subCategories" (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}}</span>
+                        <span *ngIf="subCategory.subCategories">{{subCategory.name}}</span>
+                        <ul *ngIf="subCategory.subCategories && subCategory.$open" class="third-level-list">
+                            <p (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}} home page <i class="fas fa-angle-double-right"></i></p>
+                            <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name); $event.stopPropagation();">
+                                {{sub.name}}
+                            </li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+            </ul>
+    </nav>
+
+</header>
+
+        <!-- <div class="col search-column" [ngClass]="{'col-3': addColClass}">
            <input type="text" class="form-control" id="search-input" [(ngModel)]="searchQuery" />
            <i class="fas fa-search" (click)="search()"></i>
-        </div>
+        </div> -->
         <!-- SEARCH END -->
-     </div>
+     <!-- </div>
 
-     <div class="row" style="border-top:1px solid white;margin-top: 2%;">
+     <div class="row" style="border-top:1px solid white;margin-top: 2%;"> -->
         <!-- NAV INLINE -->
-        <div class="col navigation-container">
+        <!-- <div class="col navigation-container"> -->
           <!-- search -->
-          <nav class="inline-navigation">
+          <!-- <nav class="inline-navigation">
               <ul class="inline-list">
                   <li *ngFor="let category of categories" (click)="openCategory(category); $event.stopPropagation();">
                       {{category.name}}
@@ -85,34 +88,17 @@
                   </li>
               </ul>
           </nav>
-        </div>
+        </div> -->
         <!-- NAV INLINE -->
-     </div>
-  </div>
+     <!-- </div>
+  </div> -->
 
   <!-- NAV DROP DOWN -->
-  <nav *ngIf="showNavigation" class="main-navigation-mobile-tablet">
-      <ul class="main-list">
-          <li *ngFor="let category of categories" (click)="toggleCategory(category); $event.stopPropagation();">
-              {{category.name}}
-              <ul *ngIf="category.$open" class="second-level-list">
-              <p (click)="changeCategory(category.name); $event.stopPropagation();">{{category.name}} home page <i class="fas fa-angle-double-right"></i></p>
-              <li *ngFor="let subCategory of category.subCategories" (click)="toggleCategory(subCategory); $event.stopPropagation();" [ngStyle]="{'background-color': !subCategory.subCategories ? 'orangered' : 'red'}">
-                  <span *ngIf="!subCategory.subCategories" (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}}</span>
-                  <span *ngIf="subCategory.subCategories">{{subCategory.name}}</span>
-                  <ul *ngIf="subCategory.subCategories && subCategory.$open" class="third-level-list">
-                      <p (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}} home page <i class="fas fa-angle-double-right"></i></p>
-                      <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name); $event.stopPropagation();">
-                          {{sub.name}}
-                      </li>
-                  </ul>
-              </li>
-              </ul>
-          </li>
-      </ul>
-  </nav>
+  <!-- <nav *ngIf="showNavigation" class="main-navigation-mobile-tablet">
+      
+  </nav> -->
   <!-- NAV DROP DOWN END -->
-</div>
+<!-- </div> -->
 
 
       

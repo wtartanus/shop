@@ -28,7 +28,7 @@ var AppComponent = (function () {
         this.subscription = this.message.getMessage().subscribe(function (message) { return _this.processMessage(message); });
     }
     AppComponent.prototype.ngOnInit = function () {
-        this.warehouse.initData();
+        //this.warehouse.initData();
     };
     ;
     AppComponent.prototype.processMessage = function (message) {
