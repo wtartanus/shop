@@ -28,118 +28,12 @@ input[type=text]:focus {
     display: table;
 }
 
-.header-top-row {
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-evenly;
-    text-align: center;
-}
-
-.header-top-row img {
-    width: 30%;
-}
-
-.header-top-row .col-6 span {
-    font-family: 'Cormorant Unicase', serif;
-}
-
-.header-bottom-row {
-    text-align: center;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 2%;
-}
-
-.header-bottom-row i {
-    color: white;
-    font-size: 1.7em;
-}
-
 .main-container {
     padding-top: 27vh;
 }
 
-.inline-navigation {
-    display: none;
-}
-
-.logo-container {
-    text-align: center;
-}
-
-.logo-container img {
-    width: 10%;
-    height: 23%;
-}
-
-.logo-container span {
-    color: red;
-    font-family: 'Amita', cursive;
-}
-
-.navigation-container {
-    padding-right: 2%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    font-family: 'Cormorant Unicase', serif;
-}
-
-.nav-button {
-    background-color: red;
-    border: none;
-    color: white;
-    font-size: 3em;
-    text-align: center;
-    border-radius: 8px;
-    margin: 2% 0 0 5%;
-}
-
-.actions-container {
-    width: 100%;
-    display: flex;
-}
-
-.main-navigation-mobile-tablet p {
-    background-color: white;
-    color: red;
-    display: block;
-}
-
-.main-navigation-mobile-tablet li {
-    border-bottom: 1px solid black;
-}
-
-.second-level-list {
-    font-size: 0.7em;
-    background: red;
-}
-
-.second-level-list li {
-    border-bottom: 1px solid firebrick;
-}
-
-.third-level-list {
-    background-color: orangered;
-}
-
-.third-level-list li {
-    border-bottom: 1px solid red;
-    font-size: 0.9em;
-}
-
 .pointer-cursor {
     cursor: pointer;
-}
-
-.categories-top-bar {
-    width: 15%;
-    margin-bottom: 15px;
-}
-
-.categories-top-bar p {
-    font-size: .7em;
 }
 
 .show-in-small {
@@ -160,40 +54,11 @@ input[type=text]:focus {
     margin-bottom: 15px;
 }
 
-.nav-container {
-    padding-right: 1%;
-    padding-left: 1%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.categories-top-bar p {
-    font-size: .7em;
-}
-
-.nav-logo {
-    padding: 0;
-    color: red;
-}
-
-.nav-logo a:hover,
-.nav-logo a:focus {
-    color:red;
-}
-
 .side-menu {
     flex-basis: 20%;
     height: 600px;
     border-right: 1px solid red;
     display: none;
-}
-
-.products-cart {
-    float: right;
-}
-
-.products-cart span {
-    color: blue;
 }
 
 .splash-page-first-section {
