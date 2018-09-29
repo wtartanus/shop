@@ -70,11 +70,11 @@
         </nav>
     </div>
 
-    <nav class="header-inline-navidation">
+    <nav class="header-inline-navigation">
         <ul class="inline-navigation-ul-level-1">
             <li *ngFor="let category of categories" (click)="openCategory(category, $event);">
                 {{category.name}}
-                <ul *ngIf="category.$open" class="inline-navigation-ul-lvl-2" [ngClass]="{'inline-sub-list-bondage': category.scrollable}">
+                <ul *ngIf="category.$open" class="inline-navigation-ul-lvl-2" [ngClass]="{'inline-navigation-scrollable': category.scrollable}">
                     <p class="inline-navigation-main" (click)="changeCategory(category.name, $event)">
                         {{category.name}} 
                         <i class="fas fa-arrow-right"></i>
@@ -91,7 +91,7 @@
                            </span>
                         </div>
                         <ul *ngIf="subCategory.subCategories && subCategory.$open" class="inline-navigation-ul-lvl-3" 
-                            [ngStyle]="{'top': 0}" [ngClass]="{'inline-sub-list-bondage': subCategory.scrollable}">
+                            [ngStyle]="{'top': 0}" [ngClass]="{'inline-navigation-scrollable': subCategory.scrollable}">
                                 <p class="inline-navigation-main" (click)="changeCategory(subCategory.name, $event)">
                                     {{subCategory.name}} 
                                     <i class="fas fa-angle-double-right"></i>
