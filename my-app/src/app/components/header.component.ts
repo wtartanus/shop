@@ -19,10 +19,9 @@ export class HeaderComponent implements AfterViewInit {
     public basketValues: any = {itemsCount: 0, totalCost: 0};
     public itemsCount: number = this.basket.itemsCount;
     public searchQuery: string = null;
-    subscription: Subscription;
+    private subscription: Subscription;
     public categories: any = this.categoriesService.categoriesTree;
     public showNavigation: boolean = false;
-    public addColClass: boolean = false;
    
     constructor (public basket: BasketService, private messageService: MessageService, private router: Router, public categoriesService: CategoriesService) {
         this.subscription = this.messageService.getMessage().subscribe(message => this.processMessage(message));
@@ -37,40 +36,33 @@ export class HeaderComponent implements AfterViewInit {
           this.basketValues.itemsCount = message.body.itemsCount;
           this.basketValues.totalCost = message.body.totalCost;
       }
-      if (message.text === "close-nav") {
-          this.closeAll();
-      }
+      if (message.text === "close-nav") this.closeAll();
     }
 
     ngAfterViewInit() {
       setTimeout(() => {
-          let spacer = document.getElementById('spacer');
-          let header = document.getElementsByTagName('header')[0];
+          const spacer = document.getElementById('spacer');
+          const header = document.getElementsByTagName('header')[0];
           spacer.style.height = header.clientHeight + 'px';
-          this.addColClass = header.clientWidth >= 1100;
       },0);
     }
 
     toggleCategory(category: any, event?: any): void{
       if (event) event.stopPropagation();
-      if (category.$open === undefined || category.$open === null) {
-          category.$open = true;
-      } else {
-          category.$open = !category.$open;
-      }
+      category.$open = !category.$open;
     }
 
     closeAll(): void {
         this.showNavigation = false;
-        for (var i = 0; i < this.categories.length; i++) {
+        for (let i = 0; i < this.categories.length; i++) {
             this.categories[i].$open = false;
             if (this.categories[i].subCategories) {
                 var subCategories = this.categories[i].subCategories;
-                for (var j = 0; j < subCategories.length; j++) {
+                for (let j = 0; j < subCategories.length; j++) {
                     subCategories[j].$open = false;
                     if (subCategories[j].subCategories) {
                         var subs = subCategories[j].subCategories;
-                        for (var k = 0; k < subs.length; k++) {
+                        for (let k = 0; k < subs.length; k++) {
                             subs[k].$open = false;
                         }
                     }
@@ -85,28 +77,28 @@ export class HeaderComponent implements AfterViewInit {
        } else {
             category.$open = !category.$open;
         
-        for (var i = 0; i < this.categories.length; i++) {
-            if (this.categories[i].name !== category.name && (!category.parents || category.parents.indexOf(this.categories[i].name) < 0)) {
-                this.categories[i].$open = false;
-            }
-    
-            if (this.categories[i].subCategories) {
-                let subCategories = this.categories[i].subCategories;
-                for (let j = 0; j < subCategories.length; j++) {
-                    if (category.name !== subCategories[j].name && (!category.parents || category.parents.indexOf(subCategories[j].name) < 0)) {
-                        subCategories[j].$open = false;
-                    }
-                    if (subCategories[j].subCategories) {
-                        var subs = subCategories[j].subCategories;
-                        for (var k = 0; k < subs.length; k++) {
-                            if (subs[k].name !== category.name) {
-                                subs[k].$open = false;
+            for (var i = 0; i < this.categories.length; i++) {
+                if (this.categories[i].name !== category.name && (!category.parents || category.parents.indexOf(this.categories[i].name) < 0)) {
+                    this.categories[i].$open = false;
+                }
+        
+                if (this.categories[i].subCategories) {
+                    let subCategories = this.categories[i].subCategories;
+                    for (let j = 0; j < subCategories.length; j++) {
+                        if (category.name !== subCategories[j].name && (!category.parents || category.parents.indexOf(subCategories[j].name) < 0)) {
+                            subCategories[j].$open = false;
+                        }
+                        if (subCategories[j].subCategories) {
+                            var subs = subCategories[j].subCategories;
+                            for (var k = 0; k < subs.length; k++) {
+                                if (subs[k].name !== category.name) {
+                                    subs[k].$open = false;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
        }
     }
 
