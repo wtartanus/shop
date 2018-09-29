@@ -5,7 +5,7 @@ import { HttpModule }       from "@angular/http";
 import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "./../components/app.component.js";
-import { HeaderComponent } from "./../components/header.component.js";
+import { HeaderComponent } from "../components/Header/header.component.js";
 import { SingleProductComponent } from "./../components/singleProduct.component.js";
 import { ProductsListComponent } from "./../components/productsList.component.js";
 import { FooterComponent } from "./../components/footer.component.js";

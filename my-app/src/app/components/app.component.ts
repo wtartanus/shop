@@ -2,7 +2,7 @@ import {Component, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { HeaderComponent } from "./../components/header.component.js";
+import { HeaderComponent } from "./Header/header.component.js";
 import { SplashComponent } from "./../components/splash.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
 import { BasketComponent } from "./../components/basket.component.js";

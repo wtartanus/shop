@@ -1,15 +1,15 @@
 import {Component, AfterViewInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { BasketService } from '../services/basket.service.js';
-import { MessageService } from '../services/message.service.js';
+import { BasketService } from './../../services/basket.service.js';
+import { MessageService } from './../../services/message.service.js';
 import { Router } from '@angular/router';
-import { CategoriesService } from '../services/categories.service.js';
+import { CategoriesService } from './../../services/categories.service.js';
 
 
 @Component({
   selector: 'ng-header',
-  templateUrl: '../views/header.component.html',
+  templateUrl: './../../views/header.component.html',
   styleUrls: ['./Header.css']
 })
 export class HeaderComponent implements AfterViewInit {
@@ -23,7 +23,8 @@ export class HeaderComponent implements AfterViewInit {
     public categories: any = this.categoriesService.categoriesTree;
     public showNavigation: boolean = false;
    
-    constructor (public basket: BasketService, private messageService: MessageService, private router: Router, public categoriesService: CategoriesService) {
+    constructor (public basket: BasketService, private messageService: MessageService, 
+                 private router: Router, public categoriesService: CategoriesService) {
         this.subscription = this.messageService.getMessage().subscribe(message => this.processMessage(message));
     }
 
@@ -40,35 +41,14 @@ export class HeaderComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-      setTimeout(() => {
-          const spacer = document.getElementById('spacer');
-          const header = document.getElementsByTagName('header')[0];
-          spacer.style.height = header.clientHeight + 'px';
-      },0);
+        const spacer = document.getElementById('spacer');
+        const header = document.getElementsByTagName('header')[0];
+        spacer.style.height = header.clientHeight + 'px';
     }
 
     toggleCategory(category: any, event?: any): void{
       if (event) event.stopPropagation();
       category.$open = !category.$open;
-    }
-
-    closeAll(): void {
-        this.showNavigation = false;
-        for (let i = 0; i < this.categories.length; i++) {
-            this.categories[i].$open = false;
-            if (this.categories[i].subCategories) {
-                var subCategories = this.categories[i].subCategories;
-                for (let j = 0; j < subCategories.length; j++) {
-                    subCategories[j].$open = false;
-                    if (subCategories[j].subCategories) {
-                        var subs = subCategories[j].subCategories;
-                        for (let k = 0; k < subs.length; k++) {
-                            subs[k].$open = false;
-                        }
-                    }
-                }
-            }
-        }
     }
 
     openCategory(category: any, event?: any): void{
@@ -118,5 +98,24 @@ export class HeaderComponent implements AfterViewInit {
         this.selectedCategory = null;
         this.closeAll();
         this.onCategoryChange.emit(this.selectedCategory);
+    }
+
+    closeAll(): void {
+        this.showNavigation = false;
+        for (let i = 0; i < this.categories.length; i++) {
+            this.categories[i].$open = false;
+            if (this.categories[i].subCategories) {
+                var subCategories = this.categories[i].subCategories;
+                for (let j = 0; j < subCategories.length; j++) {
+                    subCategories[j].$open = false;
+                    if (subCategories[j].subCategories) {
+                        var subs = subCategories[j].subCategories;
+                        for (let k = 0; k < subs.length; k++) {
+                            subs[k].$open = false;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

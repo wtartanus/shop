@@ -21,6 +21,7 @@ header {
     border: none;
     letter-spacing: 4px;
     font-family: sans-serif;
+    cursor: pointer;
 }
 
 .header-logo-container {
@@ -323,6 +324,10 @@ header {
 }
 
     @media only screen and (min-width: 1280px) {
+        .header-content {
+            width: 70%;
+            margin: 0 auto;
+        }
         .inline-navigation-ul-lvl-2 {
             width: 22%;
         }
