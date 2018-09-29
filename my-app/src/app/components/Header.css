@@ -2,6 +2,7 @@ header {
     width: 100vw;
     display: flex;
     flex-direction: column;
+    position: absolute;
 }
 
 .header-checkout-container {
@@ -99,6 +100,61 @@ header {
     font-size: xx-large;
 }
 
-nav {
+.header-nav-dropdown {
+    list-style-type: none;
+    background-color: white;
+    width: 100%;
+    position: relative;
+    left: 0;
+    top: 100%;
+    z-index: 1000;
+    color: black;
+    font-family: serif;
+    font-size: 2em;
+    line-height: 2em;
+    max-height: 80vh;
+    overflow-y: auto;
+}
 
+.header-nav-dropdown-li-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 4%;
+    cursor: pointer;
+}
+
+.header-nav-dropdown-main-1 {
+    padding-left: 4%;
+    color: black;
+    font-size: large;
+}
+
+.header-nav-dropdown-li-2 {
+    padding-left: 9%;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.header-nav-dropdown-li-2 div {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 4%;
+}
+
+.header-nav-dropdown-main-2 {
+    padding-left: 7%;
+    color: black;
+    font-size: 0.6em;
+}
+
+.header-nav-last-ul {
+    list-style: none;
+    list-style-position: inside;
+}
+
+.header-nav-last-ul li {
+    font-size: 0.6em;
+    padding-left: 7%;
+    cursor: pointer;
 }

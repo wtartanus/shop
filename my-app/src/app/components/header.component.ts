@@ -43,15 +43,16 @@ export class HeaderComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-    //   setTimeout(() => {
-    //       let spacer = document.getElementById('spacer');
-    //       let header = document.getElementsByTagName('header')[0];
-    //       spacer.style.height = header.clientHeight + 'px';
-    //       this.addColClass = header.clientWidth >= 1100;
-    //   },500);
+      setTimeout(() => {
+          let spacer = document.getElementById('spacer');
+          let header = document.getElementsByTagName('header')[0];
+          spacer.style.height = header.clientHeight + 'px';
+          this.addColClass = header.clientWidth >= 1100;
+      },0);
     }
 
-    toggleCategory(category: any): void{
+    toggleCategory(category: any, event?: any): void{
+      if (event) event.stopPropagation();
       if (category.$open === undefined || category.$open === null) {
           category.$open = true;
       } else {
@@ -109,7 +110,8 @@ export class HeaderComponent implements AfterViewInit {
        }
     }
 
-    changeCategory(category: string): void {
+    changeCategory(category: string, event?: any): void {
+        if (event) event.stopPropagation();
         this.closeAll();
         this.router.navigate(["/categories", category]);
     }

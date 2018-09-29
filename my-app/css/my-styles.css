@@ -101,23 +101,6 @@ input[type=text]:focus {
     display: flex;
 }
 
-.main-navigation-mobile-tablet {
-    list-style-type: none;
-    background-color: firebrick;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    z-index: 1000;
-    color: white;
-    font-family: sans-serif;
-    font-size: 2em;
-    line-height: 2em;
-    text-align: center;
-    max-height: 80vh;
-    overflow-y: auto;
-}
-
 .main-navigation-mobile-tablet p {
     background-color: white;
     color: red;

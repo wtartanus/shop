@@ -33,28 +33,42 @@
     </div>
 
     <!-- Dropdown menu -->
-    <nav *ngIf="showNavigation" class="main-navigation-mobile-tablet">
-        <ul class="main-list">
-                <li *ngFor="let category of categories" (click)="toggleCategory(category); $event.stopPropagation();">
-                    {{category.name}}
-                    <ul *ngIf="category.$open" class="second-level-list">
-                    <p (click)="changeCategory(category.name); $event.stopPropagation();">{{category.name}} home page <i class="fas fa-angle-double-right"></i></p>
-                    <li *ngFor="let subCategory of category.subCategories" (click)="toggleCategory(subCategory); $event.stopPropagation();" [ngStyle]="{'background-color': !subCategory.subCategories ? 'orangered' : 'red'}">
-                        <span *ngIf="!subCategory.subCategories" (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}}</span>
-                        <span *ngIf="subCategory.subCategories">{{subCategory.name}}</span>
-                        <ul *ngIf="subCategory.subCategories && subCategory.$open" class="third-level-list">
-                            <p (click)="changeCategory(subCategory.name); $event.stopPropagation();">{{subCategory.name}} home page <i class="fas fa-angle-double-right"></i></p>
-                            <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name); $event.stopPropagation();">
-                                {{sub.name}}
-                            </li>
-                        </ul>
-                    </li>
+    <nav *ngIf="showNavigation" class="header-nav-dropdown">
+        <ul>
+            <li *ngFor="let category of categories" (click)="toggleCategory(category, $event)">
+                <div class="header-nav-dropdown-li-1">
+                    <span>{{category.name}}</span><span>{{category.$open ? '-' : '+'}}</span>
+                </div>
+                <ul *ngIf="category.$open" class="header-nav-dropdown-ul-2">
+                <p (click)="changeCategory(category.name, $event);" class="header-nav-dropdown-main-1">
+                    {{category.name}} home page 
+                    <i class="fas fa-angle-double-right"></i>
+                </p>
+                <li *ngFor="let subCategory of category.subCategories" (click)="toggleCategory(subCategory, $event)" class="header-nav-dropdown-li-2">
+                    <span *ngIf="!subCategory.subCategories" (click)="changeCategory(subCategory.name, $event)">
+                        {{subCategory.name}}
+                    </span>
+                    <div *ngIf="subCategory.subCategories">
+                        <span>{{subCategory.name}}</span>
+                        <span>{{subCategory.subCategories && subCategory.$open ? '-' : '+'}}</span>
+                    </div>
+                    <ul *ngIf="subCategory.subCategories && subCategory.$open" class="header-nav-last-ul">
+                        <p (click)="changeCategory(subCategory.name, $event)" class="header-nav-dropdown-main-2">
+                            {{subCategory.name}} home page 
+                            <i class="fas fa-angle-double-right"></i>
+                        </p>
+                        <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name, $event)">
+                            {{sub.name}}
+                        </li>
                     </ul>
                 </li>
-            </ul>
+                </ul>
+            </li>
+        </ul>
     </nav>
-
 </header>
+
+
 
         <!-- <div class="col search-column" [ngClass]="{'col-3': addColClass}">
            <input type="text" class="form-control" id="search-input" [(ngModel)]="searchQuery" />
