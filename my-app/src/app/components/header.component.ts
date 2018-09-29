@@ -71,7 +71,8 @@ export class HeaderComponent implements AfterViewInit {
         }
     }
 
-    openCategory(category: any): void{
+    openCategory(category: any, event?: any): void{
+       if (event) event.stopPropagation();
        if (!category.subCategories) {
            this.changeCategory(category.name);
        } else {
