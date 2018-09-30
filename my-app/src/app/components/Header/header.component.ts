@@ -43,7 +43,7 @@ export class HeaderComponent implements AfterViewInit {
     ngAfterViewInit() {
         const spacer = document.getElementById('spacer');
         const header = document.getElementsByTagName('header')[0];
-        spacer.style.height = header.clientHeight + 20 + 'px';
+        spacer.style.height = header.clientHeight + 40 + 'px';
     }
 
     toggleCategory(category: any, event?: any): void{
