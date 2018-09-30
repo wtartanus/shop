@@ -7,10 +7,6 @@
        padding-top: 5vh;
    }
 
-   .splash-page-container {
-      margin-top: 10vh;
-   }
-
    .pages-selection {
        text-align: right;
    }
@@ -50,18 +46,6 @@
         font-size: 1.5em;
     }
 
-    .wthreewinter-coll {
-        /*background-image: url("../images/kink.jpg"); */
-    }
-
-    .wthreewinter-coll {
-      height: 45vh;
-    }
-
-    .wthreewinter-coll h1 {
-      font-size: 2.5em;
-    }
-
     .button-1 {
        top: calc(45vh - 165px);
     }
@@ -95,10 +79,6 @@
       display: inline-block;
       width: 50%;
       padding: 1% 5%;
-    }
-
-    .wthreewinter-coll {
-       background-image: url(../images/splash-page/new-kink-medium.jpg);
     }
 
     .bdsm-collection-1 {
@@ -169,10 +149,6 @@
    .pages-index {
       width: 1.4%;
    }
-
-   .wthreewinter-coll {
-       background-image: url(../images/splash-page/new-kink-900.jpg);
-    }
 
     .bdsm-collection-1 {
        background-image: url('../images/splash-page/whip-900.jpg');

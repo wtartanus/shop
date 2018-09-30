@@ -61,82 +61,8 @@ input[type=text]:focus {
     display: none;
 }
 
-.splash-page-first-section {
-    width: 95%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.splash-page-first-section-item-container {
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 10%;
-}
-
-.splash-page-first-section-item-container h4 {
-    color: red;
-    margin-top: 5%;
-}
-
-.splash-page-first-section-item-container button {
-   background: red;
-   margin-top: 2%;
-   width: 40%;
-   height: 7%;
-   font-size: 1.3em;
-}
-
-
-.splash-page-first-section-item-container a {
-   color: white;
-}
-
-.wthreewinter-coll {
-    background-image: url(../images/splash-page/new-kink-mobile.jpg);
-    display: block;
-    width: 100%;
-    height: 30vh;
-    padding: 0;
-}
-
-.wthreewinter-coll .container {
-    width: 100%;
-}
-
-.wthreewinter-coll h1 {
-    font-size: 1.5em;
-    color: darkred;
-    font-weight: bold;
-    letter-spacing: 7px;
-    margin-top: 4%;
-    background-color: rgba(255,255,255,0.3)
-}
-
-.wthreeshop-a {
-    font-size: 2em;
-    text-align: center;
-    margin: 0;
-    position: relative;
-}
-
-.wthreeshop-a a {
-    color: white;
-    border-color: white;
-    font-size: 1em;
-    font-weight: bold;
-    background-color: rgba(0,0,0,0.5);
-}
-
 .button-container {
     width: fit-content;
-}
-
-.button-container a {
-
-}
-
-.button-1 {
-    top: 60px;
 }
 
 .button-2 {
@@ -145,20 +71,6 @@ input[type=text]:focus {
 
 .button-3 {
     top: 150px;
-}
-
-.bdsm-collection-1,
-.bdsm-collection-2,
-.vibrators-container {
-   background-repeat: no-repeat;
-   background-position: top;
-   background-size: cover;
-   width: 100%;
-   height: 35vh;
-}
-
-.vibrators-container { 
-   background-position: center;
 }
 
 .bdsm-collection-1 {
@@ -173,19 +85,6 @@ input[type=text]:focus {
     text-align: right;
     margin-right: 2%;
     margin-bottom: 2%;
-}
-
-.vibrators-container {
-    background-image: url('../images/splash-page/vibrators-splash-mobile.jpg');
-    padding-top: 4%;
-}
-
-.vibrators-container h1 {
-    font-size: 1.5em;
-    color: darkred;
-    font-weight: bold;
-    letter-spacing: 7px;
-    background-color: rgba(255,255,255,0.3)
 }
 
 .button-4 {
@@ -206,12 +105,6 @@ input[type=text]:focus {
 .page-selected {
     background-color: dodgerblue;
     color: white;
-}
-
-.shop-men,
-.shop-women {
-    width: 70%;
-    margin: 10px auto;
 }
 
 .pages-selection {
