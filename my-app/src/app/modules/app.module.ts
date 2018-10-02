@@ -9,7 +9,7 @@ import { HeaderComponent } from "../components/Header/header.component.js";
 import { SingleProductComponent } from "./../components/singleProduct.component.js";
 import { ProductsListComponent } from "./../components/productsList.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
-import { SplashComponent } from "./../components/splash.component.js";
+import { SplashComponent } from "../components/Splash/splash.component.js";
 import { BasketComponent } from "./../components/basket.component.js";
 import { CheckoutComponent } from "../components/checkout.component.js";
 import { TermsAndConditions } from "./../components/TermsAndContitions.js";

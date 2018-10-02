@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { HeaderComponent } from "./Header/header.component.js";
-import { SplashComponent } from "./../components/splash.component.js";
+import { SplashComponent } from "./Splash/splash.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
 import { BasketComponent } from "./../components/basket.component.js";
 import { ProductsListComponent } from "./../components/productsList.component.js";

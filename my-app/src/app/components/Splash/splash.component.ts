@@ -4,7 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'splash',
-  templateUrl: '../views/splash.component.html',
+  templateUrl: '../../views/splash.component.html',
   styleUrls: ['./Splash.css']
 })
 export class SplashComponent implements OnInit {

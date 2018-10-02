@@ -64,7 +64,7 @@ CREATE TABLE stocks (
   productId INT REFERENCES products(id),
   inStock BOOLEAN,
   size VARCHAR
-)
+);
 
 CREATE TABLE reviews (
   id SERIAL4 PRIMARY KEY,
@@ -72,7 +72,7 @@ CREATE TABLE reviews (
   name VARCHAR,
   text VARCHAR,
   ranking INT
-)
+);
 
 CREATE TABLE categories (
   id SERIAL4 PRIMARY KEY,
@@ -80,14 +80,14 @@ CREATE TABLE categories (
   name VARCHAR,
   image VARCHAR,
   parentId INT
-)
+);
 
 CREATE TABLE discontinued (
   id SERIAL4 PRIMARY KEY,
   item VARCHAR,
   discontinued BOOLEAN,
   date TIMESTAMP
-)
+);
 
 CREATE TABLE orders (
   id SERIAL4 PRIMARY KEY,
@@ -103,7 +103,7 @@ CREATE TABLE orders (
   postcode VARCHAR,
   deliveryType VARCHAR,
   deliveryPrice VARCHAR
-)
+);
 
 CREATE TABLE orderedItems (
   id SERIAL4 PRIMARY KEY,
@@ -113,4 +113,4 @@ CREATE TABLE orderedItems (
   size VARCHAR,
   name VARCHAR,
   price VARCHAR
-)
+);

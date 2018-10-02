@@ -283,6 +283,7 @@ header {
         border-bottom: 1px solid lightgray;
         box-shadow: 1px 1px 1px lightgrey;
         width: 25%;
+        background-color: white;
     }
 
     .inline-navigation-main {

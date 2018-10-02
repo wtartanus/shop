@@ -36,7 +36,7 @@
 }
 
 .bdsm-collection {
-    background-image: url(./../../../images/splash-page/new-kink-mobile.jpg);
+    background-image: url(./../../../../images/splash-page/new-kink-mobile.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -75,7 +75,7 @@
 }
 
 .vibrators-container {
-    background-image: url('../../../images/splash-page/vibrators-splash-mobile.jpg');
+    background-image: url('../../../../images/splash-page/vibrators-splash-mobile.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -155,11 +155,11 @@
 
 @media only screen and (min-width: 600px) {
     .bdsm-collection {
-        background-image: url(../../../images/splash-page/new-kink-medium.jpg);
+        background-image: url(../../../../images/splash-page/new-kink-medium.jpg);
     }
 
     .vibrators-container {
-        background-image: url(../../../images/splash-page/vibrators-splash-medium.jpg);
+        background-image: url(../../../../images/splash-page/vibrators-splash-medium.jpg);
     }
 
     .shop-women,
@@ -176,11 +176,11 @@
     }
 
     .bdsm-collection {
-        background-image: url(../../../images/splash-page/new-kink-900.jpg);
+        background-image: url(../../../../images/splash-page/new-kink-900.jpg);
     } 
 
     .vibrators-container {
-        background-image: url(../../../images/splash-page/vibrators-splash-900.jpg);
+        background-image: url(../../../../images/splash-page/vibrators-splash-900.jpg);
     }
 }
 
