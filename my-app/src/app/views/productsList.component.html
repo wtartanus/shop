@@ -1,16 +1,29 @@
 <div>
-	<h1 class="w3wthreeheadingaits">{{selectedCategory}}</h1>
-	<div style="float:right;margin-top:2%;margin-right:3%;">
+	<h1 class="products-list-title">{{selectedCategory}}</h1>
+	<div className="products-list-filters">
 		<select [(ngModel)]="sort" (ngModelChange)="sortBy($event)" class="form-control">
 			<option value="0">Price: Low to High</option>
 			<option value="1">Price: High to Low</option>
 			<option value="2"> Avg. Customer Review</option>
 		</select>
 	</div>
+	
+	<div class="products-list-container">
+		<!-- LOADING -->
+		<div *ngIf="loading && !products" class="loader-container"><i class="fas fa-spinner fa-pulse loader-margin"></i></div>
+		<!-- NO RESULT -->
+		<div *ngIf="!loading && products && !products.length" class="loader-container">No result</div>
+
+		<!-- Actual Items -->
+		<div class="products-list-items-container">
+            <div class="products-list-item" *ngFor="let product of currentPage">
+               <h5 class="products-list-item-name">{{product.name}}</h5>
+			</div>
+		</div>
+	</div>
 	<div class="wthreeproductdisplay">
 			<div id="cbp-pgcontainer" class="cbp-pgcontainer">
-				<div *ngIf="loading && !products" class="loader-container"><i class="fas fa-spinner fa-pulse loader-margin"></i></div>
-				<div *ngIf="!loading && products && !products.length" class="loader-container">No result</div>
+
 				<ul class="cbp-pggrid">
 					<li class="wthree aits w3l" *ngFor="let product of currentPage">
 						<div class="cbp-pgcontent">
@@ -47,3 +60,13 @@
 			<li class="pages-index" *ngIf="pageSelected !== pages.length - 1" (click)="goToStartEnd(false)"><i class="fas fa-angle-double-right"></i></li>
 		</ul>
 	</div>
+
+
+<!-- TODO
+	1. Remove changing photo on hover
+	2. Simplify html structure
+	3. Add link on click
+	4. Create function for getting product photo
+	5. Simplify moving by one page
+	6. Change styles for page numbers
+ -->
