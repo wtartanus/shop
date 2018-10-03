@@ -17,40 +17,18 @@
 		<!-- Actual Items -->
 		<div class="products-list-items-container">
             <div class="products-list-item" *ngFor="let product of currentPage">
-               <h5 class="products-list-item-name">{{product.name}}</h5>
+			   <img src="{{getImageSrc(product)}}" alt="{{product.name}}" (click)="selectProduct(product)">
+			   <h5 class="products-list-item-name" (click)="selectProduct(product)">
+				   {{product.name}}
+				</h5>
+			   <p>£{{product.rpr}}</p>
+			   <button [disabled]="!warehouse.stockByProductId[product.id]" (click)="basket.addToBasket(1, product)">
+				   ADD TO CART
+				</button>
 			</div>
 		</div>
 	</div>
-	<div class="wthreeproductdisplay">
-			<div id="cbp-pgcontainer" class="cbp-pgcontainer">
 
-				<ul class="cbp-pggrid">
-					<li class="wthree aits w3l" *ngFor="let product of currentPage">
-						<div class="cbp-pgcontent">
-							<a class="pointer-cursor" (click)="selectProduct(product)">
-								<div class="cbp-pgitem a3ls">
-									<div class="cbp-pgitem-flip" (mouseenter)="product.secondPhoto = true" (mouseleave)="product.secondPhoto = null">
-										<img *ngIf="!product.xlImage2 || product.xlImage2 === '{}'" src="{{'images/main/' + product.image}}" alt="{{product.name}}">
-										<img *ngIf="(product.xlImage2 &&  product.xlImage2 !== '{}') && (!product.secondPhoto || (!product.xlImage3 || product.xlImage3 === '{}'))" src="{{'images/hires/' + product.xlImage2}}" alt="{{product.name}}">
-										<img *ngIf="product.secondPhoto && (product.xlImage3 && product.xlImage3 !== '{}')" src="{{'images/hires/' + product.xlImage3}}" alt="{{product.name}}">
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="cbp-pginfo w3layouts">
-							<h3 class="pointer-cursor" (click)="selectProduct(product)">{{product.name}}</h3>
-							<span class="cbp-pgprice">£{{product.rpr}}</span>
-							<span *ngIf="!warehouse.stockByProductId[product.id]" style="color:red;">Out Of Stock</span>
-							<button [disabled]="!warehouse.stockByProductId[product.id]" class="pointer-cursor" style="color: brown;font-size: 2em;float:right;border:none;background:none;" (click)="basket.addToBasket(1, product)">
-								<i class="fa fa-cart-plus" aria-hidden="true"></i>
-								
-							</button>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
 	<div class="pages-index-container">
 		<ul class="page-selection">
 			<li class="pages-index" *ngIf="pageSelected !== 0" (click)="goToStartEnd(true)"><i class="fas fa-angle-double-left"></i></li>
@@ -69,4 +47,5 @@
 	4. Create function for getting product photo
 	5. Simplify moving by one page
 	6. Change styles for page numbers
+	7. Sort out button on disabled
  -->

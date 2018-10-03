@@ -7,7 +7,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'productsList',
-  templateUrl: '../views/productsList.component.html'
+  templateUrl: '../views/productsList.component.html',
+  styleUrls: ['./ProductsList.css']
 })
 export class ProductsListComponent implements OnInit {
   public selectedCategory: any;
@@ -31,6 +32,19 @@ export class ProductsListComponent implements OnInit {
     this.currentPage = this.pages[0];
     this.pageSelected = 0;
     this.createNumbersArray();
+  }
+
+  getImageSrc(product: any): string {
+    const { image, xlImage, xlImage2, xlImage3 } = product;
+    if (this.isSrcProvided(image)) return `images/main/${image}`;
+    if (this.isSrcProvided(xlImage)) return `images/hires/${xlImage}`;
+    if (this.isSrcProvided(xlImage2)) return `images/hires/${xlImage2}`;
+    if (this.isSrcProvided(xlImage3)) return `images/hires/${xlImage3}`;
+    return ""; //TODO provide fallback image
+  }
+
+  isSrcProvided(src: any): boolean {
+    return src && src !== '' && src !== {};
   }
 
   getProducts(): void{
