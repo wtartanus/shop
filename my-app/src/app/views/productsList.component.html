@@ -1,7 +1,7 @@
 <div>
 	<h1 class="products-list-title">{{selectedCategory}}</h1>
 	<div class="products-list-filters">
-		<select [(ngModel)]="sort" (ngModelChange)="sortBy($event)" class="products-filter">
+		<select [(ngModel)]="sort" (ngModelChange)="sortBy()" class="products-filter">
 			<option value="0">Price: Low to High</option>
 			<option value="1">Price: High to Low</option>
 			<option value="2"> Avg. Customer Review</option>
@@ -29,22 +29,29 @@
 		</div>
 	</div>
 
-	<div class="pages-index-container">
-		<ul class="page-selection">
-			<li class="pages-index" *ngIf="pageSelected !== 0" (click)="goToStartEnd(true)"><i class="fas fa-angle-double-left"></i></li>
-			<li class="pages-index" *ngIf="pageSelected !== 0" (click)="moveByOnePage(true)"><i class="fas fa-angle-left"></i></li>
-			<li class="pages-index" [ngClass]="{'page-selected': pageSelected === pageIndex}" *ngFor="let pageIndex of pagesIndex" (click)="changePage(pageIndex)">{{pageIndex + 1}}</li>
-			<li class="pages-index" *ngIf="pageSelected !== pages.length - 1" (click)="moveByOnePage(false)"><i class="fas fa-angle-right"></i></li>
-			<li class="pages-index" *ngIf="pageSelected !== pages.length - 1" (click)="goToStartEnd(false)"><i class="fas fa-angle-double-right"></i></li>
-		</ul>
+	<div class="products-page-selection-container">
+			<span *ngIf="pageSelected !== 0" (click)="goToStartEnd(true)" class="selected">
+				<i class="fas fa-angle-double-left"></i>
+			</span>
+			<span *ngIf="pageSelected !== 0" class="" (click)="moveByOnePage(true)" class="selected">
+				<i class="fas fa-angle-left"></i>
+			</span>
+
+			<span *ngFor="let pageIndex of pagesIndex" (click)="changePage(pageIndex)"  
+			       [ngClass]="{'selected': pageSelected === pageIndex}">
+				   {{pageIndex + 1}}
+			</span>
+			
+			<span *ngIf="pageSelected !== pages.length - 1" (click)="moveByOnePage(false)" class="selected">
+				<i class="fas fa-angle-right"></i>
+			</span>
+			<span *ngIf="pageSelected !== pages.length - 1" (click)="goToStartEnd(false)" class="selected">
+				<i class="fas fa-angle-double-right"></i>
+			</span>
 	</div>
 
 
 <!-- TODO
-	5. Simplify moving by one page
-	6. Change styles for page numbers
-	7. Sort out button on disabled
-	8. Provide default photo
 	9. Fix layout in product page
 	10. Make header sticky
  -->

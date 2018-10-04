@@ -40,7 +40,7 @@ export class ProductsListComponent implements OnInit {
     if (this.isSrcProvided(xlImage)) return `images/hires/${xlImage}`;
     if (this.isSrcProvided(xlImage2)) return `images/hires/${xlImage2}`;
     if (this.isSrcProvided(xlImage3)) return `images/hires/${xlImage3}`;
-    return ""; //TODO provide fallback image
+    return "images/main/not-found.png";
   }
 
   isSrcProvided(src: any): boolean {
@@ -74,13 +74,13 @@ export class ProductsListComponent implements OnInit {
           if (!this.warehouse.productsBySearch[searchQuery]) {
             this.warehouse.getSearchProducts(searchQuery).then(() => {
                 this.products = this.warehouse.productsBySearch[searchQuery];
-                this.sortBy(null);
+                this.sortBy();
                 this.categoryChange();
                 this.loading = false;
             });
           } else {
               this.products = this.warehouse.productsBySearch[searchQuery];
-              this.sortBy(null);
+              this.sortBy();
               this.categoryChange();
               this.loading = false;
           }
@@ -115,30 +115,21 @@ export class ProductsListComponent implements OnInit {
           this.pages.push(items);
         }
     }
-    window.scrollTo(0, 0);
   }
 
-  createNumbersArray(): void{
-    if (this.pages.length <= 10) {
-      this.pagesIndex.length = 0;
-      for (var i = 0; i < this.pages.length; i++) {
-        this.pagesIndex.push(i);
-      }
-    } else if ((this.pageSelected === 0) || (this.pageSelected - 9 <= 0 && this.pageSelected !== this.pagesIndex[this.pagesIndex.length - 1])) {
-      this.pagesIndex.length = 0;
-      for (var i = 0; i < 10; i++) {
-        this.pagesIndex.push(i);
-      }
-    } else if ((this.pageSelected === this.pages.length - 1) || (this.pageSelected + 10 >= this.pages.length - 1 && this.pageSelected !== this.pagesIndex[0])) {
-        this.pagesIndex.length = 0
-        for (var i = this.pages.length -11; i < this.pages.length; i++) {
-          this.pagesIndex.push(i);
-        }
+  createNumbersArray(): void {
+    this.pagesIndex.length = 0;
+    this.pageSelected = this.pageSelected || 0;
+
+    if (this.pages.length <= 4) {
+        this.pagesIndex = this.pages.map((item, index) => index);
     } else {
-         this.pagesIndex.length = 0;
-         var end = (this.pageSelected - 4) + 11;
-         for (var i = this.pageSelected - 4; i < end; i++) {
-             this.pagesIndex.push(i);
+         let start = this.pageSelected <= 4 ? 0 : this.pageSelected;
+         let end = this.pageSelected + 4;
+         end = end <= this.pages.length ? end : this.pages.length;
+
+         for (; start <= end; start++) {
+            this.pagesIndex.push(start);
          }
     } 
   }
@@ -147,7 +138,6 @@ export class ProductsListComponent implements OnInit {
      this.currentPage = this.pages[pageNumber];
      this.pageSelected = pageNumber;
      this.createNumbersArray();
-     window.scrollTo(0, 0);
   }
 
   goToStartEnd(goToStart: boolean): void{
@@ -159,7 +149,6 @@ export class ProductsListComponent implements OnInit {
       this.pageSelected = this.pages.length - 1;
     }
     this.createNumbersArray();
-    window.scrollTo(0, 0);
   }
 
   moveByOnePage(goLeft: boolean): void{
@@ -175,54 +164,53 @@ export class ProductsListComponent implements OnInit {
       }
     }
     this.createNumbersArray();
-    window.scrollTo(0, 0);
   }
 
   selectProduct(product: any): void{
     this.router.navigate(["/product", product.id]);
   }
 
-  sortBy(event: any): void{
-    var type = parseInt(this.sort, 10);
-    if (type === 0) {
-      this.products.sort(function sortLowToHigh(a: any, b: any) {
-         if (a.rpr < b.rpr) {
-            return -1;
-         } else if (a.rpr > b.rpr) {
-            return 1;
-         } else if (a.rpr === b.rpr) {
-            return 0;
-         }
-      });
-    } else if (type === 1) {
-      this.products.sort(function sortHighToLow(a: any, b: any) {
-        if (a.rpr > b.rpr) {
-           return -1;
-        } else if (a.rpr < b.rpr) {
-           return 1;
-        } else if (a.rpr === b.rpr) {
-           return 0;
+    sortBy(): void{
+        var type = parseInt(this.sort, 10);
+        switch (type) {
+        case 0:
+            this.products = this.sortLowToHigh([...this.products]);
+            break;
+        case 1:
+            this.sortHighToLow([...this.products]);
+            break;
+        case 2:
+            this.products = this.sortByRanking([...this.products]);
+            break;
         }
-     });
-    } else if (type === 2) {
-      this.products.sort(function sortByRanking(a: any, b: any) {
-        var value1 = this.warehouse.reviewsByProductId[a.id];
-        var value2 = this.warehouse.reviewsByProductId[b.id];
-        if (!value1 && !value2) {
-           return 0;
-        } else if (value1 && !value2) {
-           return -1;
-        } else if (!value1 && value2) {
-           return 1;
-        } else if (value1 > value2) {
-           return -1;
-        } else if (value1 < value2) {
-           return 1;
-        } else if (value1 === value2) {
-           return 0;
-        }
-     }.bind(this));
+
+        this.categoryChange();
     }
-    this.categoryChange();
-  }
+
+    sortLowToHigh(list: Array<any>): Array<any> {
+        return list.sort((a, b) => {
+                if (a.rpr < b.rpr) return -1;
+                if (a.rpr > b.rpr) return 1;
+                return 0;
+        });
+    }
+
+    sortHighToLow(list: Array<any>): Array<any> {
+        return list.sort((a, b) => {
+            if (a.rpr > b.rpr) return -1;
+            if (a.rpr < b.rpr) return 1;
+            return 0;
+        });
+    }
+
+    sortByRanking(list: Array<any>): Array<any> {
+        return list.sort((a, b) => {
+            const value1 = this.warehouse.reviewsByProductId[a.id];
+            const value2 = this.warehouse.reviewsByProductId[b.id];
+            if ((!value1 && !value2) || (value1 === value2)) return 0;
+            if ((value1 && !value2) || (value1 > value2)) return -1;
+            if ((!value1 && value2) || (value1 < value2)) return 1;
+            return 0;
+        });
+    }
 }
