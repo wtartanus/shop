@@ -2959,7 +2959,9 @@ textarea.text {
 	}
 
 	/*-- //Ratings --*/
-
+.col-md-6 {
+	display:inline-block !important;
+}
 .single-top-right {
 	padding-left: 5em;
 	display:inline-block;
@@ -3241,6 +3243,10 @@ p.single-price-text {
 	.cbp-pgopttooltip {
 		width: 134px;
 	}
+
+	.single-top-left {
+		display: inline-block !important;
+	}
 }
 
 @media screen and (max-width: 1680px) {
@@ -3270,6 +3276,10 @@ p.single-price-text {
 	}
 	button.btn.btn-danger.my-cart-btn {
 		padding: 0 36.5px;
+	}
+
+	.single-top-left {
+		display: inline-block !important;
 	}
 }
 
@@ -3316,6 +3326,10 @@ p.single-price-text {
 	.cbp-pgopttooltip {
 		width: 108px;
 	}
+
+	.single-top-left {
+		display: inline-block !important;
+	}
 }
 
 @media screen and (max-width: 1440px) {
@@ -3354,6 +3368,7 @@ p.single-price-text {
 		padding: 0 27px;
 	}
 	.single-top-left {
+		display: inline-block !important;
 		width: 40%;
 		margin-left: 10%;
 	}

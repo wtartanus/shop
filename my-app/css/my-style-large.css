@@ -1,4 +1,7 @@
 @media screen and (min-width: 765px) {
+    #detail21 .col-md-6 {
+        display: inline-block;
+    }
    .w3view-cart {
        margin-top: 20%;
    }
