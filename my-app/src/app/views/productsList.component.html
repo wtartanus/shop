@@ -1,7 +1,7 @@
 <div>
 	<h1 class="products-list-title">{{selectedCategory}}</h1>
-	<div className="products-list-filters">
-		<select [(ngModel)]="sort" (ngModelChange)="sortBy($event)" class="form-control">
+	<div class="products-list-filters">
+		<select [(ngModel)]="sort" (ngModelChange)="sortBy($event)" class="products-filter">
 			<option value="0">Price: Low to High</option>
 			<option value="1">Price: High to Low</option>
 			<option value="2"> Avg. Customer Review</option>
@@ -41,11 +41,10 @@
 
 
 <!-- TODO
-	1. Remove changing photo on hover
-	2. Simplify html structure
-	3. Add link on click
-	4. Create function for getting product photo
 	5. Simplify moving by one page
 	6. Change styles for page numbers
 	7. Sort out button on disabled
+	8. Provide default photo
+	9. Fix layout in product page
+	10. Make header sticky
  -->
