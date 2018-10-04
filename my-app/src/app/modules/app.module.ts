@@ -7,7 +7,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from "./../components/app.component.js";
 import { HeaderComponent } from "../components/Header/header.component.js";
 import { SingleProductComponent } from "./../components/singleProduct.component.js";
-import { ProductsListComponent } from "./../components/productsList.component.js";
+import { ProductsListComponent } from "../components/ProductList/productsList.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
 import { SplashComponent } from "../components/Splash/splash.component.js";
 import { BasketComponent } from "./../components/basket.component.js";

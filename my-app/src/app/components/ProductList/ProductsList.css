@@ -82,6 +82,10 @@
     cursor: not-allowed;
 }
 
+.products-list-items-container button:disabled:hover {
+    background-color: white;
+}
+
 .products-page-selection-container {
     display: flex;
     flex-direction: row;

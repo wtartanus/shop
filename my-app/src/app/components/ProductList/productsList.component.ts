@@ -1,13 +1,13 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 
-import { WarehouseService } from "../services/warehouse.service.js";
-import { BasketService } from '../services/basket.service.js';
-import { MessageService } from '../services/message.service.js';
+import { WarehouseService } from "../../services/warehouse.service.js";
+import { BasketService } from '../../services/basket.service.js';
+import { MessageService } from '../../services/message.service.js';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'productsList',
-  templateUrl: '../views/productsList.component.html',
+  templateUrl: '../../views/productsList.component.html',
   styleUrls: ['./ProductsList.css']
 })
 export class ProductsListComponent implements OnInit {
