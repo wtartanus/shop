@@ -85,4 +85,17 @@ export class BasketService {
         this.message.sendMessage("basket-update", body);
      }
   }
+
+  resetBasket() {
+    this.totalCost = 0;
+    this.basketItems.length = 0;
+    this.basketItemsById = {};
+    this.itemsCount = 0;
+
+    let body = {
+        totalCost: this.totalCost,
+        itemsCount: this.itemsCount
+    }
+    this.message.sendMessage("basket-update", body);
+  }
 }

@@ -11,14 +11,7 @@ declare var paypal: any;
   styleUrls: ['./Checkout.css']
 })
 export class CheckoutComponent implements AfterViewChecked {
-  public orderConfirmed: boolean = false;
-  public email: string;
-  public firstName: string;
-  public lastName: string;
-  public addressOne: string;
-  public addressTwo: string;
-  public city: string;
-  public postcode: string; 
+  public orderConfirmed: boolean = false; 
   public delivery: string = "1";
   private deliveryTypes: any = {
     "1": {name: "Royal Mail Second Class", cost: 2.71},
@@ -50,7 +43,20 @@ export class CheckoutComponent implements AfterViewChecked {
         onAuthorize: (data, actions) => {
             return actions.payment.execute().then(payment => {
                 console.log('payment', payment);
-                //redirect to success payment
+                this.orderConfirmed = true;
+                const { email, first_name, last_name } = payment.payer.payer_info;
+                const { city, line1, line2, postal_code } = payment.payer.payer_info.shipping_address;
+                const info = {
+                    email: email,
+                    firstName: first_name,
+                    lastName: last_name,
+                    city: city,
+                    addressOne: line1,
+                    addressTwo: line2,
+                    postcode: postal_code
+                };
+
+                this.proccessOrder(info);
             });
         }
   }
@@ -61,7 +67,7 @@ export class CheckoutComponent implements AfterViewChecked {
     if (!this.addScript) {
         this.addPaypalScript().then(() => {
             paypal.Button.render(this.paypalConfig, 'paypal-button');
-            //this.paypalLoad = false;
+            this.warehouse.setScriptLoaded(true);
         });
     }
   }
@@ -81,20 +87,19 @@ export class CheckoutComponent implements AfterViewChecked {
     });
   }
 
-  proccessOrder(): void{
-    var nowDate = new Date();
-     this.orderConfirmed = true;
-     var msg = {
-       order: {},
-       orderItems:  new Array()
+  proccessOrder(info: any): void {
+     const nowDate = new Date();
+     const msg = {
+        order: {},
+        orderItems:  new Array()
      };
      msg.order = {
         orderConfirmed: this.orderConfirmed,
-        email: this.email,
-        fullName: this.firstName + " " + this.lastName,
-        adres: this.addressTwo ? this.addressOne + " " + this.addressTwo : this.addressOne,
-        city: this.city,
-        postcode: this.postcode,
+        email: info.email,
+        fullName: info.firstName + " " + info.lastName,
+        adres: info.addressTwo ? info.addressOne + " " + info.addressTwo : info.addressOne,
+        city: info.city,
+        postcode: info.postcode,
         deliveryType: this.deliveryTypes[this.delivery].name,
         deliveryPrice: this.deliveryTypes[this.delivery].cost.toString(),
         totalCost: this.basket.totalCost,
@@ -103,31 +108,21 @@ export class CheckoutComponent implements AfterViewChecked {
         dateOrdered: nowDate.toISOString()
      }
 
-     for (var i = 0; i < this.basket.basketItems.length; i++) {
-          var item = this.basket.basketItems[i];
-          console.log("item", item);
-          msg.order['totalPersonalCost'] += item.product.price;
+     msg.orderItems = this.basket.basketItems.map(item => {
+        msg.order['totalPersonalCost'] += item.product.price; //TODO use reduce
 
-          var orderItem = {
-              orderId: 0,
-              productId: item.product.id,
-              model: item.product.model,
-              size: item.size,
-              name: item.product.name,
-              quantity: item.quantity,
-              price: item.cost
-          }
-          console.log(orderItem);
-          msg.orderItems.push(orderItem);
-     }
+        return {
+            orderId: 0,
+            productId: item.product.id,
+            model: item.product.model,
+            size: item.size,
+            name: item.product.name,
+            quantity: item.quantity,
+            price: item.cost
+        }
+     });
 
      this.warehouse.httpPost("http://localhost:8080/order", msg);
-  }
-
-  isValid() {
-    if (this.email && this.firstName && this.lastName && this.addressOne && this.city && this.postcode) {
-      return true;
-    }
-    return false;
+     this.basket.resetBasket();
   }
 }

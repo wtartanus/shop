@@ -83,6 +83,11 @@ export class HeaderComponent implements AfterViewInit {
        }
     }
 
+    goToCheckout(): void {
+        this.closeAll();
+        this.router.navigate(["/checkout"]);
+    }
+
     changeCategory(category: string, event?: any): void {
         if (event) event.stopPropagation();
         this.closeAll();

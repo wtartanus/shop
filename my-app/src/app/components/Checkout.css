@@ -70,6 +70,10 @@
         padding-top: 0;
     }
 
+    .checkout-delivery-container div {
+        text-align: left;
+    }
+
     .checkout-summary-container thead td {
         padding-top: 0;
     }
