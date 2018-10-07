@@ -1,18 +1,16 @@
-import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Component, AfterViewChecked, OnDestroy } from '@angular/core';
 
 import { BasketService } from '../services/basket.service.js';
-import { MessageService } from '../services/message.service.js';
 import { WarehouseService } from '../services/warehouse.service.js';
 import { Route, Router } from '@angular/router';
-import { CategoriesService } from '../services/categories.service.js';
 
-
+declare var paypal: any;
 @Component({
   selector: 'checkout',
-  templateUrl: '../views/checkout.component.html'
+  templateUrl: '../views/checkout.component.html',
+  styleUrls: ['./Checkout.css']
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements AfterViewChecked {
   public orderConfirmed: boolean = false;
   public email: string;
   public firstName: string;
@@ -32,10 +30,55 @@ export class CheckoutComponent implements OnInit {
     "7": {name: "Royal Mail Overnight", cost: 6.40}
   }
 
+  private addScript: boolean = false;
+  private paypalConfig = {
+        env: 'sandbox',
+        client: {
+            sandbox: 'AfKg2dIdiKuH-qxJcFbhcfsVbujI9VNp-puzhDKmszofutAaW9yyoYpGmuVnCnEnWMsIZbH9OE_82D3v',
+            production: 'Aes45OMkcqgphCC0Wwn1vKzWHjFPiA_NbmLDOXLJVvU_UsW5B2HqDX61h5h3pClT379xZPCET3f7tiyv'
+        },
+        commit: true,
+        payment: (data, actions) => {
+            return actions.payment.create({
+                payment: {
+                    transactions: [{
+                        amount: {total: this.basket.totalCost, currency: 'GBP'}
+                    }]
+                }
+            });
+        },
+        onAuthorize: (data, actions) => {
+            return actions.payment.execute().then(payment => {
+                console.log('payment', payment);
+                //redirect to success payment
+            });
+        }
+  }
+
   constructor (public basket: BasketService, public warehouse: WarehouseService) {}
 
-  ngOnInit() {
-    window.scrollTo(0, 0);
+  ngAfterViewChecked(): void {
+    if (!this.addScript) {
+        this.addPaypalScript().then(() => {
+            paypal.Button.render(this.paypalConfig, 'paypal-button');
+            //this.paypalLoad = false;
+        });
+    }
+  }
+
+  addPaypalScript(): Promise<any> {
+    this.addScript = true;
+
+    return new Promise((resolve, reject) => {
+        if (!this.warehouse.getScriptLoaded()) {
+            const scripttagElement = document.createElement('script');    
+            scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
+            scripttagElement.onload = resolve;
+            document.body.appendChild(scripttagElement);
+        } else {
+            resolve(true);
+        }
+    });
   }
 
   proccessOrder(): void{

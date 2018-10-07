@@ -16,6 +16,7 @@ export class WarehouseService {
     public reviewsByProductId: any = new Object();
     public productsBySearch: any = new Object();
     public dataPromise: Promise<any>;
+    private scriptLoaded: boolean = false;
 
     constructor(http: Http, private message: MessageService) {
        this.http = http;
@@ -103,4 +104,12 @@ export class WarehouseService {
       console.error('An error occured', error);
       return Promise.reject(error.message || error);
     };
+
+    getScriptLoaded(): boolean {
+        return this.scriptLoaded;
+    }
+
+    setScriptLoaded(loaded: boolean): void {
+        this.scriptLoaded = loaded;
+    }
 }

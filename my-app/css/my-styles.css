@@ -314,26 +314,12 @@ input[type=text]:focus {
     display: inline-block;
 }
 
-.checkout-container {
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 10%;
-}
-
 checkout-valid {
     border: 1px solid green;
 }
 
 checkout-invalid {
     border: 1px solid red;
-}
-
-.checkout-delivery-container {
-    margin-top: 5%;
-}
-
-.checkout-delivery-container h4 {
-    margin-bottom: 2%;
 }
 
 .checkout-payment-container {
@@ -346,14 +332,6 @@ checkout-invalid {
 
 .checkout-info-label {
     margin-top: 2%;
-}
-
-.checkout-summary-containers {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 1%;
-    border-bottom: 1px solid;
-    margin-bottom: 1%;
 }
 
 .checkout-confirmation p {

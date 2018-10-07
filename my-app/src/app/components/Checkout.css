@@ -1,0 +1,55 @@
+.checkout-container {
+    margin: 0 auto;
+    width: 90%;
+    padding-bottom: 1rem;
+}
+
+.checkout-delivery-container {
+    font-family: serif;
+}
+
+.checkout-delivery-container h4 {
+    margin-bottom: 1rem;
+}
+
+.checkout-delivery-container label,
+.checkout-delivery-container p {
+    margin-left: 5px;
+}
+
+.checkout-summary-container {
+    padding-top: 1rem;
+    font-family: serif;
+}
+
+.checkout-summary-container table {
+    width: 100%;
+}
+
+.checkout-summary-container thead {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3em;
+    border-bottom: 1px solid lightgray;
+}
+
+.checkout-summary-container tr {
+    border-bottom: 1px solid lightgray;
+}
+
+.checkout-summary-container td {
+    padding: 10px;
+}
+
+.checkout-summary-container td:last-child {
+    border-left: 1px solid lightgray;
+}
+
+.checkout-summary-container td:first-child {
+    border-left: none;
+}
+
+#paypal-button {
+    text-align: center;
+    padding-top: 2rem;
+}

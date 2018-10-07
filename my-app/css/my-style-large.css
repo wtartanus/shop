@@ -18,10 +18,6 @@
        width: 5.4%;
     }
 
-    .checkout-container {
-        margin-top: 2%;
-    }
-
     .checkout-info-container {
         display: flex;
         justify-content: space-between;
@@ -30,11 +26,6 @@
 
     .checkout-form-container {
        width: 45%;
-    }
-
-    .checkout-delivery-container {
-       width: 45%;
-       margin-top: 0;
     }
 
     .splash-page-first-section-item-container {

@@ -1,6 +1,7 @@
 require( 'sinatra' )
 require 'json'
 require 'mail'
+require "braintree"
 #require( 'sinatra/contrib/all' ) if development?
 #require( 'pry-byebug' )
 
@@ -33,6 +34,13 @@ before do
 get '/' do
   return "{wojtek: wojtek}"
 end
+
+# get "/client_token" do
+#     gateway = Braintree::Gateway.new(
+#         :access_token => "access_token$sandbox$qccgq69chw2mdbpw$f1ac546e23a2e17846980e98dd238a03"
+#     )
+#     gateway.client_token.generate
+# end TODO not sure if is needed
 
 get '/mapProductsFromXML' do
     MapProductsFromXML.mapFromXML("./xml/xml_all.xml")
