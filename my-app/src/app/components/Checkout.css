@@ -8,6 +8,10 @@
     font-family: serif;
 }
 
+.checkout-delivery-container div {
+    text-align: center;
+}
+
 .checkout-delivery-container h4 {
     margin-bottom: 1rem;
 }
@@ -52,4 +56,31 @@
 #paypal-button {
     text-align: center;
     padding-top: 2rem;
+}
+
+@media screen and (min-width: 765px) {
+    .checkout-info-container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .checkout-delivery-container,
+    .checkout-summary-container {
+        flex-basis: 50%;
+        padding-top: 0;
+    }
+
+    .checkout-summary-container thead td {
+        padding-top: 0;
+    }
+
+    #paypal-button {
+        text-align: right;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .checkout-container {
+        max-width: 900px;
+    }
 }
