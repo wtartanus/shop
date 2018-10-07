@@ -130,10 +130,6 @@
        writing-mode: initial;
    }
 
-   .basket-item-container {
-       width: 30%;
-   }
-
    .basket-card {
        width: 40%;
       left: unset;

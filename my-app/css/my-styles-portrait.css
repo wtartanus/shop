@@ -28,12 +28,6 @@
        display: flex;
        justify-content: space-evenly;
    }
-
-   .basket-item-info {
-       display: flex;
-       justify-content: flex-end;
-       flex-direction: column;
-   }
 }
 
 @media screen and (min-width: 540px) {

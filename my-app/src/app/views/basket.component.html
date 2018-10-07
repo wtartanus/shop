@@ -1,36 +1,28 @@
-<div class="container-fluid">
+<div class="basket-container">
 	<h1 *ngIf="!basketItems || !basketItems.length" class="basket-empty">Basket is empty.</h1>
-	<div *ngIf="basketItems && basketItems.length" class="container">
-		<div class="row">
-			<div class="card basket-card">
-				<h5 class="card-title">Items: {{basket.itemsCount}}</h5>
-				<h6 class="card-subtitle">Total price: £{{basket.totalCost}}</h6>
-				<button class="btn btn-primary">
-				    <a routerLink="/checkout" routerLinkActive="active">Proceed To Checkout</a>
-				</button>
+
+	<h5>Items: {{basket.itemsCount}}</h5>
+	<h6>Total Price: £{{basket.totalCost}}</h6>
+
+	<div *ngIf="basketItems && basketItems.length" class="basket-items-container">
+		<div class="basket-item-container" *ngFor="let item of basketItems">
+			<div class="basket-photo-container">
+				<img src="{{'images/main/' + item.product.image}}" alt="{{item.product.name}}">
+				<h4>{{item.product.name}}</h4>
 			</div>
-		</div>
-		<div class="basket-items-container">
-			<div class="basket-item-container" *ngFor="let item of basketItems">
-				<h4 class="item-title">{{item.product.name}}</h4>
-				<div class="basket-product-container">
-					<div class="basket-item">
-						<img src="{{'images/main/' + item.product.image}}" alt="{{item.product.name}}">
-					</div>
-					<div class="basket-item-info">
-						<p>Quantity: {{item.quantity}}</p>
-						<p>£{{item.cost}}</p>
-					</div>
-				</div>
-				<div class="basket-remove-container">
-					<button type="button" class="btn btn-link" (click)="basket.removeFromBasket(0, item.product)">
-					   Remove
-					</button>
-				</div>
-				<hr/>
+			<div class="basket-item-info">
+					<p>Quantity: {{item.quantity}}</p>
+					<p>£{{item.cost}}</p>
 			</div>
+			<button type="button" (click)="basket.removeFromBasket(0, item.product)">
+				Remove
+			</button>
 		</div>
 	</div>
+
+	<button class="basket-checkout" (click)="goToCheckout()">
+		CHECKOUT
+	</button>
 </div>
 
 

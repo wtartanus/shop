@@ -251,10 +251,6 @@ input[type=text]:focus {
     margin: 2vh auto 0 auto;
 }
 
-.basket-items-container {
-   width: 100%;
-}
-
 .item-title {
     margin-bottom: 2%;
     font-family: Noto, serif;
@@ -262,24 +258,8 @@ input[type=text]:focus {
     font-size: 2em;
 }
 
-.basket-item-container {
-   width: 100%;
-   margin-bottom: 5%;
-}
-
-
 #review-text {
     width: 90%;
-}
-
-.basket-item-info {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 3%;
-}
-
-.basket-item-info p {
-    font-size: 1.5em;
 }
 
 .basket-remove-container {
