@@ -1,13 +1,13 @@
 import { Component, AfterViewChecked, OnDestroy } from '@angular/core';
 
-import { BasketService } from '../services/basket.service.js';
-import { WarehouseService } from '../services/warehouse.service.js';
+import { BasketService } from '../../services/basket.service.js';
+import { WarehouseService } from '../../services/warehouse.service.js';
 import { Route, Router } from '@angular/router';
 
 declare var paypal: any;
 @Component({
   selector: 'checkout',
-  templateUrl: '../views/checkout.component.html',
+  templateUrl: '../../views/checkout.component.html',
   styleUrls: ['./Checkout.css']
 })
 export class CheckoutComponent implements AfterViewChecked {
