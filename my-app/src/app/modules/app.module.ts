@@ -10,7 +10,7 @@ import { SingleProductComponent } from "./../components/singleProduct.component.
 import { ProductsListComponent } from "../components/ProductList/productsList.component.js";
 import { FooterComponent } from "./../components/footer.component.js";
 import { SplashComponent } from "../components/Splash/splash.component.js";
-import { BasketComponent } from "./../components/basket.component.js";
+import { BasketComponent } from "./../components/Basket/basket.component.js";
 import { CheckoutComponent } from "../components/Checkout/checkout.component.js";
 import { TermsAndConditions } from "./../components/TermsAndContitions.js";
 import { Privacy } from "./../components/Privacy.js";

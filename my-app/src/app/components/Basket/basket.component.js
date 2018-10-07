@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var basket_service_js_1 = require("../services/basket.service.js");
-var warehouse_service_js_1 = require("../services/warehouse.service.js");
+var basket_service_js_1 = require("../../services/basket.service.js");
+var warehouse_service_js_1 = require("../../services/warehouse.service.js");
 var BasketComponent = (function () {
     function BasketComponent(warehouse, basket) {
         this.warehouse = warehouse;

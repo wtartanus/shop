@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { BasketService } from '../services/basket.service.js';
-import { WarehouseService } from '../services/warehouse.service.js';
+import { BasketService } from '../../services/basket.service.js';
+import { WarehouseService } from '../../services/warehouse.service.js';
 
 
 @Component({
   selector: 'basket',
-  templateUrl: '../views/basket.component.html',
+  templateUrl: '../../views/basket.component.html',
   styleUrls: ['./Basket.css']
 })
 export class BasketComponent implements OnInit {
