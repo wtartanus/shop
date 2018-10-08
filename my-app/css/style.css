@@ -2915,14 +2915,7 @@ textarea.text {
 
 	/*-- Ratings --*/
 
-	.rating {
-		margin: 20px 0;
-	}
-
-	.rating {
-		line-height: 18px;
-		display: inline-block;
-	}
+	
 
 	.starRating:not(old) {
 		display: inline-block;
@@ -3853,9 +3846,7 @@ p.single-price-text {
 		font-size: 25px;
 		margin-bottom: 10px;
 	}
-	.rating {
-		margin: 15px 0;
-	}
+
 	.single-price ul li {
 		font-size: 15px;
 		line-height: 33px;

@@ -8,7 +8,8 @@ import { MessageService } from '../services/message.service.js';
 
 @Component({
   selector: 'singleProduct',
-  templateUrl: '../views/singleProduct.component.html'
+  templateUrl: '../views/singleProduct.component.html',
+  styleUrls: ['./SingleProduct.css']
 })
 export class SingleProductComponent implements OnInit {
   public product: any;

@@ -172,9 +172,7 @@ input[type=text]:focus {
     color: gray;
 }
 
-.review-star {
-    color: gold;
-}
+
 
 .add-to-cart-row {
     display: flex;
