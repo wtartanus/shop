@@ -72,6 +72,24 @@
     background-color: black;
 }
 
+.product-description-container {
+    padding: .5rem;
+}
+
+.product-description-container h6 {
+    padding: .3rem 0;
+    text-align: left;
+    font-family: serif;
+    border-bottom: 1px solid;
+}
+
+.product-description-container p {
+    color: black;
+    padding-top: .3rem;
+    font-family: serif;
+    font-size: 1em;
+}
+
 @media only screen and (min-width: 500px) {
     .product-short-info-container {
         display: flex;
@@ -117,6 +135,14 @@
 
     .product-short-info button {
         padding: .3rem .6rem;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .product-description-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 5rem;
     }
 }
 

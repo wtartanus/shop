@@ -98,6 +98,10 @@
         <div>
             <!-- VIDEO -->
             <!-- Description -->
+            <div class="product-description-container">
+                <h6>Description</h6>
+                <p>{{product.description}}</p>
+            </div>
         </div>
 
         <div>
@@ -106,22 +110,6 @@
 
     <div *ngIf="!loading" class="aitsaccordionw3layouts">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title asd">
-                        <a class="pa_italic" role="button" (click)="description = !description">Description <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
-                        </a>
-                    </h4>
-                </div>
-                <div *ngIf="description">
-                    <div class="panel-body panel_text">
-                        <div class="scrollbar" id="style-2">
-                            {{product.description}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title asd">
