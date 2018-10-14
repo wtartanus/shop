@@ -7,17 +7,16 @@
                 <!-- Container for images -->
                 <div class="product-selected-image">
                     <!-- Selected Image -->
-                    <img src="images/main/not-found.png" alt="">
-                        <!-- <img 
-                                *ngIf="product.xlImage2 && product.xlImage2 !== '{}'" 
-                                src="{{'images/hires/' +  currentImage}}" 
-                                data-imagezoom="true" 
-                                class="img-responsive">
-                        <img 
-                            *ngIf="!product.xlImage2 || product.xlImage2 === '{}'" 
-                            src="{{'images/main/' + currentImage}}" 
+                    <img 
+                            *ngIf="product.xlImage2 && product.xlImage2 !== '{}'" 
+                            src="{{'images/hires/' +  currentImage}}" 
                             data-imagezoom="true" 
-                            class="img-responsive"> -->
+                            class="img-responsive">
+                    <img 
+                        *ngIf="!product.xlImage2 || product.xlImage2 === '{}'" 
+                        src="{{'images/main/' + currentImage}}" 
+                        data-imagezoom="true" 
+                        class="img-responsive">
                 </div>
                 <div class="product-images-list">
                     <!-- List of images -->
@@ -79,12 +78,13 @@
                 </p>
                 <!-- Product Price -->
                 <p class="product-price">£{{product.rpr}}</p>
-                <!-- Quantity Input -->
-                <input type="number" min="1" placeholder="Qty" [(ngModel)]="quantity">
                 <!-- Choose size -->
                 <select *ngIf="productStock && productStock.size" [(ngModel)]="size">
                     <option *ngFor="let s of productStock.size" [ngValue]="s.Size">{{s.Size}}</option>
                 </select>
+                <br/>
+                <!-- Quantity Input -->
+                <input type="number" min="1" placeholder="Qty" [(ngModel)]="quantity">
                 <!-- Add to basket -->
                 <button 
                     [disabled]="!productStock || !productStock.inStock" 

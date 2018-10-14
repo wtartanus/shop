@@ -54,6 +54,12 @@
     padding: 1rem 0;
 }
 
+.product-short-info select {
+    padding: .3rem .6rem;
+    font-family: serif;
+    margin-bottom: 1rem;
+}
+
 .product-short-info input {
     width: 17%;
     padding: .3rem .6rem;
