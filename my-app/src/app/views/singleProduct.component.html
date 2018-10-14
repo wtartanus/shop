@@ -95,11 +95,11 @@
             </div>
         </div>
 
-        <div>
+        <div *ngIf="!loading">
             <!-- VIDEO -->
             <!-- Description -->
             <div class="product-description-container">
-                <h6>Description</h6>
+                <h3>Description</h3>
                 <p>{{product.description}}</p>
             </div>
         </div>
@@ -529,7 +529,7 @@
                     </p>
 
                     <textarea rows="4" placeholder="Write review ..." id="review-text" [(ngModel)]="reviewText"></textarea>
-
+                    <br />
                     <button class="review-button" (click)="addReview()">
                         <span *ngIf="!savingReview">Add Review</span>
                         <span *ngIf="savingReview"><i class="fas fa-spinner fa-spin"></i></span>

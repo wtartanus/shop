@@ -93,7 +93,7 @@
     color: black;
     padding-top: .3rem;
     font-family: serif;
-    font-size: 1em;
+    font-size: 1.3em;
 }
 
 .product-accordion-container {
@@ -302,18 +302,23 @@ textarea {
     .product-short-info button {
         padding: .3rem .6rem;
     }
+
+    textarea {
+        width: 50%;
+    }
 }
 
 @media only screen and (min-width: 800px) {
     .product-description-container {
         max-width: 800px;
         margin: 0 auto;
-        padding: 0 5rem;
+        padding: 1rem 5rem;
     }
 }
 
 @media only screen and (min-width: 900px) {
-    .product-short-info-container {
+    .product-short-info-container,
+    .product-accordion-container {
         max-width: 900px;
         margin: 0 auto;
     }
