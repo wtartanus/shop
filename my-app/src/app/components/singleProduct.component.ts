@@ -43,59 +43,64 @@ export class SingleProductComponent implements OnInit {
   public pagesIndex: Array<number> = new Array();
   public pageSelected: number;
 
+  constructor(
+    private warehouse: WarehouseService, 
+    public basket: BasketService, 
+    private route: ActivatedRoute, 
+    private router: Router
+  ) {};
+
   ngOnInit() {
     this.getProduct();
-    window.scrollTo(0, 0);
   }
 
   getProduct(): void{
-    this.route.params.subscribe(value => {
-        const productId = Number(this.route.snapshot.paramMap.get('id'));
-        let product1 = this.warehouse.productsById[productId];
-        if (product1) {
-            this.product = product1;
-            this.productStock = this.warehouse.stockByProductId[productId];
-            if (this.productStock.size) {
-              this.productStock.size = JSON.parse(this.productStock.size);
-              for(let i = this.productStock.size.length -1; i >=0; i--) {
-                if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
-                   this.productStock.size.splice(i, 1);
-                }
-              }
-              this.size = this.productStock.size[0].Size;
-            } else {
-              this.productStock.size = null;
-            }
-            this.loading = false;
-            this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
-            this.getReviews();
-        } else {
-            this.warehouse.getProductById(productId).then(() => {
-                 this.product = this.warehouse.productsById[productId];
-                 this.productStock = this.warehouse.stockByProductId[productId];
-            if (this.productStock.size) {
-              this.productStock.size = JSON.parse(this.productStock.size);
-              for(let i = this.productStock.size.length -1; i >=0; i--) {
-                if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
-                   this.productStock.size.splice(i, 1);
-                }
-              }
-              this.size = this.productStock.size[0].Size;
-            } else {
-              this.productStock.size = null;
-            }
-            this.loading = false;
-            this.currentImage = this.product.xlImage2 && this.product.xlImage2 !== '{}' ? this.product.xlImage2 : this.product.image;
-            this.getReviews();
-            });
-        }
-          
+    this.route.params.subscribe(() => {
+      const productId = Number(this.route.snapshot.paramMap.get('id'));
+      let product = this.warehouse.productsById[productId];
+      if (product) {
+          this.product = product;
+          this.productStock = this.warehouse.stockByProductId[productId];
+          this.mapProductSize();
+          this.loading = false;
+          this.setPhoto();
+          this.getReviews();
+      } else {
+          this.warehouse.getProductById(productId).then(() => {
+              this.product = this.warehouse.productsById[productId];
+              this.productStock = this.warehouse.stockByProductId[productId];
+              this.mapProductSize();
+              this.loading = false;
+              this.setPhoto();
+              this.getReviews();
+          });
+      }
     });
   }
 
-  constructor(private warehouse: WarehouseService, public basket: BasketService, private route: ActivatedRoute, private router: Router) {
+  mapProductSize() {
+    if (this.productStock && this.productStock.size) {
+      this.productStock.size = JSON.parse(this.productStock.size);
 
-  };
+      let productStockSize = this.productStock.size.length -1;
+      for (let i = productStockSize; i >=0; i--) {
+        if (this.productStock.size[i].content === "No Stock." || this.productStock.size[i].content === "No Stock") {
+          this.productStock.size.splice(i, 1);
+        }
+      }
+      this.size = this.productStock.size[0].Size;
+    } else {
+      this.productStock.size = null;
+    }
+  }
+
+  setPhoto(): void {
+    if (this.product.xlImage2 && this.product.xlImage2 !== '{}') {
+      this.currentImage = this.product.xlImage2;
+    } else {
+      this.currentImage = this.product.image;
+    }
+  }
 
   splitProducts(): void{
     if (this.productReviews) {
@@ -115,26 +120,18 @@ export class SingleProductComponent implements OnInit {
   }
 
   createNumbersArray(): void{
-    if (this.pages.length <= 10 || !this.pagesIndex.length) {
-      this.pagesIndex.length = 0;
-      for (var i = 0; i < this.pages.length; i++) {
-        this.pagesIndex.push(i);
-      }
-    } else if ((this.pageSelected === 0) || (this.pageSelected - 9 <= 0 && this.pageSelected !== this.pagesIndex[this.pagesIndex.length - 1])) {
-      this.pagesIndex.length = 0;
-      for (var i = 0; i < 10; i++) {
-        this.pagesIndex.push(i);
-      }
-    } else if ((this.pageSelected === this.pages.length - 1) || (this.pageSelected + 10 >= this.pages.length - 1 && this.pageSelected !== this.pagesIndex[0])) {
-        this.pagesIndex.length = 0
-        for (var i = this.pages.length -11; i < this.pages.length; i++) {
-          this.pagesIndex.push(i);
-        }
+    this.pagesIndex.length = 0;
+    this.pageSelected = this.pageSelected || 0;
+
+    if (this.pages.length <= 4) {
+        this.pagesIndex = this.pages.map((item, index) => index);
     } else {
-         this.pagesIndex.length = 0;
-         var end = (this.pageSelected - 4) + 11;
-         for (var i = this.pageSelected - 4; i < end; i++) {
-             this.pagesIndex.push(i);
+         let start = this.pageSelected <= 4 ? 0 : this.pageSelected;
+         let end = this.pageSelected + 4;
+         end = end <= this.pages.length ? end : this.pages.length;
+
+         for (; start <= end; start++) {
+            this.pagesIndex.push(start);
          }
     } 
   }
@@ -190,12 +187,14 @@ export class SingleProductComponent implements OnInit {
 
   addReview(): void{
     this.savingReview = true;
+
     var msg = {
       name: this.reviewName,
       ranking: this.reviewRanking,
       text: this.reviewText,
       productid: this.product.id
     }
+
     var reviewPromise = this.warehouse.httpPost("http://localhost:8080/review", msg);
     reviewPromise.then(function reviewAdded(result: any) {
       this.productReviews.push(result[0]);
@@ -238,15 +237,15 @@ export class SingleProductComponent implements OnInit {
     this.reviewRanking = star.value;
   }
 
-  resetStars(): void{
-    for (var i = 0; i < this.orderedStars.length; i++) {
-       var star = this.orderedStars[i];
-       var starElement = document.getElementById(star.id);
+  resetStars(): void {
+    for (let i = 0; i < this.orderedStars.length; i++) {
+      const star = this.orderedStars[i];
+      const starElement = document.getElementById(star.id);
         if (star.value <= this.reviewRanking) {
            if (!star.selected) {
-            starElement.classList.remove("far");
-            starElement.classList.add("fas");
-            star.selected = true;
+              starElement.classList.remove("far");
+              starElement.classList.add("fas");
+              star.selected = true;
            }
         } else {
           if (star.selected) {
