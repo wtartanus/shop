@@ -104,11 +104,47 @@
             </div>
         </div>
 
-        <div>
+        <div *ngIf="!loading" class="product-accordion-container">
             <!-- All other crap -->
+            <!-- Sizes -->
+            <div class="product-accordion-panel">
+               <div class="product-accordion-header" (click)="sizeChartOpen = !sizeChartOpen" 
+                    [ngClass]="{'accordion-open': sizeChartOpen}">
+                        <h3>Size Charts</h3>
+                        <i *ngIf="!sizeChartOpen" class="fas fa-angle-up"></i>
+                        <i *ngIf="sizeChartOpen" class="fas fa-angle-down"></i>
+               </div>
+               <div *ngIf="sizeChartOpen" class="product-accordion-body">
+
+               </div>
+            </div>
+            <!-- Features -->
+            <div class="product-accordion-panel">
+                <div class="product-accordion-header" (click)="specificationsOpen = !specificationsOpen"
+                    [ngClass]="{'accordion-open': specificationsOpen}">
+                        <h3>Specifications</h3>
+                        <i *ngIf="!specificationsOpen" class="fas fa-angle-up"></i>
+                        <i *ngIf="specificationsOpen" class="fas fa-angle-down"></i>
+                </div>
+                <div *ngIf="specificationsOpen" class="product-accordion-body">
+ 
+                </div>
+             </div>
+            <!-- Reviews -->
+            <div class="product-accordion-panel">
+                <div class="product-accordion-header" (click)="reviewsOpen = !reviewsOpen"
+                    [ngClass]="{'accordion-open': reviewsOpen}">
+                        <h3>Reviews</h3>
+                        <i *ngIf="!reviewsOpen" class="fas fa-angle-up"></i>
+                        <i *ngIf="reviewsOpen" class="fas fa-angle-down"></i>
+                </div>
+                <div *ngIf="reviewsOpen" class="product-accordion-body">
+ 
+                </div>
+             </div>
         </div>
 
-    <div *ngIf="!loading" class="aitsaccordionw3layouts">
+    <div *ngIf="hurra" class="aitsaccordionw3layouts">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">

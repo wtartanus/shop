@@ -96,6 +96,42 @@
     font-size: 1em;
 }
 
+.product-accordion-container {
+    width: 97%;
+    margin: 0 auto;
+}
+
+.product-accordion-panel {
+    width: 100%;
+    margin: 10px auto;
+}
+
+.product-accordion-header {
+    border: 1px solid lightgray;
+    background-color: grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .3rem .6rem;
+    color: white;
+    font-family: serif;
+    cursor: pointer;
+}
+
+.product-accordion-header i {
+    font-size: 1.5em;
+}
+
+.accordion-open {
+    color: grey;
+    background-color: white;
+    border-bottom: none;
+}
+
+.product-accordion-body {
+
+}
+
 @media only screen and (min-width: 500px) {
     .product-short-info-container {
         display: flex;
