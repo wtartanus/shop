@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var warehouse_service_js_1 = require("./../services/warehouse.service.js");
-var basket_service_js_1 = require("../services/basket.service.js");
+var warehouse_service_js_1 = require("../../services/warehouse.service.js");
+var basket_service_js_1 = require("../../services/basket.service.js");
 // import { Subscription } from 'rxjs/Subscription';
 // import 'rxjs/add/operator/toPromise';
 var SingleProductComponent = (function () {

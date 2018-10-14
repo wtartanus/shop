@@ -2,13 +2,13 @@ import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
-import {WarehouseService} from './../services/warehouse.service.js';
-import { BasketService } from '../services/basket.service.js';
-import { MessageService } from '../services/message.service.js';
+import {WarehouseService} from '../../services/warehouse.service.js';
+import { BasketService } from '../../services/basket.service.js';
+import { MessageService } from '../../services/message.service.js';
 
 @Component({
   selector: 'singleProduct',
-  templateUrl: '../views/singleProduct.component.html',
+  templateUrl: '../../views/singleProduct.component.html',
   styleUrls: ['./SingleProduct.css']
 })
 export class SingleProductComponent implements OnInit {

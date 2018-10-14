@@ -1,13 +1,12 @@
-import {Component, OnDestroy, Output, EventEmitter} from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { HeaderComponent } from "./Header/header.component.js";
 import { SplashComponent } from "./Splash/splash.component.js";
-import { FooterComponent } from "./../components/footer.component.js";
+import { FooterComponent } from "./footer.component.js";
 import { BasketComponent } from "./Basket/basket.component.js";
 import { ProductsListComponent } from "./ProductList/productsList.component.js";
-import { SingleProductComponent } from "./../components/singleProduct.component.js";
+import { SingleProductComponent } from "./SingleProduct/singleProduct.component.js";
 
 import {WarehouseService} from './../services/warehouse.service.js';
 import {MessageService} from './../services/message.service.js';

@@ -25,7 +25,7 @@ export class CheckoutComponent implements AfterViewChecked {
 
   private addScript: boolean = false;
   private paypalConfig = {
-        env: 'sandbox',
+        env: 'production',
         client: {
             sandbox: 'AfKg2dIdiKuH-qxJcFbhcfsVbujI9VNp-puzhDKmszofutAaW9yyoYpGmuVnCnEnWMsIZbH9OE_82D3v',
             production: 'Aes45OMkcqgphCC0Wwn1vKzWHjFPiA_NbmLDOXLJVvU_UsW5B2HqDX61h5h3pClT379xZPCET3f7tiyv'
@@ -42,7 +42,6 @@ export class CheckoutComponent implements AfterViewChecked {
         },
         onAuthorize: (data, actions) => {
             return actions.payment.execute().then(payment => {
-                console.log('payment', payment);
                 this.orderConfirmed = true;
                 const { email, first_name, last_name } = payment.payer.payer_info;
                 const { city, line1, line2, postal_code } = payment.payer.payer_info.shipping_address;
