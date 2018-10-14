@@ -129,14 +129,6 @@ input[type=text]:focus {
     color: white;
 }
 
-.specifications {
-    padding-left: 1%;
-}
-
-.specifications p {
-    display: inline-block;
-    width: 20%;
-}
 
 .sliders-container {
     padding-top: 1%;
@@ -150,27 +142,7 @@ input[type=text]:focus {
     cursor: pointer;
 }
 
-#name-input-review {
-    width: 25%;
-    background: white;
-    border: 1px solid gainsboro;
-    border-radius: 5px;
-    color: black;
-}
 
-#name-input-review::-webkit-input-placeholder {
-    color: gray;
-}
-#review-text {
-    background: white;
-    border: 1px solid gainsboro;
-    border-radius: 5px;
-    color: black;
-}
-
-#review-text::placeholder {
-    color: gray;
-}
 
 
 
@@ -256,9 +228,6 @@ input[type=text]:focus {
     font-size: 2em;
 }
 
-#review-text {
-    width: 90%;
-}
 
 .basket-remove-container {
     text-align: center;

@@ -127,7 +127,110 @@
                         <i *ngIf="specificationsOpen" class="fas fa-angle-down"></i>
                 </div>
                 <div *ngIf="specificationsOpen" class="product-accordion-body">
- 
+                    <div *ngIf="product.coulur && product.coulur !== ''" class="specifications">
+                        <p>Colour: </p>
+                        <p>{{product.coulur}}</p>
+                    </div>
+                    <div *ngIf="product.washing && product.washing !== '{}'" class="specifications">
+                        <p>Washing: </p>
+                        <p>{{product.washing}}</p>
+                    </div>
+                    <div *ngIf="product.flexability && product.flexability !== '{}'" class="specifications">
+                        <p>Flexability: </p>
+                        <p>{{product.flexability}}</p>
+                    </div>
+                    <div *ngIf="product.waterproof && product.waterproof !== ''" class="specifications">
+                        <p>Waterproof: </p>
+                        <p>{{product.waterproof === 'f' ? 'No' : 'Yes'}}</p>
+                    </div>
+                    <div *ngIf="product.designedForWho && product.designedForWho !== '{}'" class="specifications">
+                        <p>For Who: </p>
+                        <p>{{product.designedForWho === 'Both' ? 'Female and Male' : product.designedForWho}}</p>
+                    </div>
+                    <div *ngIf="product.materialName && product.materialName !== '{}'" class="specifications">
+                        <p>Material Name: </p>
+                        <p>{{product.materialName}}</p>
+                    </div>
+                    <div *ngIf="product.misc && product.misc !== '{}'" class="specifications">
+                        <p>Info: </p>
+                        <p>{{product.misc}}</p>
+                    </div>
+                    <div *ngIf="product.insertable && product.insertable !== '{}'" class="specifications">
+                        <p>Insertable: </p>
+                        <p>{{product.insertable}}</p>
+                    </div>
+                    <div *ngIf="product.noOfPills && product.noOfPills !== '{}'" class="specifications">
+                        <p>Number Of Pills: </p>
+                        <p>{{product.noOfPills}}</p>
+                    </div>
+                    <div *ngIf="product.liquidVolume && product.liquidVolume !== ''" class="specifications">
+                        <p>Liquid Volume: </p>
+                        <p>{{product.liquidVolume}}</p>
+                    </div>
+                    <div *ngIf="product.whatIsFor && product.whatIsFor !== '{}'" class="specifications">
+                        <p>What Is For: </p>
+                        <p>{{product.whatIsFor}}</p>
+                    </div>
+                    <div *ngIf="product.features && product.features !== '{}'" class="specifications">
+                        <p>Features: </p>
+                        <p>{{product.features}}</p>
+                    </div>
+                    <div *ngIf="product.opening && product.opening !== '[{}]'" class="specifications">
+                        <p>Opening: </p>
+                        <p>{{convertString(product.opening)}}</p>
+                    </div>
+                    <div *ngIf="product.productPower && product.productPower !== '{}'" class="specifications">
+                        <p>Power: </p>
+                        <p>{{product.productPower}}</p>
+                    </div>
+                    <div *ngIf="product.lubeType && product.lubeType !== '{}'" class="specifications">
+                        <p>Lube Type: </p>
+                        <p>{{product.lubeType}}</p>
+                    </div>
+                    <div *ngIf="product.styleName && product.styleName !== '{}'" class="specifications">
+                        <p>Style: </p>
+                        <p>{{product.styleName}}</p>
+                    </div>
+                    <div *ngIf="product.motion && product.motion !== '[{}]'" class="specifications">
+                        <p>Motion: </p>
+                        <p>{{convertString(product.motion)}}</p>
+                    </div>
+                    <div *ngIf="product.controller && product.controller !== '{}'" class="specifications">
+                        <p>Controller: </p>
+                        <p>{{product.controller}}</p>
+                    </div>
+                    <div *ngIf="product.fastening && product.fastening !== '{}'" class="specifications">
+                        <p>Fastening: </p>
+                        <p>{{product.fastening}}</p>
+                    </div>
+                    <div *ngIf="product.whatIsIt && product.whatIsIt !== '{}'" class="specifications">
+                        <p>What Is It: </p>
+                        <p>{{product.whatIsIt}}</p>
+                    </div>
+                    <div *ngIf="product.harnessCompatible && product.harnessCompatible !== 'f'" class="specifications">
+                        <p>Harness Compatible: </p>
+                        <p>Yes</p>
+                    </div>
+                    <div *ngIf="product.diameter && product.diameter !== '{}'" class="specifications">
+                        <p>Diameter: </p>
+                        <p>{{product.diameter}}</p>
+                    </div>
+                    <div *ngIf="product.productWidth && product.productWidth !== '{}'" class="specifications">
+                        <p>Width: </p>
+                        <p>{{product.productWidth}}</p>
+                    </div>
+                    <div *ngIf="product.productLength && product.productLength !== '[{}]'" class="specifications">
+                        <p>Length: </p>
+                        <p>{{convertString(product.productLength)}}</p>
+                    </div>
+                    <div *ngIf="product.productSize && product.productSize !== '[{}]'" class="specifications">
+                        <p>Size: </p>
+                        <p>{{convertString(product.productSize)}}</p>
+                    </div>
+                    <div *ngIf="product.condomSafe && product.condomSafe !== 'f'" class="specifications">
+                        <p>Condom Safe: </p>
+                        <p>Yes</p>
+                    </div>
                 </div>
              </div>
             <!-- Reviews -->
@@ -139,7 +242,109 @@
                         <i *ngIf="reviewsOpen" class="fas fa-angle-down"></i>
                 </div>
                 <div *ngIf="reviewsOpen" class="product-accordion-body">
- 
+                    <label class="review-name-label" for="product-review-name">Name</label>
+                    <br />
+                    <input class="review-name"
+                        type="text" 
+                        name="name" 
+                        placeholder="Name" 
+                        id="product-review-name" 
+                        [(ngModel)]="reviewName"
+                    >
+
+                    <p class="review-stars" (mouseleave)="resetStars()">
+                        <span>
+                            <i id="star-1" 
+                                class="fas fa-star" 
+                                (mouseenter)="toggleStarClass(starOne)" 
+                                (click)="selectRanking(starOne)">
+                            </i>
+                        </span>
+                        <span>
+                            <i id="star-2" 
+                                class="fas fa-star" 
+                                (mouseenter)="toggleStarClass(starTwo)" 
+                                (click)="selectRanking(starTwo)">
+                            </i>
+                        </span>
+                        <span>
+                            <i id="star-3" 
+                                class="fas fa-star" 
+                                (mouseenter)="toggleStarClass(starThree)" 
+                                (click)="selectRanking(starThree)">
+                            </i>
+                        </span>
+                        <span>
+                            <i id="star-4" 
+                                class="fas fa-star" 
+                                (mouseenter)="toggleStarClass(starFour)" 
+                                (click)="selectRanking(starFour)">
+                            </i>
+                        </span>
+                        <span>
+                            <i id="star-5" 
+                                class="fas fa-star" 
+                                (mouseenter)="toggleStarClass(starFive)" 
+                                (click)="selectRanking(starFive)">
+                            </i>
+                        </span>
+                    </p>
+
+                    <textarea rows="4" placeholder="Write review ..." id="review-text" [(ngModel)]="reviewText"></textarea>
+
+                    <button class="review-button" (click)="addReview()">
+                        <span *ngIf="!savingReview">Add Review</span>
+                        <span *ngIf="savingReview"><i class="fas fa-spinner fa-spin"></i></span>
+                    </button>
+
+                    <p *ngIf="!productReviews || !productReviews.length" class="no-reviews">
+                        {{product.name}} has no reviews.
+                    </p>
+
+                    <div *ngIf="!reviewsLoaded">
+                            <span><i class="fas fa-spinner fa-spin"></i></span>
+                    </div>
+                    <div class="reviews-container" *ngIf="reviewsLoaded && productReviews && productReviews.length">
+                        <div *ngFor="let review of currentPage">
+                            <p>{{review.name}}</p>
+                            <p class="review-stars read-only-cursor">
+                                <span>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                                <span>
+                                    <i class="fa-star" 
+                                        [ngClass]="{'far': review.ranking < 2, 'fas': review.ranking > 1}">
+                                    </i>
+                                </span>
+                                <span>
+                                    <i class="fa-star" 
+                                        [ngClass]="{'far': review.ranking < 3, 'fas': review.ranking > 2}">
+                                    </i>
+                                </span>
+                                <span>
+                                    <i class="fa-star" 
+                                        [ngClass]="{'far': review.ranking < 4, 'fas': review.ranking > 3}">
+                                    </i>
+                                </span>
+                                <span>
+                                    <i class="fa-star" 
+                                        [ngClass]="{'far': review.ranking < 5, 'fas': review.ranking > 4}">
+                                    </i>
+                                </span>
+                            </p>
+                            <p>{{review.text}}</p>
+                            <hr />
+                        </div>
+                    </div>
+    
+                    <ul>
+                        <li class="reviews-page-index" 
+                            [ngClass]="{'review-page-selected': pageSelected === pageIndex}" 
+                            *ngFor="let pageIndex of pagesIndex" 
+                            (click)="changePage(pageIndex)">
+                                {{pageIndex + 1}}
+                        </li>
+                    </ul>
                 </div>
              </div>
         </div>
@@ -155,110 +360,7 @@
                 </div>
                 <div *ngIf="specifications">
                     <div class="panel-body panel_text">
-                        <div class="specifications" *ngIf="product.coulur && product.coulur !== ''">
-                            <p>Colour: </p>
-                            <p>{{product.coulur}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.washing && product.washing !== '{}'">
-                            <p>Washing: </p>
-                            <p>{{product.washing}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.flexability && product.flexability !== '{}'">
-                            <p>Flexability: </p>
-                            <p>{{product.flexability}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.waterproof && product.waterproof !== ''">
-                            <p>Waterproof: </p>
-                            <p>{{product.waterproof === 'f' ? 'No' : 'Yes'}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.designedForWho && product.designedForWho !== '{}'">
-                            <p>For Who: </p>
-                            <p>{{product.designedForWho === 'Both' ? 'Female and Male' : product.designedForWho}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.materialName && product.materialName !== '{}'">
-                            <p>Material Name: </p>
-                            <p>{{product.materialName}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.misc && product.misc !== '{}'">
-                            <p>Info: </p>
-                            <p>{{product.misc}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.insertable && product.insertable !== '{}'">
-                            <p>Insertable: </p>
-                            <p>{{product.insertable}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.noOfPills && product.noOfPills !== '{}'">
-                            <p>Number Of Pills: </p>
-                            <p>{{product.noOfPills}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.liquidVolume && product.liquidVolume !== ''">
-                            <p>Liquid Volume: </p>
-                            <p>{{product.liquidVolume}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.whatIsFor && product.whatIsFor !== '{}'">
-                            <p>What Is For: </p>
-                            <p>{{product.whatIsFor}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.features && product.features !== '{}'">
-                            <p>Features: </p>
-                            <p>{{product.features}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.opening && product.opening !== '[{}]'">
-                            <p>Opening: </p>
-                            <p>{{convertString(product.opening)}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.productPower && product.productPower !== '{}'">
-                            <p>Power: </p>
-                            <p>{{product.productPower}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.lubeType && product.lubeType !== '{}'">
-                            <p>Lube Type: </p>
-                            <p>{{product.lubeType}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.styleName && product.styleName !== '{}'">
-                            <p>Style: </p>
-                            <p>{{product.styleName}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.motion && product.motion !== '[{}]'">
-                            <p>Motion: </p>
-                            <p>{{convertString(product.motion)}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.controller && product.controller !== '{}'">
-                            <p>Controller: </p>
-                            <p>{{product.controller}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.fastening && product.fastening !== '{}'">
-                            <p>Fastening: </p>
-                            <p>{{product.fastening}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.whatIsIt && product.whatIsIt !== '{}'">
-                            <p>What Is It: </p>
-                            <p>{{product.whatIsIt}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.harnessCompatible && product.harnessCompatible !== 'f'">
-                            <p>Harness Compatible: </p>
-                            <p>Yes</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.diameter && product.diameter !== '{}'">
-                            <p>Diameter: </p>
-                            <p>{{product.diameter}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.productWidth && product.productWidth !== '{}'">
-                            <p>Width: </p>
-                            <p>{{product.productWidth}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.productLength && product.productLength !== '[{}]'">
-                            <p>Length: </p>
-                            <p>{{convertString(product.productLength)}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.productSize && product.productSize !== '[{}]'">
-                            <p>Size: </p>
-                            <p>{{convertString(product.productSize)}}</p>
-                        </div>
-                        <div class="specifications" *ngIf="product.condomSafe && product.condomSafe !== 'f'">
-                            <p>Condom Safe: </p>
-                            <p>Yes</p>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
