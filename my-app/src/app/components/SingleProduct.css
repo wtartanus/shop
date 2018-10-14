@@ -135,6 +135,35 @@
     padding: .3rem .6rem;
 }
 
+.product-size-table {
+    border: 1px solid;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.product-size-table tr {
+    border-bottom: 1px solid;
+}
+
+.product-size-table tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+.product-size-table thead {
+    background-color: gray;
+    color: white;
+    font-family: serif;
+}
+
+.product-size-table thead th {
+    font-weight: 300;
+}
+
+.product-size-table th,
+.product-size-table td {
+    padding: .5rem;
+}
+
 .specifications {
     display: flex;
     justify-content: flex-start;
