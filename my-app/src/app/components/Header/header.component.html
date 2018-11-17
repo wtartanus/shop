@@ -1,0 +1,114 @@
+<header>
+    <div class="header-content">
+        <!-- Checkout -->
+        <div class="header-checkout-container">
+            <button class="header-checkout-button" (click)="goToCheckout()">
+                Checkout
+            </button>
+        </div>
+        
+        <!-- Logo -->
+        <div class="header-logo-container">
+            <a routerLink="/" routerLinkActive="active">
+                <img class="header-logo" src="images/new-logo.gif" alt="logo">
+                <span>Better Love</span>
+            </a>
+        </div>
+        
+        <!-- Basket, Search -->
+        <div class="header-util-container">
+            <div class="header-search-container">
+                <i class="fas fa-search" (click)="search()"></i>
+                <input type="text" id="search-input" [(ngModel)]="searchQuery" placeholder="Search" />
+            </div>
+            <div class="basket-container">
+                <a routerLink="/basket" routerLinkActive="active">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span>{{basketValues.itemsCount}}</span>
+                </a>
+                <p>{{basketValues.totalCost ? '£' + basketValues.totalCost : '£0.00'}}</p>
+            </div>
+        </div>
+
+        <div class="header-dropdown-menu-util-container">
+            <p>MENU</p>
+            <button (click)="showNavigation = !showNavigation"><i class="fas fa-bars"></i></button>
+        </div>
+
+        <!-- Dropdown menu -->
+        <nav *ngIf="showNavigation" class="header-nav-dropdown">
+            <ul>
+                <li *ngFor="let category of categories" (click)="toggleCategory(category, $event)">
+                    <div class="header-nav-dropdown-li-1">
+                        <span>{{category.name}}</span>
+                        <span>{{category.$open ? '-' : '+'}}</span>
+                    </div>
+                    <ul *ngIf="category.$open" class="header-nav-dropdown-ul-2">
+                    <p (click)="changeCategory(category.name, $event);" class="header-nav-dropdown-main-1">
+                        {{category.name}} home page 
+                        <i class="fas fa-arrow-right"></i>
+                    </p>
+                    <li *ngFor="let subCategory of category.subCategories" (click)="toggleCategory(subCategory, $event)" class="header-nav-dropdown-li-2">
+                        <span *ngIf="!subCategory.subCategories" (click)="changeCategory(subCategory.name, $event)">
+                            {{subCategory.name}}
+                        </span>
+                        <div *ngIf="subCategory.subCategories">
+                            <span>{{subCategory.name}}</span>
+                            <span>{{subCategory.subCategories && subCategory.$open ? '-' : '+'}}</span>
+                        </div>
+                        <ul *ngIf="subCategory.subCategories && subCategory.$open" class="header-nav-last-ul">
+                            <p (click)="changeCategory(subCategory.name, $event)" class="header-nav-dropdown-main-2">
+                                {{subCategory.name}} home page 
+                                <i class="fas fa-arrow-right"></i>
+                            </p>
+                            <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name, $event)">
+                                {{sub.name}}
+                            </li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <nav class="header-inline-navigation">
+        <ul class="inline-navigation-ul-level-1">
+            <li *ngFor="let category of categories" (click)="openCategory(category, $event);">
+                {{category.name}}
+                <ul *ngIf="category.$open" class="inline-navigation-ul-lvl-2" [ngClass]="{'inline-navigation-scrollable': category.scrollable}">
+                    <p class="inline-navigation-main" (click)="changeCategory(category.name, $event)">
+                        {{category.name}} 
+                        <i class="fas fa-arrow-right"></i>
+                    </p>
+                    <li *ngFor="let subCategory of category.subCategories;" (click)="openCategory(subCategory, $event);">
+                        <span *ngIf="!subCategory.subCategories" class="inline-navigation-item">{{subCategory.name}}</span>
+                        <div *ngIf="subCategory.subCategories" class="inline-navigation-main">
+                           <span>{{subCategory.name}}</span>
+                           <span *ngIf="!subCategory.$open">
+                                <i class="fas fa-chevron-up"></i>
+                           </span>
+                           <span *ngIf="subCategory.$open">
+                                <i class="fas fa-chevron-down"></i>
+                           </span>
+                        </div>
+                        <ul *ngIf="subCategory.subCategories && subCategory.$open" class="inline-navigation-ul-lvl-3" 
+                            [ngStyle]="{'top': 0}" [ngClass]="{'inline-navigation-scrollable': subCategory.scrollable}">
+                                <p class="inline-navigation-main" (click)="changeCategory(subCategory.name, $event)">
+                                    {{subCategory.name}} 
+                                    <i class="fas fa-angle-double-right"></i>
+                                </p>
+                                <li *ngFor="let sub of subCategory.subCategories" (click)="changeCategory(sub.name, $event)">
+                                    <span class="inline-navigation-item">{{sub.name}}</span>
+                                </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+      

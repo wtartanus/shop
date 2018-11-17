@@ -4,23 +4,23 @@ import { FormsModule }    from "@angular/forms";
 import { HttpModule }       from "@angular/http";
 import { RouterModule, Routes } from "@angular/router";
 
-import { AppComponent } from "./../components/app.component.js";
-import { HeaderComponent } from "../components/Header/header.component.js";
-import { SingleProductComponent } from "../components/SingleProduct/singleProduct.component.js";
-import { ProductsListComponent } from "../components/ProductList/productsList.component.js";
-import { FooterComponent } from "./../components/footer.component.js";
-import { SplashComponent } from "../components/Splash/splash.component.js";
-import { BasketComponent } from "./../components/Basket/basket.component.js";
-import { CheckoutComponent } from "../components/Checkout/checkout.component.js";
-import { TermsAndConditions } from "./../components/TermsAndContitions.js";
-import { Privacy } from "./../components/Privacy.js";
-import { Returns } from "./../components/Returns.js";
-import { Delivery } from "./../components/Delivery.js";
+import { AppComponent } from "./components/app.component.js";
+import { HeaderComponent } from "./components/Header/header.component.js";
+import { SingleProductComponent } from "./components/SingleProduct/singleProduct.component.js";
+import { ProductsListComponent } from "./components/ProductList/productsList.component.js";
+import { FooterComponent } from "./components/footer.component.js";
+import { SplashComponent } from "./components/Splash/splash.component.js";
+import { BasketComponent } from "./components/Basket/basket.component.js";
+import { CheckoutComponent } from "./components/Checkout/checkout.component.js";
+import { TermsAndConditions } from "./components/TermsAndContitions.js";
+import { Privacy } from "./components/Privacy.js";
+import { Returns } from "./components/Returns.js";
+import { Delivery } from "./components/Delivery.js";
 
-import { WarehouseService } from "./../services/warehouse.service.js";
-import { BasketService } from "../services/basket.service.js";
-import { MessageService } from "../services/message.service.js";
-import { CategoriesService } from "../services/categories.service.js";
+import { WarehouseService } from "./services/warehouse.service.js";
+import { BasketService } from "./services/basket.service.js";
+import { MessageService } from "./services/message.service.js";
+import { CategoriesService } from "./services/categories.service.js";
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent},
@@ -43,7 +43,11 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    // Add .withServerTransition() to support Universal rendering.
+    // The application ID can be any identifier which is unique on
+    // the page.
+    BrowserModule.withServerTransition({appId: 'my-app'})
   ],
   declarations: [
     AppComponent,

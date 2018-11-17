@@ -1,0 +1,51 @@
+<div>
+	<h1 class="products-list-title">{{selectedCategory}}</h1>
+	<div class="products-list-filters">
+		<select [(ngModel)]="sort" (ngModelChange)="sortBy()" class="products-filter">
+			<option value="0">Price: Low to High</option>
+			<option value="1">Price: High to Low</option>
+			<option value="2"> Avg. Customer Review</option>
+		</select>
+	</div>
+	
+	<div class="products-list-container">
+		<!-- LOADING -->
+		<div *ngIf="loading && !products" class="loader-container"><i class="fas fa-spinner fa-pulse loader-margin"></i></div>
+		<!-- NO RESULT -->
+		<div *ngIf="!loading && products && !products.length" class="loader-container">No result</div>
+
+		<!-- Actual Items -->
+		<div class="products-list-items-container">
+            <div class="products-list-item" *ngFor="let product of currentPage">
+			   <img src="{{getImageSrc(product)}}" alt="{{product.name}}" (click)="selectProduct(product)">
+			   <h5 class="products-list-item-name" (click)="selectProduct(product)">
+				   {{product.name}}
+				</h5>
+			   <p>£{{product.rpr}}</p>
+			   <button [disabled]="!warehouse.stockByProductId[product.id]" (click)="basket.addToBasket(1, product)">
+				   ADD TO CART
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="products-page-selection-container">
+			<span *ngIf="pageSelected !== 0" (click)="goToStartEnd(true)" class="selected">
+				<i class="fas fa-angle-double-left"></i>
+			</span>
+			<span *ngIf="pageSelected !== 0" class="" (click)="moveByOnePage(true)" class="selected">
+				<i class="fas fa-angle-left"></i>
+			</span>
+
+			<span *ngFor="let pageIndex of pagesIndex" (click)="changePage(pageIndex)"  
+			       [ngClass]="{'selected': pageSelected === pageIndex}">
+				   {{pageIndex + 1}}
+			</span>
+			
+			<span *ngIf="pageSelected !== pages.length - 1" (click)="moveByOnePage(false)" class="selected">
+				<i class="fas fa-angle-right"></i>
+			</span>
+			<span *ngIf="pageSelected !== pages.length - 1" (click)="goToStartEnd(false)" class="selected">
+				<i class="fas fa-angle-double-right"></i>
+			</span>
+	</div>
